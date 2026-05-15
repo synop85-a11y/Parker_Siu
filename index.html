@@ -1685,7 +1685,10 @@ function openBook(bookId) {
   const items = DATA.items.filter(it => it.book === bookId);
   const groups = {};
   items.forEach(it => {
-    const key = it.unit !== undefined ? `Unit ${it.unit}` : (it.category || 'All');
+    let key;
+    if (it.unit === 'etc') key = '✨ 더 많은 단어';
+    else if (it.unit !== undefined) key = `Unit ${it.unit}`;
+    else key = it.category || 'All';
     if (!groups[key]) groups[key] = [];
     groups[key].push(it);
   });
@@ -1719,8 +1722,8 @@ function openBook(bookId) {
     
     const card = document.createElement('div');
     card.className = 'unit-card';
-    // 첫 단어의 이모지를 카드 아이콘으로
-    const firstEmoji = getEmoji(groupItems[0].word || groupItems[0].letter || '') || '📖';
+    // 첫 단어의 이모지를 카드 아이콘으로 (ETC는 ✨)
+    const firstEmoji = groupName.startsWith('✨') ? '✨' : (getEmoji(groupItems[0].word || groupItems[0].letter || '') || '📖');
     card.innerHTML = `
       <div class="unit-emoji">${firstEmoji}</div>
       <div class="unit-name">${groupName}</div>
