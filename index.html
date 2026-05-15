@@ -139,6 +139,7 @@ html, body {
 .book-card[data-color="5"]::before { background: #C9A0FF; }
 .book-card[data-color="6"]::before { background: #FF9F43; }
 .book-card[data-color="7"]::before { background: #EE5A6F; }
+.book-card[data-color="8"]::before { background: #6C5CE7; }
 
 .book-icon {
   font-size: 8vh;
@@ -1185,7 +1186,8 @@ const BOOK_INFO = {
   'book4_themed_speaking_vol2': { name: 'Spring & Colors', icon: '🌸', color: 4 },
   'book5_themed_speaking_vol1': { name: 'My School', icon: '🏫', color: 5 },
   'book6_first_letter': { name: '첫 글자 찾기', icon: '🅰️', color: 6 },
-  'book7_writing': { name: '쓰기', icon: '✍️', color: 7 }
+  'book7_writing': { name: '쓰기', icon: '✍️', color: 7 },
+  'book8_case_match': { name: '대소문자', icon: '🔡', color: 8 }
 };
 
 // ============================
@@ -1981,6 +1983,48 @@ function openBook(bookId) {
     return;
   }
   
+  // ===== book8: 대소문자 매칭 =====
+  if (bookId === 'book8_case_match') {
+    // 전체 + 그룹별
+    const allCard = document.createElement('div');
+    allCard.className = 'unit-card';
+    allCard.innerHTML = `
+      <div class="unit-emoji">🎯</div>
+      <div class="unit-name">전체 랜덤</div>
+      <div class="unit-count">A~Z 알파벳</div>
+    `;
+    allCard.addEventListener('click', () => {
+      playSound('tap');
+      startCaseMatchQuiz('ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split(''));
+    });
+    grid.appendChild(allCard);
+    
+    const groups = [
+      { name: 'A-F', letters: 'ABCDEF'.split(''), emoji: '🅰️' },
+      { name: 'G-L', letters: 'GHIJKL'.split(''), emoji: '🇬' },
+      { name: 'M-R', letters: 'MNOPQR'.split(''), emoji: '🇲' },
+      { name: 'S-Z', letters: 'STUVWXYZ'.split(''), emoji: '🇸' }
+    ];
+    groups.forEach(g => {
+      const card = document.createElement('div');
+      card.className = 'unit-card';
+      card.innerHTML = `
+        <div class="unit-emoji">${g.emoji}</div>
+        <div class="unit-name">${g.name}</div>
+        <div class="unit-count">${g.letters.length}개 알파벳</div>
+      `;
+      card.addEventListener('click', () => {
+        playSound('tap');
+        startCaseMatchQuiz(g.letters);
+      });
+      grid.appendChild(card);
+    });
+    
+    document.getElementById('bookStars').textContent = 0;
+    showScreen('screen-book');
+    return;
+  }
+  
   // ===== 일반 책 처리 =====
   // 유닛별로 그룹화 (unit 또는 category)
   const items = DATA.items.filter(it => it.book === bookId);
@@ -2095,6 +2139,10 @@ function nextQuestion() {
   // 첫 글자 찾기 모드면 분기
   if (quizMode === 'first_letter') {
     return nextFirstLetterQuestion();
+  }
+  // 대소문자 매칭 모드면 분기
+  if (quizMode === 'case_match') {
+    return nextCaseMatchQuestion();
   }
   const item = quizItems[quizIndex];
   const word = item.word || item.letter || '';
@@ -2306,7 +2354,10 @@ function nextFirstLetterQuestion() {
   const item = quizItems[quizIndex];
   const word = (item.word || '').trim();
   const emoji = getEmoji(word);
-  const firstLetter = word[0].toUpperCase();
+  
+  // 매 문제마다 대문자 or 소문자 랜덤
+  const isUpper = Math.random() < 0.5;
+  const firstLetter = isUpper ? word[0].toUpperCase() : word[0].toLowerCase();
   
   // 진행도
   document.getElementById('quizQNum').textContent = quizIndex + 1;
@@ -2315,13 +2366,15 @@ function nextFirstLetterQuestion() {
   // 화면: 이모지 + 안내
   const qContent = document.getElementById('questionContent');
   const qPrompt = document.getElementById('questionPrompt');
-  qPrompt.textContent = '어떤 글자로 시작할까?';
+  qPrompt.textContent = isUpper ? '어떤 글자로 시작할까? (대문자)' : '어떤 글자로 시작할까? (소문자)';
   qContent.textContent = emoji;
   qContent.className = 'question-content';
   
-  // 오답 3개 알파벳 만들기 (정답 알파벳 제외)
-  const allLetters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
-  const otherLetters = allLetters.filter(l => l !== firstLetter);
+  // 오답 3개 알파벳 만들기 (정답 알파벳과 같은 케이스로)
+  const alphabet = isUpper 
+    ? 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('')
+    : 'abcdefghijklmnopqrstuvwxyz'.split('');
+  const otherLetters = alphabet.filter(l => l !== firstLetter);
   shuffle(otherLetters);
   const wrongLetters = otherLetters.slice(0, 3);
   
@@ -2371,15 +2424,21 @@ function startWritingQuiz(letters) {
 function setupWritingCanvas() {
   const canvas = document.getElementById('writingCanvas');
   const wrap = canvas.parentElement;
-  // 캔버스 실제 픽셀 사이즈
   const rect = wrap.getBoundingClientRect();
   canvas.width = rect.width;
   canvas.height = rect.height;
   writingCtx = canvas.getContext('2d');
   writingCtx.strokeStyle = '#FF1744';
-  writingCtx.lineWidth = 12;
+  writingCtx.lineWidth = 14;
   writingCtx.lineCap = 'round';
   writingCtx.lineJoin = 'round';
+  
+  // 정답 영역 마스크용 숨겨진 캔버스
+  if (!window.__writingMask) {
+    window.__writingMask = document.createElement('canvas');
+  }
+  window.__writingMask.width = canvas.width;
+  window.__writingMask.height = canvas.height;
   
   // 이벤트 리스너 (한 번만 등록)
   if (!canvas.dataset.bound) {
@@ -2420,6 +2479,23 @@ function setupWritingCanvas() {
   }
 }
 
+function drawMaskForLetter(letter) {
+  const mc = window.__writingMask;
+  const mctx = mc.getContext('2d');
+  mctx.clearRect(0, 0, mc.width, mc.height);
+  mctx.fillStyle = 'black';
+  mctx.strokeStyle = 'black';
+  // 알파벳 영역 + 약간의 여유 (관용성)
+  const fontSize = Math.min(mc.width, mc.height) * 0.85;
+  mctx.font = `900 ${fontSize}px Fredoka, Inter, sans-serif`;
+  mctx.textAlign = 'center';
+  mctx.textBaseline = 'middle';
+  mctx.fillText(letter, mc.width / 2, mc.height / 2);
+  // stroke로 영역 좀 더 넓혀서 6살 손가락에 관대하게
+  mctx.lineWidth = 40;
+  mctx.strokeText(letter, mc.width / 2, mc.height / 2);
+}
+
 function clearWritingCanvas() {
   playSound('tap');
   if (writingCtx) {
@@ -2437,35 +2513,154 @@ function nextWritingQuestion() {
   document.getElementById('writeProgress').style.width = `${(writingIndex / writingTotal) * 100}%`;
   document.getElementById('writingGuide').textContent = letter;
   clearWritingCanvas();
+  drawMaskForLetter(letter);
 }
 
 function completeWriting() {
-  // 캔버스에 뭐가 그려져 있는지 확인 (최소한 픽셀 50개 이상)
   if (!writingCtx) return;
-  const data = writingCtx.getImageData(0, 0, writingCtx.canvas.width, writingCtx.canvas.height).data;
-  let drawnPixels = 0;
-  for (let i = 3; i < data.length; i += 16) { // 4픽셀 간격으로 alpha만 체크
-    if (data[i] > 0) drawnPixels++;
+  const canvas = writingCtx.canvas;
+  const drawn = writingCtx.getImageData(0, 0, canvas.width, canvas.height).data;
+  const mask = window.__writingMask.getContext('2d').getImageData(0, 0, canvas.width, canvas.height).data;
+  
+  let drawnTotal = 0;
+  let drawnInside = 0;
+  let maskTotal = 0;
+  let maskCovered = 0;
+  
+  // 4픽셀 간격 샘플링 (속도)
+  for (let i = 3; i < drawn.length; i += 16) {
+    const drawnAlpha = drawn[i];
+    const maskAlpha = mask[i];
+    if (drawnAlpha > 0) {
+      drawnTotal++;
+      if (maskAlpha > 0) drawnInside++;
+    }
+    if (maskAlpha > 0) {
+      maskTotal++;
+      if (drawnAlpha > 0) maskCovered++;
+    }
   }
-  if (drawnPixels < 50) {
+  
+  if (drawnTotal < 30) {
     playSound('wrong');
     alert('아직 안 썼어요! 따라 써봐~');
     return;
   }
   
-  playSound('correct');
-  quizCorrect++;
-  addStars(1);
+  const accuracy = drawnInside / drawnTotal;   // 알파벳 안쪽 비율 (정확도)
+  const coverage = maskCovered / maskTotal;    // 채운 비율 (완성도)
   
-  // 작은 컨페티 + 별 애니메이션
-  const btn = event.target;
-  spawnConfetti(btn);
-  flyStarTo(btn);
+  // 6살용 관대한 기준: 정확도 60%, 완성도 25%
+  const passed = accuracy >= 0.6 && coverage >= 0.25;
   
-  setTimeout(() => {
-    writingIndex++;
-    nextWritingQuestion();
-  }, 1200);
+  if (passed) {
+    playSound('correct');
+    quizCorrect++;
+    addStars(1);
+    const btn = event.target;
+    spawnConfetti(btn);
+    flyStarTo(btn);
+    
+    setTimeout(() => {
+      writingIndex++;
+      nextWritingQuestion();
+    }, 1200);
+  } else {
+    playSound('wrong');
+    // 실패 사유 안내
+    let msg;
+    if (coverage < 0.25) msg = '거의 다 됐어! 좀 더 진하게 써봐~';
+    else if (accuracy < 0.6) msg = '글자 안에 써보자~ 다시!';
+    else msg = '한 번 더 해볼까?';
+    
+    // 짧은 안내 + 자동 지우기
+    const wrap = document.querySelector('.writing-canvas-wrap');
+    const toast = document.createElement('div');
+    toast.textContent = '😅 ' + msg;
+    toast.style.cssText = 'position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(0,0,0,0.85);color:white;padding:2vh 3vh;border-radius:2vh;font-size:3vh;z-index:100;animation:revealPop 0.4s ease-out;';
+    wrap.appendChild(toast);
+    setTimeout(() => {
+      toast.remove();
+      clearWritingCanvas();
+    }, 1500);
+  }
+}
+
+// ============================
+// 대소문자 매칭 퀴즈
+// ============================
+let caseMatchLetters = [];
+
+function startCaseMatchQuiz(letters) {
+  quizMode = 'case_match';
+  
+  const shuffled = [...letters];
+  shuffle(shuffled);
+  caseMatchLetters = shuffled.slice(0, Math.min(10, shuffled.length));
+  quizTotal = caseMatchLetters.length;
+  quizIndex = 0;
+  quizCorrect = 0;
+  // quiz 시스템 재활용 (item.id를 위해 가짜 items 만들기)
+  quizItems = caseMatchLetters.map(l => ({
+    id: `case_match_${l}`,
+    word: l,
+    type: 'case_match'
+  }));
+  
+  document.getElementById('quizQTotal').textContent = quizTotal;
+  updateStarDisplay();
+  showScreen('screen-quiz');
+  nextCaseMatchQuestion();
+}
+
+function nextCaseMatchQuestion() {
+  if (quizIndex >= quizItems.length) {
+    showResult();
+    return;
+  }
+  const item = quizItems[quizIndex];
+  const upperLetter = item.word.toUpperCase();
+  const lowerLetter = upperLetter.toLowerCase();
+  
+  // 매 문제마다 방향 랜덤: 대문자→소문자 OR 소문자→대문자
+  const upperToLower = Math.random() < 0.5;
+  const question = upperToLower ? upperLetter : lowerLetter;
+  const correctAnswer = upperToLower ? lowerLetter : upperLetter;
+  
+  // 진행도
+  document.getElementById('quizQNum').textContent = quizIndex + 1;
+  document.getElementById('quizProgress').style.width = `${((quizIndex) / quizTotal) * 100}%`;
+  
+  // 화면
+  const qContent = document.getElementById('questionContent');
+  const qPrompt = document.getElementById('questionPrompt');
+  qPrompt.textContent = upperToLower ? '같은 소문자는?' : '같은 대문자는?';
+  qContent.textContent = question;
+  qContent.className = 'question-content text';
+  
+  // 오답 3개 - 답과 같은 케이스의 다른 알파벳
+  const alphabet = upperToLower
+    ? 'abcdefghijklmnopqrstuvwxyz'.split('')
+    : 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
+  const others = alphabet.filter(l => l !== correctAnswer);
+  shuffle(others);
+  const wrongs = others.slice(0, 3);
+  
+  const choices = [
+    { display: correctAnswer, value: correctAnswer, correct: true },
+    ...wrongs.map(l => ({ display: l, value: l, correct: false }))
+  ];
+  shuffle(choices);
+  
+  const choicesEl = document.getElementById('choices');
+  choicesEl.innerHTML = '';
+  choices.forEach(c => {
+    const btn = document.createElement('button');
+    btn.className = 'choice text';
+    btn.textContent = c.display;
+    btn.addEventListener('click', () => handleAnswer(btn, c.correct, item));
+    choicesEl.appendChild(btn);
+  });
 }
 
 function showResult() {
