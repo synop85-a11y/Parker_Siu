@@ -75,13 +75,14 @@ html, body {
 /* 홈 화면 */
 #screen-home {
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   position: relative;
+  padding-top: 11vh;
 }
 
 .lion-mascot {
-  width: 18vh; height: 18vh;
-  position: absolute; top: 3vh; right: 3vw;
+  width: 14vh; height: 14vh;
+  position: absolute; top: 11vh; right: 3vw;
   animation: bob 2s ease-in-out infinite;
 }
 @keyframes bob {
@@ -90,9 +91,10 @@ html, body {
 }
 
 .home-title {
-  font-size: 8vh; font-weight: 700;
+  font-size: 7vh; font-weight: 700;
   color: white;
   text-shadow: 5px 5px 0 #2C2C2C, -3px -3px 0 #2C2C2C, 3px -3px 0 #2C2C2C, -3px 3px 0 #2C2C2C;
+  margin-top: 2vh;
   margin-bottom: 3vh;
   letter-spacing: 0.1em;
 }
