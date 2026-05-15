@@ -1,0 +1,25 @@
+{
+  "name": "라이언 영어",
+  "short_name": "라이언영어",
+  "description": "사자 왕과 함께하는 영어 모험",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "fullscreen",
+  "orientation": "landscape",
+  "background_color": "#FFF4D6",
+  "theme_color": "#F5B847",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

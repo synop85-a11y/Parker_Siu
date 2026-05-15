@@ -1,0 +1,1174 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="라이언영어">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icon-192.png">
+<meta name="theme-color" content="#F5B847">
+<title>라이언 영어</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Jua&display=swap" rel="stylesheet">
+
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; user-select: none; }
+
+html, body {
+  width: 100%; height: 100%; overflow: hidden;
+  font-family: 'Jua', 'Fredoka', sans-serif;
+  background: linear-gradient(135deg, #FFE4A0 0%, #FFC97A 50%, #FFA94D 100%);
+  -webkit-touch-callout: none;
+  touch-action: manipulation;
+}
+
+#app {
+  width: 100vw; height: 100vh;
+  position: relative; overflow: hidden;
+}
+
+/* 화면 전환 */
+.screen {
+  position: absolute; inset: 0;
+  display: none;
+  flex-direction: column;
+  padding: 2vh 3vw;
+}
+.screen.active { display: flex; }
+.screen.entering { animation: slideIn 0.4s ease-out; }
+@keyframes slideIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* 헤더 */
+.header {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 2vh;
+  min-height: 8vh;
+}
+.btn-back {
+  background: white; border: 4px solid #2C2C2C;
+  width: 7vh; height: 7vh; border-radius: 50%;
+  font-size: 4vh; cursor: pointer;
+  box-shadow: 0 4px 0 #2C2C2C;
+  transition: transform 0.1s;
+  display: flex; align-items: center; justify-content: center;
+}
+.btn-back:active { transform: translateY(2px); box-shadow: 0 2px 0 #2C2C2C; }
+
+.title {
+  font-size: 5vh; font-weight: 700;
+  color: white;
+  text-shadow: 3px 3px 0 #2C2C2C, -2px -2px 0 #2C2C2C, 2px -2px 0 #2C2C2C, -2px 2px 0 #2C2C2C;
+}
+
+.stars-display {
+  background: white; border: 4px solid #2C2C2C;
+  padding: 1vh 2vh; border-radius: 3vh;
+  font-size: 3vh; box-shadow: 0 4px 0 #2C2C2C;
+  display: flex; align-items: center; gap: 1vh;
+}
+
+/* 홈 화면 */
+#screen-home {
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.lion-mascot {
+  width: 18vh; height: 18vh;
+  position: absolute; top: 3vh; right: 3vw;
+  animation: bob 2s ease-in-out infinite;
+}
+@keyframes bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-1vh); }
+}
+
+.home-title {
+  font-size: 8vh; font-weight: 700;
+  color: white;
+  text-shadow: 5px 5px 0 #2C2C2C, -3px -3px 0 #2C2C2C, 3px -3px 0 #2C2C2C, -3px 3px 0 #2C2C2C;
+  margin-bottom: 3vh;
+  letter-spacing: 0.1em;
+}
+
+.books-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 2vw;
+  width: 100%;
+  max-width: 90vw;
+}
+
+.book-card {
+  background: white;
+  border: 5px solid #2C2C2C;
+  border-radius: 3vh;
+  padding: 3vh 2vh;
+  cursor: pointer;
+  box-shadow: 0 8px 0 #2C2C2C;
+  transition: all 0.15s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5vh;
+  position: relative;
+  overflow: hidden;
+}
+.book-card:active {
+  transform: translateY(4px);
+  box-shadow: 0 4px 0 #2C2C2C;
+}
+.book-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; height: 30%;
+  z-index: 0;
+}
+.book-card[data-color="1"]::before { background: #FF6B9D; }
+.book-card[data-color="2"]::before { background: #4ECDC4; }
+.book-card[data-color="3"]::before { background: #FFE66D; }
+.book-card[data-color="4"]::before { background: #95E1D3; }
+.book-card[data-color="5"]::before { background: #C9A0FF; }
+
+.book-icon {
+  font-size: 8vh;
+  position: relative; z-index: 1;
+  filter: drop-shadow(2px 2px 0 rgba(0,0,0,0.2));
+}
+.book-name {
+  font-size: 2.2vh;
+  font-weight: 700;
+  color: #2C2C2C;
+  text-align: center;
+  line-height: 1.2;
+  position: relative; z-index: 1;
+}
+.book-progress {
+  background: #F0F0F0;
+  border: 2px solid #2C2C2C;
+  height: 2vh;
+  border-radius: 1vh;
+  width: 100%;
+  overflow: hidden;
+  position: relative; z-index: 1;
+}
+.book-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #FFD700, #FF8C00);
+  transition: width 0.5s;
+}
+.book-progress-text {
+  font-size: 1.8vh; color: #666;
+  position: relative; z-index: 1;
+}
+
+/* 유닛 선택 화면 */
+.units-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2.5vh;
+  padding: 0 2vw;
+  flex: 1;
+  align-content: start;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+.unit-card {
+  background: white;
+  border: 4px solid #2C2C2C;
+  border-radius: 2vh;
+  padding: 2.5vh 2vh;
+  cursor: pointer;
+  box-shadow: 0 6px 0 #2C2C2C;
+  transition: all 0.15s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1vh;
+}
+.unit-card:active {
+  transform: translateY(3px);
+  box-shadow: 0 3px 0 #2C2C2C;
+}
+.unit-emoji { font-size: 5vh; }
+.unit-name {
+  font-size: 2.5vh; font-weight: 700;
+  color: #2C2C2C; text-align: center;
+}
+.unit-count {
+  font-size: 1.8vh; color: #888;
+}
+.unit-stars {
+  display: flex; gap: 0.3vh;
+  font-size: 2vh;
+}
+
+/* 문제 화면 */
+#screen-quiz {
+  justify-content: space-between;
+}
+.quiz-header {
+  display: flex; justify-content: space-between; align-items: center;
+}
+.progress-bar {
+  flex: 1;
+  margin: 0 3vw;
+  height: 3vh;
+  background: rgba(255,255,255,0.5);
+  border: 3px solid #2C2C2C;
+  border-radius: 2vh;
+  overflow: hidden;
+}
+.progress-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #4ECDC4, #44A08D);
+  transition: width 0.4s;
+}
+
+.quiz-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 4vh;
+}
+
+.question-box {
+  background: white;
+  border: 5px solid #2C2C2C;
+  border-radius: 3vh;
+  padding: 4vh 6vw;
+  box-shadow: 0 6px 0 #2C2C2C;
+  min-width: 40vw;
+  text-align: center;
+}
+.question-prompt {
+  font-size: 3vh;
+  color: #666;
+  margin-bottom: 2vh;
+  font-weight: 600;
+}
+.question-content {
+  font-size: 10vh;
+  font-weight: 700;
+}
+.question-content.text {
+  font-family: 'Fredoka', sans-serif;
+  font-size: 8vh;
+  color: #2C2C2C;
+  letter-spacing: 0.05em;
+}
+.question-level {
+  margin-top: 2vh;
+  font-size: 3vh;
+}
+
+.choices {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2vw;
+  width: 90vw;
+}
+.choice {
+  background: white;
+  border: 5px solid #2C2C2C;
+  border-radius: 2.5vh;
+  padding: 3vh 2vh;
+  cursor: pointer;
+  box-shadow: 0 6px 0 #2C2C2C;
+  transition: all 0.15s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 16vh;
+  font-size: 6vh;
+  font-weight: 700;
+}
+.choice.text {
+  font-family: 'Fredoka', sans-serif;
+  font-size: 4.5vh;
+  color: #2C2C2C;
+}
+.choice:active {
+  transform: translateY(3px);
+  box-shadow: 0 3px 0 #2C2C2C;
+}
+.choice.correct {
+  background: #6EE7B7;
+  animation: correctPulse 0.5s;
+}
+.choice.wrong {
+  background: #FCA5A5;
+  animation: wrongShake 0.4s;
+}
+.choice.disabled {
+  pointer-events: none;
+  opacity: 0.6;
+}
+@keyframes correctPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+@keyframes wrongShake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-1vw); }
+  75% { transform: translateX(1vw); }
+}
+
+/* 결과 화면 */
+#screen-result {
+  align-items: center;
+  justify-content: center;
+}
+.result-box {
+  background: white;
+  border: 6px solid #2C2C2C;
+  border-radius: 4vh;
+  padding: 5vh 8vw;
+  box-shadow: 0 10px 0 #2C2C2C;
+  text-align: center;
+  max-width: 70vw;
+}
+.result-title {
+  font-size: 7vh; font-weight: 700; color: #2C2C2C;
+  margin-bottom: 3vh;
+}
+.result-score {
+  font-size: 5vh; color: #666;
+  margin-bottom: 3vh;
+}
+.result-stars {
+  font-size: 8vh;
+  margin-bottom: 3vh;
+  letter-spacing: 1vh;
+}
+.result-buttons {
+  display: flex; gap: 3vw; justify-content: center;
+  margin-top: 3vh;
+}
+.btn-action {
+  background: #FFD93D;
+  border: 4px solid #2C2C2C;
+  padding: 2.5vh 4vw;
+  font-size: 3.5vh;
+  font-weight: 700;
+  border-radius: 2vh;
+  cursor: pointer;
+  box-shadow: 0 6px 0 #2C2C2C;
+  font-family: inherit;
+  transition: all 0.15s;
+}
+.btn-action.primary { background: #4ECDC4; color: white; }
+.btn-action:active {
+  transform: translateY(3px);
+  box-shadow: 0 3px 0 #2C2C2C;
+}
+
+/* 레벨업 팝업 */
+.levelup-popup {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+.levelup-popup.show { display: flex; }
+.levelup-content {
+  background: white;
+  border: 6px solid #2C2C2C;
+  border-radius: 4vh;
+  padding: 5vh 6vw;
+  text-align: center;
+  box-shadow: 0 10px 0 #2C2C2C;
+  animation: popIn 0.5s ease-out;
+}
+@keyframes popIn {
+  0% { transform: scale(0) rotate(-180deg); }
+  60% { transform: scale(1.2) rotate(10deg); }
+  100% { transform: scale(1) rotate(0); }
+}
+.levelup-icon {
+  font-size: 15vh;
+  filter: drop-shadow(3px 3px 0 rgba(0,0,0,0.3));
+  animation: spin 1s ease-out;
+}
+@keyframes spin {
+  from { transform: rotate(0deg) scale(0.5); }
+  to { transform: rotate(360deg) scale(1); }
+}
+.levelup-text {
+  font-size: 5vh; font-weight: 700; color: #2C2C2C;
+  margin-top: 2vh;
+}
+
+/* 사운드 토글 */
+.sound-toggle {
+  position: absolute;
+  top: 2vh; right: 3vw;
+  background: white;
+  border: 3px solid #2C2C2C;
+  width: 6vh; height: 6vh;
+  border-radius: 50%;
+  font-size: 3vh;
+  cursor: pointer;
+  box-shadow: 0 4px 0 #2C2C2C;
+  z-index: 50;
+  display: flex; align-items: center; justify-content: center;
+}
+.sound-toggle:active {
+  transform: translateY(2px);
+  box-shadow: 0 2px 0 #2C2C2C;
+}
+
+/* 색종이 컨페티 */
+.confetti {
+  position: fixed;
+  width: 2vh; height: 2vh;
+  pointer-events: none;
+  z-index: 200;
+  animation: confettiFall 2s ease-out forwards;
+}
+@keyframes confettiFall {
+  0% { transform: translateY(-10vh) rotate(0); opacity: 1; }
+  100% { transform: translateY(110vh) rotate(720deg); opacity: 0; }
+}
+
+/* 로딩 */
+.loading {
+  position: fixed; inset: 0;
+  background: #FFE4A0;
+  display: flex; align-items: center; justify-content: center;
+  flex-direction: column; gap: 3vh;
+  z-index: 1000;
+}
+.loading-lion {
+  width: 25vh; height: 25vh;
+  animation: bob 1s ease-in-out infinite;
+}
+.loading-text {
+  font-size: 4vh; color: #2C2C2C;
+}
+</style>
+</head>
+<body>
+
+<div class="loading" id="loading">
+  <img src="icon-512.png" class="loading-lion" alt="로딩 중">
+  <div class="loading-text">잠시만 기다려줘...</div>
+</div>
+
+<button class="sound-toggle" id="soundToggle" aria-label="소리">🔊</button>
+
+<div id="app">
+
+  <!-- 홈 화면 -->
+  <div class="screen" id="screen-home">
+    <img src="icon-192.png" class="lion-mascot" alt="사자 왕">
+    <h1 class="home-title">🦁 라이언 영어 🦁</h1>
+    <div class="books-grid" id="booksGrid"></div>
+  </div>
+
+  <!-- 책 화면 (유닛 선택) -->
+  <div class="screen" id="screen-book">
+    <div class="header">
+      <button class="btn-back" onclick="goHome()">←</button>
+      <div class="title" id="bookTitle"></div>
+      <div class="stars-display"><span>⭐</span><span id="bookStars">0</span></div>
+    </div>
+    <div class="units-grid" id="unitsGrid"></div>
+  </div>
+
+  <!-- 문제 화면 -->
+  <div class="screen" id="screen-quiz">
+    <div class="header quiz-header">
+      <button class="btn-back" onclick="confirmQuit()">←</button>
+      <div class="progress-bar">
+        <div class="progress-bar-fill" id="quizProgress"></div>
+      </div>
+      <div class="stars-display"><span id="quizQNum">1</span>/<span id="quizQTotal">10</span></div>
+    </div>
+    <div class="quiz-content">
+      <div class="question-box">
+        <div class="question-prompt" id="questionPrompt">무엇일까요?</div>
+        <div class="question-content" id="questionContent">🐷</div>
+        <div class="question-level" id="questionLevel"></div>
+      </div>
+      <div class="choices" id="choices"></div>
+    </div>
+  </div>
+
+  <!-- 결과 화면 -->
+  <div class="screen" id="screen-result">
+    <div class="result-box">
+      <div class="result-title">🎉 잘했어! 🎉</div>
+      <div class="result-stars" id="resultStars"></div>
+      <div class="result-score" id="resultScore"></div>
+      <div class="result-buttons">
+        <button class="btn-action" onclick="goHome()">홈으로</button>
+        <button class="btn-action primary" onclick="retryQuiz()">한번 더!</button>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- 레벨업 팝업 -->
+<div class="levelup-popup" id="levelupPopup">
+  <div class="levelup-content">
+    <div class="levelup-icon" id="levelupIcon">🌱</div>
+    <div class="levelup-text" id="levelupText">레벨업!</div>
+  </div>
+</div>
+
+<script>
+// ============================
+// 이모지 매핑 (교재 단어 → 이모지)
+// ============================
+const EMOJI_MAP = {
+  // 동물
+  'pig': '🐷', 'chicken': '🐔', 'duck': '🦆', 'horse': '🐴', 'cow': '🐮', 'sheep': '🐑',
+  'butterfly': '🦋', 'chick': '🐤', 'bunny': '🐰', 'cat': '🐱', 'dog': '🐶', 'dolphin': '🐬',
+  'fish': '🐟', 'goat': '🐐', 'hen': '🐔', 'iguana': '🦎', 'kangaroo': '🦘', 'lion': '🦁',
+  'mouse': '🐭', 'octopus': '🐙', 'panda': '🐼', 'penguin': '🐧', 'rabbit': '🐰',
+  'tiger': '🐯', 'turtle': '🐢', 'fox': '🦊', 'zebra': '🦓', 'alligator': '🐊',
+  'ant': '🐜', 'elephant': '🐘',
+  // 자연/식물
+  'seedling': '🌱', 'flower': '🌸', 'bush': '🌳', 'egg': '🥚',
+  'sun': '☀️', 'rain': '🌧️', 'lemon': '🍋', 'apple': '🍎', 'orange': '🍊',
+  // 음식
+  'sandwich': '🥪', 'drink': '🥤', 'jam': '🍓', 'juice': '🧃', 'milk': '🥛',
+  'fruits': '🍎',
+  // 색깔
+  'red': '🟥', 'blue': '🟦', 'green': '🟩', 'yellow': '🟨', 'purple': '🟪',
+  'brown': '🟫', 'pink': '💗',
+  // 색+도형 조합
+  'purple circle': '🟣', 'pink oval': '💗', 'blue rectangle': '🟦', 'orange triangle': '🔺',
+  'green diamond': '💎', 'brown square': '🟫', 'yellow star': '⭐', 'red heart': '❤️',
+  'pink hexagon': '🔶', 'orange arrow': '➡️', 'blue square': '🟦', 'yellow rectangle': '🟨',
+  // 사물
+  'ball': '⚽', 'balloon': '🎈', 'cap': '🧢', 'cup': '☕', 'fan': '🌀', 'hat': '🎩',
+  'house': '🏠', 'igloo': '❄️', 'ink': '🖋️', 'jet': '✈️', 'king': '👑', 'kite': '🪁',
+  'lamp': '💡', 'man': '👨', 'nail': '🔨', 'net': '🥅', 'nest': '🪺', 'queen': '👸',
+  'quilt': '🛏️', 'question': '❓', 'robot': '🤖', 'spoon': '🥄', 'seven': '7️⃣',
+  'tooth': '🦷', 'umbrella': '☂️', 'violin': '🎻', 'van': '🚐', 'volcano': '🌋',
+  'watch': '⌚', 'wig': '👱', 'web': '🕸️', 'box': '📦', 'six': '6️⃣', 'yacht': '⛵',
+  'yo-yo': '🪀', 'zoo': '🦁', 'zero': '0️⃣', 'baby': '👶', 'girl': '👧',
+  'piano': '🎹', 'drum': '🥁', 'tambourine': '🪘', 'flute': '🪈', 'guitar': '🎸',
+  'book': '📚', 'eraser': '🧽', 'crayon': '🖍️', 'notebook': '📓', 'pencil': '✏️',
+  'ruler': '📏', 'desk': '🪑', 'chair': '🪑', 'pencil case': '🎒', 'colored paper': '📄',
+  'glue': '🧴', 'backpack': '🎒',
+  // 활동
+  'catch': '🤲', 'run': '🏃', 'swing': '🛝', 'skate': '⛸️', 'kick a ball': '⚽',
+  'jump': '🤸', 'see flowers': '🌸', 'catch butterflies': '🦋', 'blow bubbles': '🫧',
+  'have a picnic': '🧺', 'ride a bike': '🚲', 'climb a tree': '🌳', 'plant seeds': '🌱',
+  'speak': '💬', 'read': '📖', 'play': '🎮', 'listen': '👂', 'write': '✍️', 'count': '🔢',
+  // 장소
+  'playground': '🛝', 'library': '📚', 'classroom': '🏫', 'lunchroom': '🍱', 'gym': '🏋️',
+  // 계절/추상
+  'spring': '🌸',
+  // 사람/성격
+  'teacher': '👩‍🏫', 'friend': '🧑‍🤝‍🧑', 'kind': '😊', 'smart': '🧠', 'strong': '💪',
+  'funny': '😂', 'friendly': '🤗', 'shy': '🙈', 'cheerful': '😄', 'brave': '🦸',
+  'loud': '📢', 'quiet': '🤫', 'creative': '🎨',
+  // 위치
+  'up': '⬆️', 'under': '⬇️', 'big': '🐘', 'little': '🐭',
+  // 피크닉
+  'picnic': '🧺', 'picnic mat': '🟦', 'picnic basket': '🧺'
+};
+
+// 도형 단어 분리 매핑
+function getEmoji(word) {
+  const lower = word.toLowerCase();
+  if (EMOJI_MAP[lower]) return EMOJI_MAP[lower];
+  // 색+도형 조합 분해 시도
+  const parts = lower.split(' ');
+  if (parts.length === 2 && EMOJI_MAP[parts[1]]) return EMOJI_MAP[parts[1]];
+  return null;
+}
+
+// ============================
+// 책 정보
+// ============================
+const BOOK_INFO = {
+  'book1_sight_words': { name: 'Sight Words', icon: '🐄', color: 1 },
+  'book2_alphabet_phonics': { name: '알파벳 파닉스', icon: '🔤', color: 2 },
+  'book3_common_core_sight_words': { name: 'Common Core', icon: '🎵', color: 3 },
+  'book4_themed_speaking_vol2': { name: 'Spring & Colors', icon: '🌸', color: 4 },
+  'book5_themed_speaking_vol1': { name: 'My School', icon: '🏫', color: 5 }
+};
+
+// ============================
+// 레벨 시스템
+// ============================
+const LEVELS = [
+  { level: 0, name: '미학습', icon: '⚪', min: 0 },
+  { level: 1, name: '씨앗', icon: '🌱', min: 1 },
+  { level: 2, name: '새싹', icon: '🌿', min: 3 },
+  { level: 3, name: '꽃', icon: '🌸', min: 5 },
+  { level: 4, name: '나무', icon: '🌳', min: 10 },
+  { level: 5, name: '별', icon: '⭐', min: 20 }
+];
+function calcLevel(correct) {
+  let lv = 0;
+  for (const L of LEVELS) if (correct >= L.min) lv = L.level;
+  return lv;
+}
+function levelInfo(lv) { return LEVELS[lv]; }
+
+// ============================
+// 상태
+// ============================
+let DATA = null;
+let currentBook = null;
+let currentUnit = null;
+let quizItems = [];
+let quizIndex = 0;
+let quizCorrect = 0;
+let quizTotal = 10;
+let soundOn = true;
+
+// ============================
+// 저장소
+// ============================
+const STORAGE_KEY = 'lion_english_progress_v1';
+function loadProgress() {
+  try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {}; }
+  catch { return {}; }
+}
+function saveProgress(p) {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(p));
+}
+function getItemProgress(id) {
+  const p = loadProgress();
+  return p[id] || { attempts: 0, correct: 0, level: 0 };
+}
+function updateItemProgress(id, isCorrect) {
+  const p = loadProgress();
+  const prog = p[id] || { attempts: 0, correct: 0, level: 0 };
+  const oldLevel = prog.level;
+  prog.attempts++;
+  if (isCorrect) prog.correct++;
+  prog.level = calcLevel(prog.correct);
+  p[id] = prog;
+  saveProgress(p);
+  return { oldLevel, newLevel: prog.level, leveledUp: prog.level > oldLevel };
+}
+
+// ============================
+// 오디오 시스템 (Web Audio)
+// ============================
+let audioCtx = null;
+let bgmNodes = null;
+function initAudio() {
+  if (!audioCtx) {
+    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  }
+}
+function playSound(type) {
+  if (!soundOn) return;
+  initAudio();
+  const ctx = audioCtx;
+  const now = ctx.currentTime;
+  if (type === 'correct') {
+    // 도-미-솔 상승음
+    [523.25, 659.25, 783.99].forEach((freq, i) => {
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.type = 'sine';
+      osc.frequency.value = freq;
+      gain.gain.setValueAtTime(0, now + i * 0.08);
+      gain.gain.linearRampToValueAtTime(0.2, now + i * 0.08 + 0.02);
+      gain.gain.exponentialRampToValueAtTime(0.01, now + i * 0.08 + 0.2);
+      osc.connect(gain).connect(ctx.destination);
+      osc.start(now + i * 0.08);
+      osc.stop(now + i * 0.08 + 0.3);
+    });
+  } else if (type === 'wrong') {
+    // 낮은 부저음
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.type = 'square';
+    osc.frequency.setValueAtTime(220, now);
+    osc.frequency.linearRampToValueAtTime(110, now + 0.3);
+    gain.gain.setValueAtTime(0.1, now);
+    gain.gain.exponentialRampToValueAtTime(0.01, now + 0.3);
+    osc.connect(gain).connect(ctx.destination);
+    osc.start(now); osc.stop(now + 0.3);
+  } else if (type === 'levelup') {
+    // 화려한 상승음
+    [523.25, 587.33, 659.25, 698.46, 783.99, 880, 1046.5].forEach((freq, i) => {
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.type = 'triangle';
+      osc.frequency.value = freq;
+      const t = now + i * 0.06;
+      gain.gain.setValueAtTime(0, t);
+      gain.gain.linearRampToValueAtTime(0.2, t + 0.02);
+      gain.gain.exponentialRampToValueAtTime(0.01, t + 0.25);
+      osc.connect(gain).connect(ctx.destination);
+      osc.start(t); osc.stop(t + 0.3);
+    });
+  } else if (type === 'tap') {
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.type = 'sine';
+    osc.frequency.value = 800;
+    gain.gain.setValueAtTime(0.1, now);
+    gain.gain.exponentialRampToValueAtTime(0.01, now + 0.1);
+    osc.connect(gain).connect(ctx.destination);
+    osc.start(now); osc.stop(now + 0.1);
+  } else if (type === 'complete') {
+    // 결과 축하음
+    const melody = [523, 659, 783, 1046, 783, 1046, 1318];
+    melody.forEach((freq, i) => {
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.type = 'triangle';
+      osc.frequency.value = freq;
+      const t = now + i * 0.15;
+      gain.gain.setValueAtTime(0, t);
+      gain.gain.linearRampToValueAtTime(0.2, t + 0.02);
+      gain.gain.exponentialRampToValueAtTime(0.01, t + 0.3);
+      osc.connect(gain).connect(ctx.destination);
+      osc.start(t); osc.stop(t + 0.35);
+    });
+  }
+}
+
+// BGM: 부드러운 5음계 루프
+function startBGM() {
+  if (!soundOn) return;
+  initAudio();
+  stopBGM();
+  const ctx = audioCtx;
+  const masterGain = ctx.createGain();
+  masterGain.gain.value = 0.05;
+  masterGain.connect(ctx.destination);
+
+  // C major pentatonic: C, D, E, G, A
+  const notes = [261.63, 293.66, 329.63, 392.00, 440.00, 523.25, 392.00, 329.63];
+  let step = 0;
+  const interval = setInterval(() => {
+    if (!soundOn || !bgmNodes) return;
+    const t = ctx.currentTime;
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.type = 'sine';
+    osc.frequency.value = notes[step % notes.length];
+    gain.gain.setValueAtTime(0, t);
+    gain.gain.linearRampToValueAtTime(1, t + 0.05);
+    gain.gain.exponentialRampToValueAtTime(0.001, t + 0.6);
+    osc.connect(gain).connect(masterGain);
+    osc.start(t); osc.stop(t + 0.7);
+    step++;
+  }, 500);
+  bgmNodes = { interval, masterGain };
+}
+function stopBGM() {
+  if (bgmNodes) {
+    clearInterval(bgmNodes.interval);
+    bgmNodes.masterGain.disconnect();
+    bgmNodes = null;
+  }
+}
+
+// 사운드 토글
+document.getElementById('soundToggle').addEventListener('click', () => {
+  soundOn = !soundOn;
+  document.getElementById('soundToggle').textContent = soundOn ? '🔊' : '🔇';
+  if (soundOn) startBGM();
+  else stopBGM();
+});
+
+// ============================
+// 책별 통계
+// ============================
+function getBookStats(bookId) {
+  const items = DATA.items.filter(it => it.book === bookId);
+  const p = loadProgress();
+  let totalCorrect = 0;
+  let totalAttempts = 0;
+  let stars = 0;
+  items.forEach(it => {
+    const prog = p[it.id] || { attempts: 0, correct: 0, level: 0 };
+    totalCorrect += prog.correct;
+    totalAttempts += prog.attempts;
+    if (prog.level >= 5) stars++;
+  });
+  return {
+    totalItems: items.length,
+    stars,
+    progressPercent: items.length > 0 ? Math.round((stars / items.length) * 100) : 0
+  };
+}
+
+// ============================
+// 홈 화면
+// ============================
+function renderHome() {
+  const grid = document.getElementById('booksGrid');
+  grid.innerHTML = '';
+  Object.entries(BOOK_INFO).forEach(([bookId, info]) => {
+    const stats = getBookStats(bookId);
+    const card = document.createElement('div');
+    card.className = 'book-card';
+    card.dataset.color = info.color;
+    card.innerHTML = `
+      <div class="book-icon">${info.icon}</div>
+      <div class="book-name">${info.name}</div>
+      <div class="book-progress"><div class="book-progress-fill" style="width: ${stats.progressPercent}%"></div></div>
+      <div class="book-progress-text">⭐ ${stats.stars} / ${stats.totalItems}</div>
+    `;
+    card.addEventListener('click', () => {
+      playSound('tap');
+      openBook(bookId);
+    });
+    grid.appendChild(card);
+  });
+  showScreen('screen-home');
+}
+
+// ============================
+// 책 화면 (유닛 선택)
+// ============================
+function openBook(bookId) {
+  currentBook = bookId;
+  const info = BOOK_INFO[bookId];
+  document.getElementById('bookTitle').textContent = info.name;
+  
+  // 유닛별로 그룹화 (unit 또는 category)
+  const items = DATA.items.filter(it => it.book === bookId);
+  const groups = {};
+  items.forEach(it => {
+    const key = it.unit !== undefined ? `Unit ${it.unit}` : (it.category || 'All');
+    if (!groups[key]) groups[key] = [];
+    groups[key].push(it);
+  });
+
+  const grid = document.getElementById('unitsGrid');
+  grid.innerHTML = '';
+  
+  // 전체 모드 카드
+  const allCard = document.createElement('div');
+  allCard.className = 'unit-card';
+  allCard.innerHTML = `
+    <div class="unit-emoji">🎯</div>
+    <div class="unit-name">전체 랜덤</div>
+    <div class="unit-count">${items.length}개 단어</div>
+  `;
+  allCard.addEventListener('click', () => {
+    playSound('tap');
+    startQuiz(items);
+  });
+  grid.appendChild(allCard);
+
+  // 유닛별 카드
+  Object.entries(groups).forEach(([groupName, groupItems]) => {
+    const p = loadProgress();
+    let stars = 0;
+    groupItems.forEach(it => {
+      const prog = p[it.id] || { level: 0 };
+      if (prog.level >= 5) stars++;
+    });
+    const starDisplay = stars > 0 ? '⭐'.repeat(Math.min(3, Math.ceil(stars / Math.max(1, groupItems.length / 3)))) : '';
+    
+    const card = document.createElement('div');
+    card.className = 'unit-card';
+    // 첫 단어의 이모지를 카드 아이콘으로
+    const firstEmoji = getEmoji(groupItems[0].word || groupItems[0].letter || '') || '📖';
+    card.innerHTML = `
+      <div class="unit-emoji">${firstEmoji}</div>
+      <div class="unit-name">${groupName}</div>
+      <div class="unit-count">${groupItems.length}개 단어</div>
+      <div class="unit-stars">${starDisplay || '⚪⚪⚪'}</div>
+    `;
+    card.addEventListener('click', () => {
+      playSound('tap');
+      startQuiz(groupItems);
+    });
+    grid.appendChild(card);
+  });
+
+  // 책 별점 표시
+  const stats = getBookStats(bookId);
+  document.getElementById('bookStars').textContent = stats.stars;
+
+  showScreen('screen-book');
+}
+
+// ============================
+// 퀴즈
+// ============================
+function startQuiz(items) {
+  // 이모지 매핑 가능한 단어만 필터링 (4지선다 용)
+  const playable = items.filter(it => {
+    const word = it.word || it.letter || it.text;
+    return word && getEmoji(word);
+  });
+
+  // 매핑 안 되는 단어가 너무 많으면 텍스트 매칭 모드로
+  let pool = playable.length >= 4 ? playable : items.filter(it => it.word || it.letter);
+  if (pool.length < 4) {
+    alert('아직 문제가 부족해요! 다른 단원을 골라봐요.');
+    return;
+  }
+
+  // 우선순위: 레벨 낮은 것 먼저
+  const p = loadProgress();
+  pool.sort((a, b) => {
+    const la = (p[a.id] || { level: 0 }).level;
+    const lb = (p[b.id] || { level: 0 }).level;
+    return la - lb;
+  });
+
+  // 10개 선택 (낮은 레벨 위주 + 셔플)
+  const lowLevel = pool.slice(0, Math.min(20, pool.length));
+  shuffle(lowLevel);
+  quizItems = lowLevel.slice(0, Math.min(10, lowLevel.length));
+  quizTotal = quizItems.length;
+  quizIndex = 0;
+  quizCorrect = 0;
+  
+  document.getElementById('quizQTotal').textContent = quizTotal;
+  showScreen('screen-quiz');
+  nextQuestion();
+}
+
+function nextQuestion() {
+  if (quizIndex >= quizItems.length) {
+    showResult();
+    return;
+  }
+  const item = quizItems[quizIndex];
+  const word = item.word || item.letter || '';
+  const emoji = getEmoji(word);
+  
+  // 진행도 표시
+  document.getElementById('quizQNum').textContent = quizIndex + 1;
+  document.getElementById('quizProgress').style.width = `${((quizIndex) / quizTotal) * 100}%`;
+
+  // 현재 레벨 표시
+  const prog = getItemProgress(item.id);
+  const lvInfo = levelInfo(prog.level);
+  document.getElementById('questionLevel').textContent = `${lvInfo.icon} ${prog.correct}/20`;
+
+  // 문제 유형 랜덤: 이모지→단어 or 단어→이모지
+  const mode = (emoji && Math.random() < 0.5) ? 'emoji_to_word' : 'word_to_emoji';
+  
+  const qContent = document.getElementById('questionContent');
+  const qPrompt = document.getElementById('questionPrompt');
+  
+  let correctAnswer;
+  let choices = [];
+  
+  if (mode === 'word_to_emoji' && emoji) {
+    qPrompt.textContent = '같은 그림은?';
+    qContent.textContent = word;
+    qContent.className = 'question-content text';
+    correctAnswer = emoji;
+    // 다른 단어들의 이모지로 오답 만들기
+    const otherItems = DATA.items.filter(it => {
+      const w = it.word || it.letter || '';
+      const e = getEmoji(w);
+      return e && e !== emoji && it.id !== item.id;
+    });
+    shuffle(otherItems);
+    const wrongs = [];
+    const usedEmojis = new Set([emoji]);
+    for (const oi of otherItems) {
+      const ow = oi.word || oi.letter;
+      const oe = getEmoji(ow);
+      if (!usedEmojis.has(oe)) {
+        wrongs.push({ display: oe, value: oe });
+        usedEmojis.add(oe);
+      }
+      if (wrongs.length >= 3) break;
+    }
+    choices = [{ display: emoji, value: emoji, correct: true }, ...wrongs.map(w => ({ ...w, correct: false }))];
+  } else {
+    qPrompt.textContent = emoji ? '무엇일까요?' : '단어를 골라요!';
+    qContent.textContent = emoji || '❓';
+    qContent.className = 'question-content';
+    correctAnswer = word;
+    // 다른 단어들로 오답
+    const otherItems = DATA.items.filter(it => {
+      const w = it.word || it.letter || '';
+      return w && w !== word && it.id !== item.id;
+    });
+    shuffle(otherItems);
+    const wrongs = [];
+    const usedWords = new Set([word.toLowerCase()]);
+    for (const oi of otherItems) {
+      const ow = oi.word || oi.letter;
+      if (!usedWords.has(ow.toLowerCase())) {
+        wrongs.push({ display: ow, value: ow });
+        usedWords.add(ow.toLowerCase());
+      }
+      if (wrongs.length >= 3) break;
+    }
+    choices = [{ display: word, value: word, correct: true }, ...wrongs.map(w => ({ ...w, correct: false }))];
+  }
+
+  shuffle(choices);
+  const choicesEl = document.getElementById('choices');
+  choicesEl.innerHTML = '';
+  choices.forEach(c => {
+    const btn = document.createElement('button');
+    btn.className = 'choice';
+    btn.textContent = c.display;
+    // 텍스트 선택지면 폰트 변경
+    if (c.display === c.display.match(/^[a-zA-Z\s]+$/)?.[0]) {
+      btn.classList.add('text');
+    }
+    btn.addEventListener('click', () => handleAnswer(btn, c.correct, item));
+    choicesEl.appendChild(btn);
+  });
+}
+
+function handleAnswer(btn, isCorrect, item) {
+  // 모든 버튼 비활성화
+  document.querySelectorAll('.choice').forEach(b => b.classList.add('disabled'));
+  
+  const result = updateItemProgress(item.id, isCorrect);
+  
+  if (isCorrect) {
+    btn.classList.add('correct');
+    quizCorrect++;
+    playSound('correct');
+    spawnConfetti(btn);
+    
+    if (result.leveledUp) {
+      setTimeout(() => showLevelUp(result.newLevel), 600);
+      setTimeout(() => { quizIndex++; nextQuestion(); }, 2200);
+    } else {
+      setTimeout(() => { quizIndex++; nextQuestion(); }, 1200);
+    }
+  } else {
+    btn.classList.add('wrong');
+    playSound('wrong');
+    // 정답 표시
+    document.querySelectorAll('.choice').forEach(b => {
+      if (b.textContent === (item.word || item.letter) || 
+          b.textContent === getEmoji(item.word || item.letter || '')) {
+        b.classList.add('correct');
+      }
+    });
+    setTimeout(() => { quizIndex++; nextQuestion(); }, 1800);
+  }
+}
+
+function showLevelUp(level) {
+  const info = levelInfo(level);
+  document.getElementById('levelupIcon').textContent = info.icon;
+  document.getElementById('levelupText').textContent = `${info.name}!`;
+  document.getElementById('levelupPopup').classList.add('show');
+  playSound('levelup');
+  setTimeout(() => {
+    document.getElementById('levelupPopup').classList.remove('show');
+  }, 1500);
+}
+
+function spawnConfetti(originEl) {
+  const rect = originEl.getBoundingClientRect();
+  const colors = ['#FF6B9D', '#4ECDC4', '#FFE66D', '#95E1D3', '#C9A0FF', '#FF8C42'];
+  for (let i = 0; i < 30; i++) {
+    const c = document.createElement('div');
+    c.className = 'confetti';
+    c.style.left = (rect.left + rect.width / 2 + (Math.random() - 0.5) * rect.width) + 'px';
+    c.style.top = rect.top + 'px';
+    c.style.background = colors[Math.floor(Math.random() * colors.length)];
+    c.style.borderRadius = Math.random() > 0.5 ? '50%' : '0';
+    c.style.animationDuration = (1.5 + Math.random()) + 's';
+    document.body.appendChild(c);
+    setTimeout(() => c.remove(), 2500);
+  }
+}
+
+function showResult() {
+  document.getElementById('resultScore').textContent = `${quizCorrect} / ${quizTotal} 정답!`;
+  let starCount = 0;
+  if (quizCorrect === quizTotal) starCount = 3;
+  else if (quizCorrect >= quizTotal * 0.7) starCount = 2;
+  else if (quizCorrect >= quizTotal * 0.4) starCount = 1;
+  
+  document.getElementById('resultStars').textContent = 
+    '⭐'.repeat(starCount) + '☆'.repeat(3 - starCount);
+  
+  playSound('complete');
+  showScreen('screen-result');
+}
+
+function retryQuiz() {
+  playSound('tap');
+  openBook(currentBook);
+}
+
+function confirmQuit() {
+  if (confirm('그만할래요?')) {
+    playSound('tap');
+    openBook(currentBook);
+  }
+}
+
+function goHome() {
+  playSound('tap');
+  renderHome();
+}
+
+// ============================
+// 유틸
+// ============================
+function shuffle(arr) {
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr;
+}
+
+function showScreen(id) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active', 'entering'));
+  const el = document.getElementById(id);
+  el.classList.add('active', 'entering');
+}
+
+// ============================
+// 초기화
+// ============================
+async function init() {
+  try {
+    const res = await fetch('english_textbooks.json');
+    DATA = await res.json();
+  } catch (e) {
+    alert('데이터 불러오기 실패: ' + e.message);
+    return;
+  }
+  
+  document.getElementById('loading').style.display = 'none';
+  renderHome();
+
+  // 첫 사용자 인터랙션 후 BGM 시작
+  document.addEventListener('click', () => {
+    if (soundOn && !bgmNodes) startBGM();
+  }, { once: true });
+}
+
+// PWA 서비스 워커 등록
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('sw.js').catch(() => {});
+}
+
+init();
+</script>
+
+</body>
+</html>

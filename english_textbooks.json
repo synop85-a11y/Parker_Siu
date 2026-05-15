@@ -1,0 +1,5056 @@
+{
+  "meta": {
+    "version": "3.0",
+    "target_age": 6,
+    "total_textbooks": 5,
+    "purpose": "HTML 게임 자산용 - 1단계: 교재 원본 문제 정리",
+    "total_items": 297,
+    "items_by_book": {
+      "book1_sight_words": 58,
+      "book2_alphabet_phonics": 103,
+      "book3_common_core_sight_words": 56,
+      "book4_themed_speaking_vol2": 32,
+      "book5_themed_speaking_vol1": 48
+    },
+    "items_by_type": {
+      "vocabulary": 86,
+      "sight_word": 48,
+      "sentence": 18,
+      "letter": 26,
+      "phonics_word": 77,
+      "content_vocab": 24,
+      "sentence_pattern": 13,
+      "place_action": 5
+    },
+    "stages": {
+      "1_textbook": "교재 원본 문제 (현재 단계)",
+      "2_etc": "추가 확장 문제 (예정)",
+      "3_trace": "글씨 쓰기 trace 문제 약 100개 (예정)"
+    },
+    "items_by_source": {
+      "textbook": 297
+    }
+  },
+  "textbooks": [
+    {
+      "id": "book1_sight_words",
+      "title": "Sight Words 워크북",
+      "structure": "4 Units, 각 6 vocab + 6 sight words",
+      "total_words": 48,
+      "units": [
+        {
+          "unit": 1,
+          "theme": "Farm",
+          "emoji": "🐮",
+          "vocabulary": [
+            "pig",
+            "chicken",
+            "duck",
+            "horse",
+            "cow",
+            "sheep"
+          ],
+          "sight_words": [
+            "a",
+            "at",
+            "Here",
+            "are",
+            "big",
+            "little"
+          ],
+          "sentence_patterns": [
+            "Here is a big ___",
+            "Here is a little ___"
+          ]
+        },
+        {
+          "unit": 2,
+          "theme": "Spring",
+          "emoji": "🌸",
+          "vocabulary": [
+            "seedling",
+            "flower",
+            "bush",
+            "butterfly",
+            "chick",
+            "bunny"
+          ],
+          "sight_words": [
+            "What",
+            "does",
+            "boy",
+            "girl",
+            "He",
+            "She"
+          ],
+          "sentence_patterns": [
+            "What does this girl see?",
+            "She sees a ___",
+            "What does this boy see?",
+            "He sees a ___"
+          ]
+        },
+        {
+          "unit": 3,
+          "theme": "Picnic",
+          "emoji": "🧺",
+          "vocabulary": [
+            "picnic",
+            "fruits",
+            "sandwich",
+            "picnic mat",
+            "drink",
+            "picnic basket"
+          ],
+          "sight_words": [
+            "my",
+            "mom",
+            "and",
+            "go",
+            "on",
+            "need"
+          ],
+          "sentence_patterns": [
+            "My mom and I go on a ___",
+            "I need a ___"
+          ]
+        },
+        {
+          "unit": 4,
+          "theme": "Colors",
+          "emoji": "🎨",
+          "vocabulary": [
+            "red",
+            "blue",
+            "green",
+            "yellow",
+            "orange",
+            "egg"
+          ],
+          "sight_words": [
+            "am",
+            "an",
+            "will",
+            "color",
+            "be",
+            "happy"
+          ],
+          "sentence_patterns": [
+            "I am an egg. Will you color me ___?",
+            "I will be happy."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "book2_alphabet_phonics",
+      "title": "알파벳 파닉스 워크북",
+      "structure": "Unit 1~8, Unit당 알파벳 3~4개 + Review",
+      "total_letters": 26,
+      "total_words": 75,
+      "activity_types": [
+        "Say and trace (대/소문자 따라쓰기)",
+        "Color the [모티프] with 대/소문자",
+        "Circle/Find — 시작 소리 그림 또는 글자 찾기",
+        "Color the letters — 큰 글자 색칠",
+        "Circle/Match/Color — 단어 카드 매칭",
+        "Trace the letters — 4선 노트",
+        "Trace and say — 단어 4선 노트"
+      ],
+      "units": [
+        {
+          "unit": 1,
+          "letters": [
+            "A",
+            "B",
+            "C"
+          ],
+          "review_colors": {
+            "A": "red",
+            "B": "blue",
+            "C": "yellow"
+          },
+          "words": {
+            "A": [
+              "apple",
+              "ant",
+              "alligator"
+            ],
+            "B": [
+              "baby",
+              "ball",
+              "balloon"
+            ],
+            "C": [
+              "cat",
+              "cap",
+              "cup"
+            ]
+          }
+        },
+        {
+          "unit": 2,
+          "letters": [
+            "D",
+            "E",
+            "F"
+          ],
+          "review_colors": {
+            "D": "red",
+            "E": "blue",
+            "F": "yellow"
+          },
+          "words": {
+            "D": [
+              "duck",
+              "dog",
+              "dolphin"
+            ],
+            "E": [
+              "egg",
+              "elephant",
+              "elbow"
+            ],
+            "F": [
+              "fish",
+              "flower",
+              "fan"
+            ]
+          }
+        },
+        {
+          "unit": 3,
+          "letters": [
+            "G",
+            "H",
+            "I"
+          ],
+          "review_colors": {
+            "G": "green",
+            "H": "blue",
+            "I": "pink"
+          },
+          "words": {
+            "G": [
+              "goat",
+              "girl",
+              "green"
+            ],
+            "H": [
+              "hat",
+              "hen",
+              "house"
+            ],
+            "I": [
+              "igloo",
+              "ink",
+              "iguana"
+            ]
+          }
+        },
+        {
+          "unit": 4,
+          "letters": [
+            "J",
+            "K",
+            "L"
+          ],
+          "review_colors": {
+            "J": "yellow",
+            "K": "pink",
+            "L": "red"
+          },
+          "words": {
+            "J": [
+              "jet",
+              "jam",
+              "juice"
+            ],
+            "K": [
+              "king",
+              "kangaroo",
+              "kite"
+            ],
+            "L": [
+              "lion",
+              "lamp",
+              "lemon"
+            ]
+          }
+        },
+        {
+          "unit": 5,
+          "letters": [
+            "M",
+            "N",
+            "O"
+          ],
+          "review_colors": {
+            "M": "red",
+            "N": "yellow",
+            "O": "blue"
+          },
+          "words": {
+            "M": [
+              "man",
+              "mouse",
+              "milk"
+            ],
+            "N": [
+              "nail",
+              "net",
+              "nest"
+            ],
+            "O": [
+              "octopus",
+              "orange"
+            ]
+          }
+        },
+        {
+          "unit": 6,
+          "letters": [
+            "P",
+            "Q",
+            "R"
+          ],
+          "review_colors": {
+            "P": "yellow",
+            "Q": "green",
+            "R": "red"
+          },
+          "words": {
+            "P": [
+              "pig",
+              "panda",
+              "penguin"
+            ],
+            "Q": [
+              "queen",
+              "quilt",
+              "question"
+            ],
+            "R": [
+              "robot",
+              "rabbit",
+              "rain"
+            ]
+          }
+        },
+        {
+          "unit": 7,
+          "letters": [
+            "S",
+            "T",
+            "U",
+            "V"
+          ],
+          "review_colors": {
+            "S": "red",
+            "T": "blue",
+            "U": "green",
+            "V": "yellow"
+          },
+          "words": {
+            "S": [
+              "sun",
+              "spoon",
+              "seven"
+            ],
+            "T": [
+              "tiger",
+              "turtle",
+              "tooth"
+            ],
+            "U": [
+              "umbrella",
+              "up",
+              "under"
+            ],
+            "V": [
+              "violin",
+              "van",
+              "volcano"
+            ]
+          }
+        },
+        {
+          "unit": 8,
+          "letters": [
+            "W",
+            "X",
+            "Y",
+            "Z"
+          ],
+          "review_colors": {
+            "W": "red",
+            "X": "blue",
+            "Y": "green",
+            "Z": "yellow"
+          },
+          "words": {
+            "W": [
+              "watch",
+              "wig",
+              "web"
+            ],
+            "X": [
+              "box",
+              "six",
+              "fox"
+            ],
+            "X_note": "어말/중간 위치",
+            "Y": [
+              "yacht",
+              "yo-yo",
+              "yellow"
+            ],
+            "Z": [
+              "zoo",
+              "zebra",
+              "zero"
+            ]
+          }
+        }
+      ],
+      "final_review": {
+        "pages": "p.160-166",
+        "activities": [
+          "Say and circle (시작글자 12문제 2지선다)",
+          "Write the partner letters",
+          "Match and trace (별/달 카드)",
+          "점잇기 a~l → 그림",
+          "Color the partner letters",
+          "Match and trace (풍선/구름)"
+        ]
+      }
+    },
+    {
+      "id": "book3_common_core_sight_words",
+      "title": "Common Core Sight Words",
+      "structure": "4 Units, 각 6 content vocab + 6 sight words",
+      "total_words": 48,
+      "units": [
+        {
+          "unit": 1,
+          "subject": "Math",
+          "title": "Let's Count!",
+          "pages": "p.6-25",
+          "content_vocab": [
+            "book",
+            "eraser",
+            "crayon",
+            "notebook",
+            "pencil",
+            "ruler"
+          ],
+          "sight_words": [
+            "I",
+            "see",
+            "Do",
+            "you",
+            "the",
+            "Look"
+          ],
+          "sentence_patterns": [
+            "Look! I see the ___",
+            "Do you see the ___?"
+          ],
+          "extra": "숫자 1~6"
+        },
+        {
+          "unit": 2,
+          "subject": "Science",
+          "title": "Playtime Is Fun",
+          "pages": "p.26-45",
+          "content_vocab": [
+            "catch",
+            "run",
+            "swing",
+            "skate",
+            "kick a ball",
+            "jump"
+          ],
+          "sight_words": [
+            "We",
+            "like",
+            "to",
+            "It",
+            "is",
+            "fun"
+          ],
+          "sentence_patterns": [
+            "We like to ___",
+            "It is fun to ___!"
+          ]
+        },
+        {
+          "unit": 3,
+          "subject": "Social Studies",
+          "title": "In My Classroom",
+          "pages": "p.46-65",
+          "content_vocab": [
+            "desk",
+            "chair",
+            "pencil case",
+            "colored paper",
+            "glue",
+            "backpack"
+          ],
+          "sight_words": [
+            "this",
+            "that",
+            "Yes",
+            "No",
+            "your",
+            "isn't"
+          ],
+          "sentence_patterns": [
+            "Is this your ___? Yes, it is.",
+            "Is that your ___? No, it isn't."
+          ]
+        },
+        {
+          "unit": 4,
+          "subject": "Art and Music",
+          "title": "Let's Play Music!",
+          "pages": "p.66-85",
+          "content_vocab": [
+            "violin",
+            "piano",
+            "drum",
+            "tambourine",
+            "flute",
+            "guitar"
+          ],
+          "sight_words": [
+            "can",
+            "play",
+            "want",
+            "with",
+            "me",
+            "now"
+          ],
+          "sentence_patterns": [
+            "I can play the ___",
+            "Do you want to play with me now?"
+          ]
+        }
+      ],
+      "activity_types": [
+        "Vocabulary at a Glance (Content 6 + Sight 6 한 페이지)",
+        "개별 단어 페이지: 그림 + 문장 (Circle picture word, Underline sight word)",
+        "Practice: 별 모양 카드 4~5개 중 sight word 찾기",
+        "Review: Cut and paste로 문장 완성"
+      ],
+      "appendix": {
+        "final_review": "p.86-87, 7문제 객관식",
+        "assessment": "p.88, 24 Words 체크리스트",
+        "flash_cards": {
+          "pages": "p.89-91",
+          "total": 24,
+          "unit_colors": {
+            "unit1": "blue",
+            "unit2": "red",
+            "unit3": "green",
+            "unit4": "purple"
+          }
+        }
+      }
+    },
+    {
+      "id": "book4_themed_speaking_vol2",
+      "title": "THEMED SPEAKING Vol.2 - Spring and Colors",
+      "publisher": "Francis Parker Collegiate",
+      "structure": "4 Parts (Vocabulary / Thinking Skills / Simple Writing / Speak Up)",
+      "vocabulary": {
+        "colors_shapes": [
+          "purple circle",
+          "pink oval",
+          "blue rectangle",
+          "orange triangle",
+          "green diamond",
+          "brown square",
+          "yellow star",
+          "red heart"
+        ],
+        "spring_activities": [
+          "spring",
+          "see flowers",
+          "catch butterflies",
+          "blow bubbles",
+          "have a picnic",
+          "ride a bike",
+          "climb a tree",
+          "plant seeds"
+        ],
+        "additional_shapes": [
+          "pink hexagon",
+          "orange arrow",
+          "blue square",
+          "yellow rectangle"
+        ],
+        "spring_nature": [
+          "Seeds sprout in spring",
+          "Flowers bloom in spring",
+          "Rain drops in spring",
+          "Trees grow in spring",
+          "Frogs wake up in spring"
+        ]
+      },
+      "parts": [
+        {
+          "part": 1,
+          "name": "Vocabulary",
+          "pages": "p.2-11",
+          "lessons": [
+            {
+              "lesson": 1,
+              "activity": "Colors+Shapes 듣고 붙이기 + circle 정답"
+            },
+            {
+              "lesson": 2,
+              "activity": "Spring activities 듣고 붙이기 + circle 정답"
+            },
+            {
+              "lesson": 3,
+              "activity": "그림-단어 매칭 → 'It is a [color] [shape]' 붙이기"
+            },
+            {
+              "lesson": 4,
+              "activity": "Spring 그림-단어 매칭 → 'It is spring / I ride a bike / I see flowers / I blow bubbles'"
+            },
+            {
+              "lesson": 5,
+              "activity": "Colors+Shapes circle / Spring activities circle 종합"
+            }
+          ]
+        },
+        {
+          "part": 2,
+          "name": "Thinking Skills",
+          "pages": "p.12-19",
+          "lessons": [
+            {
+              "lesson": 1,
+              "activity": "Word Box(Colors+Shapes) 활용 질문 4개 + NOT belong"
+            },
+            {
+              "lesson": 2,
+              "activity": "Word Box(Spring) 활용 질문 3개 + NOT belong"
+            },
+            {
+              "lesson": 3,
+              "activity": "도형 조합으로 집 그리기 (triangle→square→circles→rectangle)"
+            },
+            {
+              "lesson": 4,
+              "activity": "spring/winter 분류 (plant seeds, snow angel, ice skating, picnic)"
+            },
+            {
+              "lesson": 5,
+              "activity": "친구 찾기 (Who has/can/likes) + Take a Break (6 differences)"
+            }
+          ]
+        },
+        {
+          "part": 3,
+          "name": "Simple Writing",
+          "pages": "p.20-27",
+          "lessons": [
+            {
+              "lesson": 1,
+              "activity": "색깔 단어 매칭+따라쓰기 / Spring 동사구 매칭+따라쓰기"
+            },
+            {
+              "lesson": 2,
+              "activity": "'It is a [color] [shape]' 따라쓰기 (heart, triangle, square, oval) / 'I/We like to...' 문장"
+            },
+            {
+              "lesson": 3,
+              "activity": "'It is a [color] [shape]' 따라쓰기 (star, circle, rectangle, diamond) / 'He/She/They likes/like to...'"
+            },
+            {
+              "lesson": "종합",
+              "activity": "문장 보고 그림 알파벳(a~e) 매칭 + Answer key"
+            }
+          ]
+        },
+        {
+          "part": 4,
+          "name": "Speak Up",
+          "pages": "p.28-37",
+          "lessons": [
+            {
+              "lesson": 1,
+              "activity": "Q&A 역할극 + Listen and circle (5문제)"
+            },
+            {
+              "lesson": 2,
+              "activity": "짝과 역할극 (What do you have? / What happens in spring?)"
+            },
+            {
+              "lesson": 3,
+              "activity": "그림-문장 매칭 (I have a(n) ___) + 선물상자 follow the lines"
+            },
+            {
+              "lesson": 4,
+              "activity": "Spring 자연현상 매칭 + 보드게임 (START→FINISH, dice)"
+            },
+            {
+              "lesson": 5,
+              "activity": "Cut & paste 대화 완성 + Draw/write/talk"
+            }
+          ]
+        }
+      ],
+      "sentence_patterns": [
+        {
+          "question": "What is it?",
+          "answer": "It is a [color] [shape]."
+        },
+        {
+          "question": "What color is it?",
+          "answer": "It is [color]."
+        },
+        {
+          "question": "What season is it?",
+          "answer": "It is spring."
+        },
+        {
+          "question": "What do you have?",
+          "answer": "I have a(n) [color] [shape]."
+        },
+        {
+          "question": "What do you like to do in spring?",
+          "answer": "I like to [verb phrase]."
+        },
+        {
+          "question": "What does your friend like to do?",
+          "answer": "He/She likes to ___ / They like to ___"
+        },
+        {
+          "question": "What happens in spring?",
+          "answer": "Seeds sprout / Flowers bloom / Rain drops / Trees grow / Frogs wake up in spring."
+        }
+      ],
+      "listening_script_page": 47
+    },
+    {
+      "id": "book5_themed_speaking_vol1",
+      "title": "THEMED SPEAKING Vol.1 - My School Is Fun",
+      "publisher": "Francis Parker",
+      "structure": "4 Parts (Vocabulary / Thinking Skills / Simple Writing / Speak Up)",
+      "vocabulary": {
+        "people_characteristics": [
+          "teacher",
+          "friend",
+          "kind",
+          "smart",
+          "strong",
+          "funny",
+          "friendly",
+          "shy"
+        ],
+        "school_activities_base": [
+          "speak",
+          "read",
+          "play",
+          "listen",
+          "write",
+          "count"
+        ],
+        "school_activities_full": [
+          "speak English",
+          "read a book",
+          "play with toys",
+          "listen to a story",
+          "write words",
+          "count numbers",
+          "draw and color",
+          "cut and paste"
+        ],
+        "extended_characteristics": [
+          "cheerful",
+          "brave",
+          "loud",
+          "quiet",
+          "creative"
+        ],
+        "places": [
+          "playground",
+          "library",
+          "classroom",
+          "lunchroom",
+          "gym"
+        ],
+        "actions_at_places": [
+          "swing",
+          "read",
+          "write",
+          "eat",
+          "jump"
+        ]
+      },
+      "parts": [
+        {
+          "part": 1,
+          "name": "Vocabulary",
+          "pages": "p.2-11",
+          "lessons": [
+            {
+              "lesson": 1,
+              "activity": "사람/성격 8단어 듣고 붙이기 + circle 정답"
+            },
+            {
+              "lesson": 2,
+              "activity": "학교 활동 듣고 붙이기 + circle 정답"
+            },
+            {
+              "lesson": 3,
+              "activity": "그림-단어 매칭 (speak, read, play, listen) → 문장 붙이기"
+            },
+            {
+              "lesson": 4,
+              "activity": "사람 그림-단어 매칭 (friendly, smart, teacher, shy) → 문장 붙이기"
+            },
+            {
+              "lesson": 5,
+              "activity": "학교 활동 circle / 친구 특성 circle 종합"
+            }
+          ]
+        },
+        {
+          "part": 2,
+          "name": "Thinking Skills",
+          "pages": "p.12-19",
+          "lessons": [
+            {
+              "lesson": 1,
+              "activity": "Word Box(학교 활동) 활용 질문 3개 + NOT belong"
+            },
+            {
+              "lesson": 2,
+              "activity": "Word Box(사람/성격) 활용 질문 3개 + NOT belong"
+            },
+            {
+              "lesson": 3,
+              "activity": "학교 일과 순서 정하기 (morning/before lunch/at noon)"
+            },
+            {
+              "lesson": 4,
+              "activity": "Good/Not Good 분류 (I help my friend / She always fights)"
+            },
+            {
+              "lesson": 5,
+              "activity": "친구 찾기 (Who has/can/likes) + Take a Break (미로)"
+            }
+          ]
+        },
+        {
+          "part": 3,
+          "name": "Simple Writing",
+          "pages": "p.20-27",
+          "lessons": [
+            {
+              "lesson": 1,
+              "activity": "학교 활동 매칭+따라쓰기 / 성격 매칭+따라쓰기"
+            },
+            {
+              "lesson": 2,
+              "activity": "'I/We like to ___' 따라쓰기 / 'This is my ___ / My friend is ___'"
+            },
+            {
+              "lesson": 3,
+              "activity": "'He/She/They likes/like to ___' / 'My friend is ___ / He/She is ___'"
+            },
+            {
+              "lesson": "종합",
+              "activity": "문장 보고 그림 알파벳(a~e) 매칭 + Take a Break (가방 미로)"
+            }
+          ]
+        },
+        {
+          "part": 4,
+          "name": "Speak Up",
+          "pages": "p.28-35",
+          "lessons": [
+            {
+              "lesson": 1,
+              "activity": "Q&A 역할극 + Listen and circle (5문제)"
+            },
+            {
+              "lesson": 2,
+              "activity": "짝과 역할극 (What can you do in the ___? / What is your friend like?)"
+            },
+            {
+              "lesson": 3,
+              "activity": "그림-문장 매칭 (I can ___ in the ___) + Follow lines"
+            },
+            {
+              "lesson": 4,
+              "activity": "성격 그림-문장 매칭 + Spin wheel (He/She is ___)"
+            }
+          ]
+        }
+      ],
+      "sentence_patterns": [
+        {
+          "question": "Who is this?",
+          "answer": "This is my teacher / friend."
+        },
+        {
+          "question": "What is your teacher/friend like?",
+          "answer": "My teacher is ___ / He/She is ___"
+        },
+        {
+          "question": "What do you like to do at school?",
+          "answer": "I like to ___"
+        },
+        {
+          "question": "What does your friend like to do?",
+          "answer": "He/She likes to ___ / They like to ___"
+        },
+        {
+          "question": "What can you do in the ___?",
+          "answer": "I can ___ in the ___"
+        },
+        {
+          "question": "What is your friend like? (확장)",
+          "answer": "He/She is ___ (cheerful/brave/loud/quiet/creative)"
+        }
+      ],
+      "place_action_combinations": [
+        {
+          "action": "swing",
+          "place": "playground",
+          "sentence": "I can swing in the playground."
+        },
+        {
+          "action": "write",
+          "place": "classroom",
+          "sentence": "I can write in the classroom."
+        },
+        {
+          "action": "eat",
+          "place": "lunchroom",
+          "sentence": "I can eat in the lunchroom."
+        },
+        {
+          "action": "read",
+          "place": "library",
+          "sentence": "I can read in the library."
+        },
+        {
+          "action": "jump",
+          "place": "gym",
+          "sentence": "I can jump in the gym."
+        }
+      ],
+      "listening_script_page": 47
+    }
+  ],
+  "progression_system": {
+    "description": "단어/문장마다 정답 누적에 따라 0~5단계 레벨업",
+    "levels": [
+      {
+        "level": 0,
+        "name": "미학습",
+        "icon": "⚪",
+        "min_correct": 0
+      },
+      {
+        "level": 1,
+        "name": "씨앗",
+        "icon": "🌱",
+        "min_correct": 1
+      },
+      {
+        "level": 2,
+        "name": "새싹",
+        "icon": "🌿",
+        "min_correct": 3
+      },
+      {
+        "level": 3,
+        "name": "꽃",
+        "icon": "🌸",
+        "min_correct": 5
+      },
+      {
+        "level": 4,
+        "name": "나무",
+        "icon": "🌳",
+        "min_correct": 10
+      },
+      {
+        "level": 5,
+        "name": "별",
+        "icon": "⭐",
+        "min_correct": 20
+      }
+    ],
+    "calc_rule": "level = max(L for L in levels if correct >= L.min_correct)",
+    "storage_recommendation": "localStorage key: progress_<item_id>",
+    "item_id_format": "<book>_<unit/part>_<type>_<word_or_index>"
+  },
+  "items": [
+    {
+      "id": "b1_u1_vocab_pig",
+      "book": "book1_sight_words",
+      "unit": 1,
+      "type": "vocabulary",
+      "category": "Farm",
+      "word": "pig",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b1_u1_vocab_chicken",
+      "book": "book1_sight_words",
+      "unit": 1,
+      "type": "vocabulary",
+      "category": "Farm",
+      "word": "chicken",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b1_u1_vocab_duck",
+      "book": "book1_sight_words",
+      "unit": 1,
+      "type": "vocabulary",
+      "category": "Farm",
+      "word": "duck",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b1_u1_vocab_horse",
+      "book": "book1_sight_words",
+      "unit": 1,
+      "type": "vocabulary",
+      "category": "Farm",
+      "word": "horse",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b1_u1_vocab_cow",
+      "book": "book1_sight_words",
+      "unit": 1,
+      "type": "vocabulary",
+      "category": "Farm",
+      "word": "cow",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b1_u1_vocab_sheep",
+      "book": "book1_sight_words",
+      "unit": 1,
+      "type": "vocabulary",
+      "category": "Farm",
+      "word": "sheep",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b1_u1_sight_a",
+      "book": "book1_sight_words",
+      "unit": 1,
+      "type": "sight_word",
+      "category": "Farm",
+      "word": "a",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b1_u1_sight_at",
+      "book": "book1_sight_words",
+      "unit": 1,
+      "type": "sight_word",
+      "category": "Farm",
+      "word": "at",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b1_u1_sight_Here",
+      "book": "book1_sight_words",
+      "unit": 1,
+      "type": "sight_word",
+      "category": "Farm",
+      "word": "Here",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b1_u1_sight_are",
+      "book": "book1_sight_words",
+      "unit": 1,
+      "type": "sight_word",
+      "category": "Farm",
+      "word": "are",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b1_u1_sight_big",
+      "book": "book1_sight_words",
+      "unit": 1,
+      "type": "sight_word",
+      "category": "Farm",
+      "word": "big",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b1_u1_sight_little",
+      "book": "book1_sight_words",
+      "unit": 1,
+      "type": "sight_word",
+      "category": "Farm",
+      "word": "little",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b1_u1_sent_1",
+      "book": "book1_sight_words",
+      "unit": 1,
+      "type": "sentence",
+      "category": "Farm",
+      "sentence": "Here is a big ___",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b1_u1_sent_2",
+      "book": "book1_sight_words",
+      "unit": 1,
+      "type": "sentence",
+      "category": "Farm",
+      "sentence": "Here is a little ___",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b1_u2_vocab_seedling",
+      "book": "book1_sight_words",
+      "unit": 2,
+      "type": "vocabulary",
+      "category": "Spring",
+      "word": "seedling",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b1_u2_vocab_flower",
+      "book": "book1_sight_words",
+      "unit": 2,
+      "type": "vocabulary",
+      "category": "Spring",
+      "word": "flower",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b1_u2_vocab_bush",
+      "book": "book1_sight_words",
+      "unit": 2,
+      "type": "vocabulary",
+      "category": "Spring",
+      "word": "bush",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b1_u2_vocab_butterfly",
+      "book": "book1_sight_words",
+      "unit": 2,
+      "type": "vocabulary",
+      "category": "Spring",
+      "word": "butterfly",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b1_u2_vocab_chick",
+      "book": "book1_sight_words",
+      "unit": 2,
+      "type": "vocabulary",
+      "category": "Spring",
+      "word": "chick",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b1_u2_vocab_bunny",
+      "book": "book1_sight_words",
+      "unit": 2,
+      "type": "vocabulary",
+      "category": "Spring",
+      "word": "bunny",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b1_u2_sight_What",
+      "book": "book1_sight_words",
+      "unit": 2,
+      "type": "sight_word",
+      "category": "Spring",
+      "word": "What",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b1_u2_sight_does",
+      "book": "book1_sight_words",
+      "unit": 2,
+      "type": "sight_word",
+      "category": "Spring",
+      "word": "does",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b1_u2_sight_boy",
+      "book": "book1_sight_words",
+      "unit": 2,
+      "type": "sight_word",
+      "category": "Spring",
+      "word": "boy",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b1_u2_sight_girl",
+      "book": "book1_sight_words",
+      "unit": 2,
+      "type": "sight_word",
+      "category": "Spring",
+      "word": "girl",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b1_u2_sight_He",
+      "book": "book1_sight_words",
+      "unit": 2,
+      "type": "sight_word",
+      "category": "Spring",
+      "word": "He",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b1_u2_sight_She",
+      "book": "book1_sight_words",
+      "unit": 2,
+      "type": "sight_word",
+      "category": "Spring",
+      "word": "She",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b1_u2_sent_1",
+      "book": "book1_sight_words",
+      "unit": 2,
+      "type": "sentence",
+      "category": "Spring",
+      "sentence": "What does this girl see?",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b1_u2_sent_2",
+      "book": "book1_sight_words",
+      "unit": 2,
+      "type": "sentence",
+      "category": "Spring",
+      "sentence": "She sees a ___",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b1_u2_sent_3",
+      "book": "book1_sight_words",
+      "unit": 2,
+      "type": "sentence",
+      "category": "Spring",
+      "sentence": "What does this boy see?",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b1_u2_sent_4",
+      "book": "book1_sight_words",
+      "unit": 2,
+      "type": "sentence",
+      "category": "Spring",
+      "sentence": "He sees a ___",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b1_u3_vocab_picnic",
+      "book": "book1_sight_words",
+      "unit": 3,
+      "type": "vocabulary",
+      "category": "Picnic",
+      "word": "picnic",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b1_u3_vocab_fruits",
+      "book": "book1_sight_words",
+      "unit": 3,
+      "type": "vocabulary",
+      "category": "Picnic",
+      "word": "fruits",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b1_u3_vocab_sandwich",
+      "book": "book1_sight_words",
+      "unit": 3,
+      "type": "vocabulary",
+      "category": "Picnic",
+      "word": "sandwich",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b1_u3_vocab_picnic_mat",
+      "book": "book1_sight_words",
+      "unit": 3,
+      "type": "vocabulary",
+      "category": "Picnic",
+      "word": "picnic mat",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b1_u3_vocab_drink",
+      "book": "book1_sight_words",
+      "unit": 3,
+      "type": "vocabulary",
+      "category": "Picnic",
+      "word": "drink",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b1_u3_vocab_picnic_basket",
+      "book": "book1_sight_words",
+      "unit": 3,
+      "type": "vocabulary",
+      "category": "Picnic",
+      "word": "picnic basket",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b1_u3_sight_my",
+      "book": "book1_sight_words",
+      "unit": 3,
+      "type": "sight_word",
+      "category": "Picnic",
+      "word": "my",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b1_u3_sight_mom",
+      "book": "book1_sight_words",
+      "unit": 3,
+      "type": "sight_word",
+      "category": "Picnic",
+      "word": "mom",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b1_u3_sight_and",
+      "book": "book1_sight_words",
+      "unit": 3,
+      "type": "sight_word",
+      "category": "Picnic",
+      "word": "and",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b1_u3_sight_go",
+      "book": "book1_sight_words",
+      "unit": 3,
+      "type": "sight_word",
+      "category": "Picnic",
+      "word": "go",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b1_u3_sight_on",
+      "book": "book1_sight_words",
+      "unit": 3,
+      "type": "sight_word",
+      "category": "Picnic",
+      "word": "on",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b1_u3_sight_need",
+      "book": "book1_sight_words",
+      "unit": 3,
+      "type": "sight_word",
+      "category": "Picnic",
+      "word": "need",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b1_u3_sent_1",
+      "book": "book1_sight_words",
+      "unit": 3,
+      "type": "sentence",
+      "category": "Picnic",
+      "sentence": "My mom and I go on a ___",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b1_u3_sent_2",
+      "book": "book1_sight_words",
+      "unit": 3,
+      "type": "sentence",
+      "category": "Picnic",
+      "sentence": "I need a ___",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b1_u4_vocab_red",
+      "book": "book1_sight_words",
+      "unit": 4,
+      "type": "vocabulary",
+      "category": "Colors",
+      "word": "red",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b1_u4_vocab_blue",
+      "book": "book1_sight_words",
+      "unit": 4,
+      "type": "vocabulary",
+      "category": "Colors",
+      "word": "blue",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b1_u4_vocab_green",
+      "book": "book1_sight_words",
+      "unit": 4,
+      "type": "vocabulary",
+      "category": "Colors",
+      "word": "green",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b1_u4_vocab_yellow",
+      "book": "book1_sight_words",
+      "unit": 4,
+      "type": "vocabulary",
+      "category": "Colors",
+      "word": "yellow",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b1_u4_vocab_orange",
+      "book": "book1_sight_words",
+      "unit": 4,
+      "type": "vocabulary",
+      "category": "Colors",
+      "word": "orange",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b1_u4_vocab_egg",
+      "book": "book1_sight_words",
+      "unit": 4,
+      "type": "vocabulary",
+      "category": "Colors",
+      "word": "egg",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b1_u4_sight_am",
+      "book": "book1_sight_words",
+      "unit": 4,
+      "type": "sight_word",
+      "category": "Colors",
+      "word": "am",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b1_u4_sight_an",
+      "book": "book1_sight_words",
+      "unit": 4,
+      "type": "sight_word",
+      "category": "Colors",
+      "word": "an",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b1_u4_sight_will",
+      "book": "book1_sight_words",
+      "unit": 4,
+      "type": "sight_word",
+      "category": "Colors",
+      "word": "will",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b1_u4_sight_color",
+      "book": "book1_sight_words",
+      "unit": 4,
+      "type": "sight_word",
+      "category": "Colors",
+      "word": "color",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b1_u4_sight_be",
+      "book": "book1_sight_words",
+      "unit": 4,
+      "type": "sight_word",
+      "category": "Colors",
+      "word": "be",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b1_u4_sight_happy",
+      "book": "book1_sight_words",
+      "unit": 4,
+      "type": "sight_word",
+      "category": "Colors",
+      "word": "happy",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b1_u4_sent_1",
+      "book": "book1_sight_words",
+      "unit": 4,
+      "type": "sentence",
+      "category": "Colors",
+      "sentence": "I am an egg. Will you color me ___?",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b1_u4_sent_2",
+      "book": "book1_sight_words",
+      "unit": 4,
+      "type": "sentence",
+      "category": "Colors",
+      "sentence": "I will be happy.",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b2_u1_letter_A",
+      "book": "book2_alphabet_phonics",
+      "unit": 1,
+      "type": "letter",
+      "letter": "A",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b2_u1_word_apple",
+      "book": "book2_alphabet_phonics",
+      "unit": 1,
+      "type": "phonics_word",
+      "letter": "A",
+      "word": "apple",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b2_u1_word_ant",
+      "book": "book2_alphabet_phonics",
+      "unit": 1,
+      "type": "phonics_word",
+      "letter": "A",
+      "word": "ant",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b2_u1_word_alligator",
+      "book": "book2_alphabet_phonics",
+      "unit": 1,
+      "type": "phonics_word",
+      "letter": "A",
+      "word": "alligator",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b2_u1_letter_B",
+      "book": "book2_alphabet_phonics",
+      "unit": 1,
+      "type": "letter",
+      "letter": "B",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b2_u1_word_baby",
+      "book": "book2_alphabet_phonics",
+      "unit": 1,
+      "type": "phonics_word",
+      "letter": "B",
+      "word": "baby",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b2_u1_word_ball",
+      "book": "book2_alphabet_phonics",
+      "unit": 1,
+      "type": "phonics_word",
+      "letter": "B",
+      "word": "ball",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b2_u1_word_balloon",
+      "book": "book2_alphabet_phonics",
+      "unit": 1,
+      "type": "phonics_word",
+      "letter": "B",
+      "word": "balloon",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b2_u1_letter_C",
+      "book": "book2_alphabet_phonics",
+      "unit": 1,
+      "type": "letter",
+      "letter": "C",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b2_u1_word_cat",
+      "book": "book2_alphabet_phonics",
+      "unit": 1,
+      "type": "phonics_word",
+      "letter": "C",
+      "word": "cat",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b2_u1_word_cap",
+      "book": "book2_alphabet_phonics",
+      "unit": 1,
+      "type": "phonics_word",
+      "letter": "C",
+      "word": "cap",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b2_u1_word_cup",
+      "book": "book2_alphabet_phonics",
+      "unit": 1,
+      "type": "phonics_word",
+      "letter": "C",
+      "word": "cup",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b2_u2_letter_D",
+      "book": "book2_alphabet_phonics",
+      "unit": 2,
+      "type": "letter",
+      "letter": "D",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b2_u2_word_duck",
+      "book": "book2_alphabet_phonics",
+      "unit": 2,
+      "type": "phonics_word",
+      "letter": "D",
+      "word": "duck",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b2_u2_word_dog",
+      "book": "book2_alphabet_phonics",
+      "unit": 2,
+      "type": "phonics_word",
+      "letter": "D",
+      "word": "dog",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b2_u2_word_dolphin",
+      "book": "book2_alphabet_phonics",
+      "unit": 2,
+      "type": "phonics_word",
+      "letter": "D",
+      "word": "dolphin",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b2_u2_letter_E",
+      "book": "book2_alphabet_phonics",
+      "unit": 2,
+      "type": "letter",
+      "letter": "E",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b2_u2_word_egg",
+      "book": "book2_alphabet_phonics",
+      "unit": 2,
+      "type": "phonics_word",
+      "letter": "E",
+      "word": "egg",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b2_u2_word_elephant",
+      "book": "book2_alphabet_phonics",
+      "unit": 2,
+      "type": "phonics_word",
+      "letter": "E",
+      "word": "elephant",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b2_u2_word_elbow",
+      "book": "book2_alphabet_phonics",
+      "unit": 2,
+      "type": "phonics_word",
+      "letter": "E",
+      "word": "elbow",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b2_u2_letter_F",
+      "book": "book2_alphabet_phonics",
+      "unit": 2,
+      "type": "letter",
+      "letter": "F",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b2_u2_word_fish",
+      "book": "book2_alphabet_phonics",
+      "unit": 2,
+      "type": "phonics_word",
+      "letter": "F",
+      "word": "fish",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b2_u2_word_flower",
+      "book": "book2_alphabet_phonics",
+      "unit": 2,
+      "type": "phonics_word",
+      "letter": "F",
+      "word": "flower",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b2_u2_word_fan",
+      "book": "book2_alphabet_phonics",
+      "unit": 2,
+      "type": "phonics_word",
+      "letter": "F",
+      "word": "fan",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b2_u3_letter_G",
+      "book": "book2_alphabet_phonics",
+      "unit": 3,
+      "type": "letter",
+      "letter": "G",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b2_u3_word_goat",
+      "book": "book2_alphabet_phonics",
+      "unit": 3,
+      "type": "phonics_word",
+      "letter": "G",
+      "word": "goat",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b2_u3_word_girl",
+      "book": "book2_alphabet_phonics",
+      "unit": 3,
+      "type": "phonics_word",
+      "letter": "G",
+      "word": "girl",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b2_u3_word_green",
+      "book": "book2_alphabet_phonics",
+      "unit": 3,
+      "type": "phonics_word",
+      "letter": "G",
+      "word": "green",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b2_u3_letter_H",
+      "book": "book2_alphabet_phonics",
+      "unit": 3,
+      "type": "letter",
+      "letter": "H",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b2_u3_word_hat",
+      "book": "book2_alphabet_phonics",
+      "unit": 3,
+      "type": "phonics_word",
+      "letter": "H",
+      "word": "hat",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b2_u3_word_hen",
+      "book": "book2_alphabet_phonics",
+      "unit": 3,
+      "type": "phonics_word",
+      "letter": "H",
+      "word": "hen",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b2_u3_word_house",
+      "book": "book2_alphabet_phonics",
+      "unit": 3,
+      "type": "phonics_word",
+      "letter": "H",
+      "word": "house",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b2_u3_letter_I",
+      "book": "book2_alphabet_phonics",
+      "unit": 3,
+      "type": "letter",
+      "letter": "I",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b2_u3_word_igloo",
+      "book": "book2_alphabet_phonics",
+      "unit": 3,
+      "type": "phonics_word",
+      "letter": "I",
+      "word": "igloo",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b2_u3_word_ink",
+      "book": "book2_alphabet_phonics",
+      "unit": 3,
+      "type": "phonics_word",
+      "letter": "I",
+      "word": "ink",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b2_u3_word_iguana",
+      "book": "book2_alphabet_phonics",
+      "unit": 3,
+      "type": "phonics_word",
+      "letter": "I",
+      "word": "iguana",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b2_u4_letter_J",
+      "book": "book2_alphabet_phonics",
+      "unit": 4,
+      "type": "letter",
+      "letter": "J",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b2_u4_word_jet",
+      "book": "book2_alphabet_phonics",
+      "unit": 4,
+      "type": "phonics_word",
+      "letter": "J",
+      "word": "jet",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b2_u4_word_jam",
+      "book": "book2_alphabet_phonics",
+      "unit": 4,
+      "type": "phonics_word",
+      "letter": "J",
+      "word": "jam",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b2_u4_word_juice",
+      "book": "book2_alphabet_phonics",
+      "unit": 4,
+      "type": "phonics_word",
+      "letter": "J",
+      "word": "juice",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b2_u4_letter_K",
+      "book": "book2_alphabet_phonics",
+      "unit": 4,
+      "type": "letter",
+      "letter": "K",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b2_u4_word_king",
+      "book": "book2_alphabet_phonics",
+      "unit": 4,
+      "type": "phonics_word",
+      "letter": "K",
+      "word": "king",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b2_u4_word_kangaroo",
+      "book": "book2_alphabet_phonics",
+      "unit": 4,
+      "type": "phonics_word",
+      "letter": "K",
+      "word": "kangaroo",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b2_u4_word_kite",
+      "book": "book2_alphabet_phonics",
+      "unit": 4,
+      "type": "phonics_word",
+      "letter": "K",
+      "word": "kite",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b2_u4_letter_L",
+      "book": "book2_alphabet_phonics",
+      "unit": 4,
+      "type": "letter",
+      "letter": "L",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b2_u4_word_lion",
+      "book": "book2_alphabet_phonics",
+      "unit": 4,
+      "type": "phonics_word",
+      "letter": "L",
+      "word": "lion",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b2_u4_word_lamp",
+      "book": "book2_alphabet_phonics",
+      "unit": 4,
+      "type": "phonics_word",
+      "letter": "L",
+      "word": "lamp",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b2_u4_word_lemon",
+      "book": "book2_alphabet_phonics",
+      "unit": 4,
+      "type": "phonics_word",
+      "letter": "L",
+      "word": "lemon",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b2_u5_letter_M",
+      "book": "book2_alphabet_phonics",
+      "unit": 5,
+      "type": "letter",
+      "letter": "M",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b2_u5_word_man",
+      "book": "book2_alphabet_phonics",
+      "unit": 5,
+      "type": "phonics_word",
+      "letter": "M",
+      "word": "man",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b2_u5_word_mouse",
+      "book": "book2_alphabet_phonics",
+      "unit": 5,
+      "type": "phonics_word",
+      "letter": "M",
+      "word": "mouse",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b2_u5_word_milk",
+      "book": "book2_alphabet_phonics",
+      "unit": 5,
+      "type": "phonics_word",
+      "letter": "M",
+      "word": "milk",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b2_u5_letter_N",
+      "book": "book2_alphabet_phonics",
+      "unit": 5,
+      "type": "letter",
+      "letter": "N",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b2_u5_word_nail",
+      "book": "book2_alphabet_phonics",
+      "unit": 5,
+      "type": "phonics_word",
+      "letter": "N",
+      "word": "nail",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b2_u5_word_net",
+      "book": "book2_alphabet_phonics",
+      "unit": 5,
+      "type": "phonics_word",
+      "letter": "N",
+      "word": "net",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b2_u5_word_nest",
+      "book": "book2_alphabet_phonics",
+      "unit": 5,
+      "type": "phonics_word",
+      "letter": "N",
+      "word": "nest",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b2_u5_letter_O",
+      "book": "book2_alphabet_phonics",
+      "unit": 5,
+      "type": "letter",
+      "letter": "O",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b2_u5_word_octopus",
+      "book": "book2_alphabet_phonics",
+      "unit": 5,
+      "type": "phonics_word",
+      "letter": "O",
+      "word": "octopus",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b2_u5_word_orange",
+      "book": "book2_alphabet_phonics",
+      "unit": 5,
+      "type": "phonics_word",
+      "letter": "O",
+      "word": "orange",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b2_u6_letter_P",
+      "book": "book2_alphabet_phonics",
+      "unit": 6,
+      "type": "letter",
+      "letter": "P",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b2_u6_word_pig",
+      "book": "book2_alphabet_phonics",
+      "unit": 6,
+      "type": "phonics_word",
+      "letter": "P",
+      "word": "pig",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b2_u6_word_panda",
+      "book": "book2_alphabet_phonics",
+      "unit": 6,
+      "type": "phonics_word",
+      "letter": "P",
+      "word": "panda",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b2_u6_word_penguin",
+      "book": "book2_alphabet_phonics",
+      "unit": 6,
+      "type": "phonics_word",
+      "letter": "P",
+      "word": "penguin",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b2_u6_letter_Q",
+      "book": "book2_alphabet_phonics",
+      "unit": 6,
+      "type": "letter",
+      "letter": "Q",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b2_u6_word_queen",
+      "book": "book2_alphabet_phonics",
+      "unit": 6,
+      "type": "phonics_word",
+      "letter": "Q",
+      "word": "queen",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b2_u6_word_quilt",
+      "book": "book2_alphabet_phonics",
+      "unit": 6,
+      "type": "phonics_word",
+      "letter": "Q",
+      "word": "quilt",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b2_u6_word_question",
+      "book": "book2_alphabet_phonics",
+      "unit": 6,
+      "type": "phonics_word",
+      "letter": "Q",
+      "word": "question",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b2_u6_letter_R",
+      "book": "book2_alphabet_phonics",
+      "unit": 6,
+      "type": "letter",
+      "letter": "R",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b2_u6_word_robot",
+      "book": "book2_alphabet_phonics",
+      "unit": 6,
+      "type": "phonics_word",
+      "letter": "R",
+      "word": "robot",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b2_u6_word_rabbit",
+      "book": "book2_alphabet_phonics",
+      "unit": 6,
+      "type": "phonics_word",
+      "letter": "R",
+      "word": "rabbit",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b2_u6_word_rain",
+      "book": "book2_alphabet_phonics",
+      "unit": 6,
+      "type": "phonics_word",
+      "letter": "R",
+      "word": "rain",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b2_u7_letter_S",
+      "book": "book2_alphabet_phonics",
+      "unit": 7,
+      "type": "letter",
+      "letter": "S",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b2_u7_word_sun",
+      "book": "book2_alphabet_phonics",
+      "unit": 7,
+      "type": "phonics_word",
+      "letter": "S",
+      "word": "sun",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b2_u7_word_spoon",
+      "book": "book2_alphabet_phonics",
+      "unit": 7,
+      "type": "phonics_word",
+      "letter": "S",
+      "word": "spoon",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b2_u7_word_seven",
+      "book": "book2_alphabet_phonics",
+      "unit": 7,
+      "type": "phonics_word",
+      "letter": "S",
+      "word": "seven",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b2_u7_letter_T",
+      "book": "book2_alphabet_phonics",
+      "unit": 7,
+      "type": "letter",
+      "letter": "T",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b2_u7_word_tiger",
+      "book": "book2_alphabet_phonics",
+      "unit": 7,
+      "type": "phonics_word",
+      "letter": "T",
+      "word": "tiger",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b2_u7_word_turtle",
+      "book": "book2_alphabet_phonics",
+      "unit": 7,
+      "type": "phonics_word",
+      "letter": "T",
+      "word": "turtle",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b2_u7_word_tooth",
+      "book": "book2_alphabet_phonics",
+      "unit": 7,
+      "type": "phonics_word",
+      "letter": "T",
+      "word": "tooth",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b2_u7_letter_U",
+      "book": "book2_alphabet_phonics",
+      "unit": 7,
+      "type": "letter",
+      "letter": "U",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b2_u7_word_umbrella",
+      "book": "book2_alphabet_phonics",
+      "unit": 7,
+      "type": "phonics_word",
+      "letter": "U",
+      "word": "umbrella",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b2_u7_word_up",
+      "book": "book2_alphabet_phonics",
+      "unit": 7,
+      "type": "phonics_word",
+      "letter": "U",
+      "word": "up",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b2_u7_word_under",
+      "book": "book2_alphabet_phonics",
+      "unit": 7,
+      "type": "phonics_word",
+      "letter": "U",
+      "word": "under",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b2_u7_letter_V",
+      "book": "book2_alphabet_phonics",
+      "unit": 7,
+      "type": "letter",
+      "letter": "V",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b2_u7_word_violin",
+      "book": "book2_alphabet_phonics",
+      "unit": 7,
+      "type": "phonics_word",
+      "letter": "V",
+      "word": "violin",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b2_u7_word_van",
+      "book": "book2_alphabet_phonics",
+      "unit": 7,
+      "type": "phonics_word",
+      "letter": "V",
+      "word": "van",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b2_u7_word_volcano",
+      "book": "book2_alphabet_phonics",
+      "unit": 7,
+      "type": "phonics_word",
+      "letter": "V",
+      "word": "volcano",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b2_u8_letter_W",
+      "book": "book2_alphabet_phonics",
+      "unit": 8,
+      "type": "letter",
+      "letter": "W",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b2_u8_word_watch",
+      "book": "book2_alphabet_phonics",
+      "unit": 8,
+      "type": "phonics_word",
+      "letter": "W",
+      "word": "watch",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b2_u8_word_wig",
+      "book": "book2_alphabet_phonics",
+      "unit": 8,
+      "type": "phonics_word",
+      "letter": "W",
+      "word": "wig",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b2_u8_word_web",
+      "book": "book2_alphabet_phonics",
+      "unit": 8,
+      "type": "phonics_word",
+      "letter": "W",
+      "word": "web",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b2_u8_letter_X",
+      "book": "book2_alphabet_phonics",
+      "unit": 8,
+      "type": "letter",
+      "letter": "X",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b2_u8_word_box",
+      "book": "book2_alphabet_phonics",
+      "unit": 8,
+      "type": "phonics_word",
+      "letter": "X",
+      "word": "box",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b2_u8_word_six",
+      "book": "book2_alphabet_phonics",
+      "unit": 8,
+      "type": "phonics_word",
+      "letter": "X",
+      "word": "six",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b2_u8_word_fox",
+      "book": "book2_alphabet_phonics",
+      "unit": 8,
+      "type": "phonics_word",
+      "letter": "X",
+      "word": "fox",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b2_u8_letter_Y",
+      "book": "book2_alphabet_phonics",
+      "unit": 8,
+      "type": "letter",
+      "letter": "Y",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b2_u8_word_yacht",
+      "book": "book2_alphabet_phonics",
+      "unit": 8,
+      "type": "phonics_word",
+      "letter": "Y",
+      "word": "yacht",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b2_u8_word_yo-yo",
+      "book": "book2_alphabet_phonics",
+      "unit": 8,
+      "type": "phonics_word",
+      "letter": "Y",
+      "word": "yo-yo",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b2_u8_word_yellow",
+      "book": "book2_alphabet_phonics",
+      "unit": 8,
+      "type": "phonics_word",
+      "letter": "Y",
+      "word": "yellow",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b2_u8_letter_Z",
+      "book": "book2_alphabet_phonics",
+      "unit": 8,
+      "type": "letter",
+      "letter": "Z",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b2_u8_word_zoo",
+      "book": "book2_alphabet_phonics",
+      "unit": 8,
+      "type": "phonics_word",
+      "letter": "Z",
+      "word": "zoo",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b2_u8_word_zebra",
+      "book": "book2_alphabet_phonics",
+      "unit": 8,
+      "type": "phonics_word",
+      "letter": "Z",
+      "word": "zebra",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b2_u8_word_zero",
+      "book": "book2_alphabet_phonics",
+      "unit": 8,
+      "type": "phonics_word",
+      "letter": "Z",
+      "word": "zero",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b3_u1_vocab_book",
+      "book": "book3_common_core_sight_words",
+      "unit": 1,
+      "type": "content_vocab",
+      "category": "Math",
+      "word": "book",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b3_u1_vocab_eraser",
+      "book": "book3_common_core_sight_words",
+      "unit": 1,
+      "type": "content_vocab",
+      "category": "Math",
+      "word": "eraser",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b3_u1_vocab_crayon",
+      "book": "book3_common_core_sight_words",
+      "unit": 1,
+      "type": "content_vocab",
+      "category": "Math",
+      "word": "crayon",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b3_u1_vocab_notebook",
+      "book": "book3_common_core_sight_words",
+      "unit": 1,
+      "type": "content_vocab",
+      "category": "Math",
+      "word": "notebook",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b3_u1_vocab_pencil",
+      "book": "book3_common_core_sight_words",
+      "unit": 1,
+      "type": "content_vocab",
+      "category": "Math",
+      "word": "pencil",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b3_u1_vocab_ruler",
+      "book": "book3_common_core_sight_words",
+      "unit": 1,
+      "type": "content_vocab",
+      "category": "Math",
+      "word": "ruler",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b3_u1_sight_I",
+      "book": "book3_common_core_sight_words",
+      "unit": 1,
+      "type": "sight_word",
+      "category": "Math",
+      "word": "I",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b3_u1_sight_see",
+      "book": "book3_common_core_sight_words",
+      "unit": 1,
+      "type": "sight_word",
+      "category": "Math",
+      "word": "see",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b3_u1_sight_Do",
+      "book": "book3_common_core_sight_words",
+      "unit": 1,
+      "type": "sight_word",
+      "category": "Math",
+      "word": "Do",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b3_u1_sight_you",
+      "book": "book3_common_core_sight_words",
+      "unit": 1,
+      "type": "sight_word",
+      "category": "Math",
+      "word": "you",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b3_u1_sight_the",
+      "book": "book3_common_core_sight_words",
+      "unit": 1,
+      "type": "sight_word",
+      "category": "Math",
+      "word": "the",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b3_u1_sight_Look",
+      "book": "book3_common_core_sight_words",
+      "unit": 1,
+      "type": "sight_word",
+      "category": "Math",
+      "word": "Look",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b3_u1_sent_1",
+      "book": "book3_common_core_sight_words",
+      "unit": 1,
+      "type": "sentence",
+      "category": "Math",
+      "sentence": "Look! I see the ___",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b3_u1_sent_2",
+      "book": "book3_common_core_sight_words",
+      "unit": 1,
+      "type": "sentence",
+      "category": "Math",
+      "sentence": "Do you see the ___?",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b3_u2_vocab_catch",
+      "book": "book3_common_core_sight_words",
+      "unit": 2,
+      "type": "content_vocab",
+      "category": "Science",
+      "word": "catch",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b3_u2_vocab_run",
+      "book": "book3_common_core_sight_words",
+      "unit": 2,
+      "type": "content_vocab",
+      "category": "Science",
+      "word": "run",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b3_u2_vocab_swing",
+      "book": "book3_common_core_sight_words",
+      "unit": 2,
+      "type": "content_vocab",
+      "category": "Science",
+      "word": "swing",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b3_u2_vocab_skate",
+      "book": "book3_common_core_sight_words",
+      "unit": 2,
+      "type": "content_vocab",
+      "category": "Science",
+      "word": "skate",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b3_u2_vocab_kick_a_ball",
+      "book": "book3_common_core_sight_words",
+      "unit": 2,
+      "type": "content_vocab",
+      "category": "Science",
+      "word": "kick a ball",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b3_u2_vocab_jump",
+      "book": "book3_common_core_sight_words",
+      "unit": 2,
+      "type": "content_vocab",
+      "category": "Science",
+      "word": "jump",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b3_u2_sight_We",
+      "book": "book3_common_core_sight_words",
+      "unit": 2,
+      "type": "sight_word",
+      "category": "Science",
+      "word": "We",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b3_u2_sight_like",
+      "book": "book3_common_core_sight_words",
+      "unit": 2,
+      "type": "sight_word",
+      "category": "Science",
+      "word": "like",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b3_u2_sight_to",
+      "book": "book3_common_core_sight_words",
+      "unit": 2,
+      "type": "sight_word",
+      "category": "Science",
+      "word": "to",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b3_u2_sight_It",
+      "book": "book3_common_core_sight_words",
+      "unit": 2,
+      "type": "sight_word",
+      "category": "Science",
+      "word": "It",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b3_u2_sight_is",
+      "book": "book3_common_core_sight_words",
+      "unit": 2,
+      "type": "sight_word",
+      "category": "Science",
+      "word": "is",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b3_u2_sight_fun",
+      "book": "book3_common_core_sight_words",
+      "unit": 2,
+      "type": "sight_word",
+      "category": "Science",
+      "word": "fun",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b3_u2_sent_1",
+      "book": "book3_common_core_sight_words",
+      "unit": 2,
+      "type": "sentence",
+      "category": "Science",
+      "sentence": "We like to ___",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b3_u2_sent_2",
+      "book": "book3_common_core_sight_words",
+      "unit": 2,
+      "type": "sentence",
+      "category": "Science",
+      "sentence": "It is fun to ___!",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b3_u3_vocab_desk",
+      "book": "book3_common_core_sight_words",
+      "unit": 3,
+      "type": "content_vocab",
+      "category": "Social Studies",
+      "word": "desk",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b3_u3_vocab_chair",
+      "book": "book3_common_core_sight_words",
+      "unit": 3,
+      "type": "content_vocab",
+      "category": "Social Studies",
+      "word": "chair",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b3_u3_vocab_pencil_case",
+      "book": "book3_common_core_sight_words",
+      "unit": 3,
+      "type": "content_vocab",
+      "category": "Social Studies",
+      "word": "pencil case",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b3_u3_vocab_colored_paper",
+      "book": "book3_common_core_sight_words",
+      "unit": 3,
+      "type": "content_vocab",
+      "category": "Social Studies",
+      "word": "colored paper",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b3_u3_vocab_glue",
+      "book": "book3_common_core_sight_words",
+      "unit": 3,
+      "type": "content_vocab",
+      "category": "Social Studies",
+      "word": "glue",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b3_u3_vocab_backpack",
+      "book": "book3_common_core_sight_words",
+      "unit": 3,
+      "type": "content_vocab",
+      "category": "Social Studies",
+      "word": "backpack",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b3_u3_sight_this",
+      "book": "book3_common_core_sight_words",
+      "unit": 3,
+      "type": "sight_word",
+      "category": "Social Studies",
+      "word": "this",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b3_u3_sight_that",
+      "book": "book3_common_core_sight_words",
+      "unit": 3,
+      "type": "sight_word",
+      "category": "Social Studies",
+      "word": "that",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b3_u3_sight_Yes",
+      "book": "book3_common_core_sight_words",
+      "unit": 3,
+      "type": "sight_word",
+      "category": "Social Studies",
+      "word": "Yes",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b3_u3_sight_No",
+      "book": "book3_common_core_sight_words",
+      "unit": 3,
+      "type": "sight_word",
+      "category": "Social Studies",
+      "word": "No",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b3_u3_sight_your",
+      "book": "book3_common_core_sight_words",
+      "unit": 3,
+      "type": "sight_word",
+      "category": "Social Studies",
+      "word": "your",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b3_u3_sight_isn't",
+      "book": "book3_common_core_sight_words",
+      "unit": 3,
+      "type": "sight_word",
+      "category": "Social Studies",
+      "word": "isn't",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b3_u3_sent_1",
+      "book": "book3_common_core_sight_words",
+      "unit": 3,
+      "type": "sentence",
+      "category": "Social Studies",
+      "sentence": "Is this your ___? Yes, it is.",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b3_u3_sent_2",
+      "book": "book3_common_core_sight_words",
+      "unit": 3,
+      "type": "sentence",
+      "category": "Social Studies",
+      "sentence": "Is that your ___? No, it isn't.",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b3_u4_vocab_violin",
+      "book": "book3_common_core_sight_words",
+      "unit": 4,
+      "type": "content_vocab",
+      "category": "Art and Music",
+      "word": "violin",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b3_u4_vocab_piano",
+      "book": "book3_common_core_sight_words",
+      "unit": 4,
+      "type": "content_vocab",
+      "category": "Art and Music",
+      "word": "piano",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b3_u4_vocab_drum",
+      "book": "book3_common_core_sight_words",
+      "unit": 4,
+      "type": "content_vocab",
+      "category": "Art and Music",
+      "word": "drum",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b3_u4_vocab_tambourine",
+      "book": "book3_common_core_sight_words",
+      "unit": 4,
+      "type": "content_vocab",
+      "category": "Art and Music",
+      "word": "tambourine",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b3_u4_vocab_flute",
+      "book": "book3_common_core_sight_words",
+      "unit": 4,
+      "type": "content_vocab",
+      "category": "Art and Music",
+      "word": "flute",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b3_u4_vocab_guitar",
+      "book": "book3_common_core_sight_words",
+      "unit": 4,
+      "type": "content_vocab",
+      "category": "Art and Music",
+      "word": "guitar",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b3_u4_sight_can",
+      "book": "book3_common_core_sight_words",
+      "unit": 4,
+      "type": "sight_word",
+      "category": "Art and Music",
+      "word": "can",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b3_u4_sight_play",
+      "book": "book3_common_core_sight_words",
+      "unit": 4,
+      "type": "sight_word",
+      "category": "Art and Music",
+      "word": "play",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b3_u4_sight_want",
+      "book": "book3_common_core_sight_words",
+      "unit": 4,
+      "type": "sight_word",
+      "category": "Art and Music",
+      "word": "want",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b3_u4_sight_with",
+      "book": "book3_common_core_sight_words",
+      "unit": 4,
+      "type": "sight_word",
+      "category": "Art and Music",
+      "word": "with",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b3_u4_sight_me",
+      "book": "book3_common_core_sight_words",
+      "unit": 4,
+      "type": "sight_word",
+      "category": "Art and Music",
+      "word": "me",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b3_u4_sight_now",
+      "book": "book3_common_core_sight_words",
+      "unit": 4,
+      "type": "sight_word",
+      "category": "Art and Music",
+      "word": "now",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b3_u4_sent_1",
+      "book": "book3_common_core_sight_words",
+      "unit": 4,
+      "type": "sentence",
+      "category": "Art and Music",
+      "sentence": "I can play the ___",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b3_u4_sent_2",
+      "book": "book3_common_core_sight_words",
+      "unit": 4,
+      "type": "sentence",
+      "category": "Art and Music",
+      "sentence": "Do you want to play with me now?",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b4_vocab_colors_shapes_purple_circle",
+      "book": "book4_themed_speaking_vol2",
+      "type": "vocabulary",
+      "category": "colors_shapes",
+      "word": "purple circle",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b4_vocab_colors_shapes_pink_oval",
+      "book": "book4_themed_speaking_vol2",
+      "type": "vocabulary",
+      "category": "colors_shapes",
+      "word": "pink oval",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b4_vocab_colors_shapes_blue_rectangle",
+      "book": "book4_themed_speaking_vol2",
+      "type": "vocabulary",
+      "category": "colors_shapes",
+      "word": "blue rectangle",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b4_vocab_colors_shapes_orange_triangle",
+      "book": "book4_themed_speaking_vol2",
+      "type": "vocabulary",
+      "category": "colors_shapes",
+      "word": "orange triangle",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b4_vocab_colors_shapes_green_diamond",
+      "book": "book4_themed_speaking_vol2",
+      "type": "vocabulary",
+      "category": "colors_shapes",
+      "word": "green diamond",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b4_vocab_colors_shapes_brown_square",
+      "book": "book4_themed_speaking_vol2",
+      "type": "vocabulary",
+      "category": "colors_shapes",
+      "word": "brown square",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b4_vocab_colors_shapes_yellow_star",
+      "book": "book4_themed_speaking_vol2",
+      "type": "vocabulary",
+      "category": "colors_shapes",
+      "word": "yellow star",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b4_vocab_colors_shapes_red_heart",
+      "book": "book4_themed_speaking_vol2",
+      "type": "vocabulary",
+      "category": "colors_shapes",
+      "word": "red heart",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b4_vocab_spring_activities_spring",
+      "book": "book4_themed_speaking_vol2",
+      "type": "vocabulary",
+      "category": "spring_activities",
+      "word": "spring",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b4_vocab_spring_activities_see_flowers",
+      "book": "book4_themed_speaking_vol2",
+      "type": "vocabulary",
+      "category": "spring_activities",
+      "word": "see flowers",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b4_vocab_spring_activities_catch_butterflies",
+      "book": "book4_themed_speaking_vol2",
+      "type": "vocabulary",
+      "category": "spring_activities",
+      "word": "catch butterflies",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b4_vocab_spring_activities_blow_bubbles",
+      "book": "book4_themed_speaking_vol2",
+      "type": "vocabulary",
+      "category": "spring_activities",
+      "word": "blow bubbles",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b4_vocab_spring_activities_have_a_picnic",
+      "book": "book4_themed_speaking_vol2",
+      "type": "vocabulary",
+      "category": "spring_activities",
+      "word": "have a picnic",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b4_vocab_spring_activities_ride_a_bike",
+      "book": "book4_themed_speaking_vol2",
+      "type": "vocabulary",
+      "category": "spring_activities",
+      "word": "ride a bike",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b4_vocab_spring_activities_climb_a_tree",
+      "book": "book4_themed_speaking_vol2",
+      "type": "vocabulary",
+      "category": "spring_activities",
+      "word": "climb a tree",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b4_vocab_spring_activities_plant_seeds",
+      "book": "book4_themed_speaking_vol2",
+      "type": "vocabulary",
+      "category": "spring_activities",
+      "word": "plant seeds",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b4_vocab_additional_shapes_pink_hexagon",
+      "book": "book4_themed_speaking_vol2",
+      "type": "vocabulary",
+      "category": "additional_shapes",
+      "word": "pink hexagon",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b4_vocab_additional_shapes_orange_arrow",
+      "book": "book4_themed_speaking_vol2",
+      "type": "vocabulary",
+      "category": "additional_shapes",
+      "word": "orange arrow",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b4_vocab_additional_shapes_blue_square",
+      "book": "book4_themed_speaking_vol2",
+      "type": "vocabulary",
+      "category": "additional_shapes",
+      "word": "blue square",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b4_vocab_additional_shapes_yellow_rectangle",
+      "book": "book4_themed_speaking_vol2",
+      "type": "vocabulary",
+      "category": "additional_shapes",
+      "word": "yellow rectangle",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b4_vocab_spring_nature_Seeds_sprout_in_spring",
+      "book": "book4_themed_speaking_vol2",
+      "type": "vocabulary",
+      "category": "spring_nature",
+      "word": "Seeds sprout in spring",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b4_vocab_spring_nature_Flowers_bloom_in_spring",
+      "book": "book4_themed_speaking_vol2",
+      "type": "vocabulary",
+      "category": "spring_nature",
+      "word": "Flowers bloom in spring",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b4_vocab_spring_nature_Rain_drops_in_spring",
+      "book": "book4_themed_speaking_vol2",
+      "type": "vocabulary",
+      "category": "spring_nature",
+      "word": "Rain drops in spring",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b4_vocab_spring_nature_Trees_grow_in_spring",
+      "book": "book4_themed_speaking_vol2",
+      "type": "vocabulary",
+      "category": "spring_nature",
+      "word": "Trees grow in spring",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b4_vocab_spring_nature_Frogs_wake_up_in_spring",
+      "book": "book4_themed_speaking_vol2",
+      "type": "vocabulary",
+      "category": "spring_nature",
+      "word": "Frogs wake up in spring",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b4_pattern_1",
+      "book": "book4_themed_speaking_vol2",
+      "type": "sentence_pattern",
+      "question": "What is it?",
+      "answer": "It is a [color] [shape].",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b4_pattern_2",
+      "book": "book4_themed_speaking_vol2",
+      "type": "sentence_pattern",
+      "question": "What color is it?",
+      "answer": "It is [color].",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b4_pattern_3",
+      "book": "book4_themed_speaking_vol2",
+      "type": "sentence_pattern",
+      "question": "What season is it?",
+      "answer": "It is spring.",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b4_pattern_4",
+      "book": "book4_themed_speaking_vol2",
+      "type": "sentence_pattern",
+      "question": "What do you have?",
+      "answer": "I have a(n) [color] [shape].",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b4_pattern_5",
+      "book": "book4_themed_speaking_vol2",
+      "type": "sentence_pattern",
+      "question": "What do you like to do in spring?",
+      "answer": "I like to [verb phrase].",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b4_pattern_6",
+      "book": "book4_themed_speaking_vol2",
+      "type": "sentence_pattern",
+      "question": "What does your friend like to do?",
+      "answer": "He/She likes to ___ / They like to ___",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b4_pattern_7",
+      "book": "book4_themed_speaking_vol2",
+      "type": "sentence_pattern",
+      "question": "What happens in spring?",
+      "answer": "Seeds sprout / Flowers bloom / Rain drops / Trees grow / Frogs wake up in spring.",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b5_vocab_people_characteristics_teacher",
+      "book": "book5_themed_speaking_vol1",
+      "type": "vocabulary",
+      "category": "people_characteristics",
+      "word": "teacher",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b5_vocab_people_characteristics_friend",
+      "book": "book5_themed_speaking_vol1",
+      "type": "vocabulary",
+      "category": "people_characteristics",
+      "word": "friend",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b5_vocab_people_characteristics_kind",
+      "book": "book5_themed_speaking_vol1",
+      "type": "vocabulary",
+      "category": "people_characteristics",
+      "word": "kind",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b5_vocab_people_characteristics_smart",
+      "book": "book5_themed_speaking_vol1",
+      "type": "vocabulary",
+      "category": "people_characteristics",
+      "word": "smart",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b5_vocab_people_characteristics_strong",
+      "book": "book5_themed_speaking_vol1",
+      "type": "vocabulary",
+      "category": "people_characteristics",
+      "word": "strong",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b5_vocab_people_characteristics_funny",
+      "book": "book5_themed_speaking_vol1",
+      "type": "vocabulary",
+      "category": "people_characteristics",
+      "word": "funny",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b5_vocab_people_characteristics_friendly",
+      "book": "book5_themed_speaking_vol1",
+      "type": "vocabulary",
+      "category": "people_characteristics",
+      "word": "friendly",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b5_vocab_people_characteristics_shy",
+      "book": "book5_themed_speaking_vol1",
+      "type": "vocabulary",
+      "category": "people_characteristics",
+      "word": "shy",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b5_vocab_school_activities_base_speak",
+      "book": "book5_themed_speaking_vol1",
+      "type": "vocabulary",
+      "category": "school_activities_base",
+      "word": "speak",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b5_vocab_school_activities_base_read",
+      "book": "book5_themed_speaking_vol1",
+      "type": "vocabulary",
+      "category": "school_activities_base",
+      "word": "read",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b5_vocab_school_activities_base_play",
+      "book": "book5_themed_speaking_vol1",
+      "type": "vocabulary",
+      "category": "school_activities_base",
+      "word": "play",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b5_vocab_school_activities_base_listen",
+      "book": "book5_themed_speaking_vol1",
+      "type": "vocabulary",
+      "category": "school_activities_base",
+      "word": "listen",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b5_vocab_school_activities_base_write",
+      "book": "book5_themed_speaking_vol1",
+      "type": "vocabulary",
+      "category": "school_activities_base",
+      "word": "write",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b5_vocab_school_activities_base_count",
+      "book": "book5_themed_speaking_vol1",
+      "type": "vocabulary",
+      "category": "school_activities_base",
+      "word": "count",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b5_vocab_school_activities_full_speak_English",
+      "book": "book5_themed_speaking_vol1",
+      "type": "vocabulary",
+      "category": "school_activities_full",
+      "word": "speak English",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b5_vocab_school_activities_full_read_a_book",
+      "book": "book5_themed_speaking_vol1",
+      "type": "vocabulary",
+      "category": "school_activities_full",
+      "word": "read a book",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b5_vocab_school_activities_full_play_with_toys",
+      "book": "book5_themed_speaking_vol1",
+      "type": "vocabulary",
+      "category": "school_activities_full",
+      "word": "play with toys",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b5_vocab_school_activities_full_listen_to_a_story",
+      "book": "book5_themed_speaking_vol1",
+      "type": "vocabulary",
+      "category": "school_activities_full",
+      "word": "listen to a story",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b5_vocab_school_activities_full_write_words",
+      "book": "book5_themed_speaking_vol1",
+      "type": "vocabulary",
+      "category": "school_activities_full",
+      "word": "write words",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b5_vocab_school_activities_full_count_numbers",
+      "book": "book5_themed_speaking_vol1",
+      "type": "vocabulary",
+      "category": "school_activities_full",
+      "word": "count numbers",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b5_vocab_school_activities_full_draw_and_color",
+      "book": "book5_themed_speaking_vol1",
+      "type": "vocabulary",
+      "category": "school_activities_full",
+      "word": "draw and color",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b5_vocab_school_activities_full_cut_and_paste",
+      "book": "book5_themed_speaking_vol1",
+      "type": "vocabulary",
+      "category": "school_activities_full",
+      "word": "cut and paste",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b5_vocab_extended_characteristics_cheerful",
+      "book": "book5_themed_speaking_vol1",
+      "type": "vocabulary",
+      "category": "extended_characteristics",
+      "word": "cheerful",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b5_vocab_extended_characteristics_brave",
+      "book": "book5_themed_speaking_vol1",
+      "type": "vocabulary",
+      "category": "extended_characteristics",
+      "word": "brave",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b5_vocab_extended_characteristics_loud",
+      "book": "book5_themed_speaking_vol1",
+      "type": "vocabulary",
+      "category": "extended_characteristics",
+      "word": "loud",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b5_vocab_extended_characteristics_quiet",
+      "book": "book5_themed_speaking_vol1",
+      "type": "vocabulary",
+      "category": "extended_characteristics",
+      "word": "quiet",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b5_vocab_extended_characteristics_creative",
+      "book": "book5_themed_speaking_vol1",
+      "type": "vocabulary",
+      "category": "extended_characteristics",
+      "word": "creative",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b5_vocab_places_playground",
+      "book": "book5_themed_speaking_vol1",
+      "type": "vocabulary",
+      "category": "places",
+      "word": "playground",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b5_vocab_places_library",
+      "book": "book5_themed_speaking_vol1",
+      "type": "vocabulary",
+      "category": "places",
+      "word": "library",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b5_vocab_places_classroom",
+      "book": "book5_themed_speaking_vol1",
+      "type": "vocabulary",
+      "category": "places",
+      "word": "classroom",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b5_vocab_places_lunchroom",
+      "book": "book5_themed_speaking_vol1",
+      "type": "vocabulary",
+      "category": "places",
+      "word": "lunchroom",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b5_vocab_places_gym",
+      "book": "book5_themed_speaking_vol1",
+      "type": "vocabulary",
+      "category": "places",
+      "word": "gym",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b5_vocab_actions_at_places_swing",
+      "book": "book5_themed_speaking_vol1",
+      "type": "vocabulary",
+      "category": "actions_at_places",
+      "word": "swing",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b5_vocab_actions_at_places_read",
+      "book": "book5_themed_speaking_vol1",
+      "type": "vocabulary",
+      "category": "actions_at_places",
+      "word": "read",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b5_vocab_actions_at_places_write",
+      "book": "book5_themed_speaking_vol1",
+      "type": "vocabulary",
+      "category": "actions_at_places",
+      "word": "write",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b5_vocab_actions_at_places_eat",
+      "book": "book5_themed_speaking_vol1",
+      "type": "vocabulary",
+      "category": "actions_at_places",
+      "word": "eat",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b5_vocab_actions_at_places_jump",
+      "book": "book5_themed_speaking_vol1",
+      "type": "vocabulary",
+      "category": "actions_at_places",
+      "word": "jump",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b5_pattern_1",
+      "book": "book5_themed_speaking_vol1",
+      "type": "sentence_pattern",
+      "question": "Who is this?",
+      "answer": "This is my teacher / friend.",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b5_pattern_2",
+      "book": "book5_themed_speaking_vol1",
+      "type": "sentence_pattern",
+      "question": "What is your teacher/friend like?",
+      "answer": "My teacher is ___ / He/She is ___",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b5_pattern_3",
+      "book": "book5_themed_speaking_vol1",
+      "type": "sentence_pattern",
+      "question": "What do you like to do at school?",
+      "answer": "I like to ___",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b5_pattern_4",
+      "book": "book5_themed_speaking_vol1",
+      "type": "sentence_pattern",
+      "question": "What does your friend like to do?",
+      "answer": "He/She likes to ___ / They like to ___",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b5_pattern_5",
+      "book": "book5_themed_speaking_vol1",
+      "type": "sentence_pattern",
+      "question": "What can you do in the ___?",
+      "answer": "I can ___ in the ___",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b5_pattern_6",
+      "book": "book5_themed_speaking_vol1",
+      "type": "sentence_pattern",
+      "question": "What is your friend like? (확장)",
+      "answer": "He/She is ___ (cheerful/brave/loud/quiet/creative)",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b5_combo_1",
+      "book": "book5_themed_speaking_vol1",
+      "type": "place_action",
+      "action": "swing",
+      "place": "playground",
+      "sentence": "I can swing in the playground.",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b5_combo_2",
+      "book": "book5_themed_speaking_vol1",
+      "type": "place_action",
+      "action": "write",
+      "place": "classroom",
+      "sentence": "I can write in the classroom.",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b5_combo_3",
+      "book": "book5_themed_speaking_vol1",
+      "type": "place_action",
+      "action": "eat",
+      "place": "lunchroom",
+      "sentence": "I can eat in the lunchroom.",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b5_combo_4",
+      "book": "book5_themed_speaking_vol1",
+      "type": "place_action",
+      "action": "read",
+      "place": "library",
+      "sentence": "I can read in the library.",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    },
+    {
+      "id": "b5_combo_5",
+      "book": "book5_themed_speaking_vol1",
+      "type": "place_action",
+      "action": "jump",
+      "place": "gym",
+      "sentence": "I can jump in the gym.",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "source": "textbook"
+    }
+  ]
+}
