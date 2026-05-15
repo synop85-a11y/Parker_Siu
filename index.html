@@ -101,7 +101,7 @@ html, body {
 
 .books-grid {
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   gap: 1.5vw;
   width: 100%;
   max-width: 95vw;
@@ -138,6 +138,7 @@ html, body {
 .book-card[data-color="4"]::before { background: #95E1D3; }
 .book-card[data-color="5"]::before { background: #C9A0FF; }
 .book-card[data-color="6"]::before { background: #FF9F43; }
+.book-card[data-color="7"]::before { background: #EE5A6F; }
 
 .book-icon {
   font-size: 8vh;
@@ -558,6 +559,53 @@ html, body {
   100% { opacity: 0; transform: scale(0.3) rotate(360deg) translate(20vh, -40vh); }
 }
 
+/* ============== 쓰기 화면 ============== */
+#screen-writing {
+  background: linear-gradient(135deg, #FFB6C1 0%, #FF9F43 100%);
+  flex-direction: column;
+  align-items: center;
+  padding: 0;
+}
+.writing-content {
+  flex: 1; display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  width: 100%; padding: 1vh 2vh;
+  gap: 1.5vh;
+}
+.writing-prompt {
+  font-size: 4vh; color: #2C2C2C; font-weight: 700;
+  background: white; padding: 1vh 3vh; border-radius: 99px;
+  border: 0.4vh solid #2C2C2C;
+  box-shadow: 0 0.5vh 0 #2C2C2C;
+}
+.writing-canvas-wrap {
+  position: relative;
+  width: 60vh; height: 60vh; max-width: 90vw; max-height: 60vh;
+  background: white;
+  border: 0.6vh solid #2C2C2C;
+  border-radius: 3vh;
+  box-shadow: 0 1vh 0 #2C2C2C;
+  overflow: hidden;
+}
+.writing-guide {
+  position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 50vh; font-weight: 900;
+  color: rgba(150, 150, 150, 0.25);
+  font-family: 'Fredoka', sans-serif;
+  pointer-events: none;
+  line-height: 1;
+}
+.writing-canvas {
+  position: absolute; top: 0; left: 0;
+  width: 100%; height: 100%;
+  cursor: crosshair;
+  touch-action: none;
+}
+.writing-buttons {
+  display: flex; gap: 2vh;
+}
+
 /* ============== 가챠 화면 ============== */
 #screen-gacha {
   background: linear-gradient(135deg, #4C1D95 0%, #7C3AED 50%, #C026D3 100%);
@@ -936,6 +984,32 @@ html, body {
     </div>
   </div>
 
+  <!-- 쓰기 화면 -->
+  <div class="screen" id="screen-writing">
+    <div class="header quiz-header">
+      <button class="btn-back" onclick="confirmQuit()">←</button>
+      <div class="progress-bar">
+        <div class="progress-bar-fill" id="writeProgress"></div>
+      </div>
+      <div class="stars-display"><span id="writeQNum">1</span>/<span id="writeQTotal">10</span></div>
+    </div>
+    <div class="quiz-stars" id="writeStarsDisplay">
+      <span class="star-icon">⭐</span>
+      <span id="writeCurrentStars">0</span>
+    </div>
+    <div class="writing-content">
+      <div class="writing-prompt">따라 써봐!</div>
+      <div class="writing-canvas-wrap">
+        <div class="writing-guide" id="writingGuide">A</div>
+        <canvas id="writingCanvas" class="writing-canvas"></canvas>
+      </div>
+      <div class="writing-buttons">
+        <button class="btn-action" onclick="clearWritingCanvas()">🧽 지우기</button>
+        <button class="btn-action primary" onclick="completeWriting()">✨ 다 썼어요!</button>
+      </div>
+    </div>
+  </div>
+
   <!-- 가챠 화면 -->
   <div class="screen" id="screen-gacha">
     <div class="gacha-header">
@@ -1110,7 +1184,8 @@ const BOOK_INFO = {
   'book3_common_core_sight_words': { name: 'Common Core', icon: '🎵', color: 3 },
   'book4_themed_speaking_vol2': { name: 'Spring & Colors', icon: '🌸', color: 4 },
   'book5_themed_speaking_vol1': { name: 'My School', icon: '🏫', color: 5 },
-  'book6_first_letter': { name: '첫 글자 찾기', icon: '🅰️', color: 6 }
+  'book6_first_letter': { name: '첫 글자 찾기', icon: '🅰️', color: 6 },
+  'book7_writing': { name: '쓰기', icon: '✍️', color: 7 }
 };
 
 // ============================
@@ -1863,6 +1938,49 @@ function openBook(bookId) {
     return;
   }
   
+  // ===== book7: 쓰기 특별 처리 =====
+  if (bookId === 'book7_writing') {
+    // 알파벳 A~Z 한 카드 + 그룹별
+    const allCard = document.createElement('div');
+    allCard.className = 'unit-card';
+    allCard.innerHTML = `
+      <div class="unit-emoji">🎯</div>
+      <div class="unit-name">전체 랜덤</div>
+      <div class="unit-count">A~Z 알파벳</div>
+    `;
+    allCard.addEventListener('click', () => {
+      playSound('tap');
+      startWritingQuiz('ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split(''));
+    });
+    grid.appendChild(allCard);
+    
+    // 알파벳 그룹별
+    const groups = [
+      { name: 'A-F', letters: 'ABCDEF'.split(''), emoji: '🅰️' },
+      { name: 'G-L', letters: 'GHIJKL'.split(''), emoji: '🇬' },
+      { name: 'M-R', letters: 'MNOPQR'.split(''), emoji: '🇲' },
+      { name: 'S-Z', letters: 'STUVWXYZ'.split(''), emoji: '🇸' }
+    ];
+    groups.forEach(g => {
+      const card = document.createElement('div');
+      card.className = 'unit-card';
+      card.innerHTML = `
+        <div class="unit-emoji">${g.emoji}</div>
+        <div class="unit-name">${g.name}</div>
+        <div class="unit-count">${g.letters.length}개 알파벳</div>
+      `;
+      card.addEventListener('click', () => {
+        playSound('tap');
+        startWritingQuiz(g.letters);
+      });
+      grid.appendChild(card);
+    });
+    
+    document.getElementById('bookStars').textContent = 0;
+    showScreen('screen-book');
+    return;
+  }
+  
   // ===== 일반 책 처리 =====
   // 유닛별로 그룹화 (unit 또는 category)
   const items = DATA.items.filter(it => it.book === bookId);
@@ -2222,6 +2340,132 @@ function nextFirstLetterQuestion() {
     btn.addEventListener('click', () => handleAnswer(btn, c.correct, item));
     choicesEl.appendChild(btn);
   });
+}
+
+// ============================
+// 쓰기 퀴즈
+// ============================
+let writingLetters = [];
+let writingIndex = 0;
+let writingTotal = 0;
+let writingCtx = null;
+let writingDrawing = false;
+
+function startWritingQuiz(letters) {
+  // 알파벳 셔플 후 10개 (또는 전체)
+  const shuffled = [...letters];
+  shuffle(shuffled);
+  writingLetters = shuffled.slice(0, Math.min(10, shuffled.length));
+  writingTotal = writingLetters.length;
+  writingIndex = 0;
+  quizCorrect = 0;
+  quizTotal = writingTotal; // 결과 화면용
+  
+  document.getElementById('writeQTotal').textContent = writingTotal;
+  updateStarDisplay();
+  showScreen('screen-writing');
+  setupWritingCanvas();
+  nextWritingQuestion();
+}
+
+function setupWritingCanvas() {
+  const canvas = document.getElementById('writingCanvas');
+  const wrap = canvas.parentElement;
+  // 캔버스 실제 픽셀 사이즈
+  const rect = wrap.getBoundingClientRect();
+  canvas.width = rect.width;
+  canvas.height = rect.height;
+  writingCtx = canvas.getContext('2d');
+  writingCtx.strokeStyle = '#FF1744';
+  writingCtx.lineWidth = 12;
+  writingCtx.lineCap = 'round';
+  writingCtx.lineJoin = 'round';
+  
+  // 이벤트 리스너 (한 번만 등록)
+  if (!canvas.dataset.bound) {
+    canvas.dataset.bound = '1';
+    const getPos = (e) => {
+      const r = canvas.getBoundingClientRect();
+      const t = e.touches ? e.touches[0] : e;
+      return {
+        x: (t.clientX - r.left) * (canvas.width / r.width),
+        y: (t.clientY - r.top) * (canvas.height / r.height)
+      };
+    };
+    const start = (e) => {
+      e.preventDefault();
+      writingDrawing = true;
+      const p = getPos(e);
+      writingCtx.beginPath();
+      writingCtx.moveTo(p.x, p.y);
+    };
+    const move = (e) => {
+      if (!writingDrawing) return;
+      e.preventDefault();
+      const p = getPos(e);
+      writingCtx.lineTo(p.x, p.y);
+      writingCtx.stroke();
+    };
+    const end = (e) => {
+      e.preventDefault();
+      writingDrawing = false;
+    };
+    canvas.addEventListener('mousedown', start);
+    canvas.addEventListener('mousemove', move);
+    canvas.addEventListener('mouseup', end);
+    canvas.addEventListener('mouseleave', end);
+    canvas.addEventListener('touchstart', start, { passive: false });
+    canvas.addEventListener('touchmove', move, { passive: false });
+    canvas.addEventListener('touchend', end, { passive: false });
+  }
+}
+
+function clearWritingCanvas() {
+  playSound('tap');
+  if (writingCtx) {
+    writingCtx.clearRect(0, 0, writingCtx.canvas.width, writingCtx.canvas.height);
+  }
+}
+
+function nextWritingQuestion() {
+  if (writingIndex >= writingLetters.length) {
+    showResult();
+    return;
+  }
+  const letter = writingLetters[writingIndex];
+  document.getElementById('writeQNum').textContent = writingIndex + 1;
+  document.getElementById('writeProgress').style.width = `${(writingIndex / writingTotal) * 100}%`;
+  document.getElementById('writingGuide').textContent = letter;
+  clearWritingCanvas();
+}
+
+function completeWriting() {
+  // 캔버스에 뭐가 그려져 있는지 확인 (최소한 픽셀 50개 이상)
+  if (!writingCtx) return;
+  const data = writingCtx.getImageData(0, 0, writingCtx.canvas.width, writingCtx.canvas.height).data;
+  let drawnPixels = 0;
+  for (let i = 3; i < data.length; i += 16) { // 4픽셀 간격으로 alpha만 체크
+    if (data[i] > 0) drawnPixels++;
+  }
+  if (drawnPixels < 50) {
+    playSound('wrong');
+    alert('아직 안 썼어요! 따라 써봐~');
+    return;
+  }
+  
+  playSound('correct');
+  quizCorrect++;
+  addStars(1);
+  
+  // 작은 컨페티 + 별 애니메이션
+  const btn = event.target;
+  spawnConfetti(btn);
+  flyStarTo(btn);
+  
+  setTimeout(() => {
+    writingIndex++;
+    nextWritingQuestion();
+  }, 1200);
 }
 
 function showResult() {
