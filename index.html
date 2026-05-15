@@ -5,11 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="라이언영어">
+<meta name="apple-mobile-web-app-title" content="파커-시우">
 <link rel="manifest" href="manifest.json">
 <link rel="apple-touch-icon" href="icon-192.png">
 <meta name="theme-color" content="#F5B847">
-<title>라이언 영어</title>
+<title>파커-시우</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Jua&display=swap" rel="stylesheet">
 
@@ -665,6 +665,7 @@ html, body {
 .reveal-rarity.epic { background: #a855f7; }
 .reveal-rarity.legendary { background: #facc15; color: #5C3A00; }
 .reveal-emoji { font-size: 22vh; line-height: 1; }
+.reveal-img { width: 24vh; height: 24vh; object-fit: contain; }
 .reveal-name { font-size: 4.5vh; color: #2C2C2C; margin-top: 2vh; }
 .reveal-name-en { font-size: 3vh; color: #6b7280; }
 .reveal-status {
@@ -743,6 +744,12 @@ html, body {
 .dex-card-emoji {
   font-size: 6vh; line-height: 1;
 }
+.dex-card-img {
+  width: 7vh; height: 7vh; object-fit: contain;
+}
+.dex-card.locked .dex-card-img {
+  filter: grayscale(1) brightness(0.6) opacity(0.7);
+}
 .dex-card-name {
   margin-top: 0.5vh; font-size: 2vh; color: #2C2C2C;
   text-align: center; line-height: 1.1;
@@ -791,6 +798,7 @@ html, body {
   animation: revealPop 0.4s ease-out;
 }
 .dex-detail-emoji { font-size: 18vh; line-height: 1; }
+.dex-detail-img { width: 20vh; height: 20vh; object-fit: contain; }
 .dex-detail-name-ko { font-size: 4vh; color: #2C2C2C; margin-top: 1.5vh; }
 .dex-detail-name-en { font-size: 2.8vh; color: #6b7280; }
 .dex-detail-info {
@@ -857,7 +865,7 @@ html, body {
       </button>
     </div>
     <img src="icon-192.png" class="lion-mascot" alt="사자 왕">
-    <h1 class="home-title">🦁 라이언 영어 🦁</h1>
+    <h1 class="home-title">🦁 파커-시우 🦁</h1>
     <div class="books-grid" id="booksGrid"></div>
   </div>
 
@@ -1152,13 +1160,13 @@ const CARDS_DATA = {
     { id: 'dino_009', type: 'dinosaur', name_en: 'Stegosaurus', name_ko: '스테고사우루스', emoji: '🦕', image: 'cards/dino_009.png', rarity: 'rare' },
     { id: 'dino_010', type: 'dinosaur', name_en: 'Triceratops', name_ko: '트리케라톱스', emoji: '🦕', image: 'cards/dino_010.png', rarity: 'rare' },
     { id: 'dino_011', type: 'dinosaur', name_en: 'Ankylosaurus', name_ko: '안킬로사우루스', emoji: '🦕', image: 'cards/dino_011.png', rarity: 'rare' },
-    { id: 'dino_012', type: 'dinosaur', name_en: 'Pteranodon', name_ko: '프테라노돈', emoji: '🦖', image: 'cards/dino_012.png', rarity: 'rare' },
-    { id: 'dino_013', type: 'dinosaur', name_en: 'Plesiosaurus', name_ko: '플레시오사우루스', emoji: '🦕', image: 'cards/dino_013.png', rarity: 'rare' },
+    { id: 'dino_012', type: 'dinosaur', name_en: 'Pteranodon', name_ko: '프테라노돈', emoji: '🦅', image: 'cards/dino_012.png', rarity: 'rare' },
+    { id: 'dino_013', type: 'dinosaur', name_en: 'Plesiosaurus', name_ko: '플레시오사우루스', emoji: '🐉', image: 'cards/dino_013.png', rarity: 'rare' },
     { id: 'dino_014', type: 'dinosaur', name_en: 'Allosaurus', name_ko: '알로사우루스', emoji: '🦖', image: 'cards/dino_014.png', rarity: 'rare' },
     { id: 'dino_015', type: 'dinosaur', name_en: 'Carnotaurus', name_ko: '카르노타우루스', emoji: '🦖', image: 'cards/dino_015.png', rarity: 'epic' },
     { id: 'dino_016', type: 'dinosaur', name_en: 'Brachiosaurus', name_ko: '브라키오사우루스', emoji: '🦕', image: 'cards/dino_016.png', rarity: 'epic' },
     { id: 'dino_017', type: 'dinosaur', name_en: 'Diplodocus', name_ko: '디플로도쿠스', emoji: '🦕', image: 'cards/dino_017.png', rarity: 'epic' },
-    { id: 'dino_018', type: 'dinosaur', name_en: 'Mosasaurus', name_ko: '모사사우루스', emoji: '🦖', image: 'cards/dino_018.png', rarity: 'epic' },
+    { id: 'dino_018', type: 'dinosaur', name_en: 'Mosasaurus', name_ko: '모사사우루스', emoji: '🐉', image: 'cards/dino_018.png', rarity: 'epic' },
     { id: 'dino_019', type: 'dinosaur', name_en: 'Spinosaurus', name_ko: '스피노사우루스', emoji: '🦖', image: 'cards/dino_019.png', rarity: 'legendary' },
     { id: 'dino_020', type: 'dinosaur', name_en: 'Tyrannosaurus', name_ko: '티라노사우루스', emoji: '🦖', image: 'cards/dino_020.png', rarity: 'legendary' }
   ],
@@ -1306,10 +1314,14 @@ function showCardReveal(card, result) {
     statusHTML = `<div class="reveal-status">중복 (${result.count}장)</div>`;
   }
   
+  const visual = card.image
+    ? `<img class="reveal-img" src="${card.image}" alt="${card.name_ko}">`
+    : `<div class="reveal-emoji">${card.emoji}</div>`;
+  
   reveal.innerHTML = `
     <div class="reveal-card ${card.rarity}">
       <div class="reveal-rarity ${card.rarity}">${RARITY_LABELS[card.rarity]}</div>
-      <div class="reveal-emoji">${card.emoji}</div>
+      ${visual}
       <div class="reveal-name">${card.name_ko}</div>
       <div class="reveal-name-en">${card.name_en}</div>
     </div>
@@ -1389,11 +1401,21 @@ function renderDex() {
     const tierClass = tier !== 'none' && tier !== 'basic' ? `tier-${tier}` : '';
     const rarityColors = { common: '#9ca3af', rare: '#3b82f6', epic: '#a855f7', legendary: '#facc15' };
     
+    // 이미지 있고 보유한 경우 이미지, 아니면 이모지
+    let visual;
+    if (!owned) {
+      visual = `<div class="dex-card-emoji">❓</div>`;
+    } else if (card.image) {
+      visual = `<img class="dex-card-img" src="${card.image}" alt="${card.name_ko}">`;
+    } else {
+      visual = `<div class="dex-card-emoji">${card.emoji}</div>`;
+    }
+    
     return `
       <div class="dex-card ${owned ? '' : 'locked'} ${tierClass}" onclick="showDexDetail('${card.id}')">
         <div class="dex-card-rarity" style="background:${rarityColors[card.rarity]}"></div>
         ${owned && count > 1 ? `<div class="dex-card-count">${count}</div>` : ''}
-        <div class="dex-card-emoji">${owned ? card.emoji : '❓'}</div>
+        ${visual}
         <div class="dex-card-name">${owned ? card.name_ko : '???'}</div>
       </div>
     `;
@@ -1422,9 +1444,12 @@ function showDexDetail(cardId) {
   const rarityColors = { common: '#9ca3af', rare: '#3b82f6', epic: '#a855f7', legendary: '#facc15' };
   
   const detailCard = document.getElementById('dexDetailCard');
+  const visual = card.image
+    ? `<img class="dex-detail-img" src="${card.image}" alt="${card.name_ko}">`
+    : `<div class="dex-detail-emoji">${card.emoji}</div>`;
   detailCard.innerHTML = `
     <button class="dex-detail-close" onclick="closeDexDetail()">✕</button>
-    <div class="dex-detail-emoji">${card.emoji}</div>
+    ${visual}
     <div class="dex-detail-name-ko">${card.name_ko}</div>
     <div class="dex-detail-name-en">${card.name_en}</div>
     <div class="dex-detail-info">

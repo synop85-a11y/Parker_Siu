@@ -1,4 +1,4 @@
-const CACHE_NAME = 'lion-english-v1';
+const CACHE_NAME = 'parker-siu-v2';
 const ASSETS = [
   './',
   './index.html',

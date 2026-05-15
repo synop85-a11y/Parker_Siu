@@ -1,7 +1,7 @@
 {
-  "name": "라이언 영어",
-  "short_name": "라이언영어",
-  "description": "사자 왕과 함께하는 영어 모험",
+  "name": "파커-시우",
+  "short_name": "파커-시우",
+  "description": "파커 시우의 영어 모험",
   "start_url": "./index.html",
   "scope": "./",
   "display": "fullscreen",
