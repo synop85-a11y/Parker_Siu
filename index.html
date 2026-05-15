@@ -1033,7 +1033,49 @@ const EMOJI_MAP = {
   // 위치
   'up': '⬆️', 'under': '⬇️', 'big': '🐘', 'little': '🐭',
   // 피크닉
-  'picnic': '🧺', 'picnic mat': '🟦', 'picnic basket': '🧺'
+  'picnic': '🧺', 'picnic mat': '🟦', 'picnic basket': '🧺',
+  // ETC 추가 매핑 (book1~5)
+  // 동물
+  'bee': '🐝', 'frog': '🐸', 'snail': '🐌', 'bear': '🐻', 'owl': '🦉', 'wolf': '🐺',
+  'bird': '🐦', 'crab': '🦀', 'worm': '🐛',
+  // 자연/식물
+  'rainbow': '🌈', 'cloud': '☁️', 'grass': '🌱', 'tree': '🌳', 'leaf': '🍃',
+  'tulip': '🌷', 'rose': '🌹', 'sunflower': '🌻', 'daisy': '🌼',
+  'seed': '🌱', 'root': '🪴', 'petal': '🌸', 'stem': '🌿', 'plant': '🌱',
+  'bloom': '🌸', 'breeze': '🍃', 'snow': '❄️', 'wind': '💨', 'water': '💧',
+  'earth': '🌍', 'moon': '🌙', 'rock': '🪨', 'star': '⭐', 'hill': '⛰️',
+  // 음식/사물
+  'basket': '🧺', 'cookie': '🍪', 'ice': '🧊', 'nut': '🌰',
+  // 색깔
+  'black': '⬛', 'white': '⬜', 'grey': '🩶', 'gold': '🥇', 'silver': '🥈',
+  'navy': '🟦', 'mint': '🟢', 'peach': '🍑', 'lime': '🍈', 'sky_blue': '🟦',
+  // 학교
+  'school': '🏫', 'student': '🧑‍🎓', 'blackboard': '📋', 'paper': '📄',
+  'scissors': '✂️', 'pen': '🖊️', 'bag': '🎒', 'uniform': '👔',
+  'lunch': '🍱', 'snack': '🍿', 'slide': '🛝',
+  'homework': '📝', 'lesson': '📖', 'test': '📝', 'grade': '🎓',
+  'art': '🎨', 'math': '🔢',
+  // 가족/사람/감정
+  'family': '👨‍👩‍👧‍👦', 'dad': '👨', 'sad': '😢', 'tired': '😴',
+  'hungry': '😋', 'thirsty': '🥤',
+  // 농장
+  'barn': '🛖', 'hay': '🌾', 'farmer': '👨‍🌾',
+  // 일상
+  'home': '🏠', 'city': '🏙️', 'country': '🏞️', 'park': '🏞️', 'garden': '🌷',
+  'blanket': '🛌', 'bus': '🚌',
+  // 활동
+  'paint': '🎨', 'draw': '✏️', 'sing': '🎤', 'dance': '💃', 'music': '🎵',
+  // 신체
+  'nose': '👃', 'wing': '🪽',
+  // 액세서리/사물
+  'gift': '🎁', 'ring': '💍', 'yarn': '🧶',
+  // 수학
+  'plus': '➕', 'minus': '➖',
+  'eight': '8️⃣', 'nine': '9️⃣', 'ten': '🔟',
+  'eleven': '1️⃣1️⃣', 'twelve': '1️⃣2️⃣',
+  'small': '🐭',
+  // 날씨/온도
+  'warm': '🌤️', 'cool': '🌥️', 'bright': '☀️', 'dark': '🌑'
 };
 
 // 도형 단어 분리 매핑
@@ -1775,14 +1817,19 @@ function openBook(bookId) {
 // 퀴즈
 // ============================
 function startQuiz(items) {
-  // 이모지 매핑 가능한 단어만 필터링 (4지선다 용)
-  const playable = items.filter(it => {
+  // 출제 가능한 type만 필터링 (sentence, sight_word 제외)
+  const PLAYABLE_TYPES = ['vocab', 'vocabulary', 'phonics_word', 'content_vocab', 'letter'];
+  const typed = items.filter(it => PLAYABLE_TYPES.includes(it.type));
+  
+  // 이모지 매핑 가능한 단어 (letter는 emoji 없어도 OK)
+  const playable = typed.filter(it => {
     const word = it.word || it.letter || it.text;
-    return word && getEmoji(word);
+    if (!word) return false;
+    if (it.type === 'letter') return true; // 알파벳은 텍스트 그대로
+    return getEmoji(word) !== null;
   });
 
-  // 매핑 안 되는 단어가 너무 많으면 텍스트 매칭 모드로
-  let pool = playable.length >= 4 ? playable : items.filter(it => it.word || it.letter);
+  let pool = playable.length >= 4 ? playable : typed.filter(it => it.word || it.letter);
   if (pool.length < 4) {
     alert('아직 문제가 부족해요! 다른 단원을 골라봐요.');
     return;
@@ -1818,6 +1865,7 @@ function nextQuestion() {
   const item = quizItems[quizIndex];
   const word = item.word || item.letter || '';
   const emoji = getEmoji(word);
+  const isLetter = item.type === 'letter';
   
   // 진행도 표시
   document.getElementById('quizQNum').textContent = quizIndex + 1;
@@ -1828,8 +1876,13 @@ function nextQuestion() {
   const lvInfo = levelInfo(prog.level);
   document.getElementById('questionLevel').textContent = `${lvInfo.icon} ${prog.correct}/20`;
 
-  // 문제 유형 랜덤: 이모지→단어 or 단어→이모지
-  const mode = (emoji && Math.random() < 0.5) ? 'emoji_to_word' : 'word_to_emoji';
+  // 알파벳이거나 이모지 매핑 없으면 무조건 word_to_word 모드 (텍스트 매칭)
+  let mode;
+  if (isLetter || !emoji) {
+    mode = 'word_to_word';
+  } else {
+    mode = Math.random() < 0.5 ? 'emoji_to_word' : 'word_to_emoji';
+  }
   
   const qContent = document.getElementById('questionContent');
   const qPrompt = document.getElementById('questionPrompt');
@@ -1842,7 +1895,6 @@ function nextQuestion() {
     qContent.textContent = word;
     qContent.className = 'question-content text';
     correctAnswer = emoji;
-    // 다른 단어들의 이모지로 오답 만들기
     const otherItems = DATA.items.filter(it => {
       const w = it.word || it.letter || '';
       const e = getEmoji(w);
@@ -1861,15 +1913,38 @@ function nextQuestion() {
       if (wrongs.length >= 3) break;
     }
     choices = [{ display: emoji, value: emoji, correct: true }, ...wrongs.map(w => ({ ...w, correct: false }))];
-  } else {
-    qPrompt.textContent = emoji ? '무엇일까요?' : '단어를 골라요!';
-    qContent.textContent = emoji || '❓';
-    qContent.className = 'question-content';
+  } else if (mode === 'word_to_word') {
+    // 알파벳 또는 매핑 없는 단어 - 큰 텍스트로 보여주고 같은 단어 4개 중 고르기
+    qPrompt.textContent = isLetter ? '같은 알파벳을 골라요!' : '같은 단어를 골라요!';
+    qContent.textContent = word;
+    qContent.className = 'question-content text';
     correctAnswer = word;
-    // 다른 단어들로 오답
+    // 같은 type의 다른 항목들로 오답
     const otherItems = DATA.items.filter(it => {
       const w = it.word || it.letter || '';
-      return w && w !== word && it.id !== item.id;
+      return w && w !== word && it.id !== item.id && it.type === item.type;
+    });
+    shuffle(otherItems);
+    const wrongs = [];
+    const usedWords = new Set([word.toLowerCase()]);
+    for (const oi of otherItems) {
+      const ow = oi.word || oi.letter;
+      if (!usedWords.has(ow.toLowerCase())) {
+        wrongs.push({ display: ow, value: ow });
+        usedWords.add(ow.toLowerCase());
+      }
+      if (wrongs.length >= 3) break;
+    }
+    choices = [{ display: word, value: word, correct: true }, ...wrongs.map(w => ({ ...w, correct: false }))];
+  } else {
+    // emoji_to_word: 이모지 보여주고 단어 4개 중 고르기
+    qPrompt.textContent = '무엇일까요?';
+    qContent.textContent = emoji;
+    qContent.className = 'question-content';
+    correctAnswer = word;
+    const otherItems = DATA.items.filter(it => {
+      const w = it.word || it.letter || '';
+      return w && w !== word && it.id !== item.id && getEmoji(w);
     });
     shuffle(otherItems);
     const wrongs = [];
