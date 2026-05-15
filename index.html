@@ -2524,20 +2524,12 @@ function completeWriting() {
   
   let drawnTotal = 0;
   let drawnInside = 0;
-  let maskTotal = 0;
-  let maskCovered = 0;
   
-  // 4픽셀 간격 샘플링 (속도)
+  // 4픽셀 간격 샘플링
   for (let i = 3; i < drawn.length; i += 16) {
-    const drawnAlpha = drawn[i];
-    const maskAlpha = mask[i];
-    if (drawnAlpha > 0) {
+    if (drawn[i] > 0) {
       drawnTotal++;
-      if (maskAlpha > 0) drawnInside++;
-    }
-    if (maskAlpha > 0) {
-      maskTotal++;
-      if (drawnAlpha > 0) maskCovered++;
+      if (mask[i] > 0) drawnInside++;
     }
   }
   
@@ -2547,11 +2539,9 @@ function completeWriting() {
     return;
   }
   
-  const accuracy = drawnInside / drawnTotal;   // 알파벳 안쪽 비율 (정확도)
-  const coverage = maskCovered / maskTotal;    // 채운 비율 (완성도)
-  
-  // 6살용 관대한 기준: 정확도 60%, 완성도 25%
-  const passed = accuracy >= 0.6 && coverage >= 0.25;
+  const accuracy = drawnInside / drawnTotal;
+  // 그린 선의 60% 이상이 글자 안에 있으면 통과 (채우는 거 아님, 모양만 따라가면 OK)
+  const passed = accuracy >= 0.6;
   
   if (passed) {
     playSound('correct');
@@ -2567,16 +2557,9 @@ function completeWriting() {
     }, 1200);
   } else {
     playSound('wrong');
-    // 실패 사유 안내
-    let msg;
-    if (coverage < 0.25) msg = '거의 다 됐어! 좀 더 진하게 써봐~';
-    else if (accuracy < 0.6) msg = '글자 안에 써보자~ 다시!';
-    else msg = '한 번 더 해볼까?';
-    
-    // 짧은 안내 + 자동 지우기
     const wrap = document.querySelector('.writing-canvas-wrap');
     const toast = document.createElement('div');
-    toast.textContent = '😅 ' + msg;
+    toast.textContent = '😅 글자 안에 써보자~';
     toast.style.cssText = 'position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(0,0,0,0.85);color:white;padding:2vh 3vh;border-radius:2vh;font-size:3vh;z-index:100;animation:revealPop 0.4s ease-out;';
     wrap.appendChild(toast);
     setTimeout(() => {
