@@ -5051,6 +5051,1476 @@
         "level": 0
       },
       "source": "textbook"
+    },
+    {
+      "id": "b1_etc_bee",
+      "book": "book1_sight_words",
+      "unit": "etc",
+      "type": "vocab",
+      "word": "bee",
+      "korean": "벌",
+      "source": "etc",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "b1_etc_frog",
+      "book": "book1_sight_words",
+      "unit": "etc",
+      "type": "vocab",
+      "word": "frog",
+      "korean": "개구리",
+      "source": "etc",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "b1_etc_snail",
+      "book": "book1_sight_words",
+      "unit": "etc",
+      "type": "vocab",
+      "word": "snail",
+      "korean": "달팽이",
+      "source": "etc",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "b1_etc_grass",
+      "book": "book1_sight_words",
+      "unit": "etc",
+      "type": "vocab",
+      "word": "grass",
+      "korean": "풀",
+      "source": "etc",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "b1_etc_rainbow",
+      "book": "book1_sight_words",
+      "unit": "etc",
+      "type": "vocab",
+      "word": "rainbow",
+      "korean": "무지개",
+      "source": "etc",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "b1_etc_cloud",
+      "book": "book1_sight_words",
+      "unit": "etc",
+      "type": "vocab",
+      "word": "cloud",
+      "korean": "구름",
+      "source": "etc",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "b1_etc_basket",
+      "book": "book1_sight_words",
+      "unit": "etc",
+      "type": "vocab",
+      "word": "basket",
+      "korean": "바구니",
+      "source": "etc",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "b1_etc_cookie",
+      "book": "book1_sight_words",
+      "unit": "etc",
+      "type": "vocab",
+      "word": "cookie",
+      "korean": "쿠키",
+      "source": "etc",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "b1_etc_pink",
+      "book": "book1_sight_words",
+      "unit": "etc",
+      "type": "vocab",
+      "word": "pink",
+      "korean": "분홍",
+      "source": "etc",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "b1_etc_purple",
+      "book": "book1_sight_words",
+      "unit": "etc",
+      "type": "vocab",
+      "word": "purple",
+      "korean": "보라",
+      "source": "etc",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "b1_etc_brown",
+      "book": "book1_sight_words",
+      "unit": "etc",
+      "type": "vocab",
+      "word": "brown",
+      "korean": "갈색",
+      "source": "etc",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "b1_etc_black",
+      "book": "book1_sight_words",
+      "unit": "etc",
+      "type": "vocab",
+      "word": "black",
+      "korean": "검정",
+      "source": "etc",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "b1_etc_white",
+      "book": "book1_sight_words",
+      "unit": "etc",
+      "type": "vocab",
+      "word": "white",
+      "korean": "하양",
+      "source": "etc",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "b1_etc_barn",
+      "book": "book1_sight_words",
+      "unit": "etc",
+      "type": "vocab",
+      "word": "barn",
+      "korean": "헛간",
+      "source": "etc",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "b1_etc_hay",
+      "book": "book1_sight_words",
+      "unit": "etc",
+      "type": "vocab",
+      "word": "hay",
+      "korean": "건초",
+      "source": "etc",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "b1_etc_farmer",
+      "book": "book1_sight_words",
+      "unit": "etc",
+      "type": "vocab",
+      "word": "farmer",
+      "korean": "농부",
+      "source": "etc",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "b1_etc_tree",
+      "book": "book1_sight_words",
+      "unit": "etc",
+      "type": "vocab",
+      "word": "tree",
+      "korean": "나무",
+      "source": "etc",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "b1_etc_leaf",
+      "book": "book1_sight_words",
+      "unit": "etc",
+      "type": "vocab",
+      "word": "leaf",
+      "korean": "잎",
+      "source": "etc",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "b1_etc_bird",
+      "book": "book1_sight_words",
+      "unit": "etc",
+      "type": "vocab",
+      "word": "bird",
+      "korean": "새",
+      "source": "etc",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "b1_etc_wing",
+      "book": "book1_sight_words",
+      "unit": "etc",
+      "type": "vocab",
+      "word": "wing",
+      "korean": "날개",
+      "source": "etc",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "b1_etc_worm",
+      "book": "book1_sight_words",
+      "unit": "etc",
+      "type": "vocab",
+      "word": "worm",
+      "korean": "벌레",
+      "source": "etc",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "b1_etc_hill",
+      "book": "book1_sight_words",
+      "unit": "etc",
+      "type": "vocab",
+      "word": "hill",
+      "korean": "언덕",
+      "source": "etc",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "b2_etc_bear",
+      "book": "book2_alphabet_phonics",
+      "unit": "etc",
+      "type": "vocab",
+      "word": "bear",
+      "korean": "곰",
+      "source": "etc",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "b2_etc_ice",
+      "book": "book2_alphabet_phonics",
+      "unit": "etc",
+      "type": "vocab",
+      "word": "ice",
+      "korean": "얼음",
+      "source": "etc",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "b2_etc_moon",
+      "book": "book2_alphabet_phonics",
+      "unit": "etc",
+      "type": "vocab",
+      "word": "moon",
+      "korean": "달",
+      "source": "etc",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "b2_etc_nose",
+      "book": "book2_alphabet_phonics",
+      "unit": "etc",
+      "type": "vocab",
+      "word": "nose",
+      "korean": "코",
+      "source": "etc",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "b2_etc_owl",
+      "book": "book2_alphabet_phonics",
+      "unit": "etc",
+      "type": "vocab",
+      "word": "owl",
+      "korean": "부엉이",
+      "source": "etc",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "b2_etc_ring",
+      "book": "book2_alphabet_phonics",
+      "unit": "etc",
+      "type": "vocab",
+      "word": "ring",
+      "korean": "반지",
+      "source": "etc",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "b2_etc_star",
+      "book": "book2_alphabet_phonics",
+      "unit": "etc",
+      "type": "vocab",
+      "word": "star",
+      "korean": "별",
+      "source": "etc",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "b2_etc_wolf",
+      "book": "book2_alphabet_phonics",
+      "unit": "etc",
+      "type": "vocab",
+      "word": "wolf",
+      "korean": "늑대",
+      "source": "etc",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "b2_etc_yarn",
+      "book": "book2_alphabet_phonics",
+      "unit": "etc",
+      "type": "vocab",
+      "word": "yarn",
+      "korean": "실",
+      "source": "etc",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "b2_etc_crab",
+      "book": "book2_alphabet_phonics",
+      "unit": "etc",
+      "type": "vocab",
+      "word": "crab",
+      "korean": "게",
+      "source": "etc",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "b2_etc_gift",
+      "book": "book2_alphabet_phonics",
+      "unit": "etc",
+      "type": "vocab",
+      "word": "gift",
+      "korean": "선물",
+      "source": "etc",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "b2_etc_nut",
+      "book": "book2_alphabet_phonics",
+      "unit": "etc",
+      "type": "vocab",
+      "word": "nut",
+      "korean": "견과",
+      "source": "etc",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "b3_etc_eight",
+      "book": "book3_common_core_sight_words",
+      "unit": "etc",
+      "type": "vocab",
+      "word": "eight",
+      "korean": "8",
+      "source": "etc",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "b3_etc_nine",
+      "book": "book3_common_core_sight_words",
+      "unit": "etc",
+      "type": "vocab",
+      "word": "nine",
+      "korean": "9",
+      "source": "etc",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "b3_etc_ten",
+      "book": "book3_common_core_sight_words",
+      "unit": "etc",
+      "type": "vocab",
+      "word": "ten",
+      "korean": "10",
+      "source": "etc",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "b3_etc_small",
+      "book": "book3_common_core_sight_words",
+      "unit": "etc",
+      "type": "vocab",
+      "word": "small",
+      "korean": "작은",
+      "source": "etc",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "b3_etc_plus",
+      "book": "book3_common_core_sight_words",
+      "unit": "etc",
+      "type": "vocab",
+      "word": "plus",
+      "korean": "더하기",
+      "source": "etc",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "b3_etc_minus",
+      "book": "book3_common_core_sight_words",
+      "unit": "etc",
+      "type": "vocab",
+      "word": "minus",
+      "korean": "빼기",
+      "source": "etc",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "b3_etc_water",
+      "book": "book3_common_core_sight_words",
+      "unit": "etc",
+      "type": "vocab",
+      "word": "water",
+      "korean": "물",
+      "source": "etc",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "b3_etc_plant",
+      "book": "book3_common_core_sight_words",
+      "unit": "etc",
+      "type": "vocab",
+      "word": "plant",
+      "korean": "식물",
+      "source": "etc",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "b3_etc_rock",
+      "book": "book3_common_core_sight_words",
+      "unit": "etc",
+      "type": "vocab",
+      "word": "rock",
+      "korean": "바위",
+      "source": "etc",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "b3_etc_wind",
+      "book": "book3_common_core_sight_words",
+      "unit": "etc",
+      "type": "vocab",
+      "word": "wind",
+      "korean": "바람",
+      "source": "etc",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "b3_etc_snow",
+      "book": "book3_common_core_sight_words",
+      "unit": "etc",
+      "type": "vocab",
+      "word": "snow",
+      "korean": "눈",
+      "source": "etc",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "b3_etc_earth",
+      "book": "book3_common_core_sight_words",
+      "unit": "etc",
+      "type": "vocab",
+      "word": "earth",
+      "korean": "지구",
+      "source": "etc",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "b3_etc_family",
+      "book": "book3_common_core_sight_words",
+      "unit": "etc",
+      "type": "vocab",
+      "word": "family",
+      "korean": "가족",
+      "source": "etc",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "b3_etc_dad",
+      "book": "book3_common_core_sight_words",
+      "unit": "etc",
+      "type": "vocab",
+      "word": "dad",
+      "korean": "아빠",
+      "source": "etc",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "b3_etc_home",
+      "book": "book3_common_core_sight_words",
+      "unit": "etc",
+      "type": "vocab",
+      "word": "home",
+      "korean": "집",
+      "source": "etc",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "b3_etc_city",
+      "book": "book3_common_core_sight_words",
+      "unit": "etc",
+      "type": "vocab",
+      "word": "city",
+      "korean": "도시",
+      "source": "etc",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "b3_etc_country",
+      "book": "book3_common_core_sight_words",
+      "unit": "etc",
+      "type": "vocab",
+      "word": "country",
+      "korean": "나라",
+      "source": "etc",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "b3_etc_paint",
+      "book": "book3_common_core_sight_words",
+      "unit": "etc",
+      "type": "vocab",
+      "word": "paint",
+      "korean": "페인트",
+      "source": "etc",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "b3_etc_draw",
+      "book": "book3_common_core_sight_words",
+      "unit": "etc",
+      "type": "vocab",
+      "word": "draw",
+      "korean": "그리다",
+      "source": "etc",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "b3_etc_sing",
+      "book": "book3_common_core_sight_words",
+      "unit": "etc",
+      "type": "vocab",
+      "word": "sing",
+      "korean": "노래하다",
+      "source": "etc",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "b3_etc_dance",
+      "book": "book3_common_core_sight_words",
+      "unit": "etc",
+      "type": "vocab",
+      "word": "dance",
+      "korean": "춤추다",
+      "source": "etc",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "b3_etc_music",
+      "book": "book3_common_core_sight_words",
+      "unit": "etc",
+      "type": "vocab",
+      "word": "music",
+      "korean": "음악",
+      "source": "etc",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "b3_etc_eleven",
+      "book": "book3_common_core_sight_words",
+      "unit": "etc",
+      "type": "vocab",
+      "word": "eleven",
+      "korean": "11",
+      "source": "etc",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "b3_etc_twelve",
+      "book": "book3_common_core_sight_words",
+      "unit": "etc",
+      "type": "vocab",
+      "word": "twelve",
+      "korean": "12",
+      "source": "etc",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "b4_etc_tulip",
+      "book": "book4_themed_speaking_vol2",
+      "unit": "etc",
+      "type": "vocab",
+      "word": "tulip",
+      "korean": "튤립",
+      "source": "etc",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "b4_etc_rose",
+      "book": "book4_themed_speaking_vol2",
+      "unit": "etc",
+      "type": "vocab",
+      "word": "rose",
+      "korean": "장미",
+      "source": "etc",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "b4_etc_sunflower",
+      "book": "book4_themed_speaking_vol2",
+      "unit": "etc",
+      "type": "vocab",
+      "word": "sunflower",
+      "korean": "해바라기",
+      "source": "etc",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "b4_etc_daisy",
+      "book": "book4_themed_speaking_vol2",
+      "unit": "etc",
+      "type": "vocab",
+      "word": "daisy",
+      "korean": "데이지",
+      "source": "etc",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "b4_etc_seed",
+      "book": "book4_themed_speaking_vol2",
+      "unit": "etc",
+      "type": "vocab",
+      "word": "seed",
+      "korean": "씨앗",
+      "source": "etc",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "b4_etc_root",
+      "book": "book4_themed_speaking_vol2",
+      "unit": "etc",
+      "type": "vocab",
+      "word": "root",
+      "korean": "뿌리",
+      "source": "etc",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "b4_etc_petal",
+      "book": "book4_themed_speaking_vol2",
+      "unit": "etc",
+      "type": "vocab",
+      "word": "petal",
+      "korean": "꽃잎",
+      "source": "etc",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "b4_etc_stem",
+      "book": "book4_themed_speaking_vol2",
+      "unit": "etc",
+      "type": "vocab",
+      "word": "stem",
+      "korean": "줄기",
+      "source": "etc",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "b4_etc_garden",
+      "book": "book4_themed_speaking_vol2",
+      "unit": "etc",
+      "type": "vocab",
+      "word": "garden",
+      "korean": "정원",
+      "source": "etc",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "b4_etc_park",
+      "book": "book4_themed_speaking_vol2",
+      "unit": "etc",
+      "type": "vocab",
+      "word": "park",
+      "korean": "공원",
+      "source": "etc",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "b4_etc_blanket",
+      "book": "book4_themed_speaking_vol2",
+      "unit": "etc",
+      "type": "vocab",
+      "word": "blanket",
+      "korean": "담요",
+      "source": "etc",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "b4_etc_warm",
+      "book": "book4_themed_speaking_vol2",
+      "unit": "etc",
+      "type": "vocab",
+      "word": "warm",
+      "korean": "따뜻한",
+      "source": "etc",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "b4_etc_cool",
+      "book": "book4_themed_speaking_vol2",
+      "unit": "etc",
+      "type": "vocab",
+      "word": "cool",
+      "korean": "시원한",
+      "source": "etc",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "b4_etc_bright",
+      "book": "book4_themed_speaking_vol2",
+      "unit": "etc",
+      "type": "vocab",
+      "word": "bright",
+      "korean": "밝은",
+      "source": "etc",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "b4_etc_dark",
+      "book": "book4_themed_speaking_vol2",
+      "unit": "etc",
+      "type": "vocab",
+      "word": "dark",
+      "korean": "어두운",
+      "source": "etc",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "b4_etc_grey",
+      "book": "book4_themed_speaking_vol2",
+      "unit": "etc",
+      "type": "vocab",
+      "word": "grey",
+      "korean": "회색",
+      "source": "etc",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "b4_etc_navy",
+      "book": "book4_themed_speaking_vol2",
+      "unit": "etc",
+      "type": "vocab",
+      "word": "navy",
+      "korean": "남색",
+      "source": "etc",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "b4_etc_mint",
+      "book": "book4_themed_speaking_vol2",
+      "unit": "etc",
+      "type": "vocab",
+      "word": "mint",
+      "korean": "민트",
+      "source": "etc",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "b4_etc_peach",
+      "book": "book4_themed_speaking_vol2",
+      "unit": "etc",
+      "type": "vocab",
+      "word": "peach",
+      "korean": "복숭아색",
+      "source": "etc",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "b4_etc_sky_blue",
+      "book": "book4_themed_speaking_vol2",
+      "unit": "etc",
+      "type": "vocab",
+      "word": "sky_blue",
+      "korean": "하늘색",
+      "source": "etc",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "b4_etc_lime",
+      "book": "book4_themed_speaking_vol2",
+      "unit": "etc",
+      "type": "vocab",
+      "word": "lime",
+      "korean": "라임색",
+      "source": "etc",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "b4_etc_gold",
+      "book": "book4_themed_speaking_vol2",
+      "unit": "etc",
+      "type": "vocab",
+      "word": "gold",
+      "korean": "금색",
+      "source": "etc",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "b4_etc_silver",
+      "book": "book4_themed_speaking_vol2",
+      "unit": "etc",
+      "type": "vocab",
+      "word": "silver",
+      "korean": "은색",
+      "source": "etc",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "b4_etc_bloom",
+      "book": "book4_themed_speaking_vol2",
+      "unit": "etc",
+      "type": "vocab",
+      "word": "bloom",
+      "korean": "꽃피다",
+      "source": "etc",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "b4_etc_breeze",
+      "book": "book4_themed_speaking_vol2",
+      "unit": "etc",
+      "type": "vocab",
+      "word": "breeze",
+      "korean": "산들바람",
+      "source": "etc",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "b5_etc_student",
+      "book": "book5_themed_speaking_vol1",
+      "unit": "etc",
+      "type": "vocab",
+      "word": "student",
+      "korean": "학생",
+      "source": "etc",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "b5_etc_blackboard",
+      "book": "book5_themed_speaking_vol1",
+      "unit": "etc",
+      "type": "vocab",
+      "word": "blackboard",
+      "korean": "칠판",
+      "source": "etc",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "b5_etc_paper",
+      "book": "book5_themed_speaking_vol1",
+      "unit": "etc",
+      "type": "vocab",
+      "word": "paper",
+      "korean": "종이",
+      "source": "etc",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "b5_etc_scissors",
+      "book": "book5_themed_speaking_vol1",
+      "unit": "etc",
+      "type": "vocab",
+      "word": "scissors",
+      "korean": "가위",
+      "source": "etc",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "b5_etc_lunch",
+      "book": "book5_themed_speaking_vol1",
+      "unit": "etc",
+      "type": "vocab",
+      "word": "lunch",
+      "korean": "점심",
+      "source": "etc",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "b5_etc_snack",
+      "book": "book5_themed_speaking_vol1",
+      "unit": "etc",
+      "type": "vocab",
+      "word": "snack",
+      "korean": "간식",
+      "source": "etc",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "b5_etc_slide",
+      "book": "book5_themed_speaking_vol1",
+      "unit": "etc",
+      "type": "vocab",
+      "word": "slide",
+      "korean": "미끄럼틀",
+      "source": "etc",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "b5_etc_sad",
+      "book": "book5_themed_speaking_vol1",
+      "unit": "etc",
+      "type": "vocab",
+      "word": "sad",
+      "korean": "슬픈",
+      "source": "etc",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "b5_etc_tired",
+      "book": "book5_themed_speaking_vol1",
+      "unit": "etc",
+      "type": "vocab",
+      "word": "tired",
+      "korean": "피곤한",
+      "source": "etc",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "b5_etc_hungry",
+      "book": "book5_themed_speaking_vol1",
+      "unit": "etc",
+      "type": "vocab",
+      "word": "hungry",
+      "korean": "배고픈",
+      "source": "etc",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "b5_etc_thirsty",
+      "book": "book5_themed_speaking_vol1",
+      "unit": "etc",
+      "type": "vocab",
+      "word": "thirsty",
+      "korean": "목마른",
+      "source": "etc",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "b5_etc_school",
+      "book": "book5_themed_speaking_vol1",
+      "unit": "etc",
+      "type": "vocab",
+      "word": "school",
+      "korean": "학교",
+      "source": "etc",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "b5_etc_pen",
+      "book": "book5_themed_speaking_vol1",
+      "unit": "etc",
+      "type": "vocab",
+      "word": "pen",
+      "korean": "펜",
+      "source": "etc",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "b5_etc_bag",
+      "book": "book5_themed_speaking_vol1",
+      "unit": "etc",
+      "type": "vocab",
+      "word": "bag",
+      "korean": "가방",
+      "source": "etc",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "b5_etc_uniform",
+      "book": "book5_themed_speaking_vol1",
+      "unit": "etc",
+      "type": "vocab",
+      "word": "uniform",
+      "korean": "교복",
+      "source": "etc",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "b5_etc_bus",
+      "book": "book5_themed_speaking_vol1",
+      "unit": "etc",
+      "type": "vocab",
+      "word": "bus",
+      "korean": "버스",
+      "source": "etc",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "b5_etc_homework",
+      "book": "book5_themed_speaking_vol1",
+      "unit": "etc",
+      "type": "vocab",
+      "word": "homework",
+      "korean": "숙제",
+      "source": "etc",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "b5_etc_lesson",
+      "book": "book5_themed_speaking_vol1",
+      "unit": "etc",
+      "type": "vocab",
+      "word": "lesson",
+      "korean": "수업",
+      "source": "etc",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "b5_etc_test",
+      "book": "book5_themed_speaking_vol1",
+      "unit": "etc",
+      "type": "vocab",
+      "word": "test",
+      "korean": "시험",
+      "source": "etc",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "b5_etc_grade",
+      "book": "book5_themed_speaking_vol1",
+      "unit": "etc",
+      "type": "vocab",
+      "word": "grade",
+      "korean": "학년",
+      "source": "etc",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "b5_etc_art",
+      "book": "book5_themed_speaking_vol1",
+      "unit": "etc",
+      "type": "vocab",
+      "word": "art",
+      "korean": "미술",
+      "source": "etc",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "b5_etc_math",
+      "book": "book5_themed_speaking_vol1",
+      "unit": "etc",
+      "type": "vocab",
+      "word": "math",
+      "korean": "수학",
+      "source": "etc",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
     }
   ]
 }

@@ -457,6 +457,374 @@ html, body {
 .loading-text {
   font-size: 4vh; color: #2C2C2C;
 }
+
+/* ========================================
+   별/가챠/도감 시스템
+   ======================================== */
+
+/* 홈 화면 상단 별 카운터 + 버튼들 */
+.home-top-bar {
+  position: absolute; top: 2vh; left: 50%; transform: translateX(-50%);
+  display: flex; align-items: center; gap: 1.5vh;
+  z-index: 10;
+}
+.star-counter {
+  background: linear-gradient(135deg, #FFE066 0%, #FFB627 100%);
+  padding: 1.2vh 2.5vh; border-radius: 99px;
+  font-size: 3.2vh; color: #5C3A00;
+  border: 0.4vh solid #fff;
+  box-shadow: 0 0.5vh 1.5vh rgba(0,0,0,0.2);
+  display: flex; align-items: center; gap: 1vh;
+}
+.star-counter .star-icon {
+  font-size: 3.5vh;
+  animation: spin-star 3s linear infinite;
+}
+@keyframes spin-star {
+  0%, 80%, 100% { transform: rotate(0deg); }
+  90% { transform: rotate(20deg); }
+}
+.home-action-btn {
+  background: linear-gradient(135deg, #FF6B9D 0%, #C9358D 100%);
+  color: #fff; padding: 1.2vh 2.5vh; border-radius: 99px;
+  font-size: 2.8vh; border: 0.4vh solid #fff;
+  box-shadow: 0 0.5vh 1.5vh rgba(0,0,0,0.2);
+  cursor: pointer; font-family: inherit;
+  display: flex; align-items: center; gap: 1vh;
+  transition: transform 0.15s;
+}
+.home-action-btn:active { transform: scale(0.95); }
+.home-action-btn.gacha {
+  background: linear-gradient(135deg, #A855F7 0%, #6D28D9 100%);
+}
+.home-action-btn.dex {
+  background: linear-gradient(135deg, #3B82F6 0%, #1E40AF 100%);
+}
+.home-action-btn.reset {
+  background: linear-gradient(135deg, #9CA3AF 0%, #4B5563 100%);
+  font-size: 2.3vh; padding: 1vh 2vh;
+}
+.home-action-btn .badge {
+  background: #fff; color: #C9358D;
+  padding: 0.3vh 1vh; border-radius: 99px;
+  font-size: 2.2vh; min-width: 3vh; text-align: center;
+}
+
+/* 퀴즈 화면 별 디스플레이 */
+.quiz-stars {
+  position: absolute; top: 8vh; right: 3vh;
+  background: rgba(255,255,255,0.95);
+  padding: 0.8vh 1.8vh; border-radius: 99px;
+  font-size: 2.5vh; color: #5C3A00;
+  border: 0.3vh solid #FFB627;
+  display: flex; align-items: center; gap: 0.8vh;
+  z-index: 5;
+  box-shadow: 0 0.4vh 1vh rgba(0,0,0,0.15);
+}
+.quiz-stars.bump { animation: starBump 0.5s ease-out; }
+@keyframes starBump {
+  0% { transform: scale(1); }
+  40% { transform: scale(1.3); background: #FFE066; }
+  100% { transform: scale(1); }
+}
+
+/* 별 획득 플라잉 애니메이션 */
+.flying-star {
+  position: fixed; pointer-events: none; z-index: 1000;
+  font-size: 5vh;
+  animation: flyToTop 0.9s ease-in forwards;
+}
+@keyframes flyToTop {
+  0% { opacity: 1; transform: scale(1.5) rotate(0deg); }
+  50% { opacity: 1; transform: scale(1) rotate(180deg); }
+  100% { opacity: 0; transform: scale(0.3) rotate(360deg) translate(20vh, -40vh); }
+}
+
+/* ============== 가챠 화면 ============== */
+#screen-gacha {
+  background: linear-gradient(135deg, #4C1D95 0%, #7C3AED 50%, #C026D3 100%);
+  flex-direction: column;
+  position: relative;
+}
+.gacha-header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 2vh 3vh; width: 100%;
+}
+.gacha-title {
+  font-size: 4.5vh; color: #FFE066; font-weight: 700;
+  text-shadow: 0 0.4vh 0.8vh rgba(0,0,0,0.4);
+}
+.gacha-content {
+  flex: 1; display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  width: 100%; padding: 2vh;
+}
+.gacha-machine {
+  width: 35vh; height: 35vh;
+  background: radial-gradient(circle, #FFE066 0%, #FFB627 70%);
+  border-radius: 50%; border: 0.8vh solid #fff;
+  box-shadow: 0 1vh 3vh rgba(0,0,0,0.3), inset 0 0 5vh rgba(255,255,255,0.5);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18vh;
+  animation: machineFloat 3s ease-in-out infinite;
+  position: relative;
+}
+@keyframes machineFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-2vh); }
+}
+.gacha-machine.shaking {
+  animation: gachaShake 0.4s ease-in-out 3;
+}
+@keyframes gachaShake {
+  0%, 100% { transform: translateX(0) rotate(0); }
+  25% { transform: translateX(-2vh) rotate(-5deg); }
+  75% { transform: translateX(2vh) rotate(5deg); }
+}
+.gacha-pull-btn {
+  margin-top: 4vh;
+  background: linear-gradient(135deg, #FFE066 0%, #FF6B00 100%);
+  color: #5C3A00; padding: 2.5vh 6vh;
+  border-radius: 99px; font-size: 4vh; font-weight: 700;
+  border: 0.6vh solid #fff;
+  box-shadow: 0 0.8vh 2vh rgba(0,0,0,0.3);
+  cursor: pointer; font-family: inherit;
+  display: flex; align-items: center; gap: 1.5vh;
+  transition: transform 0.15s;
+}
+.gacha-pull-btn:active { transform: scale(0.95); }
+.gacha-pull-btn:disabled {
+  background: #6b7280; color: #d1d5db;
+  cursor: not-allowed; box-shadow: none;
+}
+.gacha-cost {
+  margin-top: 2vh; font-size: 2.8vh; color: #FFE066;
+}
+
+/* 카드 공개 오버레이 */
+.card-reveal-overlay {
+  position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.85);
+  display: none; align-items: center; justify-content: center;
+  z-index: 2000;
+}
+.card-reveal-overlay.show { display: flex; }
+.card-reveal {
+  display: flex; flex-direction: column; align-items: center;
+  animation: revealPop 0.6s ease-out;
+}
+@keyframes revealPop {
+  0% { opacity: 0; transform: scale(0.3) rotate(-20deg); }
+  60% { transform: scale(1.1) rotate(5deg); }
+  100% { opacity: 1; transform: scale(1) rotate(0); }
+}
+.reveal-card {
+  width: 35vh; height: 45vh;
+  background: #fff; border-radius: 3vh;
+  display: flex; flex-direction: column; align-items: center;
+  justify-content: center; padding: 3vh;
+  box-shadow: 0 2vh 5vh rgba(0,0,0,0.5);
+  position: relative; overflow: hidden;
+}
+.reveal-card.common { border: 0.8vh solid #9ca3af; }
+.reveal-card.rare { 
+  border: 0.8vh solid #3b82f6;
+  box-shadow: 0 0 5vh #3b82f6, 0 2vh 5vh rgba(0,0,0,0.5);
+}
+.reveal-card.epic { 
+  border: 0.8vh solid #a855f7;
+  box-shadow: 0 0 6vh #a855f7, 0 2vh 5vh rgba(0,0,0,0.5);
+  animation: epicGlow 1.5s ease-in-out infinite;
+}
+@keyframes epicGlow {
+  0%, 100% { box-shadow: 0 0 6vh #a855f7, 0 2vh 5vh rgba(0,0,0,0.5); }
+  50% { box-shadow: 0 0 10vh #a855f7, 0 2vh 5vh rgba(0,0,0,0.5); }
+}
+.reveal-card.legendary {
+  border: 0.8vh solid #facc15;
+  box-shadow: 0 0 8vh #facc15, 0 2vh 5vh rgba(0,0,0,0.5);
+  animation: legendaryGlow 1s ease-in-out infinite;
+}
+@keyframes legendaryGlow {
+  0%, 100% { 
+    box-shadow: 0 0 8vh #facc15, 0 2vh 5vh rgba(0,0,0,0.5);
+    background: #fff;
+  }
+  50% { 
+    box-shadow: 0 0 15vh #facc15, 0 2vh 5vh rgba(0,0,0,0.5);
+    background: #fffbeb;
+  }
+}
+.reveal-rarity {
+  position: absolute; top: 1.5vh; right: 1.5vh;
+  padding: 0.5vh 1.5vh; border-radius: 99px;
+  font-size: 2.3vh; font-weight: 700; color: #fff;
+}
+.reveal-rarity.common { background: #9ca3af; }
+.reveal-rarity.rare { background: #3b82f6; }
+.reveal-rarity.epic { background: #a855f7; }
+.reveal-rarity.legendary { background: #facc15; color: #5C3A00; }
+.reveal-emoji { font-size: 22vh; line-height: 1; }
+.reveal-name { font-size: 4.5vh; color: #2C2C2C; margin-top: 2vh; }
+.reveal-name-en { font-size: 3vh; color: #6b7280; }
+.reveal-status {
+  margin-top: 2vh; font-size: 2.8vh; color: #fff;
+  background: rgba(255,255,255,0.2); padding: 1vh 2.5vh;
+  border-radius: 99px;
+}
+.reveal-status.new { background: #10b981; color: #fff; font-weight: 700; }
+.reveal-status.upgrade { background: #f59e0b; color: #fff; font-weight: 700; }
+.reveal-tap-hint {
+  margin-top: 3vh; color: #FFE066; font-size: 2.5vh;
+  animation: blink 1s ease-in-out infinite;
+}
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+/* ============== 도감 화면 ============== */
+#screen-dex {
+  background: linear-gradient(135deg, #1E3A8A 0%, #3B82F6 50%, #60A5FA 100%);
+  flex-direction: column;
+  padding: 0;
+}
+.dex-header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 2vh 3vh; width: 100%;
+}
+.dex-title {
+  font-size: 4vh; color: #fff; font-weight: 700;
+  text-shadow: 0 0.4vh 0.8vh rgba(0,0,0,0.3);
+}
+.dex-progress {
+  background: rgba(255,255,255,0.2); color: #fff;
+  padding: 1vh 2vh; border-radius: 99px; font-size: 2.5vh;
+}
+.dex-tabs {
+  display: flex; gap: 1vh; padding: 0 3vh; width: 100%;
+}
+.dex-tab {
+  flex: 1; padding: 1.5vh; text-align: center;
+  background: rgba(255,255,255,0.2); color: #fff;
+  border-radius: 1.5vh 1.5vh 0 0; cursor: pointer;
+  font-size: 2.8vh; font-family: inherit;
+  border: none;
+}
+.dex-tab.active { background: #fff; color: #1E3A8A; font-weight: 700; }
+.dex-grid {
+  flex: 1; width: 100%;
+  background: rgba(255,255,255,0.95);
+  padding: 2.5vh; overflow-y: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(13vh, 1fr));
+  gap: 1.5vh;
+  align-content: start;
+}
+.dex-card {
+  aspect-ratio: 3/4;
+  background: #f3f4f6; border-radius: 1.5vh;
+  display: flex; flex-direction: column; align-items: center;
+  justify-content: center; padding: 1vh;
+  cursor: pointer; position: relative;
+  border: 0.4vh solid #d1d5db;
+  transition: transform 0.15s;
+}
+.dex-card:active { transform: scale(0.95); }
+.dex-card.locked {
+  background: #e5e7eb; opacity: 0.6;
+}
+.dex-card.locked .dex-card-emoji {
+  filter: grayscale(1) brightness(0.6);
+}
+.dex-card.locked .dex-card-name {
+  color: #9ca3af;
+}
+.dex-card-emoji {
+  font-size: 6vh; line-height: 1;
+}
+.dex-card-name {
+  margin-top: 0.5vh; font-size: 2vh; color: #2C2C2C;
+  text-align: center; line-height: 1.1;
+}
+.dex-card-count {
+  position: absolute; top: 0.5vh; right: 0.5vh;
+  background: #fff; color: #2C2C2C;
+  font-size: 1.8vh; padding: 0.2vh 0.8vh;
+  border-radius: 99px; min-width: 2.5vh; text-align: center;
+  border: 0.2vh solid #d1d5db;
+  font-weight: 700;
+}
+.dex-card-rarity {
+  position: absolute; top: 0.5vh; left: 0.5vh;
+  width: 1.5vh; height: 1.5vh; border-radius: 50%;
+}
+/* 테두리 등급 */
+.dex-card.tier-bronze { border-color: #cd7f32; box-shadow: 0 0 1.5vh rgba(205,127,50,0.5); }
+.dex-card.tier-silver { border-color: #c0c0c0; box-shadow: 0 0 1.5vh rgba(192,192,192,0.7); }
+.dex-card.tier-gold { border-color: #ffd700; box-shadow: 0 0 2vh rgba(255,215,0,0.7); }
+.dex-card.tier-rainbow { 
+  border-color: transparent;
+  background: linear-gradient(#f3f4f6, #f3f4f6) padding-box,
+              linear-gradient(45deg, #ff0080, #ffae00, #ffff00, #00ff00, #0066ff, #cc00ff) border-box;
+  box-shadow: 0 0 2.5vh rgba(255,0,128,0.6);
+  animation: rainbowGlow 2s linear infinite;
+}
+@keyframes rainbowGlow {
+  0% { filter: hue-rotate(0deg); }
+  100% { filter: hue-rotate(360deg); }
+}
+
+/* 도감 카드 상세 팝업 */
+.dex-detail {
+  position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.7);
+  display: none; align-items: center; justify-content: center;
+  z-index: 2000;
+}
+.dex-detail.show { display: flex; }
+.dex-detail-card {
+  background: #fff; border-radius: 3vh;
+  padding: 3vh; width: 40vh; max-width: 90vw;
+  display: flex; flex-direction: column; align-items: center;
+  position: relative;
+  animation: revealPop 0.4s ease-out;
+}
+.dex-detail-emoji { font-size: 18vh; line-height: 1; }
+.dex-detail-name-ko { font-size: 4vh; color: #2C2C2C; margin-top: 1.5vh; }
+.dex-detail-name-en { font-size: 2.8vh; color: #6b7280; }
+.dex-detail-info {
+  margin-top: 2vh; display: flex; gap: 1.5vh;
+}
+.dex-detail-tag {
+  padding: 0.8vh 1.8vh; border-radius: 99px;
+  font-size: 2.2vh; color: #fff;
+}
+.dex-detail-close {
+  position: absolute; top: 1.5vh; right: 1.5vh;
+  width: 4.5vh; height: 4.5vh; border-radius: 50%;
+  background: #f3f4f6; border: none; cursor: pointer;
+  font-size: 2.5vh; color: #6b7280;
+}
+
+/* 결과 화면에 가챠 별 표시 추가 */
+.result-earned-stars {
+  font-size: 3vh; color: #FFB627; margin-top: 1.5vh;
+  display: flex; align-items: center; justify-content: center; gap: 1vh;
+}
+.result-earned-stars .big {
+  font-size: 5vh; font-weight: 700; color: #FF6B00;
+}
+
+/* 별 부족 알림 */
+.no-stars-msg {
+  background: rgba(255,255,255,0.95);
+  padding: 2vh 3vh; border-radius: 2vh;
+  font-size: 3vh; color: #2C2C2C;
+  margin-top: 3vh; text-align: center;
+}
+.no-stars-msg .small { font-size: 2.3vh; color: #6b7280; margin-top: 1vh; }
+
 </style>
 </head>
 <body>
@@ -472,6 +840,22 @@ html, body {
 
   <!-- 홈 화면 -->
   <div class="screen" id="screen-home">
+    <div class="home-top-bar">
+      <div class="star-counter">
+        <span class="star-icon">⭐</span>
+        <span id="homeStars">0</span>
+      </div>
+      <button class="home-action-btn gacha" onclick="openGacha()">
+        🎁 <span>가챠</span>
+      </button>
+      <button class="home-action-btn dex" onclick="openDex()">
+        📖 <span>도감</span>
+        <span class="badge" id="dexBadge">0/50</span>
+      </button>
+      <button class="home-action-btn reset" onclick="confirmReset()">
+        🔄 초기화
+      </button>
+    </div>
     <img src="icon-192.png" class="lion-mascot" alt="사자 왕">
     <h1 class="home-title">🦁 라이언 영어 🦁</h1>
     <div class="books-grid" id="booksGrid"></div>
@@ -496,6 +880,10 @@ html, body {
       </div>
       <div class="stars-display"><span id="quizQNum">1</span>/<span id="quizQTotal">10</span></div>
     </div>
+    <div class="quiz-stars" id="quizStarsDisplay">
+      <span class="star-icon">⭐</span>
+      <span id="quizCurrentStars">0</span>
+    </div>
     <div class="quiz-content">
       <div class="question-box">
         <div class="question-prompt" id="questionPrompt">무엇일까요?</div>
@@ -512,13 +900,66 @@ html, body {
       <div class="result-title">🎉 잘했어! 🎉</div>
       <div class="result-stars" id="resultStars"></div>
       <div class="result-score" id="resultScore"></div>
+      <div class="result-earned-stars">
+        <span>⭐</span>
+        <span class="big" id="resultEarnedStars">+0</span>
+        <span>별 획득!</span>
+      </div>
       <div class="result-buttons">
         <button class="btn-action" onclick="goHome()">홈으로</button>
+        <button class="btn-action" onclick="goToGachaFromResult()">🎁 가챠</button>
         <button class="btn-action primary" onclick="retryQuiz()">한번 더!</button>
       </div>
     </div>
   </div>
 
+  <!-- 가챠 화면 -->
+  <div class="screen" id="screen-gacha">
+    <div class="gacha-header">
+      <button class="btn-back" onclick="goHome()">←</button>
+      <div class="gacha-title">🎁 가챠</div>
+      <div class="star-counter">
+        <span class="star-icon">⭐</span>
+        <span id="gachaStars">0</span>
+      </div>
+    </div>
+    <div class="gacha-content">
+      <div class="gacha-machine" id="gachaMachine">🎁</div>
+      <button class="gacha-pull-btn" id="gachaPullBtn" onclick="pullGacha()">
+        <span>⭐</span>
+        <span>5개로 뽑기!</span>
+      </button>
+      <div class="gacha-cost" id="gachaCostInfo">별 5개로 카드 1장!</div>
+    </div>
+  </div>
+
+  <!-- 도감 화면 -->
+  <div class="screen" id="screen-dex">
+    <div class="dex-header">
+      <button class="btn-back" onclick="goHome()">←</button>
+      <div class="dex-title">📖 도감</div>
+      <div class="dex-progress" id="dexProgress">0/50</div>
+    </div>
+    <div class="dex-tabs">
+      <button class="dex-tab active" data-tab="all" onclick="switchDexTab('all')">전체</button>
+      <button class="dex-tab" data-tab="animal" onclick="switchDexTab('animal')">🐾 동물</button>
+      <button class="dex-tab" data-tab="dinosaur" onclick="switchDexTab('dinosaur')">🦖 공룡</button>
+    </div>
+    <div class="dex-grid" id="dexGrid"></div>
+  </div>
+
+</div>
+
+<!-- 카드 공개 오버레이 -->
+<div class="card-reveal-overlay" id="cardRevealOverlay" onclick="closeCardReveal()">
+  <div class="card-reveal" id="cardReveal"></div>
+</div>
+
+<!-- 도감 카드 상세 -->
+<div class="dex-detail" id="dexDetail" onclick="closeDexDetail(event)">
+  <div class="dex-detail-card" id="dexDetailCard" onclick="event.stopPropagation()">
+    <button class="dex-detail-close" onclick="closeDexDetail()">✕</button>
+  </div>
 </div>
 
 <!-- 레벨업 팝업 -->
@@ -661,6 +1102,398 @@ function updateItemProgress(id, isCorrect) {
   p[id] = prog;
   saveProgress(p);
   return { oldLevel, newLevel: prog.level, leveledUp: prog.level > oldLevel };
+}
+
+// ============================
+// 카드 데이터 (50종)
+// ============================
+const CARDS_DATA = {
+  cards: [
+    // 동물 30종 (Common 18 / Rare 8 / Epic 3 / Legendary 1)
+    { id: 'animal_001', type: 'animal', name_en: 'dog', name_ko: '강아지', emoji: '🐶', rarity: 'common' },
+    { id: 'animal_002', type: 'animal', name_en: 'cat', name_ko: '고양이', emoji: '🐱', rarity: 'common' },
+    { id: 'animal_003', type: 'animal', name_en: 'rabbit', name_ko: '토끼', emoji: '🐰', rarity: 'common' },
+    { id: 'animal_004', type: 'animal', name_en: 'mouse', name_ko: '쥐', emoji: '🐭', rarity: 'common' },
+    { id: 'animal_005', type: 'animal', name_en: 'hamster', name_ko: '햄스터', emoji: '🐹', rarity: 'common' },
+    { id: 'animal_006', type: 'animal', name_en: 'pig', name_ko: '돼지', emoji: '🐷', rarity: 'common' },
+    { id: 'animal_007', type: 'animal', name_en: 'cow', name_ko: '소', emoji: '🐮', rarity: 'common' },
+    { id: 'animal_008', type: 'animal', name_en: 'sheep', name_ko: '양', emoji: '🐑', rarity: 'common' },
+    { id: 'animal_009', type: 'animal', name_en: 'horse', name_ko: '말', emoji: '🐴', rarity: 'common' },
+    { id: 'animal_010', type: 'animal', name_en: 'chicken', name_ko: '닭', emoji: '🐔', rarity: 'common' },
+    { id: 'animal_011', type: 'animal', name_en: 'duck', name_ko: '오리', emoji: '🦆', rarity: 'common' },
+    { id: 'animal_012', type: 'animal', name_en: 'frog', name_ko: '개구리', emoji: '🐸', rarity: 'common' },
+    { id: 'animal_013', type: 'animal', name_en: 'bird', name_ko: '새', emoji: '🐦', rarity: 'common' },
+    { id: 'animal_014', type: 'animal', name_en: 'fish', name_ko: '물고기', emoji: '🐟', rarity: 'common' },
+    { id: 'animal_015', type: 'animal', name_en: 'turtle', name_ko: '거북이', emoji: '🐢', rarity: 'common' },
+    { id: 'animal_016', type: 'animal', name_en: 'snake', name_ko: '뱀', emoji: '🐍', rarity: 'common' },
+    { id: 'animal_017', type: 'animal', name_en: 'bee', name_ko: '벌', emoji: '🐝', rarity: 'common' },
+    { id: 'animal_018', type: 'animal', name_en: 'butterfly', name_ko: '나비', emoji: '🦋', rarity: 'common' },
+    { id: 'animal_019', type: 'animal', name_en: 'fox', name_ko: '여우', emoji: '🦊', rarity: 'rare' },
+    { id: 'animal_020', type: 'animal', name_en: 'wolf', name_ko: '늑대', emoji: '🐺', rarity: 'rare' },
+    { id: 'animal_021', type: 'animal', name_en: 'bear', name_ko: '곰', emoji: '🐻', rarity: 'rare' },
+    { id: 'animal_022', type: 'animal', name_en: 'panda', name_ko: '판다', emoji: '🐼', rarity: 'rare' },
+    { id: 'animal_023', type: 'animal', name_en: 'koala', name_ko: '코알라', emoji: '🐨', rarity: 'rare' },
+    { id: 'animal_024', type: 'animal', name_en: 'monkey', name_ko: '원숭이', emoji: '🐵', rarity: 'rare' },
+    { id: 'animal_025', type: 'animal', name_en: 'penguin', name_ko: '펭귄', emoji: '🐧', rarity: 'rare' },
+    { id: 'animal_026', type: 'animal', name_en: 'owl', name_ko: '부엉이', emoji: '🦉', rarity: 'rare' },
+    { id: 'animal_027', type: 'animal', name_en: 'tiger', name_ko: '호랑이', emoji: '🐯', rarity: 'epic' },
+    { id: 'animal_028', type: 'animal', name_en: 'elephant', name_ko: '코끼리', emoji: '🐘', rarity: 'epic' },
+    { id: 'animal_029', type: 'animal', name_en: 'giraffe', name_ko: '기린', emoji: '🦒', rarity: 'epic' },
+    { id: 'animal_030', type: 'animal', name_en: 'lion', name_ko: '사자', emoji: '🦁', rarity: 'legendary' },
+    // 공룡 20종 (Common 7 / Rare 7 / Epic 4 / Legendary 2)
+    { id: 'dino_001', type: 'dinosaur', name_en: 'Compsognathus', name_ko: '콤프소그나투스', emoji: '🦕', image: 'cards/dino_001.png', rarity: 'common' },
+    { id: 'dino_002', type: 'dinosaur', name_en: 'Gallimimus', name_ko: '갈리미무스', emoji: '🦕', image: 'cards/dino_002.png', rarity: 'common' },
+    { id: 'dino_003', type: 'dinosaur', name_en: 'Iguanodon', name_ko: '이구아노돈', emoji: '🦕', image: 'cards/dino_003.png', rarity: 'common' },
+    { id: 'dino_004', type: 'dinosaur', name_en: 'Pachycephalosaurus', name_ko: '파키케팔로사우루스', emoji: '🦕', image: 'cards/dino_004.png', rarity: 'common' },
+    { id: 'dino_005', type: 'dinosaur', name_en: 'Maiasaura', name_ko: '마이아사우라', emoji: '🦕', image: 'cards/dino_005.png', rarity: 'common' },
+    { id: 'dino_006', type: 'dinosaur', name_en: 'Parasaurolophus', name_ko: '파라사우롤로푸스', emoji: '🦕', image: 'cards/dino_006.png', rarity: 'common' },
+    { id: 'dino_007', type: 'dinosaur', name_en: 'Dilophosaurus', name_ko: '딜로포사우루스', emoji: '🦖', image: 'cards/dino_007.png', rarity: 'common' },
+    { id: 'dino_008', type: 'dinosaur', name_en: 'Velociraptor', name_ko: '벨로키랍토르', emoji: '🦖', image: 'cards/dino_008.png', rarity: 'rare' },
+    { id: 'dino_009', type: 'dinosaur', name_en: 'Stegosaurus', name_ko: '스테고사우루스', emoji: '🦕', image: 'cards/dino_009.png', rarity: 'rare' },
+    { id: 'dino_010', type: 'dinosaur', name_en: 'Triceratops', name_ko: '트리케라톱스', emoji: '🦕', image: 'cards/dino_010.png', rarity: 'rare' },
+    { id: 'dino_011', type: 'dinosaur', name_en: 'Ankylosaurus', name_ko: '안킬로사우루스', emoji: '🦕', image: 'cards/dino_011.png', rarity: 'rare' },
+    { id: 'dino_012', type: 'dinosaur', name_en: 'Pteranodon', name_ko: '프테라노돈', emoji: '🦖', image: 'cards/dino_012.png', rarity: 'rare' },
+    { id: 'dino_013', type: 'dinosaur', name_en: 'Plesiosaurus', name_ko: '플레시오사우루스', emoji: '🦕', image: 'cards/dino_013.png', rarity: 'rare' },
+    { id: 'dino_014', type: 'dinosaur', name_en: 'Allosaurus', name_ko: '알로사우루스', emoji: '🦖', image: 'cards/dino_014.png', rarity: 'rare' },
+    { id: 'dino_015', type: 'dinosaur', name_en: 'Carnotaurus', name_ko: '카르노타우루스', emoji: '🦖', image: 'cards/dino_015.png', rarity: 'epic' },
+    { id: 'dino_016', type: 'dinosaur', name_en: 'Brachiosaurus', name_ko: '브라키오사우루스', emoji: '🦕', image: 'cards/dino_016.png', rarity: 'epic' },
+    { id: 'dino_017', type: 'dinosaur', name_en: 'Diplodocus', name_ko: '디플로도쿠스', emoji: '🦕', image: 'cards/dino_017.png', rarity: 'epic' },
+    { id: 'dino_018', type: 'dinosaur', name_en: 'Mosasaurus', name_ko: '모사사우루스', emoji: '🦖', image: 'cards/dino_018.png', rarity: 'epic' },
+    { id: 'dino_019', type: 'dinosaur', name_en: 'Spinosaurus', name_ko: '스피노사우루스', emoji: '🦖', image: 'cards/dino_019.png', rarity: 'legendary' },
+    { id: 'dino_020', type: 'dinosaur', name_en: 'Tyrannosaurus', name_ko: '티라노사우루스', emoji: '🦖', image: 'cards/dino_020.png', rarity: 'legendary' }
+  ],
+  gacha: {
+    cost_per_pull: 5,
+    rates: { common: 0.60, rare: 0.25, epic: 0.12, legendary: 0.03 }
+  }
+};
+
+const RARITY_LABELS = {
+  common: 'NORMAL', rare: 'RARE', epic: 'EPIC', legendary: 'LEGEND'
+};
+
+const TIER_THRESHOLDS = [
+  { min: 15, tier: 'rainbow' },
+  { min: 10, tier: 'gold' },
+  { min: 7, tier: 'silver' },
+  { min: 4, tier: 'bronze' },
+  { min: 1, tier: 'basic' }
+];
+
+function getCardTier(count) {
+  for (const t of TIER_THRESHOLDS) {
+    if (count >= t.min) return t.tier;
+  }
+  return 'none';
+}
+
+// ============================
+// 별 시스템
+// ============================
+const STARS_KEY = 'lion_english_stars_v1';
+const CARDS_KEY = 'lion_english_cards_v1';
+
+function loadStars() {
+  return parseInt(localStorage.getItem(STARS_KEY) || '0', 10);
+}
+function saveStars(n) {
+  localStorage.setItem(STARS_KEY, String(Math.max(0, n)));
+}
+function addStars(n) {
+  const cur = loadStars();
+  saveStars(cur + n);
+  return cur + n;
+}
+function spendStars(n) {
+  const cur = loadStars();
+  if (cur < n) return false;
+  saveStars(cur - n);
+  return true;
+}
+
+// ============================
+// 카드 시스템
+// ============================
+function loadCards() {
+  try { return JSON.parse(localStorage.getItem(CARDS_KEY)) || {}; }
+  catch { return {}; }
+}
+function saveCards(c) {
+  localStorage.setItem(CARDS_KEY, JSON.stringify(c));
+}
+function getCardCount(id) {
+  const c = loadCards();
+  return c[id] || 0;
+}
+function addCard(id) {
+  const c = loadCards();
+  const oldCount = c[id] || 0;
+  c[id] = oldCount + 1;
+  saveCards(c);
+  const newTier = getCardTier(c[id]);
+  const oldTier = getCardTier(oldCount);
+  return {
+    isNew: oldCount === 0,
+    count: c[id],
+    tierUp: newTier !== oldTier,
+    tier: newTier
+  };
+}
+function getOwnedCount() {
+  const c = loadCards();
+  return Object.keys(c).filter(k => c[k] > 0).length;
+}
+
+// ============================
+// 가챠 로직
+// ============================
+function rollGacha() {
+  const r = Math.random();
+  const rates = CARDS_DATA.gacha.rates;
+  let pool;
+  if (r < rates.legendary) pool = CARDS_DATA.cards.filter(c => c.rarity === 'legendary');
+  else if (r < rates.legendary + rates.epic) pool = CARDS_DATA.cards.filter(c => c.rarity === 'epic');
+  else if (r < rates.legendary + rates.epic + rates.rare) pool = CARDS_DATA.cards.filter(c => c.rarity === 'rare');
+  else pool = CARDS_DATA.cards.filter(c => c.rarity === 'common');
+  
+  return pool[Math.floor(Math.random() * pool.length)];
+}
+
+function pullGacha() {
+  const cost = CARDS_DATA.gacha.cost_per_pull;
+  if (loadStars() < cost) {
+    playSound('wrong');
+    return;
+  }
+  
+  playSound('tap');
+  spendStars(cost);
+  updateStarDisplay();
+  
+  // 머신 흔들기
+  const machine = document.getElementById('gachaMachine');
+  machine.classList.add('shaking');
+  
+  // 풀 버튼 비활성화
+  const btn = document.getElementById('gachaPullBtn');
+  btn.disabled = true;
+  
+  setTimeout(() => {
+    machine.classList.remove('shaking');
+    const card = rollGacha();
+    const result = addCard(card.id);
+    showCardReveal(card, result);
+    
+    // 버튼 상태 갱신
+    setTimeout(() => {
+      btn.disabled = loadStars() < cost;
+      updateStarDisplay();
+    }, 100);
+  }, 1200);
+}
+
+function showCardReveal(card, result) {
+  const reveal = document.getElementById('cardReveal');
+  const isImage = card.image && card.type === 'dinosaur';
+  
+  let statusHTML = '';
+  if (result.isNew) {
+    statusHTML = '<div class="reveal-status new">✨ NEW! ✨</div>';
+  } else if (result.tierUp && result.tier !== 'basic') {
+    const tierName = { bronze: '동', silver: '은', gold: '금', rainbow: '무지개' }[result.tier];
+    statusHTML = `<div class="reveal-status upgrade">⬆ ${tierName} 등급 업!</div>`;
+  } else {
+    statusHTML = `<div class="reveal-status">중복 (${result.count}장)</div>`;
+  }
+  
+  reveal.innerHTML = `
+    <div class="reveal-card ${card.rarity}">
+      <div class="reveal-rarity ${card.rarity}">${RARITY_LABELS[card.rarity]}</div>
+      <div class="reveal-emoji">${card.emoji}</div>
+      <div class="reveal-name">${card.name_ko}</div>
+      <div class="reveal-name-en">${card.name_en}</div>
+    </div>
+    ${statusHTML}
+    <div class="reveal-tap-hint">탭하면 닫혀요</div>
+  `;
+  
+  document.getElementById('cardRevealOverlay').classList.add('show');
+  
+  // 등급별 사운드
+  if (card.rarity === 'legendary') {
+    playSound('levelup');
+    setTimeout(() => playSound('correct'), 200);
+  } else if (card.rarity === 'epic') {
+    playSound('levelup');
+  } else if (card.rarity === 'rare') {
+    playSound('correct');
+  } else {
+    playSound('correct');
+  }
+}
+
+function closeCardReveal() {
+  document.getElementById('cardRevealOverlay').classList.remove('show');
+}
+
+// ============================
+// 가챠 화면
+// ============================
+function openGacha() {
+  playSound('tap');
+  updateStarDisplay();
+  const btn = document.getElementById('gachaPullBtn');
+  btn.disabled = loadStars() < CARDS_DATA.gacha.cost_per_pull;
+  showScreen('screen-gacha');
+}
+
+function goToGachaFromResult() {
+  playSound('tap');
+  openGacha();
+}
+
+// ============================
+// 도감 화면
+// ============================
+let currentDexTab = 'all';
+
+function openDex() {
+  playSound('tap');
+  currentDexTab = 'all';
+  renderDex();
+  showScreen('screen-dex');
+}
+
+function switchDexTab(tab) {
+  playSound('tap');
+  currentDexTab = tab;
+  document.querySelectorAll('.dex-tab').forEach(b => {
+    b.classList.toggle('active', b.dataset.tab === tab);
+  });
+  renderDex();
+}
+
+function renderDex() {
+  const grid = document.getElementById('dexGrid');
+  const cards = loadCards();
+  
+  let filtered = CARDS_DATA.cards;
+  if (currentDexTab !== 'all') {
+    filtered = filtered.filter(c => c.type === currentDexTab);
+  }
+  
+  grid.innerHTML = filtered.map(card => {
+    const count = cards[card.id] || 0;
+    const owned = count > 0;
+    const tier = owned ? getCardTier(count) : 'none';
+    const tierClass = tier !== 'none' && tier !== 'basic' ? `tier-${tier}` : '';
+    const rarityColors = { common: '#9ca3af', rare: '#3b82f6', epic: '#a855f7', legendary: '#facc15' };
+    
+    return `
+      <div class="dex-card ${owned ? '' : 'locked'} ${tierClass}" onclick="showDexDetail('${card.id}')">
+        <div class="dex-card-rarity" style="background:${rarityColors[card.rarity]}"></div>
+        ${owned && count > 1 ? `<div class="dex-card-count">${count}</div>` : ''}
+        <div class="dex-card-emoji">${owned ? card.emoji : '❓'}</div>
+        <div class="dex-card-name">${owned ? card.name_ko : '???'}</div>
+      </div>
+    `;
+  }).join('');
+  
+  // 진행도 업데이트
+  const total = currentDexTab === 'all' ? 50 :
+                currentDexTab === 'animal' ? 30 : 20;
+  const owned = filtered.filter(c => (cards[c.id] || 0) > 0).length;
+  document.getElementById('dexProgress').textContent = `${owned}/${total}`;
+}
+
+function showDexDetail(cardId) {
+  const card = CARDS_DATA.cards.find(c => c.id === cardId);
+  if (!card) return;
+  
+  const count = getCardCount(cardId);
+  if (count === 0) {
+    playSound('wrong');
+    return;
+  }
+  
+  playSound('tap');
+  const tier = getCardTier(count);
+  const tierName = { basic: '기본', bronze: '동', silver: '은', gold: '금', rainbow: '무지개' }[tier];
+  const rarityColors = { common: '#9ca3af', rare: '#3b82f6', epic: '#a855f7', legendary: '#facc15' };
+  
+  const detailCard = document.getElementById('dexDetailCard');
+  detailCard.innerHTML = `
+    <button class="dex-detail-close" onclick="closeDexDetail()">✕</button>
+    <div class="dex-detail-emoji">${card.emoji}</div>
+    <div class="dex-detail-name-ko">${card.name_ko}</div>
+    <div class="dex-detail-name-en">${card.name_en}</div>
+    <div class="dex-detail-info">
+      <div class="dex-detail-tag" style="background:${rarityColors[card.rarity]}">${RARITY_LABELS[card.rarity]}</div>
+      <div class="dex-detail-tag" style="background:#6b7280">×${count}</div>
+      <div class="dex-detail-tag" style="background:#f59e0b">${tierName} 등급</div>
+    </div>
+  `;
+  document.getElementById('dexDetail').classList.add('show');
+}
+
+function closeDexDetail(event) {
+  if (event && event.target.id !== 'dexDetail' && event.target.className !== 'dex-detail-close') return;
+  document.getElementById('dexDetail').classList.remove('show');
+}
+
+// ============================
+// 별 UI 갱신
+// ============================
+function updateStarDisplay() {
+  const stars = loadStars();
+  const el1 = document.getElementById('homeStars');
+  const el2 = document.getElementById('quizCurrentStars');
+  const el3 = document.getElementById('gachaStars');
+  if (el1) el1.textContent = stars;
+  if (el2) el2.textContent = stars;
+  if (el3) el3.textContent = stars;
+  
+  const dexBadge = document.getElementById('dexBadge');
+  if (dexBadge) dexBadge.textContent = `${getOwnedCount()}/50`;
+}
+
+function flyStarTo(originEl) {
+  // 정답 버튼에서 우상단 별 카운터로 별 날아가는 애니메이션
+  const rect = originEl.getBoundingClientRect();
+  const star = document.createElement('div');
+  star.className = 'flying-star';
+  star.textContent = '⭐';
+  star.style.left = (rect.left + rect.width / 2) + 'px';
+  star.style.top = (rect.top + rect.height / 2) + 'px';
+  document.body.appendChild(star);
+  setTimeout(() => star.remove(), 900);
+  
+  // 카운터 펌프
+  setTimeout(() => {
+    const display = document.getElementById('quizStarsDisplay');
+    if (display) {
+      display.classList.add('bump');
+      setTimeout(() => display.classList.remove('bump'), 500);
+    }
+    updateStarDisplay();
+  }, 700);
+}
+
+// ============================
+// 초기화
+// ============================
+function confirmReset() {
+  playSound('tap');
+  if (!confirm('정말 모든 진행을 초기화할까요?\n(별, 카드, 학습 기록 모두 삭제)')) return;
+  if (!confirm('진짜로요? 되돌릴 수 없어요!')) return;
+  
+  localStorage.removeItem(STORAGE_KEY);
+  localStorage.removeItem(STARS_KEY);
+  localStorage.removeItem(CARDS_KEY);
+  
+  updateStarDisplay();
+  renderHome();
+  alert('초기화 완료!');
 }
 
 // ============================
@@ -815,6 +1648,9 @@ function getBookStats(bookId) {
 // 홈 화면
 // ============================
 function renderHome() {
+  // 별/도감 카운터 갱신
+  updateStarDisplay();
+  
   const grid = document.getElementById('booksGrid');
   grid.innerHTML = '';
   Object.entries(BOOK_INFO).forEach(([bookId, info]) => {
@@ -939,6 +1775,7 @@ function startQuiz(items) {
   quizCorrect = 0;
   
   document.getElementById('quizQTotal').textContent = quizTotal;
+  updateStarDisplay();
   showScreen('screen-quiz');
   nextQuestion();
 }
@@ -1046,6 +1883,10 @@ function handleAnswer(btn, isCorrect, item) {
     playSound('correct');
     spawnConfetti(btn);
     
+    // 별 +1 즉시 적립
+    addStars(1);
+    flyStarTo(btn);
+    
     if (result.leveledUp) {
       setTimeout(() => showLevelUp(result.newLevel), 600);
       setTimeout(() => { quizIndex++; nextQuestion(); }, 2200);
@@ -1102,6 +1943,9 @@ function showResult() {
   
   document.getElementById('resultStars').textContent = 
     '⭐'.repeat(starCount) + '☆'.repeat(3 - starCount);
+  
+  // 이번 퀴즈에서 획득한 별
+  document.getElementById('resultEarnedStars').textContent = `+${quizCorrect}`;
   
   playSound('complete');
   showScreen('screen-result');
