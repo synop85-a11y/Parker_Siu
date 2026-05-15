@@ -101,10 +101,10 @@ html, body {
 
 .books-grid {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 2vw;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 1.5vw;
   width: 100%;
-  max-width: 90vw;
+  max-width: 95vw;
 }
 
 .book-card {
@@ -137,6 +137,7 @@ html, body {
 .book-card[data-color="3"]::before { background: #FFE66D; }
 .book-card[data-color="4"]::before { background: #95E1D3; }
 .book-card[data-color="5"]::before { background: #C9A0FF; }
+.book-card[data-color="6"]::before { background: #FF9F43; }
 
 .book-icon {
   font-size: 8vh;
@@ -506,6 +507,21 @@ html, body {
   background: linear-gradient(135deg, #9CA3AF 0%, #4B5563 100%);
   font-size: 2.3vh; padding: 1vh 2vh;
 }
+
+/* 우하단 초기화 버튼 (작고 눈에 잘 안 띄게 - 시우가 실수로 누르지 않도록) */
+.reset-corner-btn {
+  position: absolute; bottom: 1.5vh; right: 1.5vh;
+  width: 4.5vh; height: 4.5vh; border-radius: 50%;
+  background: rgba(255,255,255,0.3);
+  border: 0.2vh solid rgba(255,255,255,0.5);
+  font-size: 2.2vh; cursor: pointer;
+  color: rgba(0,0,0,0.4);
+  display: flex; align-items: center; justify-content: center;
+  font-family: inherit;
+  z-index: 5;
+  transition: opacity 0.2s;
+}
+.reset-corner-btn:active { opacity: 0.6; }
 .home-action-btn .badge {
   background: #fff; color: #C9358D;
   padding: 0.3vh 1vh; border-radius: 99px;
@@ -862,10 +878,8 @@ html, body {
         📖 <span>도감</span>
         <span class="badge" id="dexBadge">0/50</span>
       </button>
-      <button class="home-action-btn reset" onclick="confirmReset()">
-        🔄 초기화
-      </button>
     </div>
+    <button class="reset-corner-btn" onclick="confirmReset()" aria-label="초기화">🔄</button>
     <img src="icon-192.png" class="lion-mascot" alt="사자 왕">
     <h1 class="home-title">🦁 파커-시우 🦁</h1>
     <div class="books-grid" id="booksGrid"></div>
@@ -898,7 +912,6 @@ html, body {
       <div class="question-box">
         <div class="question-prompt" id="questionPrompt">무엇일까요?</div>
         <div class="question-content" id="questionContent">🐷</div>
-        <div class="question-level" id="questionLevel"></div>
       </div>
       <div class="choices" id="choices"></div>
     </div>
@@ -1096,7 +1109,8 @@ const BOOK_INFO = {
   'book2_alphabet_phonics': { name: '알파벳 파닉스', icon: '🔤', color: 2 },
   'book3_common_core_sight_words': { name: 'Common Core', icon: '🎵', color: 3 },
   'book4_themed_speaking_vol2': { name: 'Spring & Colors', icon: '🌸', color: 4 },
-  'book5_themed_speaking_vol1': { name: 'My School', icon: '🏫', color: 5 }
+  'book5_themed_speaking_vol1': { name: 'My School', icon: '🏫', color: 5 },
+  'book6_first_letter': { name: '첫 글자 찾기', icon: '🅰️', color: 6 }
 };
 
 // ============================
@@ -1127,6 +1141,7 @@ let quizItems = [];
 let quizIndex = 0;
 let quizCorrect = 0;
 let quizTotal = 10;
+let quizMode = 'normal';  // 'normal' or 'first_letter'
 let soundOn = true;
 
 // ============================
@@ -1743,6 +1758,44 @@ function renderHome() {
 }
 
 // ============================
+// 첫 글자 찾기 모드용 풀
+// ============================
+function getFirstLetterPool() {
+  // 이모지 매핑되는 모든 vocab/phonics_word 단어들에서 풀 생성
+  const PLAYABLE_TYPES = ['vocab', 'vocabulary', 'phonics_word', 'content_vocab'];
+  const items = DATA.items.filter(it => {
+    if (!PLAYABLE_TYPES.includes(it.type)) return false;
+    const word = (it.word || '').trim();
+    if (!word) return false;
+    // 첫 글자가 알파벳이어야 함
+    const firstChar = word[0].toUpperCase();
+    if (!/[A-Z]/.test(firstChar)) return false;
+    // 이모지 매핑 있어야 함
+    return getEmoji(word) !== null;
+  });
+  return items;
+}
+
+// 책별 통계 (book6 특별 처리)
+function getBookStatsExtended(bookId) {
+  if (bookId === 'book6_first_letter') {
+    const items = getFirstLetterPool();
+    const p = loadProgress();
+    let stars = 0;
+    items.forEach(it => {
+      const prog = p[it.id] || { level: 0 };
+      if (prog.level >= 5) stars++;
+    });
+    return {
+      totalItems: items.length,
+      stars,
+      progressPercent: items.length > 0 ? Math.round((stars / items.length) * 100) : 0
+    };
+  }
+  return getBookStats(bookId);
+}
+
+// ============================
 // 책 화면 (유닛 선택)
 // ============================
 function openBook(bookId) {
@@ -1750,6 +1803,67 @@ function openBook(bookId) {
   const info = BOOK_INFO[bookId];
   document.getElementById('bookTitle').textContent = info.name;
   
+  const grid = document.getElementById('unitsGrid');
+  grid.innerHTML = '';
+  
+  // ===== book6: 첫 글자 찾기 특별 처리 =====
+  if (bookId === 'book6_first_letter') {
+    const pool = getFirstLetterPool();
+    
+    // 전체 랜덤
+    const allCard = document.createElement('div');
+    allCard.className = 'unit-card';
+    allCard.innerHTML = `
+      <div class="unit-emoji">🎯</div>
+      <div class="unit-name">전체 랜덤</div>
+      <div class="unit-count">${pool.length}개 단어</div>
+    `;
+    allCard.addEventListener('click', () => {
+      playSound('tap');
+      startFirstLetterQuiz(pool);
+    });
+    grid.appendChild(allCard);
+    
+    // 알파벳 그룹별 (A-F, G-L, M-R, S-Z)
+    const groups = [
+      { name: 'A-F', range: ['A','B','C','D','E','F'], emoji: '🅰️' },
+      { name: 'G-L', range: ['G','H','I','J','K','L'], emoji: '🇬' },
+      { name: 'M-R', range: ['M','N','O','P','Q','R'], emoji: '🇲' },
+      { name: 'S-Z', range: ['S','T','U','V','W','X','Y','Z'], emoji: '🇸' }
+    ];
+    groups.forEach(g => {
+      const groupItems = pool.filter(it => g.range.includes(it.word[0].toUpperCase()));
+      if (groupItems.length < 4) return;
+      const p = loadProgress();
+      let stars = 0;
+      groupItems.forEach(it => {
+        const prog = p[it.id] || { level: 0 };
+        if (prog.level >= 5) stars++;
+      });
+      const starDisplay = stars > 0 ? '⭐'.repeat(Math.min(3, Math.ceil(stars / Math.max(1, groupItems.length / 3)))) : '';
+      
+      const card = document.createElement('div');
+      card.className = 'unit-card';
+      card.innerHTML = `
+        <div class="unit-emoji">${g.emoji}</div>
+        <div class="unit-name">${g.name}</div>
+        <div class="unit-count">${groupItems.length}개 단어</div>
+        <div class="unit-stars">${starDisplay || '⚪⚪⚪'}</div>
+      `;
+      card.addEventListener('click', () => {
+        playSound('tap');
+        startFirstLetterQuiz(groupItems);
+      });
+      grid.appendChild(card);
+    });
+    
+    const stats = getBookStatsExtended(bookId);
+    document.getElementById('bookStars').textContent = stats.stars;
+    showScreen('screen-book');
+    return;
+  }
+  
+  // ===== 일반 책 처리 =====
   // 유닛별로 그룹화 (unit 또는 category)
   const items = DATA.items.filter(it => it.book === bookId);
   const groups = {};
@@ -1762,9 +1876,6 @@ function openBook(bookId) {
     groups[key].push(it);
   });
 
-  const grid = document.getElementById('unitsGrid');
-  grid.innerHTML = '';
-  
   // 전체 모드 카드
   const allCard = document.createElement('div');
   allCard.className = 'unit-card';
@@ -1817,6 +1928,7 @@ function openBook(bookId) {
 // 퀴즈
 // ============================
 function startQuiz(items) {
+  quizMode = 'normal';
   // 출제 가능한 type만 필터링 (sentence, sight_word 제외)
   const PLAYABLE_TYPES = ['vocab', 'vocabulary', 'phonics_word', 'content_vocab', 'letter'];
   const typed = items.filter(it => PLAYABLE_TYPES.includes(it.type));
@@ -1862,6 +1974,10 @@ function nextQuestion() {
     showResult();
     return;
   }
+  // 첫 글자 찾기 모드면 분기
+  if (quizMode === 'first_letter') {
+    return nextFirstLetterQuestion();
+  }
   const item = quizItems[quizIndex];
   const word = item.word || item.letter || '';
   const emoji = getEmoji(word);
@@ -1870,11 +1986,6 @@ function nextQuestion() {
   // 진행도 표시
   document.getElementById('quizQNum').textContent = quizIndex + 1;
   document.getElementById('quizProgress').style.width = `${((quizIndex) / quizTotal) * 100}%`;
-
-  // 현재 레벨 표시
-  const prog = getItemProgress(item.id);
-  const lvInfo = levelInfo(prog.level);
-  document.getElementById('questionLevel').textContent = `${lvInfo.icon} ${prog.correct}/20`;
 
   // 알파벳이거나 이모지 매핑 없으면 무조건 word_to_word 모드 (텍스트 매칭)
   let mode;
@@ -1992,12 +2103,7 @@ function handleAnswer(btn, isCorrect, item) {
     addStars(1);
     flyStarTo(btn);
     
-    if (result.leveledUp) {
-      setTimeout(() => showLevelUp(result.newLevel), 600);
-      setTimeout(() => { quizIndex++; nextQuestion(); }, 2200);
-    } else {
-      setTimeout(() => { quizIndex++; nextQuestion(); }, 1200);
-    }
+    setTimeout(() => { quizIndex++; nextQuestion(); }, 1200);
   } else {
     btn.classList.add('wrong');
     playSound('wrong');
@@ -2037,6 +2143,85 @@ function spawnConfetti(originEl) {
     document.body.appendChild(c);
     setTimeout(() => c.remove(), 2500);
   }
+}
+
+// ============================
+// 첫 글자 찾기 퀴즈
+// ============================
+function startFirstLetterQuiz(items) {
+  quizMode = 'first_letter';
+  
+  // 첫 글자가 알파벳이고 이모지 매핑 있는 것만
+  const pool = items.filter(it => {
+    const word = (it.word || '').trim();
+    if (!word) return false;
+    if (!/[a-zA-Z]/.test(word[0])) return false;
+    return getEmoji(word) !== null;
+  });
+  
+  if (pool.length < 4) {
+    alert('아직 문제가 부족해요!');
+    return;
+  }
+  
+  // 레벨 낮은 것 우선 + 셔플
+  const p = loadProgress();
+  pool.sort((a, b) => {
+    const la = (p[a.id] || { level: 0 }).level;
+    const lb = (p[b.id] || { level: 0 }).level;
+    return la - lb;
+  });
+  const lowLevel = pool.slice(0, Math.min(20, pool.length));
+  shuffle(lowLevel);
+  quizItems = lowLevel.slice(0, Math.min(10, lowLevel.length));
+  quizTotal = quizItems.length;
+  quizIndex = 0;
+  quizCorrect = 0;
+  
+  document.getElementById('quizQTotal').textContent = quizTotal;
+  updateStarDisplay();
+  showScreen('screen-quiz');
+  nextQuestion();
+}
+
+function nextFirstLetterQuestion() {
+  const item = quizItems[quizIndex];
+  const word = (item.word || '').trim();
+  const emoji = getEmoji(word);
+  const firstLetter = word[0].toUpperCase();
+  
+  // 진행도
+  document.getElementById('quizQNum').textContent = quizIndex + 1;
+  document.getElementById('quizProgress').style.width = `${((quizIndex) / quizTotal) * 100}%`;
+  
+  // 화면: 이모지 + 안내
+  const qContent = document.getElementById('questionContent');
+  const qPrompt = document.getElementById('questionPrompt');
+  qPrompt.textContent = '어떤 글자로 시작할까?';
+  qContent.textContent = emoji;
+  qContent.className = 'question-content';
+  
+  // 오답 3개 알파벳 만들기 (정답 알파벳 제외)
+  const allLetters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
+  const otherLetters = allLetters.filter(l => l !== firstLetter);
+  shuffle(otherLetters);
+  const wrongLetters = otherLetters.slice(0, 3);
+  
+  const choices = [
+    { display: firstLetter, value: firstLetter, correct: true },
+    ...wrongLetters.map(l => ({ display: l, value: l, correct: false }))
+  ];
+  shuffle(choices);
+  
+  const choicesEl = document.getElementById('choices');
+  choicesEl.innerHTML = '';
+  choices.forEach(c => {
+    const btn = document.createElement('button');
+    btn.className = 'choice text';
+    btn.textContent = c.display;
+    btn.addEventListener('click', () => handleAnswer(btn, c.correct, item));
+    choicesEl.appendChild(btn);
+  });
 }
 
 function showResult() {
