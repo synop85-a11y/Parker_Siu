@@ -155,22 +155,41 @@ html, body {
   position: relative; z-index: 1;
 }
 .book-progress {
-  background: #F0F0F0;
-  border: 2px solid #2C2C2C;
-  height: 2vh;
-  border-radius: 1vh;
-  width: 100%;
-  overflow: hidden;
-  position: relative; z-index: 1;
+  display: none;
 }
 .book-progress-fill {
-  height: 100%;
-  background: linear-gradient(90deg, #FFD700, #FF8C00);
-  transition: width 0.5s;
+  display: none;
 }
 .book-progress-text {
-  font-size: 1.8vh; color: #666;
-  position: relative; z-index: 1;
+  display: none;
+}
+
+/* 클리어 배지 */
+.clear-badge {
+  position: absolute;
+  top: 0.8vh; right: 0.8vh;
+  background: linear-gradient(135deg, #FFD93D 0%, #FF9F1C 100%);
+  color: #2C2C2C;
+  font-size: 2vh; font-weight: 700;
+  padding: 0.4vh 1.2vh;
+  border-radius: 99px;
+  border: 0.3vh solid #fff;
+  box-shadow: 0 0.3vh 0.8vh rgba(0,0,0,0.3);
+  z-index: 2;
+}
+.book-card.cleared {
+  background: linear-gradient(135deg, #FFF9E6 0%, #FFFEFA 100%);
+}
+.book-card.cleared::before {
+  background: linear-gradient(135deg, #FFD93D 0%, #FF9F1C 100%) !important;
+}
+.unit-card.cleared {
+  background: linear-gradient(135deg, #E8F8E8 0%, #FFFFFF 100%);
+}
+.unit-card .clear-mark {
+  position: absolute;
+  top: 0.5vh; right: 0.5vh;
+  font-size: 3vh;
 }
 
 /* 유닛 선택 화면 */
@@ -1815,15 +1834,14 @@ function renderHome() {
   const grid = document.getElementById('booksGrid');
   grid.innerHTML = '';
   Object.entries(BOOK_INFO).forEach(([bookId, info]) => {
-    const stats = getBookStats(bookId);
+    const cleared = isBookCleared(bookId);
     const card = document.createElement('div');
-    card.className = 'book-card';
+    card.className = 'book-card' + (cleared ? ' cleared' : '');
     card.dataset.color = info.color;
     card.innerHTML = `
+      ${cleared ? '<div class="clear-badge">✅ 클리어!</div>' : ''}
       <div class="book-icon">${info.icon}</div>
       <div class="book-name">${info.name}</div>
-      <div class="book-progress"><div class="book-progress-fill" style="width: ${stats.progressPercent}%"></div></div>
-      <div class="book-progress-text">⭐ ${stats.stars} / ${stats.totalItems}</div>
     `;
     card.addEventListener('click', () => {
       playSound('tap');
@@ -1832,6 +1850,46 @@ function renderHome() {
     grid.appendChild(card);
   });
   showScreen('screen-home');
+}
+
+// ============================
+// 챕터/책 클리어 체크
+// ============================
+function isChapterCleared(items) {
+  // 챕터의 모든 단어가 1번 이상 맞춰졌으면 클리어
+  if (!items || items.length === 0) return false;
+  const p = loadProgress();
+  return items.every(it => {
+    const prog = p[it.id];
+    return prog && prog.correct >= 1;
+  });
+}
+
+function isBookCleared(bookId) {
+  // 특별 책 (책6/7/8) 는 별도 풀
+  if (bookId === 'book6_first_letter') {
+    const pool = getFirstLetterPool();
+    return isChapterCleared(pool);
+  }
+  if (bookId === 'book7_writing') {
+    const p = loadProgress();
+    return 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('').every(l => {
+      const prog = p[`writing_${l}`];
+      return prog && prog.correct >= 1;
+    });
+  }
+  if (bookId === 'book8_case_match') {
+    const p = loadProgress();
+    return 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('').every(l => {
+      const prog = p[`case_match_${l}`];
+      return prog && prog.correct >= 1;
+    });
+  }
+  
+  // 일반 책: 출제 가능한 단어 모두 클리어
+  const PLAYABLE_TYPES = ['vocab', 'vocabulary', 'phonics_word', 'content_vocab', 'letter'];
+  const items = DATA.items.filter(it => it.book === bookId && PLAYABLE_TYPES.includes(it.type));
+  return isChapterCleared(items);
 }
 
 // ============================
@@ -1911,21 +1969,15 @@ function openBook(bookId) {
     groups.forEach(g => {
       const groupItems = pool.filter(it => g.range.includes(it.word[0].toUpperCase()));
       if (groupItems.length < 4) return;
-      const p = loadProgress();
-      let stars = 0;
-      groupItems.forEach(it => {
-        const prog = p[it.id] || { level: 0 };
-        if (prog.level >= 5) stars++;
-      });
-      const starDisplay = stars > 0 ? '⭐'.repeat(Math.min(3, Math.ceil(stars / Math.max(1, groupItems.length / 3)))) : '';
+      const cleared = isChapterCleared(groupItems);
       
       const card = document.createElement('div');
-      card.className = 'unit-card';
+      card.className = 'unit-card' + (cleared ? ' cleared' : '');
       card.innerHTML = `
+        ${cleared ? '<div class="clear-mark">✅</div>' : ''}
         <div class="unit-emoji">${g.emoji}</div>
         <div class="unit-name">${g.name}</div>
         <div class="unit-count">${groupItems.length}개 단어</div>
-        <div class="unit-stars">${starDisplay || '⚪⚪⚪'}</div>
       `;
       card.addEventListener('click', () => {
         playSound('tap');
@@ -1964,9 +2016,12 @@ function openBook(bookId) {
       { name: 'S-Z', letters: 'STUVWXYZ'.split(''), emoji: '🇸' }
     ];
     groups.forEach(g => {
+      const fakeItems = g.letters.map(l => ({ id: `writing_${l}` }));
+      const cleared = isChapterCleared(fakeItems);
       const card = document.createElement('div');
-      card.className = 'unit-card';
+      card.className = 'unit-card' + (cleared ? ' cleared' : '');
       card.innerHTML = `
+        ${cleared ? '<div class="clear-mark">✅</div>' : ''}
         <div class="unit-emoji">${g.emoji}</div>
         <div class="unit-name">${g.name}</div>
         <div class="unit-count">${g.letters.length}개 알파벳</div>
@@ -2006,9 +2061,12 @@ function openBook(bookId) {
       { name: 'S-Z', letters: 'STUVWXYZ'.split(''), emoji: '🇸' }
     ];
     groups.forEach(g => {
+      const fakeItems = g.letters.map(l => ({ id: `case_match_${l}` }));
+      const cleared = isChapterCleared(fakeItems);
       const card = document.createElement('div');
-      card.className = 'unit-card';
+      card.className = 'unit-card' + (cleared ? ' cleared' : '');
       card.innerHTML = `
+        ${cleared ? '<div class="clear-mark">✅</div>' : ''}
         <div class="unit-emoji">${g.emoji}</div>
         <div class="unit-name">${g.name}</div>
         <div class="unit-count">${g.letters.length}개 알파벳</div>
@@ -2054,23 +2112,19 @@ function openBook(bookId) {
 
   // 유닛별 카드
   Object.entries(groups).forEach(([groupName, groupItems]) => {
-    const p = loadProgress();
-    let stars = 0;
-    groupItems.forEach(it => {
-      const prog = p[it.id] || { level: 0 };
-      if (prog.level >= 5) stars++;
-    });
-    const starDisplay = stars > 0 ? '⭐'.repeat(Math.min(3, Math.ceil(stars / Math.max(1, groupItems.length / 3)))) : '';
+    // 출제 가능한 단어만 (sentence, sight_word 제외)
+    const PLAYABLE_TYPES = ['vocab', 'vocabulary', 'phonics_word', 'content_vocab', 'letter'];
+    const playableItems = groupItems.filter(it => PLAYABLE_TYPES.includes(it.type));
+    const cleared = playableItems.length > 0 && isChapterCleared(playableItems);
     
     const card = document.createElement('div');
-    card.className = 'unit-card';
-    // 첫 단어의 이모지를 카드 아이콘으로 (ETC는 ✨)
+    card.className = 'unit-card' + (cleared ? ' cleared' : '');
     const firstEmoji = groupName.startsWith('✨') ? '✨' : (getEmoji(groupItems[0].word || groupItems[0].letter || '') || '📖');
     card.innerHTML = `
+      ${cleared ? '<div class="clear-mark">✅</div>' : ''}
       <div class="unit-emoji">${firstEmoji}</div>
       <div class="unit-name">${groupName}</div>
       <div class="unit-count">${groupItems.length}개 단어</div>
-      <div class="unit-stars">${starDisplay || '⚪⚪⚪'}</div>
     `;
     card.addEventListener('click', () => {
       playSound('tap');
@@ -2547,6 +2601,12 @@ function completeWriting() {
     playSound('correct');
     quizCorrect++;
     addStars(1);
+    
+    // 쓰기 진행도 저장 (클리어 체크용)
+    const letter = writingLetters[writingIndex];
+    const fakeItem = { id: `writing_${letter}` };
+    updateItemProgress(fakeItem.id, true);
+    
     const btn = event.target;
     spawnConfetti(btn);
     flyStarTo(btn);
