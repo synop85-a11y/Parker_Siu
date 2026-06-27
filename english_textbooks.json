@@ -1,16 +1,19 @@
 {
   "meta": {
-    "version": "3.0",
+    "version": "4.0",
     "target_age": 6,
     "total_textbooks": 5,
-    "purpose": "HTML 게임 자산용 - 1단계: 교재 원본 문제 정리",
-    "total_items": 297,
+    "purpose": "HTML 게임 자산용 - Quarter 1(교재+ETC) + Quarter 2(단원평가 대비)",
+    "total_items": 526,
     "items_by_book": {
-      "book1_sight_words": 58,
-      "book2_alphabet_phonics": 103,
-      "book3_common_core_sight_words": 56,
-      "book4_themed_speaking_vol2": 32,
-      "book5_themed_speaking_vol1": 48
+      "book1_sight_words": 80,
+      "book2_alphabet_phonics": 115,
+      "book3_common_core_sight_words": 80,
+      "book4_themed_speaking_vol2": 57,
+      "book5_themed_speaking_vol1": 70,
+      "book9_phonics_sound": 24,
+      "book10_my_family": 56,
+      "book11_our_community": 44
     },
     "items_by_type": {
       "vocabulary": 86,
@@ -20,7 +23,8 @@
       "phonics_word": 77,
       "content_vocab": 24,
       "sentence_pattern": 13,
-      "place_action": 5
+      "place_action": 5,
+      "vocab": 229
     },
     "stages": {
       "1_textbook": "교재 원본 문제 (현재 단계)",
@@ -28,7 +32,32 @@
       "3_trace": "글씨 쓰기 trace 문제 약 100개 (예정)"
     },
     "items_by_source": {
-      "textbook": 297
+      "textbook": 297,
+      "etc": 105,
+      "exam2": 124
+    },
+    "quarters": {
+      "1": {
+        "label": "Quarter 1",
+        "books": [
+          "book1_sight_words",
+          "book2_alphabet_phonics",
+          "book3_common_core_sight_words",
+          "book4_themed_speaking_vol2",
+          "book5_themed_speaking_vol1",
+          "book6_first_letter",
+          "book7_writing",
+          "book8_case_match"
+        ]
+      },
+      "2": {
+        "label": "Quarter 2 (단원평가 대비)",
+        "books": [
+          "book9_phonics_sound",
+          "book10_my_family",
+          "book11_our_community"
+        ]
+      }
     }
   },
   "textbooks": [
@@ -948,6 +977,27 @@
         }
       ],
       "listening_script_page": 47
+    },
+    {
+      "id": "book9_phonics_sound",
+      "title": "파닉스 소리 (B~Z)",
+      "quarter": 2,
+      "structure": "알파벳 소리별 단어, 6 유닛",
+      "source": "exam2"
+    },
+    {
+      "id": "book10_my_family",
+      "title": "My Family (Vol.3)",
+      "quarter": 2,
+      "structure": "4 유닛(가족/동물/가구·방/캐릭터) + 사이트워드 24",
+      "source": "exam2"
+    },
+    {
+      "id": "book11_our_community",
+      "title": "Our Community (Vol.4)",
+      "quarter": 2,
+      "structure": "2 유닛(직업·장소/마을) + 사이트워드 25",
+      "source": "exam2"
     }
   ],
   "progression_system": {
@@ -6516,6 +6566,1791 @@
       "word": "math",
       "korean": "수학",
       "source": "etc",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "book9_1_vocab_boat",
+      "book": "book9_phonics_sound",
+      "unit": 1,
+      "type": "vocab",
+      "word": "boat",
+      "korean": "보트",
+      "source": "exam2",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "book9_1_vocab_cat",
+      "book": "book9_phonics_sound",
+      "unit": 1,
+      "type": "vocab",
+      "word": "cat",
+      "korean": "고양이",
+      "source": "exam2",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "book9_1_vocab_duck",
+      "book": "book9_phonics_sound",
+      "unit": 1,
+      "type": "vocab",
+      "word": "duck",
+      "korean": "오리",
+      "source": "exam2",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "book9_1_vocab_fan",
+      "book": "book9_phonics_sound",
+      "unit": 1,
+      "type": "vocab",
+      "word": "fan",
+      "korean": "선풍기",
+      "source": "exam2",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "book9_2_vocab_goat",
+      "book": "book9_phonics_sound",
+      "unit": 2,
+      "type": "vocab",
+      "word": "goat",
+      "korean": "염소",
+      "source": "exam2",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "book9_2_vocab_hen",
+      "book": "book9_phonics_sound",
+      "unit": 2,
+      "type": "vocab",
+      "word": "hen",
+      "korean": "암탉",
+      "source": "exam2",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "book9_2_vocab_igloo",
+      "book": "book9_phonics_sound",
+      "unit": 2,
+      "type": "vocab",
+      "word": "igloo",
+      "korean": "이글루",
+      "source": "exam2",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "book9_2_vocab_juice",
+      "book": "book9_phonics_sound",
+      "unit": 2,
+      "type": "vocab",
+      "word": "juice",
+      "korean": "주스",
+      "source": "exam2",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "book9_3_vocab_kite",
+      "book": "book9_phonics_sound",
+      "unit": 3,
+      "type": "vocab",
+      "word": "kite",
+      "korean": "연",
+      "source": "exam2",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "book9_3_vocab_lion",
+      "book": "book9_phonics_sound",
+      "unit": 3,
+      "type": "vocab",
+      "word": "lion",
+      "korean": "사자",
+      "source": "exam2",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "book9_3_vocab_milk",
+      "book": "book9_phonics_sound",
+      "unit": 3,
+      "type": "vocab",
+      "word": "milk",
+      "korean": "우유",
+      "source": "exam2",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "book9_3_vocab_nest",
+      "book": "book9_phonics_sound",
+      "unit": 3,
+      "type": "vocab",
+      "word": "nest",
+      "korean": "둥지",
+      "source": "exam2",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "book9_4_vocab_pig",
+      "book": "book9_phonics_sound",
+      "unit": 4,
+      "type": "vocab",
+      "word": "pig",
+      "korean": "돼지",
+      "source": "exam2",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "book9_4_vocab_queen",
+      "book": "book9_phonics_sound",
+      "unit": 4,
+      "type": "vocab",
+      "word": "queen",
+      "korean": "여왕",
+      "source": "exam2",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "book9_4_vocab_rabbit",
+      "book": "book9_phonics_sound",
+      "unit": 4,
+      "type": "vocab",
+      "word": "rabbit",
+      "korean": "토끼",
+      "source": "exam2",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "book9_4_vocab_sun",
+      "book": "book9_phonics_sound",
+      "unit": 4,
+      "type": "vocab",
+      "word": "sun",
+      "korean": "해",
+      "source": "exam2",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "book9_5_vocab_turtle",
+      "book": "book9_phonics_sound",
+      "unit": 5,
+      "type": "vocab",
+      "word": "turtle",
+      "korean": "거북이",
+      "source": "exam2",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "book9_5_vocab_van",
+      "book": "book9_phonics_sound",
+      "unit": 5,
+      "type": "vocab",
+      "word": "van",
+      "korean": "승합차",
+      "source": "exam2",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "book9_5_vocab_watch",
+      "book": "book9_phonics_sound",
+      "unit": 5,
+      "type": "vocab",
+      "word": "watch",
+      "korean": "시계",
+      "source": "exam2",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "book9_5_vocab_fox",
+      "book": "book9_phonics_sound",
+      "unit": 5,
+      "type": "vocab",
+      "word": "fox",
+      "korean": "여우",
+      "source": "exam2",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "book9_6_vocab_yo_yo",
+      "book": "book9_phonics_sound",
+      "unit": 6,
+      "type": "vocab",
+      "word": "yo-yo",
+      "korean": "요요",
+      "source": "exam2",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "book9_6_vocab_yacht",
+      "book": "book9_phonics_sound",
+      "unit": 6,
+      "type": "vocab",
+      "word": "yacht",
+      "korean": "요트",
+      "source": "exam2",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "book9_6_vocab_zebra",
+      "book": "book9_phonics_sound",
+      "unit": 6,
+      "type": "vocab",
+      "word": "zebra",
+      "korean": "얼룩말",
+      "source": "exam2",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "book9_6_vocab_zoo",
+      "book": "book9_phonics_sound",
+      "unit": 6,
+      "type": "vocab",
+      "word": "zoo",
+      "korean": "동물원",
+      "source": "exam2",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "book1_1_vocab_family",
+      "book": "book10_my_family",
+      "unit": 1,
+      "type": "vocab",
+      "word": "family",
+      "korean": "가족",
+      "source": "exam2",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "book1_1_vocab_brother",
+      "book": "book10_my_family",
+      "unit": 1,
+      "type": "vocab",
+      "word": "brother",
+      "korean": "형제",
+      "source": "exam2",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "book1_1_vocab_sister",
+      "book": "book10_my_family",
+      "unit": 1,
+      "type": "vocab",
+      "word": "sister",
+      "korean": "자매",
+      "source": "exam2",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "book1_1_vocab_cousin",
+      "book": "book10_my_family",
+      "unit": 1,
+      "type": "vocab",
+      "word": "cousin",
+      "korean": "사촌",
+      "source": "exam2",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "book1_1_vocab_uncle",
+      "book": "book10_my_family",
+      "unit": 1,
+      "type": "vocab",
+      "word": "uncle",
+      "korean": "삼촌",
+      "source": "exam2",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "book1_1_vocab_aunt",
+      "book": "book10_my_family",
+      "unit": 1,
+      "type": "vocab",
+      "word": "aunt",
+      "korean": "이모",
+      "source": "exam2",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "book1_1_vocab_father",
+      "book": "book10_my_family",
+      "unit": 1,
+      "type": "vocab",
+      "word": "father",
+      "korean": "아빠",
+      "source": "exam2",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "book1_1_vocab_mother",
+      "book": "book10_my_family",
+      "unit": 1,
+      "type": "vocab",
+      "word": "mother",
+      "korean": "엄마",
+      "source": "exam2",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "book1_1_vocab_grandfather",
+      "book": "book10_my_family",
+      "unit": 1,
+      "type": "vocab",
+      "word": "grandfather",
+      "korean": "할아버지",
+      "source": "exam2",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "book1_1_vocab_grandmother",
+      "book": "book10_my_family",
+      "unit": 1,
+      "type": "vocab",
+      "word": "grandmother",
+      "korean": "할머니",
+      "source": "exam2",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "book1_2_vocab_bird",
+      "book": "book10_my_family",
+      "unit": 2,
+      "type": "vocab",
+      "word": "bird",
+      "korean": "새",
+      "source": "exam2",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "book1_2_vocab_bug",
+      "book": "book10_my_family",
+      "unit": 2,
+      "type": "vocab",
+      "word": "bug",
+      "korean": "벌레",
+      "source": "exam2",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "book1_2_vocab_kangaroo",
+      "book": "book10_my_family",
+      "unit": 2,
+      "type": "vocab",
+      "word": "kangaroo",
+      "korean": "캥거루",
+      "source": "exam2",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "book1_2_vocab_frog",
+      "book": "book10_my_family",
+      "unit": 2,
+      "type": "vocab",
+      "word": "frog",
+      "korean": "개구리",
+      "source": "exam2",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "book1_2_vocab_dog",
+      "book": "book10_my_family",
+      "unit": 2,
+      "type": "vocab",
+      "word": "dog",
+      "korean": "강아지",
+      "source": "exam2",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "book1_2_vocab_cat",
+      "book": "book10_my_family",
+      "unit": 2,
+      "type": "vocab",
+      "word": "cat",
+      "korean": "고양이",
+      "source": "exam2",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "book1_3_vocab_lamp",
+      "book": "book10_my_family",
+      "unit": 3,
+      "type": "vocab",
+      "word": "lamp",
+      "korean": "램프",
+      "source": "exam2",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "book1_3_vocab_bed",
+      "book": "book10_my_family",
+      "unit": 3,
+      "type": "vocab",
+      "word": "bed",
+      "korean": "침대",
+      "source": "exam2",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "book1_3_vocab_sofa",
+      "book": "book10_my_family",
+      "unit": 3,
+      "type": "vocab",
+      "word": "sofa",
+      "korean": "소파",
+      "source": "exam2",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "book1_3_vocab_table",
+      "book": "book10_my_family",
+      "unit": 3,
+      "type": "vocab",
+      "word": "table",
+      "korean": "식탁",
+      "source": "exam2",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "book1_3_vocab_chair",
+      "book": "book10_my_family",
+      "unit": 3,
+      "type": "vocab",
+      "word": "chair",
+      "korean": "의자",
+      "source": "exam2",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "book1_3_vocab_mirror",
+      "book": "book10_my_family",
+      "unit": 3,
+      "type": "vocab",
+      "word": "mirror",
+      "korean": "거울",
+      "source": "exam2",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "book1_3_vocab_kitchen",
+      "book": "book10_my_family",
+      "unit": 3,
+      "type": "vocab",
+      "word": "kitchen",
+      "korean": "부엌",
+      "source": "exam2",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "book1_3_vocab_living_room",
+      "book": "book10_my_family",
+      "unit": 3,
+      "type": "vocab",
+      "word": "living room",
+      "korean": "거실",
+      "source": "exam2",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "book1_3_vocab_bedroom",
+      "book": "book10_my_family",
+      "unit": 3,
+      "type": "vocab",
+      "word": "bedroom",
+      "korean": "침실",
+      "source": "exam2",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "book1_3_vocab_bathroom",
+      "book": "book10_my_family",
+      "unit": 3,
+      "type": "vocab",
+      "word": "bathroom",
+      "korean": "욕실",
+      "source": "exam2",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "book1_4_vocab_clown",
+      "book": "book10_my_family",
+      "unit": 4,
+      "type": "vocab",
+      "word": "clown",
+      "korean": "광대",
+      "source": "exam2",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "book1_4_vocab_hat",
+      "book": "book10_my_family",
+      "unit": 4,
+      "type": "vocab",
+      "word": "hat",
+      "korean": "모자",
+      "source": "exam2",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "book1_4_vocab_princess",
+      "book": "book10_my_family",
+      "unit": 4,
+      "type": "vocab",
+      "word": "princess",
+      "korean": "공주",
+      "source": "exam2",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "book1_4_vocab_crown",
+      "book": "book10_my_family",
+      "unit": 4,
+      "type": "vocab",
+      "word": "crown",
+      "korean": "왕관",
+      "source": "exam2",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "book1_4_vocab_pirate",
+      "book": "book10_my_family",
+      "unit": 4,
+      "type": "vocab",
+      "word": "pirate",
+      "korean": "해적",
+      "source": "exam2",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "book1_4_vocab_flag",
+      "book": "book10_my_family",
+      "unit": 4,
+      "type": "vocab",
+      "word": "flag",
+      "korean": "깃발",
+      "source": "exam2",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "book1_5_sight_have",
+      "book": "book10_my_family",
+      "unit": 5,
+      "type": "vocab",
+      "word": "have",
+      "korean": "",
+      "is_sight_word": true,
+      "source": "exam2",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "book1_5_sight_how",
+      "book": "book10_my_family",
+      "unit": 5,
+      "type": "vocab",
+      "word": "how",
+      "korean": "",
+      "is_sight_word": true,
+      "source": "exam2",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "book1_5_sight_many",
+      "book": "book10_my_family",
+      "unit": 5,
+      "type": "vocab",
+      "word": "many",
+      "korean": "",
+      "is_sight_word": true,
+      "source": "exam2",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "book1_5_sight_one",
+      "book": "book10_my_family",
+      "unit": 5,
+      "type": "vocab",
+      "word": "one",
+      "korean": "",
+      "is_sight_word": true,
+      "source": "exam2",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "book1_5_sight_two",
+      "book": "book10_my_family",
+      "unit": 5,
+      "type": "vocab",
+      "word": "two",
+      "korean": "",
+      "is_sight_word": true,
+      "source": "exam2",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "book1_5_sight_three",
+      "book": "book10_my_family",
+      "unit": 5,
+      "type": "vocab",
+      "word": "three",
+      "korean": "",
+      "is_sight_word": true,
+      "source": "exam2",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "book1_5_sight_come",
+      "book": "book10_my_family",
+      "unit": 5,
+      "type": "vocab",
+      "word": "come",
+      "korean": "",
+      "is_sight_word": true,
+      "source": "exam2",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "book1_5_sight_dad",
+      "book": "book10_my_family",
+      "unit": 5,
+      "type": "vocab",
+      "word": "dad",
+      "korean": "",
+      "is_sight_word": true,
+      "source": "exam2",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "book1_5_sight_fly",
+      "book": "book10_my_family",
+      "unit": 5,
+      "type": "vocab",
+      "word": "fly",
+      "korean": "",
+      "is_sight_word": true,
+      "source": "exam2",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "book1_5_sight_hop",
+      "book": "book10_my_family",
+      "unit": 5,
+      "type": "vocab",
+      "word": "hop",
+      "korean": "",
+      "is_sight_word": true,
+      "source": "exam2",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "book1_5_sight_run",
+      "book": "book10_my_family",
+      "unit": 5,
+      "type": "vocab",
+      "word": "run",
+      "korean": "",
+      "is_sight_word": true,
+      "source": "exam2",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "book1_5_sight_away",
+      "book": "book10_my_family",
+      "unit": 5,
+      "type": "vocab",
+      "word": "away",
+      "korean": "",
+      "is_sight_word": true,
+      "source": "exam2",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "book1_5_sight_where",
+      "book": "book10_my_family",
+      "unit": 5,
+      "type": "vocab",
+      "word": "where",
+      "korean": "",
+      "is_sight_word": true,
+      "source": "exam2",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "book1_5_sight_there",
+      "book": "book10_my_family",
+      "unit": 5,
+      "type": "vocab",
+      "word": "there",
+      "korean": "",
+      "is_sight_word": true,
+      "source": "exam2",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "book1_5_sight_her",
+      "book": "book10_my_family",
+      "unit": 5,
+      "type": "vocab",
+      "word": "her",
+      "korean": "",
+      "is_sight_word": true,
+      "source": "exam2",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "book1_5_sight_him",
+      "book": "book10_my_family",
+      "unit": 5,
+      "type": "vocab",
+      "word": "him",
+      "korean": "",
+      "is_sight_word": true,
+      "source": "exam2",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "book1_5_sight_find",
+      "book": "book10_my_family",
+      "unit": 5,
+      "type": "vocab",
+      "word": "find",
+      "korean": "",
+      "is_sight_word": true,
+      "source": "exam2",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "book1_5_sight_in",
+      "book": "book10_my_family",
+      "unit": 5,
+      "type": "vocab",
+      "word": "in",
+      "korean": "",
+      "is_sight_word": true,
+      "source": "exam2",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "book1_5_sight_draw",
+      "book": "book10_my_family",
+      "unit": 5,
+      "type": "vocab",
+      "word": "draw",
+      "korean": "",
+      "is_sight_word": true,
+      "source": "exam2",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "book1_5_sight_blue",
+      "book": "book10_my_family",
+      "unit": 5,
+      "type": "vocab",
+      "word": "blue",
+      "korean": "",
+      "is_sight_word": true,
+      "source": "exam2",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "book1_5_sight_yellow",
+      "book": "book10_my_family",
+      "unit": 5,
+      "type": "vocab",
+      "word": "yellow",
+      "korean": "",
+      "is_sight_word": true,
+      "source": "exam2",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "book1_5_sight_say",
+      "book": "book10_my_family",
+      "unit": 5,
+      "type": "vocab",
+      "word": "say",
+      "korean": "",
+      "is_sight_word": true,
+      "source": "exam2",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "book1_5_sight_red",
+      "book": "book10_my_family",
+      "unit": 5,
+      "type": "vocab",
+      "word": "red",
+      "korean": "",
+      "is_sight_word": true,
+      "source": "exam2",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "book1_5_sight_they",
+      "book": "book10_my_family",
+      "unit": 5,
+      "type": "vocab",
+      "word": "they",
+      "korean": "",
+      "is_sight_word": true,
+      "source": "exam2",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "book1_1_vocab_mail_carrier",
+      "book": "book11_our_community",
+      "unit": 1,
+      "type": "vocab",
+      "word": "mail carrier",
+      "korean": "집배원",
+      "source": "exam2",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "book1_1_vocab_post_office",
+      "book": "book11_our_community",
+      "unit": 1,
+      "type": "vocab",
+      "word": "post office",
+      "korean": "우체국",
+      "source": "exam2",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "book1_1_vocab_police_officer",
+      "book": "book11_our_community",
+      "unit": 1,
+      "type": "vocab",
+      "word": "police officer",
+      "korean": "경찰관",
+      "source": "exam2",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "book1_1_vocab_fire_fighter",
+      "book": "book11_our_community",
+      "unit": 1,
+      "type": "vocab",
+      "word": "fire fighter",
+      "korean": "소방관",
+      "source": "exam2",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "book1_1_vocab_park",
+      "book": "book11_our_community",
+      "unit": 1,
+      "type": "vocab",
+      "word": "park",
+      "korean": "공원",
+      "source": "exam2",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "book1_1_vocab_gym",
+      "book": "book11_our_community",
+      "unit": 1,
+      "type": "vocab",
+      "word": "gym",
+      "korean": "체육관",
+      "source": "exam2",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "book1_1_vocab_restaurant",
+      "book": "book11_our_community",
+      "unit": 1,
+      "type": "vocab",
+      "word": "restaurant",
+      "korean": "식당",
+      "source": "exam2",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "book1_1_vocab_bookstore",
+      "book": "book11_our_community",
+      "unit": 1,
+      "type": "vocab",
+      "word": "bookstore",
+      "korean": "서점",
+      "source": "exam2",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "book1_1_vocab_supermarket",
+      "book": "book11_our_community",
+      "unit": 1,
+      "type": "vocab",
+      "word": "supermarket",
+      "korean": "슈퍼마켓",
+      "source": "exam2",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "book1_1_vocab_school",
+      "book": "book11_our_community",
+      "unit": 1,
+      "type": "vocab",
+      "word": "school",
+      "korean": "학교",
+      "source": "exam2",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "book1_1_vocab_teacher",
+      "book": "book11_our_community",
+      "unit": 1,
+      "type": "vocab",
+      "word": "teacher",
+      "korean": "선생님",
+      "source": "exam2",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "book1_1_vocab_vet",
+      "book": "book11_our_community",
+      "unit": 1,
+      "type": "vocab",
+      "word": "vet",
+      "korean": "수의사",
+      "source": "exam2",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "book1_1_vocab_animal_hospital",
+      "book": "book11_our_community",
+      "unit": 1,
+      "type": "vocab",
+      "word": "animal hospital",
+      "korean": "동물병원",
+      "source": "exam2",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "book1_2_vocab_car",
+      "book": "book11_our_community",
+      "unit": 2,
+      "type": "vocab",
+      "word": "car",
+      "korean": "자동차",
+      "source": "exam2",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "book1_2_vocab_town",
+      "book": "book11_our_community",
+      "unit": 2,
+      "type": "vocab",
+      "word": "town",
+      "korean": "마을",
+      "source": "exam2",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "book1_2_vocab_street",
+      "book": "book11_our_community",
+      "unit": 2,
+      "type": "vocab",
+      "word": "street",
+      "korean": "거리",
+      "source": "exam2",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "book1_2_vocab_yard",
+      "book": "book11_our_community",
+      "unit": 2,
+      "type": "vocab",
+      "word": "yard",
+      "korean": "마당",
+      "source": "exam2",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "book1_2_vocab_room",
+      "book": "book11_our_community",
+      "unit": 2,
+      "type": "vocab",
+      "word": "room",
+      "korean": "방",
+      "source": "exam2",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "book1_2_vocab_sound",
+      "book": "book11_our_community",
+      "unit": 2,
+      "type": "vocab",
+      "word": "sound",
+      "korean": "소리",
+      "source": "exam2",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "book1_3_sight_we",
+      "book": "book11_our_community",
+      "unit": 3,
+      "type": "vocab",
+      "word": "we",
+      "korean": "",
+      "is_sight_word": true,
+      "source": "exam2",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "book1_3_sight_saw",
+      "book": "book11_our_community",
+      "unit": 3,
+      "type": "vocab",
+      "word": "saw",
+      "korean": "",
+      "is_sight_word": true,
+      "source": "exam2",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "book1_3_sight_said",
+      "book": "book11_our_community",
+      "unit": 3,
+      "type": "vocab",
+      "word": "said",
+      "korean": "",
+      "is_sight_word": true,
+      "source": "exam2",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "book1_3_sight_them",
+      "book": "book11_our_community",
+      "unit": 3,
+      "type": "vocab",
+      "word": "them",
+      "korean": "",
+      "is_sight_word": true,
+      "source": "exam2",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "book1_3_sight_four",
+      "book": "book11_our_community",
+      "unit": 3,
+      "type": "vocab",
+      "word": "four",
+      "korean": "",
+      "is_sight_word": true,
+      "source": "exam2",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "book1_3_sight_five",
+      "book": "book11_our_community",
+      "unit": 3,
+      "type": "vocab",
+      "word": "five",
+      "korean": "",
+      "is_sight_word": true,
+      "source": "exam2",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "book1_3_sight_six",
+      "book": "book11_our_community",
+      "unit": 3,
+      "type": "vocab",
+      "word": "six",
+      "korean": "",
+      "is_sight_word": true,
+      "source": "exam2",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "book1_3_sight_going",
+      "book": "book11_our_community",
+      "unit": 3,
+      "type": "vocab",
+      "word": "going",
+      "korean": "",
+      "is_sight_word": true,
+      "source": "exam2",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "book1_3_sight_jump",
+      "book": "book11_our_community",
+      "unit": 3,
+      "type": "vocab",
+      "word": "jump",
+      "korean": "",
+      "is_sight_word": true,
+      "source": "exam2",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "book1_3_sight_up",
+      "book": "book11_our_community",
+      "unit": 3,
+      "type": "vocab",
+      "word": "up",
+      "korean": "",
+      "is_sight_word": true,
+      "source": "exam2",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "book1_3_sight_down",
+      "book": "book11_our_community",
+      "unit": 3,
+      "type": "vocab",
+      "word": "down",
+      "korean": "",
+      "is_sight_word": true,
+      "source": "exam2",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "book1_3_sight_not",
+      "book": "book11_our_community",
+      "unit": 3,
+      "type": "vocab",
+      "word": "not",
+      "korean": "",
+      "is_sight_word": true,
+      "source": "exam2",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "book1_3_sight_about",
+      "book": "book11_our_community",
+      "unit": 3,
+      "type": "vocab",
+      "word": "about",
+      "korean": "",
+      "is_sight_word": true,
+      "source": "exam2",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "book1_3_sight_who",
+      "book": "book11_our_community",
+      "unit": 3,
+      "type": "vocab",
+      "word": "who",
+      "korean": "",
+      "is_sight_word": true,
+      "source": "exam2",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "book1_3_sight_love",
+      "book": "book11_our_community",
+      "unit": 3,
+      "type": "vocab",
+      "word": "love",
+      "korean": "",
+      "is_sight_word": true,
+      "source": "exam2",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "book1_3_sight_for",
+      "book": "book11_our_community",
+      "unit": 3,
+      "type": "vocab",
+      "word": "for",
+      "korean": "",
+      "is_sight_word": true,
+      "source": "exam2",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "book1_3_sight_think",
+      "book": "book11_our_community",
+      "unit": 3,
+      "type": "vocab",
+      "word": "think",
+      "korean": "",
+      "is_sight_word": true,
+      "source": "exam2",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "book1_3_sight_help",
+      "book": "book11_our_community",
+      "unit": 3,
+      "type": "vocab",
+      "word": "help",
+      "korean": "",
+      "is_sight_word": true,
+      "source": "exam2",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "book1_3_sight_work",
+      "book": "book11_our_community",
+      "unit": 3,
+      "type": "vocab",
+      "word": "work",
+      "korean": "",
+      "is_sight_word": true,
+      "source": "exam2",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "book1_3_sight_make",
+      "book": "book11_our_community",
+      "unit": 3,
+      "type": "vocab",
+      "word": "make",
+      "korean": "",
+      "is_sight_word": true,
+      "source": "exam2",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "book1_3_sight_black",
+      "book": "book11_our_community",
+      "unit": 3,
+      "type": "vocab",
+      "word": "black",
+      "korean": "",
+      "is_sight_word": true,
+      "source": "exam2",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "book1_3_sight_orange",
+      "book": "book11_our_community",
+      "unit": 3,
+      "type": "vocab",
+      "word": "orange",
+      "korean": "",
+      "is_sight_word": true,
+      "source": "exam2",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "book1_3_sight_green",
+      "book": "book11_our_community",
+      "unit": 3,
+      "type": "vocab",
+      "word": "green",
+      "korean": "",
+      "is_sight_word": true,
+      "source": "exam2",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "book1_3_sight_white",
+      "book": "book11_our_community",
+      "unit": 3,
+      "type": "vocab",
+      "word": "white",
+      "korean": "",
+      "is_sight_word": true,
+      "source": "exam2",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "book1_3_sight_funny",
+      "book": "book11_our_community",
+      "unit": 3,
+      "type": "vocab",
+      "word": "funny",
+      "korean": "",
+      "is_sight_word": true,
+      "source": "exam2",
       "progress": {
         "attempts": 0,
         "correct": 0,

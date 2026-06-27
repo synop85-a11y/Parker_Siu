@@ -919,6 +919,83 @@ html, body {
 }
 .no-stars-msg .small { font-size: 2.3vh; color: #6b7280; margin-top: 1vh; }
 
+/* ===== 쿼터 선택 화면 ===== */
+#screen-quarter {
+  align-items: center;
+  justify-content: center;
+  gap: 4vh;
+}
+.quarter-grid {
+  display: flex;
+  gap: 4vw;
+  width: 100%;
+  max-width: 88vw;
+  justify-content: center;
+}
+.quarter-card {
+  flex: 1;
+  max-width: 38vw;
+  background: white;
+  border: 6px solid #2C2C2C;
+  border-radius: 4vh;
+  padding: 4vh 3vw 3vh;
+  cursor: pointer;
+  box-shadow: 0 10px 0 #2C2C2C;
+  transition: all 0.15s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5vh;
+  position: relative;
+  overflow: hidden;
+}
+.quarter-card:active {
+  transform: translateY(5px);
+  box-shadow: 0 5px 0 #2C2C2C;
+}
+.quarter-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; height: 38%;
+  z-index: 0;
+}
+.quarter-card.q1::before { background: linear-gradient(135deg, #4ECDC4 0%, #44A08D 100%); }
+.quarter-card.q2::before { background: linear-gradient(135deg, #FFD93D 0%, #FF9F1C 100%); }
+.quarter-icon {
+  font-size: 13vh;
+  position: relative; z-index: 1;
+  filter: drop-shadow(3px 3px 0 rgba(0,0,0,0.2));
+  line-height: 1.1;
+}
+.quarter-label {
+  font-size: 4.2vh; font-weight: 700; color: #2C2C2C;
+  position: relative; z-index: 1;
+}
+.quarter-sub {
+  font-size: 2.3vh; color: #888;
+  position: relative; z-index: 1;
+  text-align: center;
+}
+.quarter-progress {
+  position: relative; z-index: 1;
+  width: 90%;
+  height: 2.8vh;
+  background: #eee;
+  border: 0.3vh solid #2C2C2C;
+  border-radius: 99px;
+  overflow: hidden;
+  margin-top: 0.5vh;
+}
+.quarter-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #6EE7B7, #34D399);
+  transition: width 0.4s;
+  width: 0;
+}
+.quarter-progress-text {
+  position: relative; z-index: 1;
+  font-size: 2vh; color: #666;
+}
 </style>
 </head>
 <body>
@@ -931,6 +1008,12 @@ html, body {
 <button class="sound-toggle" id="soundToggle" aria-label="소리">🔊</button>
 
 <div id="app">
+
+  <!-- 쿼터 선택 화면 -->
+  <div class="screen" id="screen-quarter">
+    <h1 class="home-title">🦁 파커-시우 🦁</h1>
+    <div class="quarter-grid" id="quarterGrid"></div>
+  </div>
 
   <!-- 홈 화면 -->
   <div class="screen" id="screen-home">
@@ -947,9 +1030,10 @@ html, body {
         <span class="badge" id="dexBadge">0/50</span>
       </button>
     </div>
+    <button class="btn-back" style="position:absolute; top:2vh; left:3vw; z-index:10;" onclick="goQuarterSelect()">←</button>
     <button class="reset-corner-btn" onclick="confirmReset()" aria-label="초기화">🔄</button>
     <img src="icon-192.png" class="lion-mascot" alt="사자 왕">
-    <h1 class="home-title">🦁 파커-시우 🦁</h1>
+    <h1 class="home-title" id="homeTitle">🦁 파커-시우 🦁</h1>
     <div class="books-grid" id="booksGrid"></div>
   </div>
 
@@ -1182,7 +1266,32 @@ const EMOJI_MAP = {
   'eleven': '1️⃣1️⃣', 'twelve': '1️⃣2️⃣',
   'small': '🐭',
   // 날씨/온도
-  'warm': '🌤️', 'cool': '🌥️', 'bright': '☀️', 'dark': '🌑'
+  'warm': '🌤️', 'cool': '🌥️', 'bright': '☀️', 'dark': '🌑',
+  // ===== Quarter 2 추가 매핑 =====
+  // 파닉스
+  'boat': '🚤',
+  // Vol.3 가족
+  'father': '👨', 'mother': '👩', 'brother': '👦', 'sister': '👧',
+  'grandfather': '👴', 'grandmother': '👵', 'cousin': '🧒',
+  'uncle': '🧔', 'aunt': '👩‍🦰',
+  // Vol.3 동물
+  'bug': '🐛', 'kangaroo': '🦘',
+  // Vol.3 가구/방
+  'lamp': '💡', 'bed': '🛏️', 'sofa': '🛋️',
+  'mirror': '🪞', 'kitchen': '🍳', 'living room': '🛋️',
+  'bedroom': '🛏️', 'bathroom': '🚽',
+  // Vol.3 캐릭터
+  'clown': '🤡', 'princess': '👸', 'crown': '👑',
+  'pirate': '🏴‍☠️', 'flag': '🚩',
+  // Vol.4 직업/장소
+  'mail carrier': '📮', 'post office': '🏤', 'police officer': '👮',
+  'fire fighter': '🧑‍🚒', 'restaurant': '🍽️',
+  'supermarket': '🛒', 'vet': '🧑‍⚕️', 'animal hospital': '🏥',
+  // Vol.4 마을
+  'car': '🚗', 'town': '🏘️', 'street': '🛣️', 'yard': '🏡',
+  'room': '🚪', 'sound': '🔊',
+  // 색/숫자 (사이트워드 중 이모지 가능)
+  'four': '4️⃣', 'five': '5️⃣'
 };
 
 // 도형 단어 분리 매핑
@@ -1199,14 +1308,17 @@ function getEmoji(word) {
 // 책 정보
 // ============================
 const BOOK_INFO = {
-  'book1_sight_words': { name: 'Sight Words', icon: '🐄', color: 1 },
-  'book2_alphabet_phonics': { name: '알파벳 파닉스', icon: '🔤', color: 2 },
-  'book3_common_core_sight_words': { name: 'Common Core', icon: '🎵', color: 3 },
-  'book4_themed_speaking_vol2': { name: 'Spring & Colors', icon: '🌸', color: 4 },
-  'book5_themed_speaking_vol1': { name: 'My School', icon: '🏫', color: 5 },
-  'book6_first_letter': { name: '첫 글자 찾기', icon: '🅰️', color: 6 },
-  'book7_writing': { name: '쓰기', icon: '✍️', color: 7 },
-  'book8_case_match': { name: '대소문자', icon: '🔡', color: 8 }
+  'book1_sight_words': { name: 'Sight Words', icon: '🐄', color: 1, quarter: 1 },
+  'book2_alphabet_phonics': { name: '알파벳 파닉스', icon: '🔤', color: 2, quarter: 1 },
+  'book3_common_core_sight_words': { name: 'Common Core', icon: '🎵', color: 3, quarter: 1 },
+  'book4_themed_speaking_vol2': { name: 'Spring & Colors', icon: '🌸', color: 4, quarter: 1 },
+  'book5_themed_speaking_vol1': { name: 'My School', icon: '🏫', color: 5, quarter: 1 },
+  'book6_first_letter': { name: '첫 글자 찾기', icon: '🅰️', color: 6, quarter: 1 },
+  'book7_writing': { name: '쓰기', icon: '✍️', color: 7, quarter: 1 },
+  'book8_case_match': { name: '대소문자', icon: '🔡', color: 8, quarter: 1 },
+  'book9_phonics_sound': { name: '파닉스 소리', icon: '🔠', color: 2, quarter: 2 },
+  'book10_my_family': { name: 'My Family', icon: '👨‍👩‍👧‍👦', color: 1, quarter: 2 },
+  'book11_our_community': { name: 'Our Community', icon: '🏘️', color: 6, quarter: 2 }
 };
 
 // ============================
@@ -1232,6 +1344,7 @@ function levelInfo(lv) { return LEVELS[lv]; }
 // ============================
 let DATA = null;
 let currentBook = null;
+let currentQuarter = 1;
 let currentUnit = null;
 let quizItems = [];
 let quizIndex = 0;
@@ -1672,7 +1785,7 @@ function confirmReset() {
   localStorage.removeItem(CARDS_KEY);
   
   updateStarDisplay();
-  renderHome();
+  renderQuarterSelect();
   alert('초기화 완료!');
 }
 
@@ -1830,10 +1943,17 @@ function getBookStats(bookId) {
 function renderHome() {
   // 별/도감 카운터 갱신
   updateStarDisplay();
-  
+
+  // 홈 타이틀에 쿼터 표시
+  const titleEl = document.getElementById('homeTitle');
+  if (titleEl) {
+    titleEl.textContent = currentQuarter === 2 ? '✏️ Quarter 2' : '🦁 Quarter 1';
+  }
+
   const grid = document.getElementById('booksGrid');
   grid.innerHTML = '';
-  Object.entries(BOOK_INFO).forEach(([bookId, info]) => {
+  const books = Object.entries(BOOK_INFO).filter(([id, info]) => (info.quarter || 1) === currentQuarter);
+  books.forEach(([bookId, info]) => {
     const cleared = isBookCleared(bookId);
     const card = document.createElement('div');
     card.className = 'book-card' + (cleared ? ' cleared' : '');
@@ -1850,6 +1970,52 @@ function renderHome() {
     grid.appendChild(card);
   });
   showScreen('screen-home');
+}
+
+// ============================
+// 쿼터 선택
+// ============================
+function quarterStats(q) {
+  // 해당 쿼터 책들의 클리어 수 / 전체 책 수
+  const books = Object.entries(BOOK_INFO).filter(([id, info]) => (info.quarter || 1) === q);
+  let cleared = 0;
+  books.forEach(([bookId]) => { if (isBookCleared(bookId)) cleared++; });
+  return { total: books.length, cleared, percent: books.length ? Math.round(cleared / books.length * 100) : 0 };
+}
+
+function renderQuarterSelect() {
+  updateStarDisplay();
+  const grid = document.getElementById('quarterGrid');
+  const q1 = quarterStats(1);
+  const q2 = quarterStats(2);
+  grid.innerHTML = `
+    <div class="quarter-card q1" onclick="selectQuarter(1)">
+      <div class="quarter-icon">🦖</div>
+      <div class="quarter-label">Quarter 1</div>
+      <div class="quarter-sub">책 ${q1.total}권 · 공룡 카드</div>
+      <div class="quarter-progress"><div class="quarter-progress-fill" style="width:${q1.percent}%"></div></div>
+      <div class="quarter-progress-text">${q1.cleared}/${q1.total}권 클리어</div>
+    </div>
+    <div class="quarter-card q2" onclick="selectQuarter(2)">
+      <div class="quarter-icon">👑</div>
+      <div class="quarter-label">Quarter 2</div>
+      <div class="quarter-sub">단원평가 대비 · 위인 카드</div>
+      <div class="quarter-progress"><div class="quarter-progress-fill" style="width:${q2.percent}%"></div></div>
+      <div class="quarter-progress-text">${q2.cleared}/${q2.total}권 클리어</div>
+    </div>
+  `;
+  showScreen('screen-quarter');
+}
+
+function selectQuarter(q) {
+  playSound('tap');
+  currentQuarter = q;
+  renderHome();
+}
+
+function goQuarterSelect() {
+  playSound('tap');
+  renderQuarterSelect();
 }
 
 // ============================
@@ -2770,7 +2936,7 @@ async function init() {
   }
   
   document.getElementById('loading').style.display = 'none';
-  renderHome();
+  renderQuarterSelect();
 
   // 첫 사용자 인터랙션 후 BGM 시작
   document.addEventListener('click', () => {
