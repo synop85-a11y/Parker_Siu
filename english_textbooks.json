@@ -4,7 +4,7 @@
     "target_age": 6,
     "total_textbooks": 5,
     "purpose": "HTML 게임 자산용 - Quarter 1(교재+ETC) + Quarter 2(단원평가 대비)",
-    "total_items": 526,
+    "total_items": 538,
     "items_by_book": {
       "book1_sight_words": 80,
       "book2_alphabet_phonics": 115,
@@ -12,8 +12,8 @@
       "book4_themed_speaking_vol2": 57,
       "book5_themed_speaking_vol1": 70,
       "book9_phonics_sound": 24,
-      "book10_my_family": 56,
-      "book11_our_community": 44
+      "book10_my_family": 60,
+      "book11_our_community": 52
     },
     "items_by_type": {
       "vocabulary": 86,
@@ -24,7 +24,8 @@
       "content_vocab": 24,
       "sentence_pattern": 13,
       "place_action": 5,
-      "vocab": 229
+      "vocab": 229,
+      "sentence_fill": 12
     },
     "stages": {
       "1_textbook": "교재 원본 문제 (현재 단계)",
@@ -34,7 +35,7 @@
     "items_by_source": {
       "textbook": 297,
       "etc": 105,
-      "exam2": 124
+      "exam2": 136
     },
     "quarters": {
       "1": {
@@ -6909,7 +6910,7 @@
       }
     },
     {
-      "id": "book1_1_vocab_family",
+      "id": "book10_1_vocab_family",
       "book": "book10_my_family",
       "unit": 1,
       "type": "vocab",
@@ -6923,7 +6924,7 @@
       }
     },
     {
-      "id": "book1_1_vocab_brother",
+      "id": "book10_1_vocab_brother",
       "book": "book10_my_family",
       "unit": 1,
       "type": "vocab",
@@ -6937,7 +6938,7 @@
       }
     },
     {
-      "id": "book1_1_vocab_sister",
+      "id": "book10_1_vocab_sister",
       "book": "book10_my_family",
       "unit": 1,
       "type": "vocab",
@@ -6951,7 +6952,7 @@
       }
     },
     {
-      "id": "book1_1_vocab_cousin",
+      "id": "book10_1_vocab_cousin",
       "book": "book10_my_family",
       "unit": 1,
       "type": "vocab",
@@ -6965,7 +6966,7 @@
       }
     },
     {
-      "id": "book1_1_vocab_uncle",
+      "id": "book10_1_vocab_uncle",
       "book": "book10_my_family",
       "unit": 1,
       "type": "vocab",
@@ -6979,7 +6980,7 @@
       }
     },
     {
-      "id": "book1_1_vocab_aunt",
+      "id": "book10_1_vocab_aunt",
       "book": "book10_my_family",
       "unit": 1,
       "type": "vocab",
@@ -6993,7 +6994,7 @@
       }
     },
     {
-      "id": "book1_1_vocab_father",
+      "id": "book10_1_vocab_father",
       "book": "book10_my_family",
       "unit": 1,
       "type": "vocab",
@@ -7007,7 +7008,7 @@
       }
     },
     {
-      "id": "book1_1_vocab_mother",
+      "id": "book10_1_vocab_mother",
       "book": "book10_my_family",
       "unit": 1,
       "type": "vocab",
@@ -7021,7 +7022,7 @@
       }
     },
     {
-      "id": "book1_1_vocab_grandfather",
+      "id": "book10_1_vocab_grandfather",
       "book": "book10_my_family",
       "unit": 1,
       "type": "vocab",
@@ -7035,7 +7036,7 @@
       }
     },
     {
-      "id": "book1_1_vocab_grandmother",
+      "id": "book10_1_vocab_grandmother",
       "book": "book10_my_family",
       "unit": 1,
       "type": "vocab",
@@ -7049,7 +7050,7 @@
       }
     },
     {
-      "id": "book1_2_vocab_bird",
+      "id": "book10_2_vocab_bird",
       "book": "book10_my_family",
       "unit": 2,
       "type": "vocab",
@@ -7063,7 +7064,7 @@
       }
     },
     {
-      "id": "book1_2_vocab_bug",
+      "id": "book10_2_vocab_bug",
       "book": "book10_my_family",
       "unit": 2,
       "type": "vocab",
@@ -7077,7 +7078,7 @@
       }
     },
     {
-      "id": "book1_2_vocab_kangaroo",
+      "id": "book10_2_vocab_kangaroo",
       "book": "book10_my_family",
       "unit": 2,
       "type": "vocab",
@@ -7091,7 +7092,7 @@
       }
     },
     {
-      "id": "book1_2_vocab_frog",
+      "id": "book10_2_vocab_frog",
       "book": "book10_my_family",
       "unit": 2,
       "type": "vocab",
@@ -7105,7 +7106,7 @@
       }
     },
     {
-      "id": "book1_2_vocab_dog",
+      "id": "book10_2_vocab_dog",
       "book": "book10_my_family",
       "unit": 2,
       "type": "vocab",
@@ -7119,7 +7120,7 @@
       }
     },
     {
-      "id": "book1_2_vocab_cat",
+      "id": "book10_2_vocab_cat",
       "book": "book10_my_family",
       "unit": 2,
       "type": "vocab",
@@ -7133,7 +7134,7 @@
       }
     },
     {
-      "id": "book1_3_vocab_lamp",
+      "id": "book10_3_vocab_lamp",
       "book": "book10_my_family",
       "unit": 3,
       "type": "vocab",
@@ -7147,7 +7148,7 @@
       }
     },
     {
-      "id": "book1_3_vocab_bed",
+      "id": "book10_3_vocab_bed",
       "book": "book10_my_family",
       "unit": 3,
       "type": "vocab",
@@ -7161,7 +7162,7 @@
       }
     },
     {
-      "id": "book1_3_vocab_sofa",
+      "id": "book10_3_vocab_sofa",
       "book": "book10_my_family",
       "unit": 3,
       "type": "vocab",
@@ -7175,7 +7176,7 @@
       }
     },
     {
-      "id": "book1_3_vocab_table",
+      "id": "book10_3_vocab_table",
       "book": "book10_my_family",
       "unit": 3,
       "type": "vocab",
@@ -7189,7 +7190,7 @@
       }
     },
     {
-      "id": "book1_3_vocab_chair",
+      "id": "book10_3_vocab_chair",
       "book": "book10_my_family",
       "unit": 3,
       "type": "vocab",
@@ -7203,7 +7204,7 @@
       }
     },
     {
-      "id": "book1_3_vocab_mirror",
+      "id": "book10_3_vocab_mirror",
       "book": "book10_my_family",
       "unit": 3,
       "type": "vocab",
@@ -7217,7 +7218,7 @@
       }
     },
     {
-      "id": "book1_3_vocab_kitchen",
+      "id": "book10_3_vocab_kitchen",
       "book": "book10_my_family",
       "unit": 3,
       "type": "vocab",
@@ -7231,7 +7232,7 @@
       }
     },
     {
-      "id": "book1_3_vocab_living_room",
+      "id": "book10_3_vocab_living_room",
       "book": "book10_my_family",
       "unit": 3,
       "type": "vocab",
@@ -7245,7 +7246,7 @@
       }
     },
     {
-      "id": "book1_3_vocab_bedroom",
+      "id": "book10_3_vocab_bedroom",
       "book": "book10_my_family",
       "unit": 3,
       "type": "vocab",
@@ -7259,7 +7260,7 @@
       }
     },
     {
-      "id": "book1_3_vocab_bathroom",
+      "id": "book10_3_vocab_bathroom",
       "book": "book10_my_family",
       "unit": 3,
       "type": "vocab",
@@ -7273,7 +7274,7 @@
       }
     },
     {
-      "id": "book1_4_vocab_clown",
+      "id": "book10_4_vocab_clown",
       "book": "book10_my_family",
       "unit": 4,
       "type": "vocab",
@@ -7287,7 +7288,7 @@
       }
     },
     {
-      "id": "book1_4_vocab_hat",
+      "id": "book10_4_vocab_hat",
       "book": "book10_my_family",
       "unit": 4,
       "type": "vocab",
@@ -7301,7 +7302,7 @@
       }
     },
     {
-      "id": "book1_4_vocab_princess",
+      "id": "book10_4_vocab_princess",
       "book": "book10_my_family",
       "unit": 4,
       "type": "vocab",
@@ -7315,7 +7316,7 @@
       }
     },
     {
-      "id": "book1_4_vocab_crown",
+      "id": "book10_4_vocab_crown",
       "book": "book10_my_family",
       "unit": 4,
       "type": "vocab",
@@ -7329,7 +7330,7 @@
       }
     },
     {
-      "id": "book1_4_vocab_pirate",
+      "id": "book10_4_vocab_pirate",
       "book": "book10_my_family",
       "unit": 4,
       "type": "vocab",
@@ -7343,7 +7344,7 @@
       }
     },
     {
-      "id": "book1_4_vocab_flag",
+      "id": "book10_4_vocab_flag",
       "book": "book10_my_family",
       "unit": 4,
       "type": "vocab",
@@ -7357,7 +7358,7 @@
       }
     },
     {
-      "id": "book1_5_sight_have",
+      "id": "book10_5_sight_have",
       "book": "book10_my_family",
       "unit": 5,
       "type": "vocab",
@@ -7372,7 +7373,7 @@
       }
     },
     {
-      "id": "book1_5_sight_how",
+      "id": "book10_5_sight_how",
       "book": "book10_my_family",
       "unit": 5,
       "type": "vocab",
@@ -7387,7 +7388,7 @@
       }
     },
     {
-      "id": "book1_5_sight_many",
+      "id": "book10_5_sight_many",
       "book": "book10_my_family",
       "unit": 5,
       "type": "vocab",
@@ -7402,7 +7403,7 @@
       }
     },
     {
-      "id": "book1_5_sight_one",
+      "id": "book10_5_sight_one",
       "book": "book10_my_family",
       "unit": 5,
       "type": "vocab",
@@ -7417,7 +7418,7 @@
       }
     },
     {
-      "id": "book1_5_sight_two",
+      "id": "book10_5_sight_two",
       "book": "book10_my_family",
       "unit": 5,
       "type": "vocab",
@@ -7432,7 +7433,7 @@
       }
     },
     {
-      "id": "book1_5_sight_three",
+      "id": "book10_5_sight_three",
       "book": "book10_my_family",
       "unit": 5,
       "type": "vocab",
@@ -7447,7 +7448,7 @@
       }
     },
     {
-      "id": "book1_5_sight_come",
+      "id": "book10_5_sight_come",
       "book": "book10_my_family",
       "unit": 5,
       "type": "vocab",
@@ -7462,7 +7463,7 @@
       }
     },
     {
-      "id": "book1_5_sight_dad",
+      "id": "book10_5_sight_dad",
       "book": "book10_my_family",
       "unit": 5,
       "type": "vocab",
@@ -7477,7 +7478,7 @@
       }
     },
     {
-      "id": "book1_5_sight_fly",
+      "id": "book10_5_sight_fly",
       "book": "book10_my_family",
       "unit": 5,
       "type": "vocab",
@@ -7492,7 +7493,7 @@
       }
     },
     {
-      "id": "book1_5_sight_hop",
+      "id": "book10_5_sight_hop",
       "book": "book10_my_family",
       "unit": 5,
       "type": "vocab",
@@ -7507,7 +7508,7 @@
       }
     },
     {
-      "id": "book1_5_sight_run",
+      "id": "book10_5_sight_run",
       "book": "book10_my_family",
       "unit": 5,
       "type": "vocab",
@@ -7522,7 +7523,7 @@
       }
     },
     {
-      "id": "book1_5_sight_away",
+      "id": "book10_5_sight_away",
       "book": "book10_my_family",
       "unit": 5,
       "type": "vocab",
@@ -7537,7 +7538,7 @@
       }
     },
     {
-      "id": "book1_5_sight_where",
+      "id": "book10_5_sight_where",
       "book": "book10_my_family",
       "unit": 5,
       "type": "vocab",
@@ -7552,7 +7553,7 @@
       }
     },
     {
-      "id": "book1_5_sight_there",
+      "id": "book10_5_sight_there",
       "book": "book10_my_family",
       "unit": 5,
       "type": "vocab",
@@ -7567,7 +7568,7 @@
       }
     },
     {
-      "id": "book1_5_sight_her",
+      "id": "book10_5_sight_her",
       "book": "book10_my_family",
       "unit": 5,
       "type": "vocab",
@@ -7582,7 +7583,7 @@
       }
     },
     {
-      "id": "book1_5_sight_him",
+      "id": "book10_5_sight_him",
       "book": "book10_my_family",
       "unit": 5,
       "type": "vocab",
@@ -7597,7 +7598,7 @@
       }
     },
     {
-      "id": "book1_5_sight_find",
+      "id": "book10_5_sight_find",
       "book": "book10_my_family",
       "unit": 5,
       "type": "vocab",
@@ -7612,7 +7613,7 @@
       }
     },
     {
-      "id": "book1_5_sight_in",
+      "id": "book10_5_sight_in",
       "book": "book10_my_family",
       "unit": 5,
       "type": "vocab",
@@ -7627,7 +7628,7 @@
       }
     },
     {
-      "id": "book1_5_sight_draw",
+      "id": "book10_5_sight_draw",
       "book": "book10_my_family",
       "unit": 5,
       "type": "vocab",
@@ -7642,7 +7643,7 @@
       }
     },
     {
-      "id": "book1_5_sight_blue",
+      "id": "book10_5_sight_blue",
       "book": "book10_my_family",
       "unit": 5,
       "type": "vocab",
@@ -7657,7 +7658,7 @@
       }
     },
     {
-      "id": "book1_5_sight_yellow",
+      "id": "book10_5_sight_yellow",
       "book": "book10_my_family",
       "unit": 5,
       "type": "vocab",
@@ -7672,7 +7673,7 @@
       }
     },
     {
-      "id": "book1_5_sight_say",
+      "id": "book10_5_sight_say",
       "book": "book10_my_family",
       "unit": 5,
       "type": "vocab",
@@ -7687,7 +7688,7 @@
       }
     },
     {
-      "id": "book1_5_sight_red",
+      "id": "book10_5_sight_red",
       "book": "book10_my_family",
       "unit": 5,
       "type": "vocab",
@@ -7702,7 +7703,7 @@
       }
     },
     {
-      "id": "book1_5_sight_they",
+      "id": "book10_5_sight_they",
       "book": "book10_my_family",
       "unit": 5,
       "type": "vocab",
@@ -7717,7 +7718,7 @@
       }
     },
     {
-      "id": "book1_1_vocab_mail_carrier",
+      "id": "book11_1_vocab_mail_carrier",
       "book": "book11_our_community",
       "unit": 1,
       "type": "vocab",
@@ -7731,7 +7732,7 @@
       }
     },
     {
-      "id": "book1_1_vocab_post_office",
+      "id": "book11_1_vocab_post_office",
       "book": "book11_our_community",
       "unit": 1,
       "type": "vocab",
@@ -7745,7 +7746,7 @@
       }
     },
     {
-      "id": "book1_1_vocab_police_officer",
+      "id": "book11_1_vocab_police_officer",
       "book": "book11_our_community",
       "unit": 1,
       "type": "vocab",
@@ -7759,7 +7760,7 @@
       }
     },
     {
-      "id": "book1_1_vocab_fire_fighter",
+      "id": "book11_1_vocab_fire_fighter",
       "book": "book11_our_community",
       "unit": 1,
       "type": "vocab",
@@ -7773,7 +7774,7 @@
       }
     },
     {
-      "id": "book1_1_vocab_park",
+      "id": "book11_1_vocab_park",
       "book": "book11_our_community",
       "unit": 1,
       "type": "vocab",
@@ -7787,7 +7788,7 @@
       }
     },
     {
-      "id": "book1_1_vocab_gym",
+      "id": "book11_1_vocab_gym",
       "book": "book11_our_community",
       "unit": 1,
       "type": "vocab",
@@ -7801,7 +7802,7 @@
       }
     },
     {
-      "id": "book1_1_vocab_restaurant",
+      "id": "book11_1_vocab_restaurant",
       "book": "book11_our_community",
       "unit": 1,
       "type": "vocab",
@@ -7815,7 +7816,7 @@
       }
     },
     {
-      "id": "book1_1_vocab_bookstore",
+      "id": "book11_1_vocab_bookstore",
       "book": "book11_our_community",
       "unit": 1,
       "type": "vocab",
@@ -7829,7 +7830,7 @@
       }
     },
     {
-      "id": "book1_1_vocab_supermarket",
+      "id": "book11_1_vocab_supermarket",
       "book": "book11_our_community",
       "unit": 1,
       "type": "vocab",
@@ -7843,7 +7844,7 @@
       }
     },
     {
-      "id": "book1_1_vocab_school",
+      "id": "book11_1_vocab_school",
       "book": "book11_our_community",
       "unit": 1,
       "type": "vocab",
@@ -7857,7 +7858,7 @@
       }
     },
     {
-      "id": "book1_1_vocab_teacher",
+      "id": "book11_1_vocab_teacher",
       "book": "book11_our_community",
       "unit": 1,
       "type": "vocab",
@@ -7871,7 +7872,7 @@
       }
     },
     {
-      "id": "book1_1_vocab_vet",
+      "id": "book11_1_vocab_vet",
       "book": "book11_our_community",
       "unit": 1,
       "type": "vocab",
@@ -7885,7 +7886,7 @@
       }
     },
     {
-      "id": "book1_1_vocab_animal_hospital",
+      "id": "book11_1_vocab_animal_hospital",
       "book": "book11_our_community",
       "unit": 1,
       "type": "vocab",
@@ -7899,7 +7900,7 @@
       }
     },
     {
-      "id": "book1_2_vocab_car",
+      "id": "book11_2_vocab_car",
       "book": "book11_our_community",
       "unit": 2,
       "type": "vocab",
@@ -7913,7 +7914,7 @@
       }
     },
     {
-      "id": "book1_2_vocab_town",
+      "id": "book11_2_vocab_town",
       "book": "book11_our_community",
       "unit": 2,
       "type": "vocab",
@@ -7927,7 +7928,7 @@
       }
     },
     {
-      "id": "book1_2_vocab_street",
+      "id": "book11_2_vocab_street",
       "book": "book11_our_community",
       "unit": 2,
       "type": "vocab",
@@ -7941,7 +7942,7 @@
       }
     },
     {
-      "id": "book1_2_vocab_yard",
+      "id": "book11_2_vocab_yard",
       "book": "book11_our_community",
       "unit": 2,
       "type": "vocab",
@@ -7955,7 +7956,7 @@
       }
     },
     {
-      "id": "book1_2_vocab_room",
+      "id": "book11_2_vocab_room",
       "book": "book11_our_community",
       "unit": 2,
       "type": "vocab",
@@ -7969,7 +7970,7 @@
       }
     },
     {
-      "id": "book1_2_vocab_sound",
+      "id": "book11_2_vocab_sound",
       "book": "book11_our_community",
       "unit": 2,
       "type": "vocab",
@@ -7983,7 +7984,7 @@
       }
     },
     {
-      "id": "book1_3_sight_we",
+      "id": "book11_3_sight_we",
       "book": "book11_our_community",
       "unit": 3,
       "type": "vocab",
@@ -7998,7 +7999,7 @@
       }
     },
     {
-      "id": "book1_3_sight_saw",
+      "id": "book11_3_sight_saw",
       "book": "book11_our_community",
       "unit": 3,
       "type": "vocab",
@@ -8013,7 +8014,7 @@
       }
     },
     {
-      "id": "book1_3_sight_said",
+      "id": "book11_3_sight_said",
       "book": "book11_our_community",
       "unit": 3,
       "type": "vocab",
@@ -8028,7 +8029,7 @@
       }
     },
     {
-      "id": "book1_3_sight_them",
+      "id": "book11_3_sight_them",
       "book": "book11_our_community",
       "unit": 3,
       "type": "vocab",
@@ -8043,7 +8044,7 @@
       }
     },
     {
-      "id": "book1_3_sight_four",
+      "id": "book11_3_sight_four",
       "book": "book11_our_community",
       "unit": 3,
       "type": "vocab",
@@ -8058,7 +8059,7 @@
       }
     },
     {
-      "id": "book1_3_sight_five",
+      "id": "book11_3_sight_five",
       "book": "book11_our_community",
       "unit": 3,
       "type": "vocab",
@@ -8073,7 +8074,7 @@
       }
     },
     {
-      "id": "book1_3_sight_six",
+      "id": "book11_3_sight_six",
       "book": "book11_our_community",
       "unit": 3,
       "type": "vocab",
@@ -8088,7 +8089,7 @@
       }
     },
     {
-      "id": "book1_3_sight_going",
+      "id": "book11_3_sight_going",
       "book": "book11_our_community",
       "unit": 3,
       "type": "vocab",
@@ -8103,7 +8104,7 @@
       }
     },
     {
-      "id": "book1_3_sight_jump",
+      "id": "book11_3_sight_jump",
       "book": "book11_our_community",
       "unit": 3,
       "type": "vocab",
@@ -8118,7 +8119,7 @@
       }
     },
     {
-      "id": "book1_3_sight_up",
+      "id": "book11_3_sight_up",
       "book": "book11_our_community",
       "unit": 3,
       "type": "vocab",
@@ -8133,7 +8134,7 @@
       }
     },
     {
-      "id": "book1_3_sight_down",
+      "id": "book11_3_sight_down",
       "book": "book11_our_community",
       "unit": 3,
       "type": "vocab",
@@ -8148,7 +8149,7 @@
       }
     },
     {
-      "id": "book1_3_sight_not",
+      "id": "book11_3_sight_not",
       "book": "book11_our_community",
       "unit": 3,
       "type": "vocab",
@@ -8163,7 +8164,7 @@
       }
     },
     {
-      "id": "book1_3_sight_about",
+      "id": "book11_3_sight_about",
       "book": "book11_our_community",
       "unit": 3,
       "type": "vocab",
@@ -8178,7 +8179,7 @@
       }
     },
     {
-      "id": "book1_3_sight_who",
+      "id": "book11_3_sight_who",
       "book": "book11_our_community",
       "unit": 3,
       "type": "vocab",
@@ -8193,7 +8194,7 @@
       }
     },
     {
-      "id": "book1_3_sight_love",
+      "id": "book11_3_sight_love",
       "book": "book11_our_community",
       "unit": 3,
       "type": "vocab",
@@ -8208,7 +8209,7 @@
       }
     },
     {
-      "id": "book1_3_sight_for",
+      "id": "book11_3_sight_for",
       "book": "book11_our_community",
       "unit": 3,
       "type": "vocab",
@@ -8223,7 +8224,7 @@
       }
     },
     {
-      "id": "book1_3_sight_think",
+      "id": "book11_3_sight_think",
       "book": "book11_our_community",
       "unit": 3,
       "type": "vocab",
@@ -8238,7 +8239,7 @@
       }
     },
     {
-      "id": "book1_3_sight_help",
+      "id": "book11_3_sight_help",
       "book": "book11_our_community",
       "unit": 3,
       "type": "vocab",
@@ -8253,7 +8254,7 @@
       }
     },
     {
-      "id": "book1_3_sight_work",
+      "id": "book11_3_sight_work",
       "book": "book11_our_community",
       "unit": 3,
       "type": "vocab",
@@ -8268,7 +8269,7 @@
       }
     },
     {
-      "id": "book1_3_sight_make",
+      "id": "book11_3_sight_make",
       "book": "book11_our_community",
       "unit": 3,
       "type": "vocab",
@@ -8283,7 +8284,7 @@
       }
     },
     {
-      "id": "book1_3_sight_black",
+      "id": "book11_3_sight_black",
       "book": "book11_our_community",
       "unit": 3,
       "type": "vocab",
@@ -8298,7 +8299,7 @@
       }
     },
     {
-      "id": "book1_3_sight_orange",
+      "id": "book11_3_sight_orange",
       "book": "book11_our_community",
       "unit": 3,
       "type": "vocab",
@@ -8313,7 +8314,7 @@
       }
     },
     {
-      "id": "book1_3_sight_green",
+      "id": "book11_3_sight_green",
       "book": "book11_our_community",
       "unit": 3,
       "type": "vocab",
@@ -8328,7 +8329,7 @@
       }
     },
     {
-      "id": "book1_3_sight_white",
+      "id": "book11_3_sight_white",
       "book": "book11_our_community",
       "unit": 3,
       "type": "vocab",
@@ -8343,13 +8344,283 @@
       }
     },
     {
-      "id": "book1_3_sight_funny",
+      "id": "book11_3_sight_funny",
       "book": "book11_our_community",
       "unit": 3,
       "type": "vocab",
       "word": "funny",
       "korean": "",
       "is_sight_word": true,
+      "source": "exam2",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "book10_6_sent_have_sister",
+      "book": "book10_my_family",
+      "unit": 6,
+      "type": "sentence_fill",
+      "template": "I have one ___.",
+      "word": "sister",
+      "answer_pool": [
+        "sister",
+        "brother",
+        "cousin",
+        "uncle",
+        "aunt"
+      ],
+      "korean": "",
+      "source": "exam2",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "book10_6_sent_have_brother",
+      "book": "book10_my_family",
+      "unit": 6,
+      "type": "sentence_fill",
+      "template": "I have one ___.",
+      "word": "brother",
+      "answer_pool": [
+        "sister",
+        "brother",
+        "cousin",
+        "uncle",
+        "aunt"
+      ],
+      "korean": "",
+      "source": "exam2",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "book10_6_sent_have_cousin",
+      "book": "book10_my_family",
+      "unit": 6,
+      "type": "sentence_fill",
+      "template": "I have one ___.",
+      "word": "cousin",
+      "answer_pool": [
+        "sister",
+        "brother",
+        "cousin",
+        "uncle",
+        "aunt"
+      ],
+      "korean": "",
+      "source": "exam2",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "book10_6_sent_bigfamily",
+      "book": "book10_my_family",
+      "unit": 6,
+      "type": "sentence_fill",
+      "template": "I have a big ___.",
+      "word": "family",
+      "answer_pool": [
+        "family",
+        "brother",
+        "sister",
+        "house"
+      ],
+      "korean": "",
+      "source": "exam2",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "book11_4_sent_going_park",
+      "book": "book11_our_community",
+      "unit": 4,
+      "type": "sentence_fill",
+      "template": "We are going to the ___.",
+      "word": "park",
+      "answer_pool": [
+        "park",
+        "gym",
+        "school",
+        "post office",
+        "supermarket",
+        "restaurant",
+        "bookstore"
+      ],
+      "korean": "",
+      "source": "exam2",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "book11_4_sent_going_gym",
+      "book": "book11_our_community",
+      "unit": 4,
+      "type": "sentence_fill",
+      "template": "We are going to the ___.",
+      "word": "gym",
+      "answer_pool": [
+        "park",
+        "gym",
+        "school",
+        "post office",
+        "supermarket",
+        "restaurant",
+        "bookstore"
+      ],
+      "korean": "",
+      "source": "exam2",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "book11_4_sent_going_school",
+      "book": "book11_our_community",
+      "unit": 4,
+      "type": "sentence_fill",
+      "template": "We are going to the ___.",
+      "word": "school",
+      "answer_pool": [
+        "park",
+        "gym",
+        "school",
+        "post office",
+        "supermarket",
+        "restaurant",
+        "bookstore"
+      ],
+      "korean": "",
+      "source": "exam2",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "book11_4_sent_jump_park",
+      "book": "book11_our_community",
+      "unit": 4,
+      "type": "sentence_fill",
+      "template": "We jump up and down at the ___.",
+      "word": "park",
+      "answer_pool": [
+        "park",
+        "gym",
+        "school",
+        "post office",
+        "supermarket",
+        "restaurant",
+        "bookstore"
+      ],
+      "korean": "",
+      "source": "exam2",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "book11_4_sent_job_police_officer",
+      "book": "book11_our_community",
+      "unit": 4,
+      "type": "sentence_fill",
+      "template": "I am a ___. I love to help people.",
+      "word": "police officer",
+      "answer_pool": [
+        "police officer",
+        "fire fighter",
+        "vet",
+        "teacher",
+        "mail carrier"
+      ],
+      "korean": "",
+      "source": "exam2",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "book11_4_sent_job_fire_fighter",
+      "book": "book11_our_community",
+      "unit": 4,
+      "type": "sentence_fill",
+      "template": "I am a ___. I love to help people.",
+      "word": "fire fighter",
+      "answer_pool": [
+        "police officer",
+        "fire fighter",
+        "vet",
+        "teacher",
+        "mail carrier"
+      ],
+      "korean": "",
+      "source": "exam2",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "book11_4_sent_job_vet",
+      "book": "book11_our_community",
+      "unit": 4,
+      "type": "sentence_fill",
+      "template": "I am a ___. I love to help people.",
+      "word": "vet",
+      "answer_pool": [
+        "police officer",
+        "fire fighter",
+        "vet",
+        "teacher",
+        "mail carrier"
+      ],
+      "korean": "",
+      "source": "exam2",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "book11_4_sent_saw_mail",
+      "book": "book11_our_community",
+      "unit": 4,
+      "type": "sentence_fill",
+      "template": "We saw four ___ at the post office.",
+      "word": "mail carriers",
+      "answer_pool": [
+        "mail carriers",
+        "police officers",
+        "teachers",
+        "vets"
+      ],
+      "korean": "",
       "source": "exam2",
       "progress": {
         "attempts": 0,
