@@ -1,0 +1,1757 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="파커-시우 · 시즌2">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icon-192.png">
+<meta name="theme-color" content="#0F1E3D">
+<title>파커-시우 · 시즌2 위인관</title>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+* { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; user-select:none; }
+
+html, body {
+  width:100%; height:100%; overflow:hidden;
+  font-family:'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  background:
+    radial-gradient(1200px 600px at 20% -10%, rgba(200,160,60,0.18), transparent 60%),
+    radial-gradient(1000px 500px at 80% 110%, rgba(120,90,30,0.25), transparent 60%),
+    linear-gradient(160deg, #0B1730 0%, #14264B 45%, #0A1A38 100%);
+  color:#F5E4B0;
+  -webkit-touch-callout:none; touch-action:manipulation;
+}
+
+body::before {
+  content:''; position:fixed; inset:0; pointer-events:none; z-index:0;
+  background-image:
+    linear-gradient(rgba(200,160,60,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(200,160,60,0.05) 1px, transparent 1px);
+  background-size: 6vh 6vh, 6vh 6vh;
+  mix-blend-mode: overlay;
+}
+
+#app { width:100vw; height:100vh; position:relative; overflow:hidden; z-index:1; }
+
+.screen {
+  position:absolute; inset:0; display:none; flex-direction:column;
+  padding:2vh 3vw; z-index:2;
+}
+.screen.active { display:flex; }
+.screen.entering { animation:slideIn 0.4s ease-out; }
+@keyframes slideIn {
+  from { opacity:0; transform:translateY(2vh) scale(0.98); }
+  to   { opacity:1; transform:translateY(0) scale(1); }
+}
+
+.gold { color:#F0C662; }
+
+/* ============== 헤더 ============== */
+.header {
+  display:flex; align-items:center; justify-content:space-between;
+  margin-bottom:2vh; min-height:8vh; gap:1.5vh;
+}
+.btn-back {
+  background:linear-gradient(180deg, #F5E4B0 0%, #B98A2F 100%);
+  border:0.4vh solid #2A1A05; color:#2A1A05;
+  width:7vh; height:7vh; border-radius:50%;
+  font-size:3.5vh; font-weight:800; cursor:pointer; font-family:inherit;
+  box-shadow: 0 4px 0 #2A1A05, 0 0.6vh 1.5vh rgba(0,0,0,0.3);
+  display:flex; align-items:center; justify-content:center;
+  transition:transform 0.1s, box-shadow 0.1s;
+}
+.btn-back:active { transform:translateY(3px); box-shadow: 0 1px 0 #2A1A05, 0 0.3vh 0.8vh rgba(0,0,0,0.3); }
+
+.stars-display {
+  background:linear-gradient(180deg, #F5E4B0 0%, #C6961F 100%);
+  border:0.35vh solid #2A1A05; color:#2A1A05;
+  padding:1vh 2vh; border-radius:99px;
+  font-size:2.8vh; font-weight:800;
+  font-family:'Nunito', 'Pretendard', sans-serif;
+  box-shadow: 0 4px 0 #2A1A05;
+  display:flex; align-items:center; gap:1vh; min-width:11vh; justify-content:center;
+}
+
+/* ============== 홈 ============== */
+#screen-home {
+  align-items:center; justify-content:flex-start; padding-top:2.5vh;
+}
+.home-top-bar {
+  position:absolute; top:2vh; left:50%; transform:translateX(-50%);
+  display:flex; align-items:center; gap:1.5vh; z-index:10;
+}
+.home-action-btn {
+  background:linear-gradient(180deg, #F5E4B0 0%, #C6961F 100%);
+  color:#2A1A05; padding:1.2vh 2.5vh; border-radius:99px;
+  font-size:2.6vh; font-weight:800; font-family:inherit;
+  border:0.35vh solid #2A1A05;
+  box-shadow: 0 4px 0 #2A1A05;
+  cursor:pointer;
+  display:flex; align-items:center; gap:1vh;
+  transition:transform 0.15s, box-shadow 0.15s;
+}
+.home-action-btn:active { transform:translateY(3px); box-shadow: 0 1px 0 #2A1A05; }
+.home-action-btn.gacha { background:linear-gradient(180deg, #C0392B 0%, #7A1F17 100%); color:#F5E4B0; }
+.home-action-btn.dex   { background:linear-gradient(180deg, #1D4E89 0%, #0A2A50 100%); color:#F5E4B0; }
+.home-action-btn .badge {
+  background:#F5E4B0; color:#7A1F17; padding:0.3vh 1vh; border-radius:99px;
+  font-size:2.2vh; font-weight:800; min-width:3vh; text-align:center;
+}
+.reset-corner-btn {
+  position:absolute; bottom:1.5vh; right:1.5vh;
+  width:4.5vh; height:4.5vh; border-radius:50%;
+  background:rgba(245,228,176,0.15); border:0.2vh solid rgba(245,228,176,0.35);
+  font-size:2.2vh; color:rgba(245,228,176,0.6);
+  display:flex; align-items:center; justify-content:center;
+  cursor:pointer; font-family:inherit; z-index:5;
+}
+.reset-corner-btn:active { opacity:0.6; }
+.home-title-wrap {
+  margin-top:7vh; margin-bottom:2vh; text-align:center;
+}
+.home-title {
+  font-size:5.5vh; font-weight:900; color:#F5E4B0;
+  letter-spacing:0.05em;
+  text-shadow: 0 0 2vh rgba(240,198,98,0.4), 3px 3px 0 rgba(0,0,0,0.6);
+}
+.home-subtitle {
+  font-size:2.4vh; color:#C9A85A; margin-top:0.6vh;
+}
+
+/* 세션 카드 그리드 (2x2) */
+.session-grid {
+  display:grid; grid-template-columns:repeat(2, 1fr); grid-template-rows:repeat(2, 1fr);
+  gap:2vh 2vw; width:100%; max-width:85vw; margin-top:1vh; flex:1; max-height:65vh;
+}
+.session-card {
+  background:linear-gradient(180deg, #1B305B 0%, #0A1A38 100%);
+  border:0.55vh solid #C6961F;
+  border-radius:2.5vh;
+  padding:2.5vh 3vh;
+  cursor:pointer;
+  box-shadow: 0 8px 0 #2A1A05, inset 0 0 3vh rgba(240,198,98,0.08);
+  transition:transform 0.15s, box-shadow 0.15s;
+  display:flex; flex-direction:row; align-items:center; gap:2.5vh;
+  position:relative; overflow:hidden;
+  min-height:12vh;
+}
+.session-card:active { transform:translateY(4px); box-shadow: 0 4px 0 #2A1A05; }
+.session-card::before {
+  content:''; position:absolute; top:0; left:0; right:0; height:0.4vh;
+  background:linear-gradient(90deg, transparent, #F0C662, transparent);
+}
+.session-emoji {
+  font-size:8vh; line-height:1;
+  filter: drop-shadow(2px 2px 0 rgba(0,0,0,0.6));
+  flex-shrink:0;
+}
+.session-info { flex:1; display:flex; flex-direction:column; gap:0.8vh; }
+.session-name { font-size:3.3vh; font-weight:800; color:#F5E4B0; line-height:1.1; }
+.session-sub  { font-size:2vh; color:#C9A85A; line-height:1.3; }
+.session-progress {
+  display:flex; align-items:center; gap:1vh; margin-top:0.5vh;
+}
+.session-progress-bar {
+  flex:1; height:1.4vh;
+  background:rgba(0,0,0,0.35);
+  border-radius:99px; overflow:hidden;
+  border:0.2vh solid rgba(240,198,98,0.35);
+}
+.session-progress-fill {
+  height:100%;
+  background:linear-gradient(90deg, #C6961F, #F0C662);
+  transition:width 0.5s;
+}
+.session-progress-text { font-size:1.7vh; color:#C9A85A; min-width:5vh; text-align:right; }
+
+/* ============== 세션 인트로 오버레이 ============== */
+.intro-overlay {
+  position:fixed; inset:0; background:rgba(11,23,48,0.92);
+  display:none; align-items:center; justify-content:center; z-index:1500;
+  backdrop-filter:blur(4px);
+}
+.intro-overlay.show { display:flex; animation:fadeIn 0.3s ease-out; }
+@keyframes fadeIn { from{opacity:0;} to{opacity:1;} }
+.intro-content {
+  text-align:center; animation:popIn 0.4s ease-out;
+}
+@keyframes popIn { 0%{transform:scale(0.5);opacity:0;} 100%{transform:scale(1);opacity:1;} }
+.intro-emoji { font-size:16vh; margin-bottom:2vh; }
+.intro-text {
+  font-size:5vh; font-weight:800; color:#F5E4B0; letter-spacing:0.03em;
+  text-shadow: 0 0 2vh rgba(240,198,98,0.4);
+}
+.intro-hint { margin-top:2vh; font-size:2.6vh; color:#F0C662; }
+
+/* ============== 퀴즈 ============== */
+#screen-quiz { justify-content:space-between; }
+.quiz-header { display:flex; justify-content:space-between; align-items:center; }
+.progress-bar {
+  flex:1; margin:0 3vw; height:2.8vh;
+  background:rgba(245,228,176,0.15);
+  border:0.3vh solid #C6961F; border-radius:2vh; overflow:hidden;
+}
+.progress-bar-fill {
+  height:100%;
+  background:linear-gradient(90deg, #C6961F, #F0C662);
+  transition:width 0.4s;
+}
+.quiz-content {
+  flex:1; display:flex; flex-direction:column;
+  justify-content:center; align-items:center; gap:4vh;
+}
+.question-box {
+  background:linear-gradient(180deg, #1B305B 0%, #0A1A38 100%);
+  border:0.5vh solid #C6961F; border-radius:2.5vh;
+  padding:3.5vh 5vw;
+  box-shadow: 0 6px 0 #2A1A05, inset 0 0 2vh rgba(240,198,98,0.1);
+  min-width:40vw; text-align:center;
+}
+.question-prompt { font-size:2.6vh; color:#C9A85A; margin-bottom:2vh; font-weight:700; letter-spacing:0.03em; }
+.question-content { font-size:10vh; font-weight:800; color:#F5E4B0; }
+.question-content.text {
+  font-family:'Nunito','Pretendard',sans-serif;
+  font-size:7.5vh; letter-spacing:0.05em;
+}
+.question-content.sentence {
+  font-family:'Nunito','Pretendard',sans-serif;
+  font-size:4.5vh; letter-spacing:0.02em; line-height:1.4;
+}
+/* 빈칸 문장에서 정답을 하나로 확정해 주는 그림 */
+.question-image {
+  display:block; margin:0 auto 2vh;
+  height:22vh; max-width:60vw; object-fit:contain;
+  border-radius:2vh; border:0.35vh solid #C6961F;
+  background:rgba(245,228,176,0.06);
+}
+.question-image[hidden] { display:none; }
+/* 그림 파일이 아직 없으면 이모지로 대체 */
+.question-emoji-fallback {
+  font-size:14vh; line-height:1.1; margin-bottom:1vh;
+}
+.choices {
+  display:grid; grid-template-columns:repeat(4, 1fr);
+  gap:2vw; width:90vw;
+}
+.choice {
+  background:linear-gradient(180deg, #F5E4B0 0%, #C6961F 100%);
+  color:#2A1A05;
+  border:0.4vh solid #2A1A05; border-radius:2vh;
+  padding:3vh 2vh; cursor:pointer;
+  box-shadow: 0 5px 0 #2A1A05;
+  display:flex; align-items:center; justify-content:center;
+  min-height:14vh; font-size:5.5vh; font-weight:800; font-family:inherit;
+  transition:transform 0.15s, box-shadow 0.15s;
+}
+.choice.text { font-family:'Nunito', 'Pretendard', sans-serif; font-size:4vh; }
+.choice:active { transform:translateY(3px); box-shadow: 0 2px 0 #2A1A05; }
+.choice.correct { background:linear-gradient(180deg, #6EE7B7 0%, #34D399 100%); animation:correctPulse 0.5s; }
+.choice.wrong   { background:linear-gradient(180deg, #FCA5A5 0%, #DC2626 100%); animation:wrongShake 0.4s; }
+.choice.disabled { pointer-events:none; opacity:0.65; }
+@keyframes correctPulse { 0%,100%{transform:scale(1);} 50%{transform:scale(1.08);} }
+@keyframes wrongShake { 0%,100%{transform:translateX(0);} 25%{transform:translateX(-1vw);} 75%{transform:translateX(1vw);} }
+
+.quiz-stars {
+  position:absolute; top:8vh; right:3vh;
+  background:linear-gradient(180deg, #F5E4B0 0%, #C6961F 100%);
+  border:0.3vh solid #2A1A05; color:#2A1A05;
+  padding:0.8vh 1.8vh; border-radius:99px;
+  font-size:2.5vh; font-weight:800;
+  font-family:'Nunito','Pretendard',sans-serif;
+  display:flex; align-items:center; gap:0.8vh; z-index:5;
+}
+.quiz-stars.bump { animation:starBump 0.5s ease-out; }
+@keyframes starBump { 0%{transform:scale(1);} 40%{transform:scale(1.3);} 100%{transform:scale(1);} }
+
+.flying-star {
+  position:fixed; pointer-events:none; z-index:1000;
+  font-size:5vh; animation:flyToTop 0.9s ease-in forwards;
+}
+@keyframes flyToTop {
+  0%   { opacity:1; transform:scale(1.5) rotate(0deg); }
+  50%  { opacity:1; transform:scale(1) rotate(180deg); }
+  100% { opacity:0; transform:scale(0.3) rotate(360deg) translate(20vh, -40vh); }
+}
+
+.bonus-toast {
+  position:fixed; top:12vh; left:50%; transform:translateX(-50%);
+  background:linear-gradient(180deg, #10B981, #047857);
+  color:#fff; padding:1.5vh 3vh; border-radius:99px;
+  font-size:2.8vh; font-weight:800;
+  box-shadow: 0 0.6vh 2vh rgba(0,0,0,0.4);
+  z-index:1100; animation:bonusToast 1.8s ease-out forwards;
+}
+@keyframes bonusToast {
+  0% { opacity:0; transform:translate(-50%, -3vh); }
+  20%,80% { opacity:1; transform:translate(-50%, 0); }
+  100% { opacity:0; transform:translate(-50%, -3vh); }
+}
+
+/* ============== 쓰기 ============== */
+#screen-writing { padding:2vh 3vw; align-items:center; }
+.writing-content {
+  flex:1; display:flex; flex-direction:column;
+  align-items:center; justify-content:center;
+  width:100%; padding:1vh 2vh; gap:2vh;
+}
+.writing-prompt {
+  font-size:3.2vh; color:#F5E4B0; font-weight:800;
+  background:linear-gradient(180deg, #1B305B 0%, #0A1A38 100%);
+  padding:1.2vh 3vh; border-radius:99px;
+  border:0.35vh solid #C6961F;
+  box-shadow: 0 0.5vh 0 #2A1A05;
+}
+.writing-canvas-wrap {
+  position:relative;
+  width:60vh; height:60vh; max-width:90vw; max-height:56vh;
+  background:linear-gradient(180deg, #F9F0D5 0%, #F5E4B0 100%);
+  border:0.6vh solid #C6961F;
+  border-radius:2vh;
+  box-shadow: 0 1vh 0 #2A1A05, inset 0 0 3vh rgba(240,198,98,0.15);
+  overflow:hidden;
+}
+.writing-guide {
+  position:absolute; inset:0;
+  display:flex; align-items:center; justify-content:center;
+  font-size:50vh; font-weight:900;
+  color:rgba(42,26,5,0.15);
+  font-family:'Nunito','Pretendard',sans-serif;
+  pointer-events:none; line-height:1;
+}
+.writing-canvas {
+  position:absolute; top:0; left:0;
+  width:100%; height:100%; cursor:crosshair; touch-action:none;
+}
+.writing-buttons { display:flex; gap:2vh; }
+
+/* ============== 결과 ============== */
+#screen-result { align-items:center; justify-content:center; }
+.result-box {
+  background:linear-gradient(180deg, #1B305B 0%, #0A1A38 100%);
+  border:0.6vh solid #C6961F; border-radius:3vh;
+  padding:5vh 7vw; text-align:center;
+  box-shadow: 0 10px 0 #2A1A05, inset 0 0 3vh rgba(240,198,98,0.1);
+  max-width:70vw;
+}
+.result-title { font-size:5.5vh; font-weight:900; color:#F5E4B0; margin-bottom:2vh; letter-spacing:0.03em; }
+.result-stars-icon { font-size:8vh; letter-spacing:1vh; margin-bottom:2vh; }
+.result-score { font-size:3.8vh; color:#C9A85A; margin-bottom:2vh; font-weight:700; }
+.result-earned {
+  font-size:2.8vh; color:#F0C662; margin-top:1vh; display:flex;
+  align-items:center; justify-content:center; gap:1vh; font-weight:700;
+}
+.result-earned .big { font-size:4.5vh; font-weight:900; color:#F5E4B0; font-family:'Nunito','Pretendard',sans-serif; }
+.result-buttons { display:flex; gap:2.5vw; justify-content:center; margin-top:3vh; flex-wrap:wrap; }
+.btn-action {
+  background:linear-gradient(180deg, #F5E4B0 0%, #C6961F 100%);
+  color:#2A1A05;
+  border:0.4vh solid #2A1A05; padding:2vh 3.5vw;
+  font-size:2.8vh; font-weight:800; font-family:inherit;
+  border-radius:1.8vh; cursor:pointer;
+  box-shadow: 0 5px 0 #2A1A05;
+  transition:transform 0.15s, box-shadow 0.15s;
+}
+.btn-action.primary { background:linear-gradient(180deg, #C0392B 0%, #7A1F17 100%); color:#F5E4B0; }
+.btn-action:active { transform:translateY(3px); box-shadow: 0 2px 0 #2A1A05; }
+
+/* ============== 가챠 ============== */
+#screen-gacha { align-items:center; justify-content:center; gap:3vh; }
+.gacha-machine {
+  width:32vh; height:32vh; border-radius:50%;
+  background: radial-gradient(circle at 30% 30%, #F5E4B0 0%, #C6961F 40%, #6A4210 100%);
+  border:0.8vh solid #F5E4B0;
+  box-shadow: 0 1vh 4vh rgba(0,0,0,0.5), 0 0 6vh rgba(240,198,98,0.35);
+  display:flex; align-items:center; justify-content:center;
+  font-size:16vh; animation:machineFloat 3s ease-in-out infinite;
+}
+@keyframes machineFloat { 0%,100%{transform:translateY(0);} 50%{transform:translateY(-2vh);} }
+.gacha-machine.shaking { animation:gachaShake 0.4s ease-in-out 3; }
+@keyframes gachaShake {
+  0%,100% { transform:translateX(0) rotate(0); }
+  25%     { transform:translateX(-2vh) rotate(-6deg); }
+  75%     { transform:translateX(2vh) rotate(6deg); }
+}
+.gacha-pull-btn {
+  background:linear-gradient(180deg, #C0392B 0%, #7A1F17 100%);
+  color:#F5E4B0;
+  border:0.5vh solid #F5E4B0; padding:2.2vh 5vw;
+  border-radius:99px; font-size:3.2vh; font-weight:800; font-family:inherit;
+  box-shadow: 0 6px 0 #2A1A05, 0 0 2vh rgba(240,198,98,0.3);
+  cursor:pointer;
+  display:flex; align-items:center; gap:1.5vh;
+  transition:transform 0.15s, box-shadow 0.15s;
+}
+.gacha-pull-btn:active { transform:translateY(3px); box-shadow: 0 3px 0 #2A1A05; }
+.gacha-pull-btn:disabled {
+  background:#5b6b85; color:#a0a8b8; border-color:#5b6b85;
+  box-shadow:none; cursor:not-allowed;
+}
+.gacha-info { font-size:2.3vh; color:#C9A85A; text-align:center; line-height:1.5; }
+
+.card-reveal-overlay {
+  position:fixed; inset:0; background:rgba(0,0,0,0.9);
+  display:none; align-items:center; justify-content:center; z-index:2000;
+}
+.card-reveal-overlay.show { display:flex; }
+.card-reveal { display:flex; flex-direction:column; align-items:center;
+  animation:revealPop 0.6s ease-out; }
+@keyframes revealPop {
+  0% { opacity:0; transform:scale(0.3) rotate(-15deg); }
+  60% { transform:scale(1.1) rotate(4deg); }
+  100% { opacity:1; transform:scale(1) rotate(0); }
+}
+.reveal-card {
+  width:36vh; min-height:44vh;
+  background:
+    radial-gradient(circle at 50% 20%, rgba(240,198,98,0.25) 0%, transparent 60%),
+    linear-gradient(180deg, #1B305B 0%, #0A1A38 100%);
+  border:0.7vh solid #F0C662; border-radius:2.5vh;
+  padding:3vh 2.5vh 2.5vh;
+  display:flex; flex-direction:column; align-items:center;
+  justify-content:flex-start; gap:2.5vh;
+  box-shadow: 0 0 6vh rgba(240,198,98,0.4), 0 2vh 5vh rgba(0,0,0,0.6);
+  position:relative;
+}
+.reveal-img {
+  width:26vh; height:26vh; object-fit:contain;
+  border-radius:1.5vh; box-shadow: 0 0.6vh 2vh rgba(0,0,0,0.5); background:#0A1A38;
+}
+.reveal-status-group {
+  display:flex; flex-direction:column; align-items:center; gap:0.8vh;
+}
+.reveal-status {
+  font-size:2.5vh; color:#F5E4B0;
+  background:rgba(245,228,176,0.15); padding:1vh 2.5vh; border-radius:99px; font-weight:700;
+}
+.reveal-status.new { background:linear-gradient(180deg, #10b981, #047857); }
+.reveal-status.dup { background:linear-gradient(180deg, #6b7280, #374151); }
+.reveal-refund { font-size:2.3vh; color:#F0C662; font-weight:700; }
+.reveal-tap-hint {
+  margin-top:auto; color:#F0C662; font-size:2.1vh;
+  animation:blink 1s ease-in-out infinite;
+}
+@keyframes blink { 0%,100%{opacity:1;} 50%{opacity:0.4;} }
+
+/* ============== 도감 ============== */
+#screen-dex { padding:0; }
+.dex-header {
+  display:flex; align-items:center; justify-content:space-between;
+  padding:2vh 3vh; width:100%;
+}
+.dex-title { font-size:3.8vh; color:#F5E4B0; font-weight:900; letter-spacing:0.03em; }
+.dex-progress {
+  background:linear-gradient(180deg, #F5E4B0 0%, #C6961F 100%);
+  color:#2A1A05; padding:1vh 2vh; border-radius:99px;
+  font-size:2.4vh; font-weight:800;
+  font-family:'Nunito','Pretendard',sans-serif;
+}
+.dex-tabs {
+  display:flex; gap:0.8vh; padding:0 2vh; width:100%;
+  overflow-x:auto; -ms-overflow-style:none; scrollbar-width:none;
+}
+.dex-tabs::-webkit-scrollbar { display:none; }
+.dex-tab {
+  padding:1.3vh 1.8vh; background:rgba(245,228,176,0.15);
+  color:#F5E4B0; border-radius:1.5vh 1.5vh 0 0;
+  cursor:pointer; font-family:inherit; font-size:2.2vh; font-weight:700;
+  border:none; white-space:nowrap; flex-shrink:0;
+}
+.dex-tab.active {
+  background:linear-gradient(180deg, #F5E4B0 0%, #C6961F 100%);
+  color:#2A1A05;
+}
+.dex-grid {
+  flex:1; width:100%;
+  background:linear-gradient(180deg, rgba(245,228,176,0.08) 0%, rgba(0,0,0,0.2) 100%);
+  padding:2vh; overflow-y:auto;
+  display:grid;
+  grid-template-columns:repeat(auto-fill, minmax(14vh, 1fr));
+  gap:1.5vh; align-content:start;
+}
+.dex-card {
+  aspect-ratio:3/4;
+  background:linear-gradient(180deg, #1B305B 0%, #0A1A38 100%);
+  border:0.35vh solid #C6961F; border-radius:1.5vh;
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  padding:0.8vh; cursor:pointer; position:relative;
+  transition:transform 0.15s; overflow:hidden;
+}
+.dex-card:active { transform:scale(0.95); }
+.dex-card.locked { border-color:rgba(198,150,31,0.35); opacity:0.55; }
+.dex-card.locked .dex-card-img { filter:brightness(0) opacity(0.5); }
+.dex-card-img { width:90%; height:75%; object-fit:contain; border-radius:0.8vh; }
+.dex-card-name { margin-top:0.5vh; font-size:1.8vh; color:#F5E4B0; text-align:center; line-height:1.1; font-weight:700; }
+.dex-card.locked .dex-card-name { color:#7a6b48; }
+.dex-card-count {
+  position:absolute; top:0.5vh; right:0.5vh;
+  background:#F0C662; color:#2A1A05;
+  font-size:1.6vh; padding:0.2vh 0.7vh;
+  border-radius:99px; min-width:2.4vh; text-align:center;
+  border:0.2vh solid #2A1A05; font-weight:800;
+  font-family:'Nunito','Pretendard',sans-serif;
+}
+
+.dex-detail {
+  position:fixed; inset:0; background:rgba(0,0,0,0.85);
+  display:none; align-items:center; justify-content:center; z-index:2000;
+}
+.dex-detail.show { display:flex; }
+.dex-detail-card {
+  background:linear-gradient(180deg, #1B305B 0%, #0A1A38 100%);
+  border:0.6vh solid #F0C662; border-radius:3vh;
+  padding:3vh; width:44vh; max-width:92vw;
+  display:flex; flex-direction:column; align-items:center;
+  position:relative;
+  box-shadow: 0 0 6vh rgba(240,198,98,0.35);
+  animation:revealPop 0.4s ease-out;
+}
+.dex-detail-img { width:24vh; height:24vh; object-fit:contain; border-radius:1.5vh; background:#0A1A38; }
+.dex-detail-name { font-size:4vh; color:#F5E4B0; margin-top:1.5vh; font-weight:800; }
+.dex-detail-dynasty { font-size:2.4vh; color:#C9A85A; margin-top:0.5vh; }
+.dex-detail-count {
+  margin-top:2vh;
+  background:linear-gradient(180deg, #F5E4B0 0%, #C6961F 100%);
+  color:#2A1A05; padding:1vh 2vh; border-radius:99px;
+  font-size:2.4vh; font-weight:800;
+  font-family:'Nunito','Pretendard',sans-serif;
+}
+.dex-detail-close {
+  position:absolute; top:1.5vh; right:1.5vh;
+  width:4.5vh; height:4.5vh; border-radius:50%;
+  background:#F5E4B0; color:#2A1A05; border:none; cursor:pointer;
+  font-size:2.5vh; font-weight:800;
+}
+
+/* ============== 사운드 토글 / 로딩 / 컨페티 ============== */
+.sound-toggle {
+  position:absolute; top:2vh; right:3vw;
+  background:linear-gradient(180deg, #F5E4B0 0%, #C6961F 100%);
+  border:0.3vh solid #2A1A05; color:#2A1A05;
+  width:6vh; height:6vh; border-radius:50%;
+  font-size:2.8vh; cursor:pointer;
+  box-shadow: 0 4px 0 #2A1A05; z-index:50;
+  display:flex; align-items:center; justify-content:center;
+}
+.sound-toggle:active { transform:translateY(2px); box-shadow: 0 2px 0 #2A1A05; }
+
+.loading {
+  position:fixed; inset:0;
+  background:linear-gradient(160deg, #0B1730, #14264B);
+  display:flex; align-items:center; justify-content:center;
+  flex-direction:column; gap:3vh; z-index:1000; color:#F5E4B0;
+}
+.loading-mark { font-size:12vh; animation:machineFloat 2s ease-in-out infinite; }
+.loading-text { font-size:2.6vh; letter-spacing:0.05em; }
+
+.confetti {
+  position:fixed; width:1.5vh; height:1.5vh;
+  pointer-events:none; z-index:200;
+  animation:confettiFall 2s ease-out forwards;
+}
+@keyframes confettiFall {
+  0% { transform:translateY(-10vh) rotate(0); opacity:1; }
+  100% { transform:translateY(110vh) rotate(720deg); opacity:0; }
+}
+</style>
+</head>
+<body>
+
+<div class="loading" id="loading">
+  <div class="loading-mark">👑</div>
+  <div class="loading-text">위인관을 열고 있어요…</div>
+</div>
+
+<button class="sound-toggle" id="soundToggle" aria-label="소리">🔊</button>
+
+<div id="app">
+
+  <!-- 홈 -->
+  <div class="screen" id="screen-home">
+    <div class="home-top-bar">
+      <div class="stars-display"><span>⭐</span><span id="homeStars">0</span></div>
+      <button class="home-action-btn gacha" onclick="openGacha()">🎁 <span>가챠</span></button>
+      <button class="home-action-btn dex" onclick="openDex()">📜 <span>도감</span> <span class="badge" id="dexBadge">0/48</span></button>
+    </div>
+    <button class="btn-back" style="position:absolute; top:2vh; left:3vw; z-index:10;" onclick="location.href='index.html'">←</button>
+    <button class="reset-corner-btn" onclick="confirmReset()" aria-label="초기화">🔄</button>
+    <div class="home-title-wrap">
+      <div class="home-title">👑 시즌 2 · 위인관 👑</div>
+      <div class="home-subtitle">한 번 눌러서 바로 시작!</div>
+    </div>
+    <div class="session-grid" id="sessionGrid"></div>
+  </div>
+
+  <!-- 세션 인트로 오버레이 -->
+  <div class="intro-overlay" id="introOverlay">
+    <div class="intro-content">
+      <div class="intro-emoji" id="introEmoji">📖</div>
+      <div class="intro-text" id="introText">단어 배우기</div>
+      <div class="intro-hint" id="introHint">이모지 보고 영어 단어 골라!</div>
+    </div>
+  </div>
+
+  <!-- 퀴즈 -->
+  <div class="screen" id="screen-quiz">
+    <div class="header quiz-header">
+      <button class="btn-back" onclick="confirmQuit()">←</button>
+      <div class="progress-bar"><div class="progress-bar-fill" id="quizProgress"></div></div>
+      <div class="stars-display"><span id="quizQNum">1</span>/<span id="quizQTotal">10</span></div>
+    </div>
+    <div class="quiz-stars" id="quizStarsDisplay">
+      <span>⭐</span><span id="quizCurrentStars">0</span>
+    </div>
+    <div class="quiz-content">
+      <div class="question-box">
+        <div class="question-prompt" id="questionPrompt">무엇일까요?</div>
+        <img class="question-image" id="questionImage" alt="" hidden>
+        <div class="question-emoji-fallback" id="questionEmojiFallback" hidden></div>
+        <div class="question-content" id="questionContent">📖</div>
+      </div>
+      <div class="choices" id="choices"></div>
+    </div>
+  </div>
+
+  <!-- 쓰기 -->
+  <div class="screen" id="screen-writing">
+    <div class="header quiz-header">
+      <button class="btn-back" onclick="confirmQuit()">←</button>
+      <div class="progress-bar"><div class="progress-bar-fill" id="writeProgress"></div></div>
+      <div class="stars-display"><span id="writeQNum">1</span>/<span id="writeQTotal">10</span></div>
+    </div>
+    <div class="quiz-stars" id="writeStarsDisplay">
+      <span>⭐</span><span id="writeCurrentStars">0</span>
+    </div>
+    <div class="writing-content">
+      <div class="writing-prompt">따라 써봐!</div>
+      <div class="writing-canvas-wrap">
+        <div class="writing-guide" id="writingGuide">A</div>
+        <canvas id="writingCanvas" class="writing-canvas"></canvas>
+      </div>
+      <div class="writing-buttons">
+        <button class="btn-action" onclick="clearWritingCanvas()">🧽 지우기</button>
+        <button class="btn-action primary" onclick="completeWriting()">✨ 다 썼어요!</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 결과 -->
+  <div class="screen" id="screen-result">
+    <div class="result-box">
+      <div class="result-title">🎉 잘했어요! 🎉</div>
+      <div class="result-stars-icon" id="resultStarsIcon"></div>
+      <div class="result-score" id="resultScore"></div>
+      <div class="result-earned">
+        <span>⭐</span>
+        <span class="big" id="resultEarned">+0</span>
+        <span>별 획득!</span>
+      </div>
+      <div class="result-buttons">
+        <button class="btn-action" onclick="goHome()">홈으로</button>
+        <button class="btn-action" onclick="openGacha()">🎁 가챠</button>
+        <button class="btn-action primary" onclick="retrySession()">한번 더!</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 가챠 -->
+  <div class="screen" id="screen-gacha">
+    <div class="header">
+      <button class="btn-back" onclick="goHome()">←</button>
+      <div class="stars-display"><span>⭐</span><span id="gachaStars">0</span></div>
+    </div>
+    <div class="gacha-machine" id="gachaMachine">👑</div>
+    <button class="gacha-pull-btn" id="gachaPullBtn" onclick="pullGacha()">
+      <span>⭐</span><span>5개로 뽑기!</span>
+    </button>
+    <div class="gacha-info">
+      별 5개로 위인 카드 1장!<br>
+      <span class="gold">중복이면 별 3개 돌려받아요</span>
+    </div>
+  </div>
+
+  <!-- 도감 -->
+  <div class="screen" id="screen-dex">
+    <div class="dex-header">
+      <button class="btn-back" onclick="goHome()">←</button>
+      <div class="dex-title">📜 위인 도감</div>
+      <div class="dex-progress" id="dexProgress">0/48</div>
+    </div>
+    <div class="dex-tabs" id="dexTabs"></div>
+    <div class="dex-grid" id="dexGrid"></div>
+  </div>
+
+</div>
+
+<div class="card-reveal-overlay" id="cardRevealOverlay" onclick="closeCardReveal()">
+  <div class="card-reveal" id="cardReveal"></div>
+</div>
+
+<div class="dex-detail" id="dexDetail" onclick="closeDexDetail(event)">
+  <div class="dex-detail-card" id="dexDetailCard" onclick="event.stopPropagation()">
+    <button class="dex-detail-close" onclick="closeDexDetail()">✕</button>
+  </div>
+</div>
+
+<script>
+// ============================================================
+// 위인 카드 데이터 (48장)
+// ============================================================
+const FIGURES = [
+  { id:'f_gojoseon_dangun',           dynasty:'고조선', name:'단군' },
+  { id:'f_goguryeo_jumong',           dynasty:'고구려', name:'주몽' },
+  { id:'f_goguryeo_gangsiu',          dynasty:'고구려', name:'강시우' },
+  { id:'f_goguryeo_yeongaesomun',     dynasty:'고구려', name:'연개소문' },
+  { id:'f_goguryeo_euljimundeok',     dynasty:'고구려', name:'을지문덕' },
+  { id:'f_goguryeo_gwanggaeto',       dynasty:'고구려', name:'광개토대왕' },
+  { id:'f_baekje_uijawang',           dynasty:'백제',   name:'의자왕' },
+  { id:'f_baekje_onjo',               dynasty:'백제',   name:'온조' },
+  { id:'f_baekje_gyebaek',            dynasty:'백제',   name:'계백' },
+  { id:'f_baekje_geunchogo',          dynasty:'백제',   name:'근초고왕' },
+  { id:'f_silla_baekgyeol',           dynasty:'신라',   name:'백결선생' },
+  { id:'f_silla_isabu',               dynasty:'신라',   name:'이사부' },
+  { id:'f_silla_gwanchang',           dynasty:'신라',   name:'관창' },
+  { id:'f_silla_janggbogo',           dynasty:'신라',   name:'장보고' },
+  { id:'f_silla_wonhyo',              dynasty:'신라',   name:'원효대사' },
+  { id:'f_silla_gimyousin',           dynasty:'신라',   name:'김유신' },
+  { id:'f_husamguk_gyeonhwon',        dynasty:'후삼국', name:'견훤' },
+  { id:'f_husamguk_gungye',           dynasty:'후삼국', name:'궁예' },
+  { id:'f_goryeo_ibangwon',           dynasty:'고려',   name:'이방원' },
+  { id:'f_goryeo_iseonggye',          dynasty:'고려',   name:'이성계' },
+  { id:'f_goryeo_yungwan',            dynasty:'고려',   name:'윤관' },
+  { id:'f_goryeo_seohui',             dynasty:'고려',   name:'서희' },
+  { id:'f_goryeo_gimbusik',           dynasty:'고려',   name:'김부식' },
+  { id:'f_goryeo_jeongjungbu',        dynasty:'고려',   name:'정중부' },
+  { id:'f_goryeo_choeyeong',          dynasty:'고려',   name:'최영' },
+  { id:'f_goryeo_ganggamchan',        dynasty:'고려',   name:'강감찬' },
+  { id:'f_joseon_danjong',            dynasty:'조선',   name:'단종' },
+  { id:'f_joseon_jeongjo',            dynasty:'조선',   name:'정조' },
+  { id:'f_joseon_seonjo',             dynasty:'조선',   name:'선조' },
+  { id:'f_joseon_taejo',              dynasty:'조선',   name:'태조' },
+  { id:'f_joseon_jeongyakyong',       dynasty:'조선',   name:'정약용' },
+  { id:'f_joseon_heungseondaewongun', dynasty:'조선',   name:'흥선대원군' },
+  { id:'f_joseon_honggyeongrae',      dynasty:'조선',   name:'홍경래' },
+  { id:'f_joseon_sukjong',            dynasty:'조선',   name:'숙종' },
+  { id:'f_joseon_yeongjo',            dynasty:'조선',   name:'영조' },
+  { id:'f_joseon_gwanghaegun',        dynasty:'조선',   name:'광해군' },
+  { id:'f_joseon_johyeon',            dynasty:'조선',   name:'조헌' },
+  { id:'f_joseon_nongae',             dynasty:'조선',   name:'논개' },
+  { id:'f_joseon_jangyeongsil',       dynasty:'조선',   name:'장영실' },
+  { id:'f_joseon_gwakjaeu',           dynasty:'조선',   name:'곽재우' },
+  { id:'f_joseon_gwonyul',            dynasty:'조선',   name:'권율' },
+  { id:'f_joseon_isunsin',            dynasty:'조선',   name:'이순신' },
+  { id:'f_modern_jusigyeong',         dynasty:'근대',   name:'주시경' },
+  { id:'f_modern_gimgu',              dynasty:'근대',   name:'김구' },
+  { id:'f_modern_yunbonggil',         dynasty:'근대',   name:'윤봉길' },
+  { id:'f_modern_yugwansun',          dynasty:'근대',   name:'유관순' },
+  { id:'f_modern_anjunggeun',         dynasty:'근대',   name:'안중근' },
+  { id:'f_modern_bangjeonghwan',      dynasty:'근대',   name:'방정환' }
+];
+const DYNASTIES = [
+  { key:'고조선', folder:'01_고조선', emoji:'🏔️' },
+  { key:'고구려', folder:'02_고구려', emoji:'🏹' },
+  { key:'백제',   folder:'03_백제',   emoji:'🏯' },
+  { key:'신라',   folder:'04_신라',   emoji:'🌟' },
+  { key:'후삼국', folder:'05_후삼국', emoji:'⚔️' },
+  { key:'고려',   folder:'06_고려',   emoji:'🎋' },
+  { key:'조선',   folder:'07_조선',   emoji:'🏛️' },
+  { key:'근대',   folder:'08_근대',   emoji:'🇰🇷' }
+];
+FIGURES.forEach(f => {
+  const d = DYNASTIES.find(x => x.key === f.dynasty);
+  f.image = `위인카드/${d.folder}/${f.name}.png`;
+  f.dynastyEmoji = d.emoji;
+});
+
+// ============================================================
+// 세션 정의 (홈 카드 = 4개)
+// ============================================================
+// kind: quiz 종류. subModes: 세션 시작시 하나 랜덤 고정.
+// Each subMode has intro emoji/text/hint for the intro overlay.
+const SESSIONS = [
+  {
+    id:'word',
+    emoji:'📖', name:'단어 배우기',
+    sub:'가족, 동물, 집, 마을 어휘',
+    kind:'quiz',
+    books:['book10_my_family','book11_our_community'],
+    // 아이템 필터: 이모지 매핑되는 vocab 항목만
+    filter: it => (it.type === 'vocab' || it.type === 'vocabulary' || it.type === 'content_vocab')
+                  && it.word && getEmoji(it.word),
+    subModes:[
+      { id:'emoji_to_word', intro:{ emoji:'🖼️', text:'그림 → 영단어', hint:'이모지를 보고 영어 단어 골라!' } },
+      { id:'word_to_emoji', intro:{ emoji:'🔤', text:'영단어 → 그림', hint:'영어 단어 보고 맞는 그림 골라!' } }
+    ]
+  },
+  {
+    id:'phonics',
+    emoji:'🔤', name:'파닉스',
+    sub:'알파벳 소리와 첫 글자',
+    kind:'quiz',
+    books:['book9_phonics_sound','book10_my_family','book11_our_community'],
+    filter: it => (it.type === 'vocab' || it.type === 'vocabulary' || it.type === 'phonics_word' || it.type === 'content_vocab')
+                  && it.word && /^[a-zA-Z]/.test(it.word) && getEmoji(it.word),
+    subModes:[
+      { id:'first_sound', intro:{ emoji:'🔠', text:'첫 글자 찾기', hint:'그림 보고 첫 글자 골라!' } },
+      { id:'listen',      intro:{ emoji:'🔊', text:'듣고 고르기',  hint:'소리 잘 듣고 맞는 걸 골라!' } }
+    ]
+  },
+  {
+    id:'sentence',
+    emoji:'📝', name:'문장 만들기',
+    sub:'빈칸에 알맞은 단어 넣기',
+    kind:'quiz',
+    books:['book10_my_family','book11_our_community'],
+    filter: it => it.type === 'sentence_fill',
+    subModes:[
+      { id:'sentence', intro:{ emoji:'📝', text:'빈칸 채우기', hint:'문장 읽고 빈칸 단어 골라!' } }
+    ]
+  },
+  {
+    id:'writing',
+    emoji:'✍️', name:'쓰기 연습',
+    sub:'짧은 단어 손으로 따라쓰기',
+    kind:'writing',
+    books:['book9_phonics_sound','book10_my_family','book11_our_community'],
+    filter: it => (it.type === 'vocab' || it.type === 'vocabulary' || it.type === 'phonics_word' || it.type === 'content_vocab')
+                  && it.word && /^[a-zA-Z][a-zA-Z-]*$/.test(it.word) && it.word.length <= 8
+  }
+];
+
+// ============================================================
+// 이모지 매핑 (Q2 어휘 위주)
+// ============================================================
+const EMOJI_MAP = {
+  // 동물
+  'pig':'🐷','chicken':'🐔','duck':'🦆','horse':'🐴','cow':'🐮','sheep':'🐑',
+  'butterfly':'🦋','chick':'🐤','bunny':'🐰','cat':'🐱','dog':'🐶','dolphin':'🐬',
+  'fish':'🐟','goat':'🐐','hen':'🐔','iguana':'🦎','kangaroo':'🦘','lion':'🦁',
+  'mouse':'🐭','octopus':'🐙','panda':'🐼','penguin':'🐧','rabbit':'🐰',
+  'tiger':'🐯','turtle':'🐢','fox':'🦊','zebra':'🦓','alligator':'🐊',
+  'ant':'🐜','elephant':'🐘','bee':'🐝','frog':'🐸','snail':'🐌','bear':'🐻',
+  'owl':'🦉','wolf':'🐺','bird':'🐦','crab':'🦀','worm':'🐛','bug':'🐛',
+  // 가족
+  'father':'👨','mother':'👩','brother':'👦','sister':'👧',
+  'grandfather':'👴','grandmother':'👵','cousin':'🧒','uncle':'🧔','aunt':'👩‍🦰',
+  'family':'👨‍👩‍👧‍👦','dad':'👨','mom':'👩','baby':'👶',
+  // 가구/방
+  'lamp':'💡','bed':'🛏️','sofa':'🛋️','mirror':'🪞',
+  'kitchen':'🍳','living room':'🛋️','bedroom':'🛏️','bathroom':'🚽',
+  // 캐릭터
+  'clown':'🤡','princess':'👸','crown':'👑','pirate':'🏴‍☠️','flag':'🚩','king':'👑','queen':'👸',
+  // 직업/장소
+  'mail carrier':'📮','post office':'🏤','police officer':'👮',
+  'fire fighter':'🧑‍🚒','restaurant':'🍽️','supermarket':'🛒',
+  'vet':'🧑‍⚕️','animal hospital':'🏥','teacher':'👩‍🏫','doctor':'🧑‍⚕️',
+  'gym':'🏋️','bookstore':'📗','library':'📚',
+  // 마을
+  'car':'🚗','town':'🏘️','street':'🛣️','yard':'🏡','room':'🚪','sound':'🔊',
+  'house':'🏠','home':'🏠','school':'🏫','park':'🏞️','bus':'🚌','train':'🚆',
+  // 파닉스 표준 단어
+  'apple':'🍎','ball':'⚽','egg':'🥚','goat':'🐐','hat':'🎩','ice':'🧊',
+  'jam':'🍓','kite':'🪁','man':'👨','nut':'🌰','pig':'🐷','queen':'👸',
+  'rain':'🌧️','sun':'☀️','umbrella':'☂️','van':'🚐','watch':'⌚','box':'📦',
+  'yacht':'⛵','boat':'🚤',
+  // 색·자연·사물
+  'red':'🟥','blue':'🟦','green':'🟩','yellow':'🟨','purple':'🟪',
+  'flower':'🌸','tree':'🌳','star':'⭐','moon':'🌙','cloud':'☁️',
+  'book':'📚','pencil':'✏️','eraser':'🧽','ruler':'📏','crayon':'🖍️',
+  'chair':'🪑','desk':'🪑','bag':'🎒',
+  // 숫자
+  'one':'1️⃣','two':'2️⃣','three':'3️⃣','four':'4️⃣','five':'5️⃣',
+  'six':'6️⃣','seven':'7️⃣','eight':'8️⃣','nine':'9️⃣','ten':'🔟'
+};
+function getEmoji(word) {
+  if (!word) return null;
+  const lower = word.toLowerCase();
+  if (EMOJI_MAP[lower]) return EMOJI_MAP[lower];
+  const parts = lower.split(' ');
+  if (parts.length === 2 && EMOJI_MAP[parts[1]]) return EMOJI_MAP[parts[1]];
+  // 복수형(mail carriers, police officers …)은 단수로 한 번 더 시도
+  if (lower.endsWith('s')) {
+    const singular = lower.replace(/(?:ie)?s$/, m => m === 'ies' ? 'y' : '');
+    if (singular !== lower) return getEmoji(singular);
+  }
+  return null;
+}
+
+// 같은 이모지를 쓰는 단어들 (bed/bedroom, sofa/living room, rabbit/bunny …)
+// → 이 단어끼리는 서로 오답이 될 수 없다. 그림 하나에 정답이 둘이 되기 때문.
+const SYNONYMS_BY_EMOJI = (() => {
+  const m = {};
+  for (const [w, e] of Object.entries(EMOJI_MAP)) (m[e] = m[e] || []).push(w);
+  return m;
+})();
+function sameEmojiWords(word) {
+  const e = getEmoji(word);
+  if (!e) return [];
+  const lower = (word || '').toLowerCase();
+  return (SYNONYMS_BY_EMOJI[e] || []).filter(w => w !== lower);
+}
+
+// ============================================================
+// 단어 그림 (단어이미지/<슬러그>.png, 없으면 이모지로 대체)
+// ============================================================
+function imageSlug(word) {
+  return String(word || '').toLowerCase().trim().replace(/\s+/g, '_');
+}
+function imagePathFor(word) {
+  const s = imageSlug(word);
+  return s ? `단어이미지/${s}.png` : null;
+}
+// img 에 그림을 걸고, 파일이 없으면 이모지 fallback 으로 자동 전환
+function showWordImage(imgEl, word, fallbackEl) {
+  const src = imagePathFor(word);
+  const emoji = getEmoji(word);
+  if (!src) { imgEl.hidden = true; return false; }
+  imgEl.onerror = () => {
+    imgEl.hidden = true;
+    if (fallbackEl && emoji) {
+      fallbackEl.textContent = emoji;
+      fallbackEl.hidden = false;
+    }
+  };
+  imgEl.onload = () => {
+    imgEl.hidden = false;
+    if (fallbackEl) fallbackEl.hidden = true;
+  };
+  imgEl.alt = word;
+  imgEl.src = src;
+  return true;
+}
+
+// ============================================================
+// 저장소 (Q1과 완전 분리)
+// ============================================================
+const KEYS = {
+  progress: 'parker_siu_s2_progress',
+  stars:    'parker_siu_s2_stars',
+  cards:    'parker_siu_s2_cards'
+};
+function loadProgress() { try { return JSON.parse(localStorage.getItem(KEYS.progress)) || {}; } catch { return {}; } }
+function saveProgress(p) { localStorage.setItem(KEYS.progress, JSON.stringify(p)); }
+function getItemProg(id) {
+  const p = loadProgress();
+  return p[id] || { attempts:0, correct:0 };
+}
+function updateItemProgress(id, isCorrect) {
+  const p = loadProgress();
+  const prog = p[id] || { attempts:0, correct:0 };
+  const wasFirstCorrect = prog.correct === 0 && isCorrect;
+  prog.attempts++;
+  if (isCorrect) prog.correct++;
+  p[id] = prog;
+  saveProgress(p);
+  return { wasFirstCorrect };
+}
+function loadStars() { return parseInt(localStorage.getItem(KEYS.stars) || '0', 10); }
+function saveStars(n) { localStorage.setItem(KEYS.stars, String(Math.max(0, n))); }
+function addStars(n) { const c = loadStars(); saveStars(c + n); return c + n; }
+function spendStars(n) { const c = loadStars(); if (c < n) return false; saveStars(c - n); return true; }
+function loadCards() { try { return JSON.parse(localStorage.getItem(KEYS.cards)) || {}; } catch { return {}; } }
+function saveCards(c) { localStorage.setItem(KEYS.cards, JSON.stringify(c)); }
+function getCardCount(id) { return loadCards()[id] || 0; }
+function addCard(id) {
+  const c = loadCards();
+  const old = c[id] || 0;
+  c[id] = old + 1;
+  saveCards(c);
+  return { isNew: old === 0, count: c[id] };
+}
+function getOwnedCount() {
+  const c = loadCards();
+  return Object.keys(c).filter(k => c[k] > 0).length;
+}
+
+// ============================================================
+// 상태
+// ============================================================
+let DATA = null;
+let currentSession = null;      // SESSIONS 중 하나
+let currentSubMode = null;      // 세션 시작 시 고정된 서브모드 id
+let quizItems = [];
+let quizIndex = 0;
+let quizCorrect = 0;
+let quizTotal = 10;
+let quizEarnedStars = 0;
+let currentCorrectAnswer = null;
+let soundOn = true;
+let currentDexTab = 'all';
+
+// 쓰기 상태
+let writingCtx = null;
+let writingDrawing = false;
+let writingWords = [];  // {id, word}[]
+
+// ============================================================
+// 유틸
+// ============================================================
+function shuffle(arr) {
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr;
+}
+function showScreen(id) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active', 'entering'));
+  const el = document.getElementById(id);
+  el.classList.add('active', 'entering');
+}
+function updateStarDisplay() {
+  const s = loadStars();
+  ['homeStars','quizCurrentStars','writeCurrentStars','gachaStars'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.textContent = s;
+  });
+  const dex = document.getElementById('dexBadge');
+  if (dex) dex.textContent = `${getOwnedCount()}/${FIGURES.length}`;
+}
+function flyStarTo(originEl, targetSel = '#quizStarsDisplay') {
+  const rect = originEl.getBoundingClientRect();
+  const star = document.createElement('div');
+  star.className = 'flying-star'; star.textContent = '⭐';
+  star.style.left = (rect.left + rect.width/2) + 'px';
+  star.style.top  = (rect.top  + rect.height/2) + 'px';
+  document.body.appendChild(star);
+  setTimeout(() => star.remove(), 900);
+  setTimeout(() => {
+    const d = document.querySelector(targetSel);
+    if (d) { d.classList.add('bump'); setTimeout(() => d.classList.remove('bump'), 500); }
+    updateStarDisplay();
+  }, 700);
+}
+function spawnConfetti(originEl) {
+  const rect = originEl.getBoundingClientRect();
+  const colors = ['#F0C662','#F5E4B0','#C0392B','#1D4E89','#7A1F17','#6EE7B7'];
+  for (let i = 0; i < 22; i++) {
+    const c = document.createElement('div');
+    c.className = 'confetti';
+    c.style.left = (rect.left + rect.width/2 + (Math.random()-0.5)*rect.width) + 'px';
+    c.style.top  = rect.top + 'px';
+    c.style.background = colors[Math.floor(Math.random()*colors.length)];
+    c.style.borderRadius = Math.random() > 0.5 ? '50%' : '0';
+    c.style.animationDuration = (1.5 + Math.random()) + 's';
+    document.body.appendChild(c);
+    setTimeout(() => c.remove(), 2500);
+  }
+}
+function showBonusToast(msg) {
+  const t = document.createElement('div');
+  t.className = 'bonus-toast'; t.textContent = msg;
+  document.body.appendChild(t);
+  setTimeout(() => t.remove(), 1800);
+}
+
+// ============================================================
+// 오디오
+// ============================================================
+let audioCtx = null, bgmNodes = null;
+function initAudio() { if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)(); }
+function playSound(type) {
+  if (!soundOn) return;
+  initAudio();
+  const ctx = audioCtx, now = ctx.currentTime;
+  if (type === 'correct') {
+    [523.25, 659.25, 783.99].forEach((f, i) => {
+      const o = ctx.createOscillator(), g = ctx.createGain();
+      o.type = 'sine'; o.frequency.value = f;
+      g.gain.setValueAtTime(0, now + i*0.08);
+      g.gain.linearRampToValueAtTime(0.2, now + i*0.08 + 0.02);
+      g.gain.exponentialRampToValueAtTime(0.01, now + i*0.08 + 0.2);
+      o.connect(g).connect(ctx.destination);
+      o.start(now + i*0.08); o.stop(now + i*0.08 + 0.3);
+    });
+  } else if (type === 'wrong') {
+    const o = ctx.createOscillator(), g = ctx.createGain();
+    o.type = 'square'; o.frequency.setValueAtTime(220, now);
+    o.frequency.linearRampToValueAtTime(110, now + 0.3);
+    g.gain.setValueAtTime(0.1, now);
+    g.gain.exponentialRampToValueAtTime(0.01, now + 0.3);
+    o.connect(g).connect(ctx.destination);
+    o.start(now); o.stop(now + 0.3);
+  } else if (type === 'levelup') {
+    [523.25, 587.33, 659.25, 698.46, 783.99, 880, 1046.5].forEach((f, i) => {
+      const o = ctx.createOscillator(), g = ctx.createGain();
+      o.type = 'triangle'; o.frequency.value = f;
+      const t = now + i*0.06;
+      g.gain.setValueAtTime(0, t);
+      g.gain.linearRampToValueAtTime(0.2, t + 0.02);
+      g.gain.exponentialRampToValueAtTime(0.01, t + 0.25);
+      o.connect(g).connect(ctx.destination);
+      o.start(t); o.stop(t + 0.3);
+    });
+  } else if (type === 'tap') {
+    const o = ctx.createOscillator(), g = ctx.createGain();
+    o.type = 'sine'; o.frequency.value = 700;
+    g.gain.setValueAtTime(0.08, now);
+    g.gain.exponentialRampToValueAtTime(0.01, now + 0.1);
+    o.connect(g).connect(ctx.destination);
+    o.start(now); o.stop(now + 0.1);
+  } else if (type === 'complete') {
+    const melody = [523, 659, 783, 1046, 783, 1046, 1318];
+    melody.forEach((f, i) => {
+      const o = ctx.createOscillator(), g = ctx.createGain();
+      o.type = 'triangle'; o.frequency.value = f;
+      const t = now + i*0.15;
+      g.gain.setValueAtTime(0, t);
+      g.gain.linearRampToValueAtTime(0.2, t + 0.02);
+      g.gain.exponentialRampToValueAtTime(0.01, t + 0.3);
+      o.connect(g).connect(ctx.destination);
+      o.start(t); o.stop(t + 0.35);
+    });
+  }
+}
+function startBGM() {
+  if (!soundOn) return;
+  initAudio(); stopBGM();
+  const ctx = audioCtx;
+  const master = ctx.createGain(); master.gain.value = 0.04; master.connect(ctx.destination);
+  const notes = [261.63, 311.13, 349.23, 392.00, 466.16, 523.25, 466.16, 392.00];
+  let step = 0;
+  const interval = setInterval(() => {
+    if (!soundOn || !bgmNodes) return;
+    const t = ctx.currentTime;
+    const o = ctx.createOscillator(), g = ctx.createGain();
+    o.type = 'triangle'; o.frequency.value = notes[step % notes.length];
+    g.gain.setValueAtTime(0, t);
+    g.gain.linearRampToValueAtTime(1, t + 0.05);
+    g.gain.exponentialRampToValueAtTime(0.001, t + 0.7);
+    o.connect(g).connect(master);
+    o.start(t); o.stop(t + 0.8);
+    step++;
+  }, 600);
+  bgmNodes = { interval, master };
+}
+function stopBGM() {
+  if (bgmNodes) { clearInterval(bgmNodes.interval); bgmNodes.master.disconnect(); bgmNodes = null; }
+}
+document.getElementById('soundToggle').addEventListener('click', () => {
+  soundOn = !soundOn;
+  document.getElementById('soundToggle').textContent = soundOn ? '🔊' : '🔇';
+  if (soundOn) startBGM(); else stopBGM();
+});
+function speakWord(text) {
+  try {
+    if (!('speechSynthesis' in window)) return;
+    window.speechSynthesis.cancel();
+    const u = new SpeechSynthesisUtterance(text); u.lang = 'en-US'; u.rate = 0.8;
+    window.speechSynthesis.speak(u);
+  } catch(e) {}
+}
+
+// ============================================================
+// 홈
+// ============================================================
+function getSessionPool(sess) {
+  return DATA.items.filter(it => sess.books.includes(it.book) && sess.filter(it));
+}
+function getSessionProgress(sess) {
+  const pool = getSessionPool(sess);
+  if (pool.length === 0) return { total: 0, learned: 0, percent: 0 };
+  const p = loadProgress();
+  const learned = pool.filter(it => (p[it.id]?.correct || 0) >= 3).length;
+  return { total: pool.length, learned, percent: Math.round(learned / pool.length * 100) };
+}
+function renderHome() {
+  updateStarDisplay();
+  const grid = document.getElementById('sessionGrid');
+  grid.innerHTML = '';
+  SESSIONS.forEach(sess => {
+    const prog = getSessionProgress(sess);
+    const card = document.createElement('div');
+    card.className = 'session-card';
+    card.innerHTML = `
+      <div class="session-emoji">${sess.emoji}</div>
+      <div class="session-info">
+        <div class="session-name">${sess.name}</div>
+        <div class="session-sub">${sess.sub}</div>
+        <div class="session-progress">
+          <div class="session-progress-bar"><div class="session-progress-fill" style="width:${prog.percent}%"></div></div>
+          <div class="session-progress-text">${prog.learned}/${prog.total}</div>
+        </div>
+      </div>
+    `;
+    card.addEventListener('click', () => { playSound('tap'); startSession(sess); });
+    grid.appendChild(card);
+  });
+  showScreen('screen-home');
+}
+function goHome() { playSound('tap'); renderHome(); }
+
+// ============================================================
+// 세션 시작 (인트로 → 퀴즈/쓰기)
+// ============================================================
+function pickSessionItems(sess, count = 10) {
+  const pool = getSessionPool(sess);
+  if (pool.length === 0) return [];
+  const p = loadProgress();
+  // 진행도 낮은 것 우선. correct 적을수록 우선. tie면 attempts 적은 것.
+  const sorted = pool.slice().sort((a, b) => {
+    const pa = p[a.id] || { attempts:0, correct:0 };
+    const pb = p[b.id] || { attempts:0, correct:0 };
+    if (pa.correct !== pb.correct) return pa.correct - pb.correct;
+    return pa.attempts - pb.attempts;
+  });
+  // 상위 min(count*2, pool.length)에서 셔플 → count 선택 (약간의 다양성)
+  const top = sorted.slice(0, Math.min(count * 2, sorted.length));
+  shuffle(top);
+  return top.slice(0, Math.min(count, top.length));
+}
+
+function startSession(sess) {
+  currentSession = sess;
+  // 서브모드 랜덤 고정 (있으면)
+  if (sess.subModes && sess.subModes.length) {
+    currentSubMode = sess.subModes[Math.floor(Math.random() * sess.subModes.length)];
+  } else {
+    currentSubMode = null;
+  }
+  // 인트로 준비
+  const intro = currentSubMode?.intro || { emoji: sess.emoji, text: sess.name, hint: sess.sub };
+  document.getElementById('introEmoji').textContent = intro.emoji;
+  document.getElementById('introText').textContent = intro.text;
+  document.getElementById('introHint').textContent = intro.hint;
+  document.getElementById('introOverlay').classList.add('show');
+  setTimeout(() => {
+    document.getElementById('introOverlay').classList.remove('show');
+    launchSession(sess);
+  }, 1500);
+}
+
+function launchSession(sess) {
+  const items = pickSessionItems(sess, 10);
+  if (items.length < (sess.id === 'sentence' ? 1 : 4)) {
+    alert('아직 문제가 부족해요! 다른 세션을 골라봐요.');
+    return;
+  }
+  quizItems = items;
+  quizTotal = quizItems.length;
+  quizIndex = 0;
+  quizCorrect = 0;
+  quizEarnedStars = 0;
+
+  if (sess.kind === 'writing') {
+    document.getElementById('writeQTotal').textContent = quizTotal;
+    writingWords = quizItems.map(it => ({ id: it.id, word: it.word }));
+    updateStarDisplay();
+    showScreen('screen-writing');
+    setupWritingCanvas();
+    nextWritingQuestion();
+    return;
+  }
+  document.getElementById('quizQTotal').textContent = quizTotal;
+  updateStarDisplay();
+  showScreen('screen-quiz');
+  nextQuestion();
+}
+
+function retrySession() {
+  if (!currentSession) { goHome(); return; }
+  playSound('tap');
+  startSession(currentSession);
+}
+function confirmQuit() {
+  if (confirm('그만할래요?')) { playSound('tap'); goHome(); }
+}
+
+// ============================================================
+// 오답 선택 (같은 unit > 같은 book > 아무데서나)
+// ============================================================
+function getWrongs(item, count, matchFn) {
+  // matchFn(other): 오답으로 유효한지 (예: 이모지 있어야 함 등)
+  const pools = [
+    DATA.items.filter(o => o.id !== item.id && o.book === item.book && o.unit === item.unit && matchFn(o)),
+    DATA.items.filter(o => o.id !== item.id && o.book === item.book && matchFn(o)),
+    DATA.items.filter(o => o.id !== item.id && matchFn(o))
+  ];
+  const chosen = [];
+  const usedIds = new Set([item.id]);
+  for (const pool of pools) {
+    if (chosen.length >= count) break;
+    const local = pool.filter(o => !usedIds.has(o.id));
+    shuffle(local);
+    for (const o of local) {
+      if (chosen.length >= count) break;
+      chosen.push(o); usedIds.add(o.id);
+    }
+  }
+  return chosen;
+}
+
+// ============================================================
+// 퀴즈: 다음 문제
+// ============================================================
+function nextQuestion() {
+  if (quizIndex >= quizItems.length) { showResult(); return; }
+  const item = quizItems[quizIndex];
+
+  document.getElementById('quizQNum').textContent = quizIndex + 1;
+  document.getElementById('quizProgress').style.width = `${(quizIndex / quizTotal) * 100}%`;
+  const qc = document.getElementById('questionContent');
+  const qp = document.getElementById('questionPrompt');
+  qc.style.cursor = ''; qc.onclick = null; qc.style.fontSize = '';
+  // 문제마다 그림 슬롯 초기화 (안 그러면 앞 문제 그림이 남는다)
+  const qi = document.getElementById('questionImage');
+  const qf = document.getElementById('questionEmojiFallback');
+  qi.onerror = null; qi.onload = null; qi.removeAttribute('src');
+  qi.hidden = true; qf.hidden = true; qf.textContent = '';
+
+  const sub = currentSubMode?.id;
+
+  if (sub === 'sentence') { return renderSentenceQuestion(item, qp, qc); }
+  if (sub === 'first_sound')  { return renderFirstSoundQuestion(item, qp, qc); }
+  if (sub === 'listen')       { return renderListenQuestion(item, qp, qc); }
+  if (sub === 'word_to_emoji'){ return renderWordToEmojiQuestion(item, qp, qc); }
+  // 기본: emoji_to_word
+  return renderEmojiToWordQuestion(item, qp, qc);
+}
+
+function paintChoices(choices, item) {
+  // 같은 내용의 버튼이 두 개 뜨는 것 방지 (정답을 먼저 남긴다)
+  const seenDisplay = new Set();
+  const unique = [];
+  for (const c of [...choices].sort((a, b) => (b.correct ? 1 : 0) - (a.correct ? 1 : 0))) {
+    if (seenDisplay.has(c.display)) continue;
+    seenDisplay.add(c.display);
+    unique.push(c);
+  }
+  choices = unique;
+  currentCorrectAnswer = choices.find(c => c.correct).display;
+  shuffle(choices);
+  const el = document.getElementById('choices');
+  el.innerHTML = '';
+  el.style.gridTemplateColumns = `repeat(${Math.max(2, choices.length)}, 1fr)`;
+  choices.forEach(c => {
+    const btn = document.createElement('button');
+    btn.className = 'choice';
+    btn.textContent = c.display;
+    if (/^[a-zA-Z0-9\s]+$/.test(c.display)) btn.classList.add('text');
+    btn.addEventListener('click', () => handleAnswer(btn, c.correct, item));
+    el.appendChild(btn);
+  });
+}
+
+function renderEmojiToWordQuestion(item, qp, qc) {
+  const word = item.word;
+  const emoji = getEmoji(word);
+  qp.textContent = '무엇일까요?';
+  qc.textContent = emoji; qc.className = 'question-content';
+  // 단어만 다른 게 아니라 '그림이 달라야' 오답이 된다 (🛏️ bed vs bedroom 같은 케이스 차단)
+  const wrongs = getWrongs(item, 3, o => o.word && getEmoji(o.word) && getEmoji(o.word) !== emoji);
+  const choices = [
+    { display: word, value: word, correct: true },
+    ...wrongs.map(o => ({ display: o.word, value: o.word, correct: false }))
+  ];
+  paintChoices(choices, item);
+}
+function renderWordToEmojiQuestion(item, qp, qc) {
+  const word = item.word;
+  const emoji = getEmoji(word);
+  qp.textContent = '같은 그림은?';
+  qc.textContent = word; qc.className = 'question-content text';
+  const wrongs = getWrongs(item, 3, o => o.word && getEmoji(o.word) && getEmoji(o.word) !== emoji);
+  const seen = new Set([emoji]);
+  const wrongsMapped = [];
+  for (const o of wrongs) {
+    const e = getEmoji(o.word);
+    if (!seen.has(e)) { wrongsMapped.push({ display:e, value:e }); seen.add(e); }
+    if (wrongsMapped.length >= 3) break;
+  }
+  const choices = [
+    { display: emoji, value: emoji, correct: true },
+    ...wrongsMapped.map(w => ({ ...w, correct: false }))
+  ];
+  paintChoices(choices, item);
+}
+function renderFirstSoundQuestion(item, qp, qc) {
+  const word = item.word;
+  const emoji = getEmoji(word);
+  const isUpper = Math.random() < 0.5;
+  const firstL = isUpper ? word[0].toUpperCase() : word[0].toLowerCase();
+  qp.textContent = isUpper ? '첫 글자는? (대문자)' : '첫 글자는? (소문자)';
+  qc.textContent = emoji; qc.className = 'question-content';
+  const alpha = (isUpper ? 'ABCDEFGHIJKLMNOPQRSTUVWXYZ' : 'abcdefghijklmnopqrstuvwxyz').split('');
+  // 같은 그림을 다른 이름으로 읽으면(🐰 rabbit/bunny) 그 첫 글자도 정답이므로 오답에서 뺀다
+  const alsoValid = new Set(
+    sameEmojiWords(word)
+      .map(w => (isUpper ? w[0].toUpperCase() : w[0].toLowerCase()))
+  );
+  const others = alpha.filter(l => l !== firstL && !alsoValid.has(l));
+  shuffle(others);
+  const wrongs = others.slice(0, 3).map(l => ({ display:l, value:l }));
+  const choices = [
+    { display: firstL, value: firstL, correct: true },
+    ...wrongs.map(w => ({ ...w, correct: false }))
+  ];
+  paintChoices(choices, item);
+}
+function renderListenQuestion(item, qp, qc) {
+  const word = item.word;
+  const emoji = getEmoji(word);
+  qp.textContent = '잘 듣고 골라요! 🔊 (탭하면 다시 재생)';
+  qc.textContent = '🔊'; qc.className = 'question-content';
+  qc.style.cursor = 'pointer';
+  qc.onclick = () => speakWord(word);
+  const useE = !!emoji && Math.random() < 0.5;
+  // 그림 보기일 때는 정답과 같은 그림을 쓰는 단어를 오답에서 제외하고, 오답끼리도 그림이 겹치지 않게 한다
+  const wrongs = getWrongs(item, 3, o => o.word && o.word.toLowerCase() !== word.toLowerCase()
+                            && (useE ? (!!getEmoji(o.word) && getEmoji(o.word) !== emoji) : true));
+  const wrongsMapped = [];
+  const seenDisp = new Set([useE ? emoji : word]);
+  for (const o of wrongs) {
+    const disp = useE ? getEmoji(o.word) : o.word;
+    if (seenDisp.has(disp)) continue;
+    seenDisp.add(disp);
+    wrongsMapped.push({ display: disp, value: o.word });
+    if (wrongsMapped.length >= 3) break;
+  }
+  const correctDisplay = useE ? emoji : word;
+  const choices = [
+    { display: correctDisplay, value: correctDisplay, correct: true },
+    ...wrongsMapped.map(w => ({ ...w, correct: false }))
+  ];
+  paintChoices(choices, item);
+  setTimeout(() => speakWord(word), 350);
+}
+function renderSentenceQuestion(item, qp, qc) {
+  const answer = item.word;
+  const template = item.template || item.sentence || '';
+  const answerEmoji = getEmoji(answer);
+  // "I have one ___." 처럼 문장만으로는 보기 전부가 정답이 되므로 그림으로 정답을 확정한다
+  const pool = (item.answer_pool || []).filter(w =>
+    w.toLowerCase() !== answer.toLowerCase() &&
+    !(answerEmoji && getEmoji(w) === answerEmoji)   // 같은 그림으로 보이는 보기는 제외 (vet/doctor 등)
+  );
+  qp.textContent = '그림을 보고 빈칸에 알맞은 단어는?';
+  qc.textContent = template; qc.className = 'question-content sentence';
+  showWordImage(
+    document.getElementById('questionImage'),
+    answer,
+    document.getElementById('questionEmojiFallback')
+  );
+  shuffle(pool);
+  const wrongs = pool.slice(0, 3);
+  // pool이 부족하면 같은 book의 다른 sentence_fill의 word로 채움
+  if (wrongs.length < 3) {
+    const extras = DATA.items
+      .filter(o => o.id !== item.id && o.book === item.book && o.type === 'sentence_fill' && o.word
+                   && o.word.toLowerCase() !== answer.toLowerCase() && !wrongs.includes(o.word)
+                   && !(answerEmoji && getEmoji(o.word) === answerEmoji))
+      .map(o => o.word);
+    shuffle(extras);
+    while (wrongs.length < 3 && extras.length) wrongs.push(extras.shift());
+  }
+  const choices = [
+    { display: answer, value: answer, correct: true },
+    ...wrongs.map(w => ({ display: w, value: w, correct: false }))
+  ];
+  paintChoices(choices, item);
+}
+
+function handleAnswer(btn, isCorrect, item) {
+  document.querySelectorAll('.choice').forEach(b => b.classList.add('disabled'));
+  const result = updateItemProgress(item.id, isCorrect);
+  if (isCorrect) {
+    btn.classList.add('correct');
+    quizCorrect++;
+    playSound('correct');
+    spawnConfetti(btn);
+    let earned = 1;
+    if (result.wasFirstCorrect) { earned = 2; showBonusToast('✨ 첫 정답! ⭐+2'); }
+    addStars(earned);
+    quizEarnedStars += earned;
+    flyStarTo(btn, '#quizStarsDisplay');
+    setTimeout(() => { quizIndex++; nextQuestion(); }, 1100);
+  } else {
+    btn.classList.add('wrong');
+    playSound('wrong');
+    document.querySelectorAll('.choice').forEach(b => {
+      if (b.textContent === currentCorrectAnswer) b.classList.add('correct');
+    });
+    setTimeout(() => { quizIndex++; nextQuestion(); }, 1700);
+  }
+}
+
+// ============================================================
+// 쓰기
+// ============================================================
+function setupWritingCanvas() {
+  const canvas = document.getElementById('writingCanvas');
+  const wrap = canvas.parentElement;
+  const rect = wrap.getBoundingClientRect();
+  canvas.width = rect.width;
+  canvas.height = rect.height;
+  writingCtx = canvas.getContext('2d');
+  writingCtx.strokeStyle = '#7A1F17';
+  writingCtx.lineWidth = 14;
+  writingCtx.lineCap = 'round';
+  writingCtx.lineJoin = 'round';
+  if (!window.__s2WriteMask) window.__s2WriteMask = document.createElement('canvas');
+  window.__s2WriteMask.width = canvas.width;
+  window.__s2WriteMask.height = canvas.height;
+  if (!canvas.dataset.bound) {
+    canvas.dataset.bound = '1';
+    const getPos = (e) => {
+      const r = canvas.getBoundingClientRect();
+      const t = e.touches ? e.touches[0] : e;
+      return {
+        x: (t.clientX - r.left) * (canvas.width / r.width),
+        y: (t.clientY - r.top)  * (canvas.height / r.height)
+      };
+    };
+    const start = (e) => {
+      e.preventDefault();
+      writingDrawing = true;
+      const p = getPos(e);
+      writingCtx.beginPath(); writingCtx.moveTo(p.x, p.y);
+    };
+    const move = (e) => {
+      if (!writingDrawing) return;
+      e.preventDefault();
+      const p = getPos(e);
+      writingCtx.lineTo(p.x, p.y); writingCtx.stroke();
+    };
+    const end = (e) => { e.preventDefault(); writingDrawing = false; };
+    canvas.addEventListener('mousedown', start);
+    canvas.addEventListener('mousemove', move);
+    canvas.addEventListener('mouseup', end);
+    canvas.addEventListener('mouseleave', end);
+    canvas.addEventListener('touchstart', start, { passive: false });
+    canvas.addEventListener('touchmove', move, { passive: false });
+    canvas.addEventListener('touchend', end, { passive: false });
+  }
+}
+function drawMaskFor(word) {
+  const mc = window.__s2WriteMask;
+  const mctx = mc.getContext('2d');
+  mctx.clearRect(0, 0, mc.width, mc.height);
+  mctx.fillStyle = 'black'; mctx.strokeStyle = 'black';
+  let fontSize = Math.min(mc.width, mc.height) * 0.85;
+  if (word.length > 1) {
+    fontSize = Math.min(mc.width / word.length * 1.4, mc.height * 0.6);
+  }
+  mctx.font = `900 ${fontSize}px Nunito, Pretendard, sans-serif`;
+  mctx.textAlign = 'center'; mctx.textBaseline = 'middle';
+  mctx.fillText(word, mc.width / 2, mc.height / 2);
+  mctx.lineWidth = 40;
+  mctx.strokeText(word, mc.width / 2, mc.height / 2);
+}
+function clearWritingCanvas() {
+  playSound('tap');
+  if (writingCtx) writingCtx.clearRect(0, 0, writingCtx.canvas.width, writingCtx.canvas.height);
+}
+function nextWritingQuestion() {
+  if (quizIndex >= writingWords.length) { showResult(); return; }
+  const w = writingWords[quizIndex].word;
+  document.getElementById('writeQNum').textContent = quizIndex + 1;
+  document.getElementById('writeProgress').style.width = `${(quizIndex / quizTotal) * 100}%`;
+  const guide = document.getElementById('writingGuide');
+  guide.textContent = w;
+  if (w.length > 1) {
+    const size = Math.max(12, Math.min(30, 55 / w.length));
+    guide.style.fontSize = size + 'vh';
+  } else {
+    guide.style.fontSize = '';
+  }
+  clearWritingCanvas();
+  drawMaskFor(w);
+}
+function completeWriting() {
+  if (!writingCtx) return;
+  const canvas = writingCtx.canvas;
+  const drawn = writingCtx.getImageData(0, 0, canvas.width, canvas.height).data;
+  const mask = window.__s2WriteMask.getContext('2d').getImageData(0, 0, canvas.width, canvas.height).data;
+  let total = 0, inside = 0;
+  for (let i = 3; i < drawn.length; i += 16) {
+    if (drawn[i] > 0) { total++; if (mask[i] > 0) inside++; }
+  }
+  if (total < 30) { playSound('wrong'); alert('아직 안 썼어요! 따라 써봐~'); return; }
+  const accuracy = inside / total;
+  const passed = accuracy >= 0.6;
+  if (passed) {
+    playSound('correct');
+    quizCorrect++;
+    const wObj = writingWords[quizIndex];
+    const res = updateItemProgress(wObj.id, true);
+    let earned = 1;
+    if (res.wasFirstCorrect) { earned = 2; showBonusToast('✨ 첫 정답! ⭐+2'); }
+    addStars(earned);
+    quizEarnedStars += earned;
+    const btn = event.target;
+    spawnConfetti(btn);
+    flyStarTo(btn, '#writeStarsDisplay');
+    setTimeout(() => { quizIndex++; nextWritingQuestion(); }, 1100);
+  } else {
+    playSound('wrong');
+    const wrap = document.querySelector('.writing-canvas-wrap');
+    const toast = document.createElement('div');
+    toast.textContent = '😅 글자 안에 써보자~';
+    toast.style.cssText = 'position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(0,0,0,0.85);color:white;padding:2vh 3vh;border-radius:2vh;font-size:3vh;z-index:100;';
+    wrap.appendChild(toast);
+    setTimeout(() => { toast.remove(); clearWritingCanvas(); }, 1500);
+  }
+}
+
+// ============================================================
+// 결과
+// ============================================================
+function showResult() {
+  document.getElementById('resultScore').textContent = `${quizCorrect} / ${quizTotal} 정답!`;
+  let s = 0;
+  if (quizCorrect === quizTotal) s = 3;
+  else if (quizCorrect >= quizTotal * 0.7) s = 2;
+  else if (quizCorrect >= quizTotal * 0.4) s = 1;
+  document.getElementById('resultStarsIcon').textContent = '⭐'.repeat(s) + '☆'.repeat(3 - s);
+  document.getElementById('resultEarned').textContent = `+${quizEarnedStars}`;
+  playSound('complete');
+  showScreen('screen-result');
+}
+
+// ============================================================
+// 가챠
+// ============================================================
+const GACHA_COST = 5;
+const GACHA_REFUND = 3;
+function openGacha() {
+  playSound('tap');
+  updateStarDisplay();
+  document.getElementById('gachaPullBtn').disabled = loadStars() < GACHA_COST;
+  showScreen('screen-gacha');
+}
+function rollGacha() { return FIGURES[Math.floor(Math.random() * FIGURES.length)]; }
+function pullGacha() {
+  if (loadStars() < GACHA_COST) { playSound('wrong'); return; }
+  playSound('tap');
+  spendStars(GACHA_COST); updateStarDisplay();
+  const machine = document.getElementById('gachaMachine');
+  machine.classList.add('shaking');
+  document.getElementById('gachaPullBtn').disabled = true;
+  setTimeout(() => {
+    machine.classList.remove('shaking');
+    const card = rollGacha();
+    const result = addCard(card.id);
+    let refunded = 0;
+    if (!result.isNew) { refunded = GACHA_REFUND; addStars(refunded); }
+    showCardReveal(card, result, refunded);
+    setTimeout(() => {
+      document.getElementById('gachaPullBtn').disabled = loadStars() < GACHA_COST;
+      updateStarDisplay();
+    }, 100);
+  }, 1200);
+}
+function showCardReveal(card, result, refunded) {
+  const el = document.getElementById('cardReveal');
+  let statusHTML = result.isNew
+    ? '<div class="reveal-status new">✨ NEW! ✨</div>'
+    : `<div class="reveal-status dup">중복 (${result.count}장)</div>`;
+  if (refunded > 0) statusHTML += `<div class="reveal-refund">⭐ 별 ${refunded}개 돌려받았어요!</div>`;
+  el.innerHTML = `
+    <div class="reveal-card">
+      <img class="reveal-img" src="${card.image}" alt="${card.name}" onerror="this.style.display='none'">
+      <div class="reveal-status-group">${statusHTML}</div>
+      <div class="reveal-tap-hint">탭하면 닫혀요</div>
+    </div>
+  `;
+  document.getElementById('cardRevealOverlay').classList.add('show');
+  playSound(result.isNew ? 'levelup' : 'correct');
+}
+function closeCardReveal() { document.getElementById('cardRevealOverlay').classList.remove('show'); }
+
+// ============================================================
+// 도감
+// ============================================================
+function openDex() {
+  playSound('tap');
+  currentDexTab = 'all';
+  renderDexTabs(); renderDex();
+  showScreen('screen-dex');
+}
+function renderDexTabs() {
+  const el = document.getElementById('dexTabs');
+  const tabs = [{ key:'all', label:'전체' }, ...DYNASTIES.map(d => ({ key: d.key, label: `${d.emoji} ${d.key}` }))];
+  el.innerHTML = tabs.map(t =>
+    `<button class="dex-tab ${t.key === currentDexTab ? 'active' : ''}" onclick="switchDexTab('${t.key}')">${t.label}</button>`
+  ).join('');
+}
+function switchDexTab(key) { playSound('tap'); currentDexTab = key; renderDexTabs(); renderDex(); }
+function renderDex() {
+  const grid = document.getElementById('dexGrid');
+  const cards = loadCards();
+  const filtered = currentDexTab === 'all' ? FIGURES : FIGURES.filter(f => f.dynasty === currentDexTab);
+  grid.innerHTML = filtered.map(f => {
+    const count = cards[f.id] || 0;
+    const owned = count > 0;
+    return `
+      <div class="dex-card ${owned ? '' : 'locked'}" onclick="showDexDetail('${f.id}')">
+        ${owned && count > 1 ? `<div class="dex-card-count">${count}</div>` : ''}
+        <img class="dex-card-img" src="${f.image}" alt="${f.name}" onerror="this.style.display='none'">
+        <div class="dex-card-name">${owned ? f.name : '???'}</div>
+      </div>
+    `;
+  }).join('');
+  document.getElementById('dexProgress').textContent = `${getOwnedCount()}/${FIGURES.length}`;
+}
+function showDexDetail(id) {
+  const f = FIGURES.find(x => x.id === id);
+  if (!f) return;
+  const count = getCardCount(id);
+  if (count === 0) { playSound('wrong'); return; }
+  playSound('tap');
+  document.getElementById('dexDetailCard').innerHTML = `
+    <button class="dex-detail-close" onclick="closeDexDetail()">✕</button>
+    <img class="dex-detail-img" src="${f.image}" alt="${f.name}" onerror="this.style.display='none'">
+    <div class="dex-detail-name">${f.name}</div>
+    <div class="dex-detail-dynasty">${f.dynastyEmoji} ${f.dynasty}</div>
+    <div class="dex-detail-count">×${count}장</div>
+  `;
+  document.getElementById('dexDetail').classList.add('show');
+}
+function closeDexDetail(event) {
+  if (event && event.target.id !== 'dexDetail' && event.target.className !== 'dex-detail-close') return;
+  document.getElementById('dexDetail').classList.remove('show');
+}
+
+// ============================================================
+// 초기화
+// ============================================================
+function confirmReset() {
+  playSound('tap');
+  if (!confirm('시즌2 진행/별/카드를 모두 초기화할까요?\n(시즌1은 영향 없음)')) return;
+  if (!confirm('진짜요? 되돌릴 수 없어요!')) return;
+  localStorage.removeItem(KEYS.progress);
+  localStorage.removeItem(KEYS.stars);
+  localStorage.removeItem(KEYS.cards);
+  updateStarDisplay();
+  renderHome();
+  alert('시즌2 초기화 완료!');
+}
+
+async function init() {
+  try {
+    const res = await fetch('english_textbooks.json');
+    DATA = await res.json();
+  } catch (e) {
+    alert('데이터 불러오기 실패: ' + e.message);
+    return;
+  }
+  document.getElementById('loading').style.display = 'none';
+  renderHome();
+  document.addEventListener('click', () => { if (soundOn && !bgmNodes) startBGM(); }, { once: true });
+}
+
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('sw.js').catch(() => {});
+}
+
+init();
+</script>
+</body>
+</html>
