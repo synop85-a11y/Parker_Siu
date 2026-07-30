@@ -685,6 +685,125 @@ body::before {
   0% { transform:translateY(-10vh) rotate(0); opacity:1; }
   100% { transform:translateY(110vh) rotate(720deg); opacity:0; }
 }
+
+/* ============================================================
+   폰 세로 화면 대응
+   ============================================================
+   원래 이 화면은 '패드 가로' 전용으로 짜였다. 모든 크기가 vh 기준이라
+   세로 화면에서는 (vh 는 크고 vw 는 좁아서) 글자·버튼이 가로로 넘치고,
+   html/body/#app 이 overflow:hidden 이라 넘친 부분이 잘려서 안 보였다.
+   세로에서는 ① 세로 스크롤을 열고 ② 그리드를 1~2열로 줄이고
+   ③ 크기 기준을 vh → vw 로 바꾼다. 가로(패드)는 건드리지 않는다. */
+@media (orientation: portrait) {
+  html, body { overflow-y:auto; overflow-x:hidden; }
+  #app { height:auto; min-height:100vh; overflow:visible; }
+  .screen {
+    position:relative; inset:auto;
+    min-height:100vh; height:auto;
+    padding:2vh 4vw 4vh;
+  }
+
+  /* 헤더 */
+  .header { min-height:auto; margin-bottom:3vw; gap:2vw; }
+  .btn-back { width:11vw; height:11vw; font-size:5.5vw; border-width:0.5vw; }
+  .stars-display {
+    font-size:4.4vw; padding:1.4vw 3vw; min-width:18vw;
+    gap:1.5vw; border-width:0.5vw;
+  }
+
+  /* 홈 */
+  #screen-home { padding-top:15vw; }
+  .home-top-bar { top:2vw; gap:2vw; flex-wrap:wrap; justify-content:center; width:92vw; }
+  .home-action-btn { font-size:3.8vw; padding:1.4vw 3vw; gap:1.5vw; }
+  .home-action-btn .badge { font-size:3.2vw; padding:0.4vw 1.5vw; min-width:6vw; }
+  .home-title { font-size:6.4vw; }
+  .home-subtitle { font-size:3.6vw; }
+  .overall-progress { width:90vw; max-width:90vw; gap:2.5vw; margin-top:2.5vw; }
+  .overall-progress-bar { height:3vw; }
+  .overall-progress-text { font-size:3.4vw; }
+  .reset-corner-btn { width:9vw; height:9vw; font-size:4.4vw; bottom:2vw; right:2vw; }
+
+  /* 세션 카드: 2x2 → 1열 세로 나열 */
+  .session-grid {
+    grid-template-columns:1fr; grid-template-rows:none;
+    max-width:92vw; max-height:none; flex:none;
+    gap:2.5vw; margin-top:3vw;
+  }
+  .session-card { min-height:auto; padding:3vw 4vw; gap:4vw; border-width:0.7vw; }
+  .session-emoji { font-size:12vw; }
+  .session-name { font-size:4.8vw; }
+  .session-sub  { font-size:3.3vw; }
+  .session-progress-bar { height:2.2vw; }
+  .session-progress-text { font-size:3vw; min-width:11vw; }
+
+  .exam-start-btn { max-width:92vw; padding:3vw 4vw; gap:4vw; border-width:0.7vw; }
+  .exam-start-emoji { font-size:9vw; }
+  .exam-start-name  { font-size:4.8vw; }
+  .exam-start-sub   { font-size:3.3vw; }
+
+  /* 인트로 */
+  .intro-emoji { font-size:26vw; margin-bottom:3vw; }
+  .intro-text  { font-size:7vw; }
+  .intro-hint  { font-size:4vw; margin-top:3vw; }
+
+  /* 퀴즈 */
+  .quiz-content { justify-content:flex-start; gap:5vw; padding-top:2vw; }
+  .quiz-stars { font-size:5vw; }
+  .question-box { min-width:0; width:92vw; padding:5vw 4vw; border-width:0.7vw; }
+  .question-prompt { font-size:3.9vw; margin-bottom:3vw; }
+  .question-content { font-size:22vw; }
+  .question-content.text { font-size:13vw; }
+  .question-content.sentence { font-size:5.4vw; line-height:1.45; }
+  .question-image { height:auto; max-height:26vh; max-width:80vw; }
+  .question-emoji-fallback { font-size:26vw; }
+
+  /* 보기 4열 → 2열. JS 가 인라인 style 로 열 수를 넣어서 !important 필요 */
+  .choices { grid-template-columns:repeat(2, 1fr) !important; width:92vw; gap:3vw; }
+  .choice { min-height:20vw; font-size:9vw; padding:4vw 2vw; border-width:0.6vw; }
+  .choice.text { font-size:5.6vw; }
+
+  /* 스피킹 */
+  .speak-word { font-size:11vw; }
+  .speak-btns { gap:3vw; }
+  .speak-hint { font-size:3.4vw; }
+
+  /* 쓰기 */
+  .writing-prompt { font-size:4.6vw; padding:2vw 4vw; }
+  .writing-canvas-wrap { width:88vw; height:88vw; max-width:88vw; max-height:52vh; }
+  .writing-buttons { gap:3vw; }
+
+  /* 결과 · 시험 결과 · 부모 채점 */
+  .result-box, .exam-result-box { max-width:94vw; padding:5vw 4vw; max-height:none; }
+  .result-title { font-size:6.5vw; }
+  .result-stars-icon { font-size:12vw; }
+  .result-score { font-size:4.6vw; }
+  .btn-action { font-size:4vw; padding:2.4vw 4vw; }
+  .result-buttons { gap:3vw; margin-top:4vw; }
+  .exam-grade-icon { font-size:16vw; }
+  .exam-score { font-size:14vw; }
+  .exam-grade-title { font-size:6vw; }
+  .exam-detail, .exam-msg { font-size:3.9vw; }
+  .exam-note-btn { font-size:3.8vw; padding:2.2vw 4vw; }
+  .exam-note { max-height:40vh; }
+  .exam-note-q { font-size:4vw; }
+  .exam-note-ans { font-size:3.5vw; gap:4vw; }
+  .grade-list { max-height:52vh; }
+  .grade-word { font-size:5vw; }
+  .grade-btns { gap:2vw; }
+  .grade-btns button { font-size:3.5vw; padding:2vw 3vw; }
+
+  /* 가챠 */
+  .gacha-machine { width:56vw; height:56vw; font-size:28vw; border-width:1vw; }
+  .gacha-pull-btn { font-size:5vw; padding:3vw 7vw; gap:2.5vw; border-width:0.7vw; }
+  .gacha-info { font-size:3.6vw; }
+
+  /* 도감 */
+  .dex-title { font-size:5.4vw; }
+  .dex-progress { font-size:3.8vw; }
+  .dex-tab { font-size:3.6vw; }
+  .dex-grid { grid-template-columns:repeat(auto-fill, minmax(26vw, 1fr)); gap:2.5vw; padding:3vw; }
+  .dex-card-name { font-size:2.9vw; }
+}
 </style>
 </head>
 <body>
