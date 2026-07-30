@@ -126,6 +126,29 @@ body::before {
   font-size:2.4vh; color:#C9A85A; margin-top:0.6vh;
 }
 
+/* 전체 완성도 (다 푼 문제) */
+.overall-progress {
+  display:flex; align-items:center; gap:1.4vh;
+  margin-top:1.4vh; width:52vw; max-width:52vw;
+}
+.overall-progress-bar {
+  flex:1; height:2vh;
+  background:rgba(0,0,0,0.4);
+  border-radius:99px; overflow:hidden;
+  border:0.25vh solid rgba(240,198,98,0.45);
+  box-shadow: inset 0 0.3vh 0.6vh rgba(0,0,0,0.4);
+}
+.overall-progress-fill {
+  height:100%; width:0;
+  background:linear-gradient(90deg, #C6961F, #F0C662 60%, #FFF3C4);
+  box-shadow: 0 0 1.2vh rgba(240,198,98,0.6);
+  transition:width 0.6s ease-out;
+}
+.overall-progress-text {
+  font-size:2vh; color:#F0C662; font-weight:700;
+  white-space:nowrap; text-shadow:1px 1px 0 rgba(0,0,0,0.5);
+}
+
 /* 세션 카드 그리드 (2x2) */
 .session-grid {
   display:grid; grid-template-columns:repeat(2, 1fr); grid-template-rows:repeat(2, 1fr);
@@ -171,6 +194,66 @@ body::before {
   transition:width 0.5s;
 }
 .session-progress-text { font-size:1.7vh; color:#C9A85A; min-width:5vh; text-align:right; }
+
+/* ============== 시험 보기 버튼 (홈) ============== */
+.exam-start-btn {
+  margin-top:2vh; width:100%; max-width:85vw;
+  display:flex; align-items:center; justify-content:center; gap:2.5vh;
+  background:linear-gradient(180deg, #6B2233 0%, #3D0F1C 100%);
+  border:0.55vh solid #E0A03C;
+  border-radius:2.5vh; padding:1.8vh 3vh; cursor:pointer;
+  box-shadow: 0 8px 0 #2A0A12, inset 0 0 3vh rgba(240,198,98,0.1);
+  font-family:inherit; color:#F5E4B0;
+  transition:transform 0.15s, box-shadow 0.15s;
+}
+.exam-start-btn:active { transform:translateY(4px); box-shadow: 0 4px 0 #2A0A12; }
+.exam-start-emoji { font-size:5vh; line-height:1; filter:drop-shadow(2px 2px 0 rgba(0,0,0,0.6)); }
+.exam-start-text { display:flex; flex-direction:column; align-items:flex-start; gap:0.3vh; }
+.exam-start-name { font-size:3vh; font-weight:800; color:#F5E4B0; }
+.exam-start-sub  { font-size:1.9vh; color:#E0A03C; }
+
+/* ============== 시험 결과 ============== */
+.exam-result-box {
+  background:linear-gradient(180deg, #1B305B 0%, #0A1A38 100%);
+  border:0.6vh solid #C6961F; border-radius:3vh;
+  padding:3vh 4vh; text-align:center;
+  box-shadow: 0 10px 0 #2A1A05, inset 0 0 4vh rgba(240,198,98,0.08);
+  max-width:80vw; max-height:92vh; overflow-y:auto;
+  display:flex; flex-direction:column; align-items:center; gap:0.8vh;
+}
+.exam-grade-icon { font-size:9vh; line-height:1; filter:drop-shadow(3px 3px 0 rgba(0,0,0,0.5)); }
+.exam-score {
+  font-size:7vh; font-weight:900; color:#F0C662; line-height:1;
+  text-shadow: 0 0 2vh rgba(240,198,98,0.5), 3px 3px 0 rgba(0,0,0,0.6);
+}
+.exam-grade-title { font-size:3.4vh; font-weight:800; color:#F5E4B0; }
+.exam-detail { font-size:2.2vh; color:#C9A85A; }
+.exam-msg { font-size:2.4vh; color:#F5E4B0; margin-bottom:0.5vh; }
+.exam-note-btn {
+  margin-top:1vh; background:rgba(0,0,0,0.35); border:0.35vh solid #C6961F;
+  color:#F0C662; font-family:inherit; font-size:2.1vh; font-weight:700;
+  padding:1.2vh 2.5vh; border-radius:1.6vh; cursor:pointer;
+}
+.exam-note-btn:active { transform:translateY(2px); }
+.exam-note {
+  width:100%; margin-top:1.2vh; max-height:32vh; overflow-y:auto;
+  background:rgba(0,0,0,0.3); border-radius:1.6vh; padding:1.2vh;
+}
+.exam-note-row {
+  display:flex; flex-direction:column; gap:0.4vh;
+  padding:1.2vh 1.5vh; border-bottom:0.2vh solid rgba(240,198,98,0.18);
+  text-align:left;
+}
+.exam-note-row:last-child { border-bottom:none; }
+.exam-note-q { font-size:2.1vh; color:#F5E4B0; font-weight:700; }
+.exam-note-ans { display:flex; gap:2vh; font-size:1.9vh; flex-wrap:wrap; }
+.exam-note-ans .mine  { color:#F08C7A; }
+.exam-note-ans .right { color:#6EE7B7; font-weight:700; }
+/* 시험 중 고른 보기 (정답 여부는 안 알려줌) */
+.choice.picked {
+  background:linear-gradient(180deg, #8FA8D8 0%, #5C7BB8 100%);
+  transform:scale(0.97);
+}
 
 /* ============== 세션 인트로 오버레이 ============== */
 .intro-overlay {
@@ -585,8 +668,19 @@ body::before {
     <div class="home-title-wrap">
       <div class="home-title">👑 시즌 2 · 위인관 👑</div>
       <div class="home-subtitle">한 번 눌러서 바로 시작!</div>
+      <div class="overall-progress">
+        <div class="overall-progress-bar"><div class="overall-progress-fill" id="overallFill"></div></div>
+        <div class="overall-progress-text" id="overallText">0 / 0 문제 완료</div>
+      </div>
     </div>
     <div class="session-grid" id="sessionGrid"></div>
+    <button class="exam-start-btn" onclick="startExam()">
+      <span class="exam-start-emoji">📝</span>
+      <span class="exam-start-text">
+        <span class="exam-start-name">시험 보기</span>
+        <span class="exam-start-sub">20문제 · 점수만큼 별 획득</span>
+      </span>
+    </button>
   </div>
 
   <!-- 세션 인트로 오버레이 -->
@@ -657,6 +751,31 @@ body::before {
         <button class="btn-action" onclick="goHome()">홈으로</button>
         <button class="btn-action" onclick="openGacha()">🎁 가챠</button>
         <button class="btn-action primary" onclick="retrySession()">한번 더!</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 시험 결과 -->
+  <div class="screen" id="screen-exam-result">
+    <div class="exam-result-box">
+      <div class="exam-grade-icon" id="examGradeIcon">🏆</div>
+      <div class="exam-score" id="examScore">0점</div>
+      <div class="exam-grade-title" id="examGradeTitle">만점!</div>
+      <div class="exam-detail" id="examDetail"></div>
+      <div class="exam-msg" id="examMsg"></div>
+      <div class="result-earned">
+        <span>⭐</span>
+        <span class="big" id="examEarned">+0</span>
+        <span>별 획득!</span>
+      </div>
+      <button class="exam-note-btn" id="examNoteBtn" onclick="toggleExamNote()" hidden>📕 틀린 문제 보기</button>
+      <div class="exam-note" id="examNote" hidden>
+        <div class="exam-note-list" id="examNoteList"></div>
+      </div>
+      <div class="result-buttons">
+        <button class="btn-action" onclick="goHome()">홈으로</button>
+        <button class="btn-action" onclick="openGacha()">🎁 가챠</button>
+        <button class="btn-action primary" onclick="retryExam()">📝 다시 시험</button>
       </div>
     </div>
   </div>
@@ -826,6 +945,38 @@ const SESSIONS = [
 ];
 
 // ============================================================
+// 시험 모드 설정
+// ============================================================
+// ⚠️ mix(문항 구성)는 새 문제지 들어오면 여기만 고치면 됨.
+//    스피킹 문제는 채점 방식 확정 후 추가 예정.
+//    풀이 부족한 유형은 자동으로 다른 유형이 채운다 (buildExamQuestions).
+const EXAM = {
+  total: 20,
+  mix: [
+    { mode:'emoji_to_word', count:6 },
+    { mode:'word_to_emoji', count:6 },
+    { mode:'first_sound',   count:4 },
+    { mode:'sentence',      count:4 }
+  ],
+  // 점수 등급별 정액 보상. 위에서부터 처음 만족하는 등급 적용.
+  grades: [
+    { min:100, stars:15, icon:'🏆', title:'만점!',      msg:'완벽해! 진짜 대단하다!' },
+    { min:90,  stars:10, icon:'🥇', title:'아주 잘함',   msg:'거의 다 맞았어!' },
+    { min:70,  stars:6,  icon:'🥈', title:'잘함',       msg:'잘하고 있어!' },
+    { min:50,  stars:3,  icon:'🥉', title:'보통',       msg:'조금만 더 하면 돼!' },
+    { min:0,   stars:1,  icon:'💪', title:'다시 도전',   msg:'끝까지 푼 게 멋져!' }
+  ]
+};
+// 시험 유형 → 어느 세션 풀에서 문제를 가져올지
+const EXAM_MODE_SOURCE = {
+  emoji_to_word: 'word',
+  word_to_emoji: 'word',
+  first_sound:   'phonics',
+  listen:        'phonics',
+  sentence:      'sentence'
+};
+
+// ============================================================
 // 이모지 매핑 (Q2 어휘 위주)
 // ============================================================
 const EMOJI_MAP = {
@@ -984,6 +1135,8 @@ let quizEarnedStars = 0;
 let currentCorrectAnswer = null;
 let soundOn = true;
 let currentDexTab = 'all';
+let examMode = false;           // 시험 중이면 true (즉시 채점 안 함)
+let examLog = [];               // 시험 답안지 (오답노트용)
 
 // 쓰기 상태
 let writingCtx = null;
@@ -1153,15 +1306,33 @@ function speakWord(text) {
 function getSessionPool(sess) {
   return DATA.items.filter(it => sess.books.includes(it.book) && sess.filter(it));
 }
+// 한 번이라도 맞춘 문제 = 푼 문제 (별 지급 기준과 동일하게 맞춤)
+function isSolved(p, id) { return (p[id]?.correct || 0) >= 1; }
+
 function getSessionProgress(sess) {
   const pool = getSessionPool(sess);
   if (pool.length === 0) return { total: 0, learned: 0, percent: 0 };
   const p = loadProgress();
-  const learned = pool.filter(it => (p[it.id]?.correct || 0) >= 3).length;
+  const learned = pool.filter(it => isSolved(p, it.id)).length;
   return { total: pool.length, learned, percent: Math.round(learned / pool.length * 100) };
+}
+
+// 전체 완성도: 모든 세션 문제를 중복 없이 합친 기준
+function getOverallProgress() {
+  const ids = new Set();
+  SESSIONS.forEach(sess => getSessionPool(sess).forEach(it => ids.add(it.id)));
+  const p = loadProgress();
+  let solved = 0;
+  ids.forEach(id => { if (isSolved(p, id)) solved++; });
+  const total = ids.size;
+  return { total, solved, percent: total ? Math.round(solved / total * 100) : 0 };
 }
 function renderHome() {
   updateStarDisplay();
+  const ov = getOverallProgress();
+  document.getElementById('overallFill').style.width = ov.percent + '%';
+  document.getElementById('overallText').textContent =
+    `${ov.solved} / ${ov.total} 문제 완료 · ${ov.percent}%`;
   const grid = document.getElementById('sessionGrid');
   grid.innerHTML = '';
   SESSIONS.forEach(sess => {
@@ -1184,7 +1355,12 @@ function renderHome() {
   });
   showScreen('screen-home');
 }
-function goHome() { playSound('tap'); renderHome(); }
+function goHome() {
+  playSound('tap');
+  examMode = false;
+  document.getElementById('quizStarsDisplay').hidden = false;
+  renderHome();
+}
 
 // ============================================================
 // 세션 시작 (인트로 → 퀴즈/쓰기)
@@ -1290,8 +1466,14 @@ function getWrongs(item, count, matchFn) {
 // 퀴즈: 다음 문제
 // ============================================================
 function nextQuestion() {
-  if (quizIndex >= quizItems.length) { showResult(); return; }
-  const item = quizItems[quizIndex];
+  if (quizIndex >= quizItems.length) {
+    if (examMode) { showExamResult(); } else { showResult(); }
+    return;
+  }
+  // 시험은 문항마다 유형이 다르다 ({item, mode}), 연습은 아이템 그대로.
+  const entry = quizItems[quizIndex];
+  const item = examMode ? entry.item : entry;
+  if (examMode) currentSubMode = { id: entry.mode };
 
   document.getElementById('quizQNum').textContent = quizIndex + 1;
   document.getElementById('quizProgress').style.width = `${(quizIndex / quizTotal) * 100}%`;
@@ -1334,7 +1516,10 @@ function paintChoices(choices, item) {
     btn.className = 'choice';
     btn.textContent = c.display;
     if (/^[a-zA-Z0-9\s]+$/.test(c.display)) btn.classList.add('text');
-    btn.addEventListener('click', () => handleAnswer(btn, c.correct, item));
+    btn.addEventListener('click', () => {
+      if (examMode) handleExamAnswer(btn, c.correct, item);
+      else handleAnswer(btn, c.correct, item);
+    });
     el.appendChild(btn);
   });
 }
@@ -1464,11 +1649,15 @@ function handleAnswer(btn, isCorrect, item) {
     quizCorrect++;
     playSound('correct');
     spawnConfetti(btn);
-    let earned = 1;
-    if (result.wasFirstCorrect) { earned = 2; showBonusToast('✨ 첫 정답! ⭐+2'); }
-    addStars(earned);
-    quizEarnedStars += earned;
-    flyStarTo(btn, '#quizStarsDisplay');
+    // 별은 처음 맞춘 문제에만. 이미 푼 문제는 다시 안 줌.
+    if (result.wasFirstCorrect) {
+      addStars(1);
+      quizEarnedStars += 1;
+      showBonusToast('✨ 새로 배웠다! ⭐+1');
+      flyStarTo(btn, '#quizStarsDisplay');
+    } else {
+      showBonusToast('👍 이미 배운 거야!');
+    }
     setTimeout(() => { quizIndex++; nextQuestion(); }, 1100);
   } else {
     btn.classList.add('wrong');
@@ -1581,13 +1770,17 @@ function completeWriting() {
     quizCorrect++;
     const wObj = writingWords[quizIndex];
     const res = updateItemProgress(wObj.id, true);
-    let earned = 1;
-    if (res.wasFirstCorrect) { earned = 2; showBonusToast('✨ 첫 정답! ⭐+2'); }
-    addStars(earned);
-    quizEarnedStars += earned;
     const btn = event.target;
     spawnConfetti(btn);
-    flyStarTo(btn, '#writeStarsDisplay');
+    // 별은 처음 맞춘 문제에만. 이미 푼 문제는 다시 안 줌.
+    if (res.wasFirstCorrect) {
+      addStars(1);
+      quizEarnedStars += 1;
+      showBonusToast('✨ 새로 배웠다! ⭐+1');
+      flyStarTo(btn, '#writeStarsDisplay');
+    } else {
+      showBonusToast('👍 이미 배운 거야!');
+    }
     setTimeout(() => { quizIndex++; nextWritingQuestion(); }, 1100);
   } else {
     playSound('wrong');
@@ -1599,6 +1792,146 @@ function completeWriting() {
     setTimeout(() => { toast.remove(); clearWritingCanvas(); }, 1500);
   }
 }
+
+// ============================================================
+// 시험 모드
+// ============================================================
+function examPoolFor(mode) {
+  const sess = SESSIONS.find(s => s.id === EXAM_MODE_SOURCE[mode]);
+  return sess ? getSessionPool(sess) : [];
+}
+
+// mix 대로 뽑되, 풀이 모자란 유형은 남는 유형이 대신 채운다.
+function buildExamQuestions() {
+  const used = new Set();
+  const qs = [];
+  const take = (mode, n) => {
+    const pool = examPoolFor(mode).filter(it => !used.has(it.id));
+    shuffle(pool);
+    for (const it of pool.slice(0, n)) { used.add(it.id); qs.push({ item: it, mode }); }
+  };
+  EXAM.mix.forEach(m => take(m.mode, m.count));
+  // 모자라면 다른 유형으로 보충
+  if (qs.length < EXAM.total) {
+    for (const m of EXAM.mix) {
+      if (qs.length >= EXAM.total) break;
+      take(m.mode, EXAM.total - qs.length);
+    }
+  }
+  shuffle(qs);
+  return qs.slice(0, EXAM.total);
+}
+
+function startExam() {
+  playSound('tap');
+  const qs = buildExamQuestions();
+  if (qs.length < 4) { alert('아직 시험 볼 문제가 부족해요!'); return; }
+  currentSession = null;
+  examMode = true;
+  examLog = [];
+  quizItems = qs;
+  quizTotal = qs.length;
+  quizIndex = 0;
+  quizCorrect = 0;
+  quizEarnedStars = 0;
+
+  document.getElementById('introEmoji').textContent = '📝';
+  document.getElementById('introText').textContent = '시험 보기';
+  document.getElementById('introHint').textContent =
+    `${quizTotal}문제 · 끝까지 풀면 점수가 나와요!`;
+  document.getElementById('introOverlay').classList.add('show');
+  setTimeout(() => {
+    document.getElementById('introOverlay').classList.remove('show');
+    document.getElementById('quizQTotal').textContent = quizTotal;
+    document.getElementById('quizStarsDisplay').hidden = true;  // 시험 중엔 별 안 보임
+    showScreen('screen-quiz');
+    nextQuestion();
+  }, 1800);
+}
+
+// 시험은 정답/오답을 즉시 알려주지 않는다. 기록만 하고 넘어감.
+function handleExamAnswer(btn, isCorrect, item) {
+  document.querySelectorAll('.choice').forEach(b => b.classList.add('disabled'));
+  btn.classList.add('picked');
+  playSound('tap');
+  // 진행도(완성도)에는 반영. 별은 시험 끝나고 등급으로만 준다.
+  updateItemProgress(item.id, isCorrect);
+  if (isCorrect) quizCorrect++;
+  examLog.push({
+    item, mode: currentSubMode?.id,
+    picked: btn.textContent,
+    answer: currentCorrectAnswer,
+    correct: isCorrect
+  });
+  setTimeout(() => { quizIndex++; nextQuestion(); }, 350);
+}
+
+function gradeFor(percent) {
+  return EXAM.grades.find(g => percent >= g.min) || EXAM.grades[EXAM.grades.length - 1];
+}
+
+function showExamResult() {
+  const percent = Math.round(quizCorrect / quizTotal * 100);
+  const g = gradeFor(percent);
+  addStars(g.stars);
+  quizEarnedStars = g.stars;
+
+  document.getElementById('examGradeIcon').textContent = g.icon;
+  document.getElementById('examScore').textContent = `${percent}점`;
+  document.getElementById('examGradeTitle').textContent = g.title;
+  document.getElementById('examDetail').textContent =
+    `${quizTotal}문제 중 ${quizCorrect}개 정답 · ${quizTotal - quizCorrect}개 틀림`;
+  document.getElementById('examMsg').textContent = g.msg;
+  document.getElementById('examEarned').textContent = `+${g.stars}`;
+
+  const wrongs = examLog.filter(e => !e.correct);
+  const noteBtn = document.getElementById('examNoteBtn');
+  noteBtn.hidden = wrongs.length === 0;
+  noteBtn.textContent = `📕 틀린 문제 ${wrongs.length}개 보기`;
+  renderExamNote(wrongs);
+  document.getElementById('examNote').hidden = true;
+
+  playSound('complete');
+  examMode = false;
+  document.getElementById('quizStarsDisplay').hidden = false;
+  updateStarDisplay();
+  showScreen('screen-exam-result');
+}
+
+// 오답노트 한 줄에 넣을 '문제' 표현 (유형마다 다름)
+function examQuestionLabel(e) {
+  const w = e.item.word;
+  if (e.mode === 'sentence') {
+    return e.item.template || e.item.sentence || w || '';
+  }
+  if (e.mode === 'word_to_emoji') return w;
+  if (e.mode === 'first_sound') return `${getEmoji(w) || ''} ${w || ''} — 첫 글자`.trim();
+  return `${getEmoji(w) || ''} ${w || ''}`.trim();
+}
+
+function renderExamNote(wrongs) {
+  const box = document.getElementById('examNoteList');
+  box.innerHTML = '';
+  wrongs.forEach(e => {
+    const row = document.createElement('div');
+    row.className = 'exam-note-row';
+    row.innerHTML = `
+      <div class="exam-note-q">${examQuestionLabel(e)}</div>
+      <div class="exam-note-ans">
+        <span class="mine">내 답 ${e.picked}</span>
+        <span class="right">정답 ${e.answer}</span>
+      </div>`;
+    box.appendChild(row);
+  });
+}
+
+function toggleExamNote() {
+  playSound('tap');
+  const n = document.getElementById('examNote');
+  n.hidden = !n.hidden;
+}
+
+function retryExam() { startExam(); }
 
 // ============================================================
 // 결과
