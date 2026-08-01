@@ -2,9 +2,9 @@
   "meta": {
     "version": "4.0",
     "target_age": 6,
-    "total_textbooks": 5,
+    "total_textbooks": 9,
     "purpose": "HTML 게임 자산용 - Quarter 1(교재+ETC) + Quarter 2(단원평가 대비)",
-    "total_items": 538,
+    "total_items": 586,
     "items_by_book": {
       "book1_sight_words": 80,
       "book2_alphabet_phonics": 115,
@@ -13,14 +13,15 @@
       "book5_themed_speaking_vol1": 70,
       "book9_phonics_sound": 24,
       "book10_my_family": 60,
-      "book11_our_community": 52
+      "book11_our_community": 52,
+      "book12_word_family": 48
     },
     "items_by_type": {
       "vocabulary": 86,
       "sight_word": 48,
       "sentence": 18,
       "letter": 26,
-      "phonics_word": 77,
+      "phonics_word": 125,
       "content_vocab": 24,
       "sentence_pattern": 13,
       "place_action": 5,
@@ -33,7 +34,7 @@
       "3_trace": "글씨 쓰기 trace 문제 약 100개 (예정)"
     },
     "items_by_source": {
-      "textbook": 297,
+      "textbook": 345,
       "etc": 105,
       "exam2": 136
     },
@@ -59,6 +60,10 @@
           "book11_our_community"
         ]
       }
+    },
+    "word_images": {
+      "files": 56,
+      "items_with_image": 97
     }
   },
   "textbooks": [
@@ -999,6 +1004,13 @@
       "quarter": 2,
       "structure": "2 유닛(직업·장소/마을) + 사이트워드 25",
       "source": "exam2"
+    },
+    {
+      "id": "book12_word_family",
+      "title": "단모음 Word Family 워크북",
+      "quarter": 3,
+      "structure": "12 유닛 - 단모음 a/e/i 라임 12종 x 4단어 (48단어)",
+      "source": "textbook"
     }
   ],
   "progression_system": {
@@ -1058,7 +1070,8 @@
         "correct": 0,
         "level": 0
       },
-      "source": "textbook"
+      "source": "textbook",
+      "has_image": true
     },
     {
       "id": "b1_u1_vocab_chicken",
@@ -1198,7 +1211,8 @@
         "correct": 0,
         "level": 0
       },
-      "source": "textbook"
+      "source": "textbook",
+      "has_image": true
     },
     {
       "id": "b1_u1_sight_little",
@@ -1674,7 +1688,8 @@
         "correct": 0,
         "level": 0
       },
-      "source": "textbook"
+      "source": "textbook",
+      "has_image": true
     },
     {
       "id": "b1_u4_vocab_blue",
@@ -1993,7 +2008,8 @@
         "correct": 0,
         "level": 0
       },
-      "source": "textbook"
+      "source": "textbook",
+      "has_image": true
     },
     {
       "id": "b2_u1_word_cap",
@@ -2007,7 +2023,8 @@
         "correct": 0,
         "level": 0
       },
-      "source": "textbook"
+      "source": "textbook",
+      "has_image": true
     },
     {
       "id": "b2_u1_word_cup",
@@ -2186,7 +2203,8 @@
         "correct": 0,
         "level": 0
       },
-      "source": "textbook"
+      "source": "textbook",
+      "has_image": true
     },
     {
       "id": "b2_u3_letter_G",
@@ -2268,7 +2286,8 @@
         "correct": 0,
         "level": 0
       },
-      "source": "textbook"
+      "source": "textbook",
+      "has_image": true
     },
     {
       "id": "b2_u3_word_hen",
@@ -2282,7 +2301,8 @@
         "correct": 0,
         "level": 0
       },
-      "source": "textbook"
+      "source": "textbook",
+      "has_image": true
     },
     {
       "id": "b2_u3_word_house",
@@ -2378,7 +2398,8 @@
         "correct": 0,
         "level": 0
       },
-      "source": "textbook"
+      "source": "textbook",
+      "has_image": true
     },
     {
       "id": "b2_u4_word_jam",
@@ -2392,7 +2413,8 @@
         "correct": 0,
         "level": 0
       },
-      "source": "textbook"
+      "source": "textbook",
+      "has_image": true
     },
     {
       "id": "b2_u4_word_juice",
@@ -2543,7 +2565,8 @@
         "correct": 0,
         "level": 0
       },
-      "source": "textbook"
+      "source": "textbook",
+      "has_image": true
     },
     {
       "id": "b2_u5_word_mouse",
@@ -2612,7 +2635,8 @@
         "correct": 0,
         "level": 0
       },
-      "source": "textbook"
+      "source": "textbook",
+      "has_image": true
     },
     {
       "id": "b2_u5_word_nest",
@@ -2694,7 +2718,8 @@
         "correct": 0,
         "level": 0
       },
-      "source": "textbook"
+      "source": "textbook",
+      "has_image": true
     },
     {
       "id": "b2_u6_word_panda",
@@ -3093,7 +3118,8 @@
         "correct": 0,
         "level": 0
       },
-      "source": "textbook"
+      "source": "textbook",
+      "has_image": true
     },
     {
       "id": "b2_u8_word_web",
@@ -3958,7 +3984,8 @@
         "correct": 0,
         "level": 0
       },
-      "source": "textbook"
+      "source": "textbook",
+      "has_image": true
     },
     {
       "id": "b3_u4_sight_play",
@@ -4888,7 +4915,8 @@
         "correct": 0,
         "level": 0
       },
-      "source": "textbook"
+      "source": "textbook",
+      "has_image": true
     },
     {
       "id": "b5_vocab_actions_at_places_swing",
@@ -5619,7 +5647,8 @@
         "attempts": 0,
         "correct": 0,
         "level": 0
-      }
+      },
+      "has_image": true
     },
     {
       "id": "b3_etc_small",
@@ -5759,7 +5788,8 @@
         "attempts": 0,
         "correct": 0,
         "level": 0
-      }
+      },
+      "has_image": true
     },
     {
       "id": "b3_etc_dad",
@@ -6053,7 +6083,8 @@
         "attempts": 0,
         "correct": 0,
         "level": 0
-      }
+      },
+      "has_image": true
     },
     {
       "id": "b4_etc_blanket",
@@ -6431,7 +6462,8 @@
         "attempts": 0,
         "correct": 0,
         "level": 0
-      }
+      },
+      "has_image": true
     },
     {
       "id": "b5_etc_pen",
@@ -6445,7 +6477,8 @@
         "attempts": 0,
         "correct": 0,
         "level": 0
-      }
+      },
+      "has_image": true
     },
     {
       "id": "b5_etc_bag",
@@ -6599,7 +6632,8 @@
         "attempts": 0,
         "correct": 0,
         "level": 0
-      }
+      },
+      "has_image": true
     },
     {
       "id": "book9_1_vocab_duck",
@@ -6627,7 +6661,8 @@
         "attempts": 0,
         "correct": 0,
         "level": 0
-      }
+      },
+      "has_image": true
     },
     {
       "id": "book9_2_vocab_goat",
@@ -6655,7 +6690,8 @@
         "attempts": 0,
         "correct": 0,
         "level": 0
-      }
+      },
+      "has_image": true
     },
     {
       "id": "book9_2_vocab_igloo",
@@ -6753,7 +6789,8 @@
         "attempts": 0,
         "correct": 0,
         "level": 0
-      }
+      },
+      "has_image": true
     },
     {
       "id": "book9_4_vocab_queen",
@@ -6921,7 +6958,8 @@
         "attempts": 0,
         "correct": 0,
         "level": 0
-      }
+      },
+      "has_image": true
     },
     {
       "id": "book10_1_vocab_brother",
@@ -6935,7 +6973,8 @@
         "attempts": 0,
         "correct": 0,
         "level": 0
-      }
+      },
+      "has_image": true
     },
     {
       "id": "book10_1_vocab_sister",
@@ -6949,7 +6988,8 @@
         "attempts": 0,
         "correct": 0,
         "level": 0
-      }
+      },
+      "has_image": true
     },
     {
       "id": "book10_1_vocab_cousin",
@@ -6963,7 +7003,8 @@
         "attempts": 0,
         "correct": 0,
         "level": 0
-      }
+      },
+      "has_image": true
     },
     {
       "id": "book10_1_vocab_uncle",
@@ -7131,7 +7172,8 @@
         "attempts": 0,
         "correct": 0,
         "level": 0
-      }
+      },
+      "has_image": true
     },
     {
       "id": "book10_3_vocab_lamp",
@@ -7159,7 +7201,8 @@
         "attempts": 0,
         "correct": 0,
         "level": 0
-      }
+      },
+      "has_image": true
     },
     {
       "id": "book10_3_vocab_sofa",
@@ -7299,7 +7342,8 @@
         "attempts": 0,
         "correct": 0,
         "level": 0
-      }
+      },
+      "has_image": true
     },
     {
       "id": "book10_4_vocab_princess",
@@ -7700,7 +7744,8 @@
         "attempts": 0,
         "correct": 0,
         "level": 0
-      }
+      },
+      "has_image": true
     },
     {
       "id": "book10_5_sight_they",
@@ -7757,7 +7802,8 @@
         "attempts": 0,
         "correct": 0,
         "level": 0
-      }
+      },
+      "has_image": true
     },
     {
       "id": "book11_1_vocab_fire_fighter",
@@ -7771,7 +7817,8 @@
         "attempts": 0,
         "correct": 0,
         "level": 0
-      }
+      },
+      "has_image": true
     },
     {
       "id": "book11_1_vocab_park",
@@ -7785,7 +7832,8 @@
         "attempts": 0,
         "correct": 0,
         "level": 0
-      }
+      },
+      "has_image": true
     },
     {
       "id": "book11_1_vocab_gym",
@@ -7799,7 +7847,8 @@
         "attempts": 0,
         "correct": 0,
         "level": 0
-      }
+      },
+      "has_image": true
     },
     {
       "id": "book11_1_vocab_restaurant",
@@ -7855,7 +7904,8 @@
         "attempts": 0,
         "correct": 0,
         "level": 0
-      }
+      },
+      "has_image": true
     },
     {
       "id": "book11_1_vocab_teacher",
@@ -7883,7 +7933,8 @@
         "attempts": 0,
         "correct": 0,
         "level": 0
-      }
+      },
+      "has_image": true
     },
     {
       "id": "book11_1_vocab_animal_hospital",
@@ -8378,7 +8429,8 @@
         "attempts": 0,
         "correct": 0,
         "level": 0
-      }
+      },
+      "has_image": true
     },
     {
       "id": "book10_6_sent_have_brother",
@@ -8400,7 +8452,8 @@
         "attempts": 0,
         "correct": 0,
         "level": 0
-      }
+      },
+      "has_image": true
     },
     {
       "id": "book10_6_sent_have_cousin",
@@ -8422,7 +8475,8 @@
         "attempts": 0,
         "correct": 0,
         "level": 0
-      }
+      },
+      "has_image": true
     },
     {
       "id": "book10_6_sent_bigfamily",
@@ -8443,7 +8497,8 @@
         "attempts": 0,
         "correct": 0,
         "level": 0
-      }
+      },
+      "has_image": true
     },
     {
       "id": "book11_4_sent_going_park",
@@ -8467,7 +8522,8 @@
         "attempts": 0,
         "correct": 0,
         "level": 0
-      }
+      },
+      "has_image": true
     },
     {
       "id": "book11_4_sent_going_gym",
@@ -8491,7 +8547,8 @@
         "attempts": 0,
         "correct": 0,
         "level": 0
-      }
+      },
+      "has_image": true
     },
     {
       "id": "book11_4_sent_going_school",
@@ -8515,7 +8572,8 @@
         "attempts": 0,
         "correct": 0,
         "level": 0
-      }
+      },
+      "has_image": true
     },
     {
       "id": "book11_4_sent_jump_park",
@@ -8539,7 +8597,8 @@
         "attempts": 0,
         "correct": 0,
         "level": 0
-      }
+      },
+      "has_image": true
     },
     {
       "id": "book11_4_sent_job_police_officer",
@@ -8561,7 +8620,8 @@
         "attempts": 0,
         "correct": 0,
         "level": 0
-      }
+      },
+      "has_image": true
     },
     {
       "id": "book11_4_sent_job_fire_fighter",
@@ -8583,7 +8643,8 @@
         "attempts": 0,
         "correct": 0,
         "level": 0
-      }
+      },
+      "has_image": true
     },
     {
       "id": "book11_4_sent_job_vet",
@@ -8605,7 +8666,8 @@
         "attempts": 0,
         "correct": 0,
         "level": 0
-      }
+      },
+      "has_image": true
     },
     {
       "id": "book11_4_sent_saw_mail",
@@ -8626,7 +8688,870 @@
         "attempts": 0,
         "correct": 0,
         "level": 0
+      },
+      "has_image": true
+    },
+    {
+      "id": "b12_u1_wf_ham",
+      "book": "book12_word_family",
+      "unit": 1,
+      "type": "phonics_word",
+      "word": "ham",
+      "family": "-am",
+      "vowel": "a",
+      "onset": "h",
+      "korean": "햄",
+      "source": "textbook",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "has_image": true
+    },
+    {
+      "id": "b12_u1_wf_jam",
+      "book": "book12_word_family",
+      "unit": 1,
+      "type": "phonics_word",
+      "word": "jam",
+      "family": "-am",
+      "vowel": "a",
+      "onset": "j",
+      "korean": "잼",
+      "source": "textbook",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "has_image": true
+    },
+    {
+      "id": "b12_u1_wf_dam",
+      "book": "book12_word_family",
+      "unit": 1,
+      "type": "phonics_word",
+      "word": "dam",
+      "family": "-am",
+      "vowel": "a",
+      "onset": "d",
+      "korean": "댐",
+      "source": "textbook",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "has_image": true
+    },
+    {
+      "id": "b12_u1_wf_ram",
+      "book": "book12_word_family",
+      "unit": 1,
+      "type": "phonics_word",
+      "word": "ram",
+      "family": "-am",
+      "vowel": "a",
+      "onset": "r",
+      "korean": "숫양",
+      "source": "textbook",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "has_image": true
+    },
+    {
+      "id": "b12_u2_wf_can",
+      "book": "book12_word_family",
+      "unit": 2,
+      "type": "phonics_word",
+      "word": "can",
+      "family": "-an",
+      "vowel": "a",
+      "onset": "c",
+      "korean": "캔",
+      "source": "textbook",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "has_image": true
+    },
+    {
+      "id": "b12_u2_wf_fan",
+      "book": "book12_word_family",
+      "unit": 2,
+      "type": "phonics_word",
+      "word": "fan",
+      "family": "-an",
+      "vowel": "a",
+      "onset": "f",
+      "korean": "선풍기",
+      "source": "textbook",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "has_image": true
+    },
+    {
+      "id": "b12_u2_wf_man",
+      "book": "book12_word_family",
+      "unit": 2,
+      "type": "phonics_word",
+      "word": "man",
+      "family": "-an",
+      "vowel": "a",
+      "onset": "m",
+      "korean": "남자",
+      "source": "textbook",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "has_image": true
+    },
+    {
+      "id": "b12_u2_wf_pan",
+      "book": "book12_word_family",
+      "unit": 2,
+      "type": "phonics_word",
+      "word": "pan",
+      "family": "-an",
+      "vowel": "a",
+      "onset": "p",
+      "korean": "프라이팬",
+      "source": "textbook",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "has_image": true
+    },
+    {
+      "id": "b12_u3_wf_cap",
+      "book": "book12_word_family",
+      "unit": 3,
+      "type": "phonics_word",
+      "word": "cap",
+      "family": "-ap",
+      "vowel": "a",
+      "onset": "c",
+      "korean": "야구모자",
+      "source": "textbook",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "has_image": true
+    },
+    {
+      "id": "b12_u3_wf_lap",
+      "book": "book12_word_family",
+      "unit": 3,
+      "type": "phonics_word",
+      "word": "lap",
+      "family": "-ap",
+      "vowel": "a",
+      "onset": "l",
+      "korean": "무릎",
+      "source": "textbook",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "has_image": true
+    },
+    {
+      "id": "b12_u3_wf_map",
+      "book": "book12_word_family",
+      "unit": 3,
+      "type": "phonics_word",
+      "word": "map",
+      "family": "-ap",
+      "vowel": "a",
+      "onset": "m",
+      "korean": "지도",
+      "source": "textbook",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "has_image": true
+    },
+    {
+      "id": "b12_u3_wf_nap",
+      "book": "book12_word_family",
+      "unit": 3,
+      "type": "phonics_word",
+      "word": "nap",
+      "family": "-ap",
+      "vowel": "a",
+      "onset": "n",
+      "korean": "낮잠",
+      "source": "textbook",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "has_image": true
+    },
+    {
+      "id": "b12_u4_wf_bat",
+      "book": "book12_word_family",
+      "unit": 4,
+      "type": "phonics_word",
+      "word": "bat",
+      "family": "-at",
+      "vowel": "a",
+      "onset": "b",
+      "korean": "방망이",
+      "source": "textbook",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "has_image": true
+    },
+    {
+      "id": "b12_u4_wf_cat",
+      "book": "book12_word_family",
+      "unit": 4,
+      "type": "phonics_word",
+      "word": "cat",
+      "family": "-at",
+      "vowel": "a",
+      "onset": "c",
+      "korean": "고양이",
+      "source": "textbook",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "has_image": true
+    },
+    {
+      "id": "b12_u4_wf_hat",
+      "book": "book12_word_family",
+      "unit": 4,
+      "type": "phonics_word",
+      "word": "hat",
+      "family": "-at",
+      "vowel": "a",
+      "onset": "h",
+      "korean": "모자",
+      "source": "textbook",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "has_image": true
+    },
+    {
+      "id": "b12_u4_wf_mat",
+      "book": "book12_word_family",
+      "unit": 4,
+      "type": "phonics_word",
+      "word": "mat",
+      "family": "-at",
+      "vowel": "a",
+      "onset": "m",
+      "korean": "매트",
+      "source": "textbook",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "has_image": true
+    },
+    {
+      "id": "b12_u5_wf_bed",
+      "book": "book12_word_family",
+      "unit": 5,
+      "type": "phonics_word",
+      "word": "bed",
+      "family": "-ed",
+      "vowel": "e",
+      "onset": "b",
+      "korean": "침대",
+      "source": "textbook",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "has_image": true
+    },
+    {
+      "id": "b12_u5_wf_red",
+      "book": "book12_word_family",
+      "unit": 5,
+      "type": "phonics_word",
+      "word": "red",
+      "family": "-ed",
+      "vowel": "e",
+      "onset": "r",
+      "korean": "빨강",
+      "source": "textbook",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "has_image": true
+    },
+    {
+      "id": "b12_u5_wf_wed",
+      "book": "book12_word_family",
+      "unit": 5,
+      "type": "phonics_word",
+      "word": "wed",
+      "family": "-ed",
+      "vowel": "e",
+      "onset": "w",
+      "korean": "결혼하다",
+      "source": "textbook",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "has_image": true
+    },
+    {
+      "id": "b12_u5_wf_ted",
+      "book": "book12_word_family",
+      "unit": 5,
+      "type": "phonics_word",
+      "word": "Ted",
+      "family": "-ed",
+      "vowel": "e",
+      "onset": "T",
+      "korean": "테드(이름)",
+      "source": "textbook",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
       }
+    },
+    {
+      "id": "b12_u6_wf_leg",
+      "book": "book12_word_family",
+      "unit": 6,
+      "type": "phonics_word",
+      "word": "leg",
+      "family": "-eg",
+      "vowel": "e",
+      "onset": "l",
+      "korean": "다리",
+      "source": "textbook",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "has_image": true
+    },
+    {
+      "id": "b12_u6_wf_keg",
+      "book": "book12_word_family",
+      "unit": 6,
+      "type": "phonics_word",
+      "word": "keg",
+      "family": "-eg",
+      "vowel": "e",
+      "onset": "k",
+      "korean": "나무통",
+      "source": "textbook",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "has_image": true
+    },
+    {
+      "id": "b12_u6_wf_peg",
+      "book": "book12_word_family",
+      "unit": 6,
+      "type": "phonics_word",
+      "word": "peg",
+      "family": "-eg",
+      "vowel": "e",
+      "onset": "p",
+      "korean": "빨래집게",
+      "source": "textbook",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "has_image": true
+    },
+    {
+      "id": "b12_u6_wf_meg",
+      "book": "book12_word_family",
+      "unit": 6,
+      "type": "phonics_word",
+      "word": "Meg",
+      "family": "-eg",
+      "vowel": "e",
+      "onset": "M",
+      "korean": "메그(이름)",
+      "source": "textbook",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      }
+    },
+    {
+      "id": "b12_u7_wf_hen",
+      "book": "book12_word_family",
+      "unit": 7,
+      "type": "phonics_word",
+      "word": "hen",
+      "family": "-en",
+      "vowel": "e",
+      "onset": "h",
+      "korean": "암탉",
+      "source": "textbook",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "has_image": true
+    },
+    {
+      "id": "b12_u7_wf_ten",
+      "book": "book12_word_family",
+      "unit": 7,
+      "type": "phonics_word",
+      "word": "ten",
+      "family": "-en",
+      "vowel": "e",
+      "onset": "t",
+      "korean": "십",
+      "source": "textbook",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "has_image": true
+    },
+    {
+      "id": "b12_u7_wf_pen",
+      "book": "book12_word_family",
+      "unit": 7,
+      "type": "phonics_word",
+      "word": "pen",
+      "family": "-en",
+      "vowel": "e",
+      "onset": "p",
+      "korean": "펜",
+      "source": "textbook",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "has_image": true
+    },
+    {
+      "id": "b12_u7_wf_men",
+      "book": "book12_word_family",
+      "unit": 7,
+      "type": "phonics_word",
+      "word": "men",
+      "family": "-en",
+      "vowel": "e",
+      "onset": "m",
+      "korean": "남자들",
+      "source": "textbook",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "has_image": true
+    },
+    {
+      "id": "b12_u8_wf_net",
+      "book": "book12_word_family",
+      "unit": 8,
+      "type": "phonics_word",
+      "word": "net",
+      "family": "-et",
+      "vowel": "e",
+      "onset": "n",
+      "korean": "그물",
+      "source": "textbook",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "has_image": true
+    },
+    {
+      "id": "b12_u8_wf_jet",
+      "book": "book12_word_family",
+      "unit": 8,
+      "type": "phonics_word",
+      "word": "jet",
+      "family": "-et",
+      "vowel": "e",
+      "onset": "j",
+      "korean": "제트기",
+      "source": "textbook",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "has_image": true
+    },
+    {
+      "id": "b12_u8_wf_vet",
+      "book": "book12_word_family",
+      "unit": 8,
+      "type": "phonics_word",
+      "word": "vet",
+      "family": "-et",
+      "vowel": "e",
+      "onset": "v",
+      "korean": "수의사",
+      "source": "textbook",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "has_image": true
+    },
+    {
+      "id": "b12_u8_wf_wet",
+      "book": "book12_word_family",
+      "unit": 8,
+      "type": "phonics_word",
+      "word": "wet",
+      "family": "-et",
+      "vowel": "e",
+      "onset": "w",
+      "korean": "젖은",
+      "source": "textbook",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "has_image": true
+    },
+    {
+      "id": "b12_u9_wf_pig",
+      "book": "book12_word_family",
+      "unit": 9,
+      "type": "phonics_word",
+      "word": "pig",
+      "family": "-ig",
+      "vowel": "i",
+      "onset": "p",
+      "korean": "돼지",
+      "source": "textbook",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "has_image": true
+    },
+    {
+      "id": "b12_u9_wf_dig",
+      "book": "book12_word_family",
+      "unit": 9,
+      "type": "phonics_word",
+      "word": "dig",
+      "family": "-ig",
+      "vowel": "i",
+      "onset": "d",
+      "korean": "파다",
+      "source": "textbook",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "has_image": true
+    },
+    {
+      "id": "b12_u9_wf_wig",
+      "book": "book12_word_family",
+      "unit": 9,
+      "type": "phonics_word",
+      "word": "wig",
+      "family": "-ig",
+      "vowel": "i",
+      "onset": "w",
+      "korean": "가발",
+      "source": "textbook",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "has_image": true
+    },
+    {
+      "id": "b12_u9_wf_big",
+      "book": "book12_word_family",
+      "unit": 9,
+      "type": "phonics_word",
+      "word": "big",
+      "family": "-ig",
+      "vowel": "i",
+      "onset": "b",
+      "korean": "큰",
+      "source": "textbook",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "has_image": true
+    },
+    {
+      "id": "b12_u10_wf_bin",
+      "book": "book12_word_family",
+      "unit": 10,
+      "type": "phonics_word",
+      "word": "bin",
+      "family": "-in",
+      "vowel": "i",
+      "onset": "b",
+      "korean": "쓰레기통",
+      "source": "textbook",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "has_image": true
+    },
+    {
+      "id": "b12_u10_wf_fin",
+      "book": "book12_word_family",
+      "unit": 10,
+      "type": "phonics_word",
+      "word": "fin",
+      "family": "-in",
+      "vowel": "i",
+      "onset": "f",
+      "korean": "지느러미",
+      "source": "textbook",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "has_image": true
+    },
+    {
+      "id": "b12_u10_wf_pin",
+      "book": "book12_word_family",
+      "unit": 10,
+      "type": "phonics_word",
+      "word": "pin",
+      "family": "-in",
+      "vowel": "i",
+      "onset": "p",
+      "korean": "핀",
+      "source": "textbook",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "has_image": true
+    },
+    {
+      "id": "b12_u10_wf_win",
+      "book": "book12_word_family",
+      "unit": 10,
+      "type": "phonics_word",
+      "word": "win",
+      "family": "-in",
+      "vowel": "i",
+      "onset": "w",
+      "korean": "이기다",
+      "source": "textbook",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "has_image": true
+    },
+    {
+      "id": "b12_u11_wf_lip",
+      "book": "book12_word_family",
+      "unit": 11,
+      "type": "phonics_word",
+      "word": "lip",
+      "family": "-ip",
+      "vowel": "i",
+      "onset": "l",
+      "korean": "입술",
+      "source": "textbook",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "has_image": true
+    },
+    {
+      "id": "b12_u11_wf_hip",
+      "book": "book12_word_family",
+      "unit": 11,
+      "type": "phonics_word",
+      "word": "hip",
+      "family": "-ip",
+      "vowel": "i",
+      "onset": "h",
+      "korean": "엉덩이",
+      "source": "textbook",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "has_image": true
+    },
+    {
+      "id": "b12_u11_wf_sip",
+      "book": "book12_word_family",
+      "unit": 11,
+      "type": "phonics_word",
+      "word": "sip",
+      "family": "-ip",
+      "vowel": "i",
+      "onset": "s",
+      "korean": "홀짝이다",
+      "source": "textbook",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "has_image": true
+    },
+    {
+      "id": "b12_u11_wf_zip",
+      "book": "book12_word_family",
+      "unit": 11,
+      "type": "phonics_word",
+      "word": "zip",
+      "family": "-ip",
+      "vowel": "i",
+      "onset": "z",
+      "korean": "지퍼",
+      "source": "textbook",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "has_image": true
+    },
+    {
+      "id": "b12_u12_wf_sit",
+      "book": "book12_word_family",
+      "unit": 12,
+      "type": "phonics_word",
+      "word": "sit",
+      "family": "-it",
+      "vowel": "i",
+      "onset": "s",
+      "korean": "앉다",
+      "source": "textbook",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "has_image": true
+    },
+    {
+      "id": "b12_u12_wf_kit",
+      "book": "book12_word_family",
+      "unit": 12,
+      "type": "phonics_word",
+      "word": "kit",
+      "family": "-it",
+      "vowel": "i",
+      "onset": "k",
+      "korean": "도구함",
+      "source": "textbook",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "has_image": true
+    },
+    {
+      "id": "b12_u12_wf_hit",
+      "book": "book12_word_family",
+      "unit": 12,
+      "type": "phonics_word",
+      "word": "hit",
+      "family": "-it",
+      "vowel": "i",
+      "onset": "h",
+      "korean": "치다",
+      "source": "textbook",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "has_image": true
+    },
+    {
+      "id": "b12_u12_wf_pit",
+      "book": "book12_word_family",
+      "unit": 12,
+      "type": "phonics_word",
+      "word": "pit",
+      "family": "-it",
+      "vowel": "i",
+      "onset": "p",
+      "korean": "씨앗",
+      "source": "textbook",
+      "progress": {
+        "attempts": 0,
+        "correct": 0,
+        "level": 0
+      },
+      "has_image": true
     }
   ]
 }
