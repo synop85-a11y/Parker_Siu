@@ -748,13 +748,14 @@ html, body {
   gap:2.2vh; align-content:start;
 }
 .dex-card {
-  aspect-ratio:3/4;
-  /* stretch 가 aspect-ratio 를 덮어써서 행 높이와 어긋나는 것을 막는다 */
-  align-self:start;
-  min-width:0; min-height:0;
+  /* 카드 자체에는 aspect-ratio 를 주지 않는다.
+     그리드 칸에서 폭이 정해지는 항목에 aspect-ratio 를 걸면 행 높이가
+     내용 기준으로 잡히면서 카드가 행 밖으로 삐져나와 아랫줄과 겹친다.
+     비율은 아래 이미지에만 주고, 카드 높이는 내용대로 자라게 둔다. */
+  min-width:0;
   background:rgba(255,255,255,.06);
   border:1px solid var(--d-line-2); border-radius:var(--r);
-  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  display:flex; flex-direction:column; align-items:center;
   padding:0.9vh; cursor:pointer; position:relative;
   transition:transform .14s ease, border-color .14s ease; overflow:hidden;
 }
@@ -762,9 +763,11 @@ html, body {
 .dex-card:not(.locked) { border-color:var(--d-line); }
 .dex-card.locked { border-color:rgba(255,255,255,.1); opacity:0.4; }
 .dex-card.locked .dex-card-img { filter:brightness(0) opacity(0.45); }
-/* height:% 는 aspect-ratio 로 정해지는 부모 높이를 참조해 순환 참조가 된다.
-   flex 로 남는 높이를 나눠 갖게 해서 회피한다. */
-.dex-card-img { width:100%; flex:1 1 0; min-height:0; object-fit:contain; border-radius:0.8vh; }
+/* 원본 카드가 267x400 이다. 비율은 여기서만 잡는다. */
+.dex-card-img {
+  width:100%; aspect-ratio:267/400; flex:0 0 auto;
+  object-fit:contain; border-radius:0.8vh;
+}
 .dex-card-name {
   margin-top:0.6vh; font-size:1.75vh; color:var(--d-text); text-align:center;
   line-height:1.15; font-weight:700; flex:0 0 auto;
@@ -1700,7 +1703,7 @@ function addStars(n) { const c = loadStars(); saveStars(c + n); return c + n; }
 const STAR = {
   practiceNew: 2,   // 일반 모드 · 처음 맞춘 문제
   practiceOld: 1,   // 일반 모드 · 이미 맞췄던 문제
-  examCorrect: 4    // 시험 · 맞춘 문제 하나당
+  examCorrect: 2    // 시험 · 맞춘 문제 하나당
 };
 
 // 일반 모드에서 한 문제 맞췄을 때. 지급한 개수를 돌려준다.
@@ -2762,6 +2765,24 @@ function speakingPrompt(item) {
 // 녹음이 가능한 환경인가? http:// (localhost 제외) 에서는 브라우저가 마이크를 막는다.
 function canRecord() {
   return !!(window.isSecureContext && navigator.mediaDevices && navigator.mediaDevices.getUserMedia);
+}
+
+// 왜 녹음이 안 되는지 구체적으로 알려준다.
+// '이 주소에서는 안 됩니다' 만 보면 무엇을 고쳐야 할지 알 수 없다.
+function recordBlockReason() {
+  if (canRecord()) return '';
+  if (!window.isSecureContext) {
+    // 자체 서명 인증서(사설 IP)는 크롬이 보안 컨텍스트로 안 쳐준다.
+    return `보안 주소가 아니라 녹음이 막혔어요.
+` +
+           `지금 주소: ${location.origin}
+
+` +
+           `아래 주소로 접속하면 녹음이 됩니다:
+` +
+           `https://synop85-a11y.github.io/Parker_Siu/season2.html`;
+  }
+  return '이 기기/브라우저가 마이크를 지원하지 않아요.';
 }
 
 // 말하기 연습 — 시험이 아니므로 원어민 듣기도, 내 목소리 다시 듣기도 허용한다.
