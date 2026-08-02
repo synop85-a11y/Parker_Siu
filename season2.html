@@ -1018,7 +1018,7 @@ html, body {
       <span class="exam-start-emoji">📝</span>
       <span class="exam-start-text">
         <span class="exam-start-name">시험 보기</span>
-        <span class="exam-start-sub">50문제 · 맞출 때마다 ⭐4</span>
+        <span class="exam-start-sub" id="examStartSub"></span>
       </span>
     </button>
     <button class="exam-history-btn" onclick="openExamHistory()">
@@ -1162,12 +1162,9 @@ html, body {
     </div>
     <div class="gacha-machine" id="gachaMachine">👑</div>
     <button class="gacha-pull-btn" id="gachaPullBtn" onclick="pullGacha()">
-      <span>⭐</span><span>5개로 뽑기!</span>
+      <span>⭐</span><span id="gachaCostLabel">뽑기!</span>
     </button>
-    <div class="gacha-info">
-      별 5개로 위인 카드 1장!<br>
-      <span class="gold">중복이면 별 3개 돌려받아요</span>
-    </div>
+    <div class="gacha-info" id="gachaInfo"></div>
   </div>
 
   <!-- 도감 -->
@@ -2000,6 +1997,7 @@ function getOverallProgress() {
 }
 function renderHome() {
   updateStarDisplay();
+  renderExamLabel();
   const ov = getOverallProgress();
   document.getElementById('overallFill').style.width = ov.percent + '%';
   document.getElementById('overallText').textContent =
@@ -3157,9 +3155,26 @@ function showResult() {
 // ============================================================
 const GACHA_COST = 10;
 const GACHA_REFUND = 3;
+// 비용을 화면에 직접 써두면 값을 바꿨을 때 표시가 따라오지 않는다.
+// 실제로 비용을 5 -> 10 으로 올렸는데 버튼은 '5개로 뽑기'라고 떠 있었다.
+// 시험 안내 문구도 설정값에서 뽑는다
+function renderExamLabel() {
+  const el = document.getElementById('examStartSub');
+  if (el) el.textContent = `${EXAM.total}문제 · 맞출 때마다 ⭐${STAR.examCorrect}`;
+}
+
+function renderGachaCost() {
+  document.getElementById('gachaCostLabel').textContent =
+    `${GACHA_COST}개로 뽑기!`;
+  document.getElementById('gachaInfo').innerHTML =
+    `별 ${GACHA_COST}개로 위인 카드 1장!<br>` +
+    `<span class="gold">중복이면 별 ${GACHA_REFUND}개 돌려받아요</span>`;
+}
+
 function openGacha() {
   playSound('tap');
   updateStarDisplay();
+  renderGachaCost();
   document.getElementById('gachaPullBtn').disabled = loadStars() < GACHA_COST;
   showScreen('screen-gacha');
 }
