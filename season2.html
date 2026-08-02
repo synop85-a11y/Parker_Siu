@@ -83,6 +83,9 @@ html, body {
 .screen {
   position:absolute; inset:0; display:none; flex-direction:column;
   padding:2.5vh 3vw; z-index:2;
+  /* 세로가 짧은 창에서 내용이 잘려 안 보이던 것을 막는다.
+     잘리는 대신 스크롤되게 한다. */
+  overflow-y:auto; overflow-x:hidden;
 }
 .screen.active { display:flex; }
 .screen.entering { animation:slideIn 0.32s cubic-bezier(.16,1,.3,1); }
@@ -238,6 +241,51 @@ html, body {
 }
 .session-progress-text { font-size:1.6vh; color:var(--text-3); min-width:5vh; text-align:right; font-weight:600; }
 
+/* ============== 시험 기록 ============== */
+.exam-history-btn {
+  margin-top:1.2vh; width:100%; max-width:min(85vw, 1150px);
+  background:var(--surface); border:1px solid var(--line);
+  color:var(--text); font-weight:800; font-size:2.4vh;
+  padding:1.4vh; border-radius:var(--r-lg); box-shadow:var(--sh-1);
+  cursor:pointer;
+}
+.exam-history-btn:active { transform:scale(.98); }
+.hist-summary {
+  display:flex; gap:1.5vh; justify-content:center; flex-wrap:wrap;
+  margin-bottom:2vh;
+}
+.hist-stat {
+  background:var(--surface); border:1px solid var(--line);
+  border-radius:var(--r-lg); padding:1.2vh 2.4vh; text-align:center;
+  box-shadow:var(--sh-1); min-width:18vh;
+}
+.hist-stat .v { font-size:3.4vh; font-weight:900; color:var(--text); }
+.hist-stat .k { font-size:1.9vh; color:var(--muted); margin-top:.3vh; }
+/* 막대 그래프: 최근 성적 추이 */
+.hist-chart {
+  display:flex; align-items:flex-end; justify-content:center;
+  gap:.6vh; height:22vh; padding:1vh 2vh 0;
+  background:var(--surface); border:1px solid var(--line);
+  border-radius:var(--r-lg); box-shadow:var(--sh-1); margin-bottom:2vh;
+  overflow-x:auto;
+}
+.hist-bar { width:2.6vh; min-width:10px; border-radius:.6vh .6vh 0 0; position:relative; }
+.hist-bar span {
+  position:absolute; top:-2.2vh; left:50%; transform:translateX(-50%);
+  font-size:1.5vh; color:var(--muted); white-space:nowrap;
+}
+.hist-list { flex:1; overflow-y:auto; }
+.hist-row {
+  display:flex; align-items:center; gap:1.5vh;
+  background:var(--surface); border:1px solid var(--line);
+  border-radius:var(--r-md); padding:1.2vh 2vh; margin-bottom:1vh;
+}
+.hist-row .date { font-size:2vh; color:var(--muted); min-width:16vh; }
+.hist-row .score { font-size:2.6vh; font-weight:900; min-width:9vh; }
+.hist-row .detail { font-size:2vh; color:var(--muted); flex:1; }
+.hist-row .earn { font-size:2.2vh; font-weight:800; color:var(--text); }
+.hist-empty { text-align:center; color:var(--muted); font-size:2.4vh; padding:6vh 0; }
+
 /* ============== 시험 보기 버튼 (홈) ============== */
 .exam-start-btn {
   margin-top:1.8vh; width:100%; max-width:min(85vw, 1150px);
@@ -324,6 +372,10 @@ html, body {
 .grade-row:last-child { border-bottom:none; }
 .grade-row.graded-ok { background:var(--success-bg); }
 .grade-row.graded-no { background:var(--danger-bg); }
+.grade-ink {
+  display:block; width:100%; max-width:52vh; margin:1vh auto;
+  border:1px solid var(--line); border-radius:var(--r-md); background:#fff;
+}
 .grade-word { font-size:2.8vh; font-weight:800; color:var(--text); }
 .grade-btns { display:flex; gap:1.2vh; flex-wrap:wrap; }
 .grade-btns button {
@@ -472,7 +524,10 @@ html, body {
 .writing-content {
   flex:1; display:flex; flex-direction:column;
   align-items:center; justify-content:center;
-  width:100%; padding:1vh 2vh; gap:2vh;
+  width:100%; padding:1vh 2vh; gap:1.4vh;
+  /* 화면이 짧으면 내용이 잘려버린다. 줄어들 수 있게 두고,
+     그래도 모자라면 스크롤이라도 되게 한다. */
+  min-height:0; overflow-y:auto;
 }
 .writing-prompt {
   font-size:3vh; color:var(--text); font-weight:800;
@@ -481,16 +536,19 @@ html, body {
   border:1px solid var(--line);
   box-shadow:var(--sh-1);
 }
-/* 그림/문장 제시 영역 */
+/* 그림/문장 제시 영역. 공간이 모자라면 그림부터 줄어든다. */
 .writing-visual {
   display:flex; align-items:center; justify-content:center;
-  gap:2vh; min-height:22vh;
+  flex-direction:column; gap:1vh;
+  flex:1 1 auto; min-height:9vh; max-height:24vh; width:100%;
 }
 .writing-visual img {
-  height:22vh; max-width:52vw; object-fit:contain;
+  height:100%; max-height:24vh; max-width:52vw; object-fit:contain;
   filter:drop-shadow(0 .4vh .8vh rgba(0,0,0,.12));
 }
-.writing-visual .writing-emoji { font-size:18vh; line-height:1; }
+.writing-visual .writing-emoji {
+  font-size:min(17vh, 30vw); line-height:1;
+}
 .writing-sentence {
   font-size:4.2vh; font-weight:800; color:var(--text);
   font-family:'Nunito','Pretendard',sans-serif;
@@ -505,7 +563,8 @@ html, body {
 /* 4선 3칸 필기 영역 */
 .writing-paper {
   position:relative;
-  width:76vh; height:26vh; max-width:94vw;
+  flex:0 0 auto;
+  width:76vh; height:min(24vh, 26vw); max-width:94vw; min-height:13vh;
   background:var(--surface);
   border:1px solid var(--line);
   border-radius:var(--r-xl);
@@ -606,21 +665,27 @@ html, body {
   100% { opacity:1; transform:scale(1) rotate(0); }
 }
 .reveal-card {
-  width:36vh; min-height:44vh;
+  max-width:94vw; max-height:96vh;
   background:
     radial-gradient(circle at 50% 20%, rgba(240,198,98,0.22) 0%, transparent 60%),
     var(--d-surface);
   border:0.5vh solid var(--d-gold); border-radius:var(--r-xl);
-  padding:3vh 2.5vh 2.5vh;
+  padding:2.4vh;
   display:flex; flex-direction:column; align-items:center;
-  justify-content:flex-start; gap:2.5vh;
+  justify-content:flex-start; gap:1.4vh;
   box-shadow: 0 0 6vh rgba(240,198,98,0.35), 0 2vh 5vh rgba(0,0,0,0.55);
-  position:relative;
+  position:relative; overflow-y:auto;
 }
+/* 도감 상세와 같은 이유로 3:4 를 지켜야 카드가 안 눌린다 */
 .reveal-img {
-  width:26vh; height:26vh; object-fit:contain;
+  width:auto; height:min(50vh, 62vw); aspect-ratio:267/400;
+  object-fit:contain;
   border-radius:var(--r); box-shadow: 0 0.6vh 2vh rgba(0,0,0,0.5); background:var(--d-bg-2);
 }
+.reveal-name {
+  font-size:3.2vh; color:var(--d-text); font-weight:900; text-align:center;
+}
+.reveal-dynasty { font-size:2.1vh; color:var(--d-text-2); font-weight:600; }
 .reveal-status-group {
   display:flex; flex-direction:column; align-items:center; gap:0.8vh;
 }
@@ -724,27 +789,37 @@ html, body {
 .dex-detail-card {
   background:var(--d-surface);
   border:0.4vh solid var(--d-gold); border-radius:var(--r-xl);
-  padding:3vh; width:44vh; max-width:92vw;
+  padding:2.4vh; max-width:94vw; max-height:96vh;
   display:flex; flex-direction:column; align-items:center;
-  position:relative;
+  position:relative; overflow-y:auto;
   box-shadow: 0 0 6vh rgba(240,198,98,0.3);
   animation:revealPop 0.4s cubic-bezier(.16,1,.3,1);
 }
-.dex-detail-img { width:24vh; height:24vh; object-fit:contain; border-radius:var(--r); background:var(--d-bg-2); }
-.dex-detail-name { font-size:3.6vh; color:var(--d-text); margin-top:1.5vh; font-weight:800; }
+/* 카드 원본이 3:4 다. 정사각형 틀에 contain 으로 넣으면 가로가
+   3/4 로 쪼그라들어 실제 카드의 절반 크기로 보인다.
+   같은 비율로 잡고 최대한 크게 띄운다. */
+.dex-detail-img {
+  width:auto; height:min(58vh, 66vw); aspect-ratio:267/400;
+  object-fit:contain; border-radius:var(--r); background:var(--d-bg-2);
+  /* 원본이 267x400 이라 크게 늘리면 뭉갠다. 픽셀을 부드럽게 편다. */
+  image-rendering:auto;
+}
+.dex-detail-name { font-size:3.4vh; color:var(--d-text); margin-top:1.4vh; font-weight:800; text-align:center; }
 .dex-detail-dynasty { font-size:2.2vh; color:var(--d-text-2); margin-top:0.5vh; font-weight:500; }
 .dex-detail-count {
-  margin-top:2vh;
+  margin-top:1.4vh;
   background:var(--primary);
   color:var(--on-primary); padding:1vh 2vh; border-radius:99px;
   font-size:2.3vh; font-weight:800;
   font-family:'Nunito','Pretendard',sans-serif;
 }
 .dex-detail-close {
-  position:absolute; top:1.5vh; right:1.5vh;
-  width:4.5vh; height:4.5vh; border-radius:50%;
-  background:rgba(255,255,255,.14); color:var(--d-text); border:none; cursor:pointer;
-  font-size:2.3vh; font-weight:800;
+  position:absolute; top:-1.6vh; right:-1.6vh; z-index:3;
+  width:5.2vh; height:5.2vh; border-radius:50%;
+  background:var(--d-surface); color:var(--d-text);
+  border:0.3vh solid var(--d-gold); cursor:pointer;
+  font-size:2.4vh; font-weight:800;
+  box-shadow:0 .4vh 1.2vh rgba(0,0,0,.5);
 }
 .dex-detail-close:active { background:rgba(255,255,255,.24); }
 
@@ -865,10 +940,10 @@ html, body {
 
   /* 쓰기 */
   .writing-prompt { font-size:4.6vw; padding:2vw 4vw; }
-  .writing-paper { width:94vw; height:22vh; max-width:94vw; }
-  .writing-visual { min-height:16vh; }
-  .writing-visual img { height:16vh; max-width:70vw; }
-  .writing-visual .writing-emoji { font-size:13vh; }
+  .writing-paper { width:94vw; height:min(20vh,24vw); max-width:94vw; min-height:11vh; }
+  .writing-visual { min-height:8vh; max-height:20vh; }
+  .writing-visual img { max-height:20vh; max-width:70vw; }
+  .writing-visual .writing-emoji { font-size:min(14vh,26vw); }
   .writing-sentence { font-size:5vw; }
   .writing-buttons { gap:3vw; }
 
@@ -888,7 +963,11 @@ html, body {
   .exam-note-q { font-size:4vw; }
   .exam-note-ans { font-size:3.5vw; gap:4vw; }
   .grade-list { max-height:52vh; }
-  .grade-word { font-size:5vw; }
+  .grade-ink {
+  display:block; width:100%; max-width:52vh; margin:1vh auto;
+  border:1px solid var(--line); border-radius:var(--r-md); background:#fff;
+}
+.grade-word { font-size:5vw; }
   .grade-btns { gap:2vw; }
   .grade-btns button { font-size:3.5vw; padding:2vw 3vw; }
 
@@ -939,9 +1018,24 @@ html, body {
       <span class="exam-start-emoji">📝</span>
       <span class="exam-start-text">
         <span class="exam-start-name">시험 보기</span>
-        <span class="exam-start-sub">20문제 · 점수만큼 별 획득</span>
+        <span class="exam-start-sub">50문제 · 맞출 때마다 ⭐4</span>
       </span>
     </button>
+    <button class="exam-history-btn" onclick="openExamHistory()">
+      📊 시험 기록 보기
+    </button>
+  </div>
+
+  <!-- 시험 기록 -->
+  <div class="screen" id="screen-exam-history">
+    <div class="header">
+      <button class="btn-back" onclick="goHome()">←</button>
+      <div class="header-title">📊 시험 기록</div>
+      <div class="stars-display"><span>⭐</span><span id="histStars">0</span></div>
+    </div>
+    <div class="hist-summary" id="histSummary"></div>
+    <div class="hist-chart" id="histChart"></div>
+    <div class="hist-list" id="histList"></div>
   </div>
 
   <!-- 세션 인트로 오버레이 -->
@@ -1344,21 +1438,32 @@ function conflictsWith(answer, other) {
 //    스피킹 문제는 채점 방식 확정 후 추가 예정.
 //    풀이 부족한 유형은 자동으로 다른 유형이 채운다 (buildExamQuestions).
 const EXAM = {
-  total: 20,
+  total: 50,
+  // 10가지 유형을 모두 쓴다. 유형이 적으면 매번 비슷한 문제가 나와
+  // 시험이 지겨워진다. 유형을 늘리는 쪽이 문항 수를 늘리는 것보다
+  // 반복감을 훨씬 잘 줄인다.
+  // 배분은 풀 크기에 맞춘다. 작은 풀에서 많이 뽑으면 매 시험이 비슷해진다.
+  // sentence 는 12문항뿐이라 5개만 뽑아도 소진율이 40% 가 넘는다.
   mix: [
-    { mode:'emoji_to_word', count:5 },
-    { mode:'word_to_emoji', count:5 },
-    { mode:'first_sound',   count:4 },
-    { mode:'sentence',      count:3 },
-    { mode:'speaking',      count:3 }   // 부모가 채점 (시험 끝나고 채점 화면)
+    { mode:'emoji_to_word',  count:6 },   // word 61
+    { mode:'word_to_emoji',  count:6 },
+    { mode:'first_sound',    count:6 },   // phonics 78
+    { mode:'listen',         count:6 },
+    { mode:'family_to_word', count:4 },   // wordfamily 48
+    { mode:'word_to_family', count:4 },
+    { mode:'image_to_word',  count:4 },
+    { mode:'word_to_image',  count:4 },
+    { mode:'exam_writing',   count:6 },   // writing 114 · 부모 채점
+    { mode:'sentence',       count:2 },   // sentence 12 (작음)
+    { mode:'speaking',       count:2 }    // 부모 채점
   ],
-  // 점수 등급별 정액 보상. 위에서부터 처음 만족하는 등급 적용.
+  // 등급은 격려 문구용이고, 별은 맞춘 문제 수로만 준다.
   grades: [
-    { min:100, stars:15, icon:'🏆', title:'만점!',      msg:'완벽해! 진짜 대단하다!' },
-    { min:90,  stars:10, icon:'🥇', title:'아주 잘함',   msg:'거의 다 맞았어!' },
-    { min:70,  stars:6,  icon:'🥈', title:'잘함',       msg:'잘하고 있어!' },
-    { min:50,  stars:3,  icon:'🥉', title:'보통',       msg:'조금만 더 하면 돼!' },
-    { min:0,   stars:1,  icon:'💪', title:'다시 도전',   msg:'끝까지 푼 게 멋져!' }
+    { min:100, icon:'🏆', title:'만점!',      msg:'완벽해! 진짜 대단하다!' },
+    { min:90,  icon:'🥇', title:'아주 잘함',   msg:'거의 다 맞았어!' },
+    { min:70,  icon:'🥈', title:'잘함',       msg:'잘하고 있어!' },
+    { min:50,  icon:'🥉', title:'보통',       msg:'조금만 더 하면 돼!' },
+    { min:0,   icon:'💪', title:'다시 도전',   msg:'끝까지 푼 게 멋져!' }
   ]
 };
 // 시험 유형 → 어느 세션 풀에서 문제를 가져올지
@@ -1372,8 +1477,14 @@ const EXAM_MODE_SOURCE = {
   family_to_word:'wordfamily',
   word_to_family:'wordfamily',
   image_to_word: 'wordfamily',
-  word_to_image: 'wordfamily'
+  word_to_image: 'wordfamily',
+  exam_writing:  'writing'
 };
+
+// 즉시 정오 판정이 안 되는 유형. 아이가 한 것을 남겨두고
+// 시험이 끝난 뒤 부모가 한꺼번에 채점한다.
+// (말하기는 녹음, 쓰기는 글씨 이미지)
+const PARENT_GRADED = new Set(['speaking', 'exam_writing']);
 
 // ============================================================
 // 이모지 매핑 (Q2 어휘 위주)
@@ -1483,7 +1594,8 @@ function showWordImage(imgEl, word, fallbackEl) {
 const KEYS = {
   progress: 'parker_siu_s2_progress',
   stars:    'parker_siu_s2_stars',
-  cards:    'parker_siu_s2_cards'
+  cards:    'parker_siu_s2_cards',
+  examHistory: 'parker_siu_s2_exam_history'
 };
 function loadProgress() { try { return JSON.parse(localStorage.getItem(KEYS.progress)) || {}; } catch { return {}; } }
 function saveProgress(p) { localStorage.setItem(KEYS.progress, JSON.stringify(p)); }
@@ -1501,9 +1613,111 @@ function updateItemProgress(id, isCorrect) {
   saveProgress(p);
   return { wasFirstCorrect };
 }
+// ============================================================
+// 시험 기록
+// ============================================================
+function loadExamHistory() {
+  try {
+    const raw = localStorage.getItem(KEYS.examHistory);
+    const list = raw ? JSON.parse(raw) : [];
+    return Array.isArray(list) ? list : [];
+  } catch (e) {
+    return [];
+  }
+}
+function saveExamRecord(percent, correct, total, stars) {
+  const list = loadExamHistory();
+  list.push({
+    at: Date.now(),
+    percent, correct, total, stars
+  });
+  // 너무 쌓이면 오래된 것부터 버린다
+  while (list.length > 60) list.shift();
+  try {
+    localStorage.setItem(KEYS.examHistory, JSON.stringify(list));
+  } catch (e) { /* 저장 실패해도 시험 진행은 막지 않는다 */ }
+}
+
+function openExamHistory() {
+  playSound('tap');
+  const list = loadExamHistory();
+  document.getElementById('histStars').textContent = loadStars();
+
+  const summary = document.getElementById('histSummary');
+  const chart = document.getElementById('histChart');
+  const rows = document.getElementById('histList');
+
+  if (!list.length) {
+    summary.innerHTML = '';
+    chart.innerHTML = '';
+    rows.innerHTML =
+      '<div class="hist-empty">아직 시험 기록이 없어요.<br>시험을 한 번 보고 오면 여기에 쌓여요!</div>';
+    showScreen('screen-exam-history');
+    return;
+  }
+
+  const best = Math.max(...list.map(r => r.percent));
+  const avg = Math.round(list.reduce((a, r) => a + r.percent, 0) / list.length);
+  const totalStars = list.reduce((a, r) => a + (r.stars || 0), 0);
+  summary.innerHTML = `
+    <div class="hist-stat"><div class="v">${list.length}</div><div class="k">본 횟수</div></div>
+    <div class="hist-stat"><div class="v">${best}점</div><div class="k">최고 점수</div></div>
+    <div class="hist-stat"><div class="v">${avg}점</div><div class="k">평균 점수</div></div>
+    <div class="hist-stat"><div class="v">⭐${totalStars}</div><div class="k">시험으로 번 별</div></div>`;
+
+  // 최근 20회만. 점수대에 따라 색을 달리해 한눈에 추이가 보이게 한다.
+  const recent = list.slice(-20);
+  chart.innerHTML = recent.map(r => {
+    const color = r.percent >= 90 ? '#22C55E'
+                : r.percent >= 70 ? '#3B82F6'
+                : r.percent >= 50 ? '#F59E0B' : '#EF4444';
+    return `<div class="hist-bar" style="height:${Math.max(4, r.percent * 0.82)}%;background:${color}">
+              <span>${r.percent}</span></div>`;
+  }).join('');
+
+  rows.innerHTML = list.slice().reverse().map(r => {
+    const d = new Date(r.at);
+    const when = `${d.getMonth() + 1}/${d.getDate()} ${String(d.getHours()).padStart(2, '0')}:${String(d.getMinutes()).padStart(2, '0')}`;
+    const g = gradeFor(r.percent);
+    return `<div class="hist-row">
+      <div class="date">${when}</div>
+      <div class="score">${g.icon} ${r.percent}점</div>
+      <div class="detail">${r.total}문제 중 ${r.correct}개</div>
+      <div class="earn">⭐+${r.stars || 0}</div>
+    </div>`;
+  }).join('');
+
+  showScreen('screen-exam-history');
+}
+
 function loadStars() { return parseInt(localStorage.getItem(KEYS.stars) || '0', 10); }
 function saveStars(n) { localStorage.setItem(KEYS.stars, String(Math.max(0, n))); }
 function addStars(n) { const c = loadStars(); saveStars(c + n); return c + n; }
+
+// ============================================================
+// 별 지급 규칙
+// ============================================================
+// 일반 모드는 새로 배운 문제를 크게 쳐주되, 이미 아는 문제도 0 은 아니다.
+// 0 이면 다 맞힌 뒤로는 일반 모드가 무의미해져서 아이가 할 이유가 없어진다.
+// 시험은 문제당 정액이라, 별을 제대로 모으려면 시험을 봐야 한다.
+const STAR = {
+  practiceNew: 2,   // 일반 모드 · 처음 맞춘 문제
+  practiceOld: 1,   // 일반 모드 · 이미 맞췄던 문제
+  examCorrect: 4    // 시험 · 맞춘 문제 하나당
+};
+
+// 일반 모드에서 한 문제 맞췄을 때. 지급한 개수를 돌려준다.
+function awardPractice(wasFirstCorrect, anchorEl, target) {
+  const n = wasFirstCorrect ? STAR.practiceNew : STAR.practiceOld;
+  addStars(n);
+  quizEarnedStars += n;
+  showBonusToast(
+    wasFirstCorrect ? `✨ 새로 배웠다! ⭐+${n}` : `👍 또 맞췄어! ⭐+${n}`
+  );
+  if (anchorEl) flyStarTo(anchorEl, target);
+  updateStarDisplay();
+  return n;
+}
 function spendStars(n) { const c = loadStars(); if (c < n) return false; saveStars(c - n); return true; }
 function loadCards() { try { return JSON.parse(localStorage.getItem(KEYS.cards)) || {}; } catch { return {}; } }
 function saveCards(c) { localStorage.setItem(KEYS.cards, JSON.stringify(c)); }
@@ -1953,6 +2167,7 @@ function nextQuestion() {
 
   const sub = currentSubMode?.id;
 
+  if (sub === 'exam_writing') { return renderExamWritingQuestion(item); }
   if (sub === 'speaking') { return renderSpeakingQuestion(item, qp, qc); }
   if (sub === 'speak_practice') { return renderSpeakPracticeQuestion(item, qp, qc); }
   if (sub === 'sentence') { return renderSentenceQuestion(item, qp, qc); }
@@ -2219,15 +2434,7 @@ function handleAnswer(btn, isCorrect, item) {
     quizCorrect++;
     playSound('correct');
     spawnConfetti(btn);
-    // 별은 처음 맞춘 문제에만. 이미 푼 문제는 다시 안 줌.
-    if (result.wasFirstCorrect) {
-      addStars(1);
-      quizEarnedStars += 1;
-      showBonusToast('✨ 새로 배웠다! ⭐+1');
-      flyStarTo(btn, '#quizStarsDisplay');
-    } else {
-      showBonusToast('👍 이미 배운 거야!');
-    }
+    awardPractice(result.wasFirstCorrect, btn, '#quizStarsDisplay');
     setTimeout(() => { quizIndex++; nextQuestion(); }, 1100);
   } else {
     btn.classList.add('wrong');
@@ -2419,6 +2626,70 @@ function toggleWritingHint() {
   document.getElementById('writingHintBtn').textContent =
     writingHinted ? '🙈 힌트 끄기' : '💡 힌트';
 }
+// ============================================================
+// 시험 안의 쓰기 문항
+// ============================================================
+// 시험이라 정답을 바로 보여주지 않는다. 아이가 쓴 글씨를 이미지로 남겨두고
+// 시험이 끝난 뒤 부모가 채점 화면에서 보고 판정한다. (말하기의 녹음과 같은 방식)
+function renderExamWritingQuestion(item) {
+  writingWords = [{ id: item.id, word: item.word, has_image: !!item.has_image, template: null }];
+  const saveIdx = quizIndex;
+  quizIndex = 0;
+
+  document.getElementById('writeQNum').textContent = saveIdx + 1;
+  document.getElementById('writeQTotal').textContent = quizTotal;
+  document.getElementById('writeStarsDisplay').hidden = true;
+  showScreen('screen-writing');
+  setupWritingCanvas();
+  nextWritingQuestion();
+  quizIndex = saveIdx;
+
+  document.getElementById('writeProgress').style.width = `${(saveIdx / quizTotal) * 100}%`;
+  document.getElementById('writingPrompt').textContent = '그림을 보고 써봐! (시험)';
+  // 시험에서는 힌트도 정답 공개도 없다
+  document.getElementById('writingHintBtn').hidden = true;
+  const btns = document.getElementById('writingButtons');
+  btns.querySelector('.primary').setAttribute('onclick', 'submitExamWriting()');
+}
+
+function submitExamWriting() {
+  if (!writingCtx) return;
+  const canvas = writingCtx.canvas;
+  const px = writingCtx.getImageData(0, 0, canvas.width, canvas.height).data;
+  let drawn = 0;
+  for (let i = 3; i < px.length; i += 16) if (px[i] > 0) drawn++;
+  if (drawn < 30) { playSound('wrong'); showBonusToast('✏️ 아직 안 썼어요!'); return; }
+
+  playSound('tap');
+  const entry = writingWords[0];
+  // 흰 바탕에 글씨만 합성해 둔다. 캔버스는 투명이라 그대로 저장하면 안 보인다.
+  const flat = document.createElement('canvas');
+  flat.width = canvas.width; flat.height = canvas.height;
+  const fx = flat.getContext('2d');
+  fx.fillStyle = '#fff'; fx.fillRect(0, 0, flat.width, flat.height);
+  fx.drawImage(document.getElementById('writingGuideCanvas'), 0, 0);
+  fx.drawImage(canvas, 0, 0);
+
+  examLog.push({
+    item: { id: entry.id, word: entry.word },
+    mode: 'exam_writing',
+    picked: '✍️ 손글씨',
+    answer: entry.word,
+    correct: null,
+    ink: flat.toDataURL('image/png')
+  });
+
+  // 다음 문항은 다시 퀴즈 화면일 수 있으므로 원상 복구
+  document.getElementById('writingHintBtn').hidden = false;
+  document.getElementById('writingButtons')
+    .querySelector('.primary').setAttribute('onclick', 'revealWritingAnswer()');
+
+  quizIndex++;
+  if (quizIndex >= quizItems.length) { showExamResult(); return; }
+  showScreen('screen-quiz');
+  nextQuestion();
+}
+
 // 다 썼으면 정답을 줄 위에 겹쳐 보여준다. 내가 쓴 글씨(검정)와 바로 비교된다.
 function revealWritingAnswer() {
   if (!writingCtx || writingRevealed) return;
@@ -2459,15 +2730,7 @@ function judgeWriting(ok) {
   quizCorrect++;
   const res = updateItemProgress(entry.id, true);
   if (btn) spawnConfetti(btn);
-  // 별은 처음 맞춘 문제에만. 이미 푼 문제는 다시 안 줌.
-  if (res.wasFirstCorrect) {
-    addStars(1);
-    quizEarnedStars += 1;
-    showBonusToast('✨ 새로 배웠다! ⭐+1');
-    if (btn) flyStarTo(btn, '#writeStarsDisplay');
-  } else {
-    showBonusToast('👍 이미 배운 거야!');
-  }
+  awardPractice(res.wasFirstCorrect, btn, '#writeStarsDisplay');
   document.getElementById('writingJudge').hidden = true;
   setTimeout(() => { quizIndex++; nextWritingQuestion(); }, 900);
 }
@@ -2539,13 +2802,7 @@ function renderSpeakPracticeQuestion(item, qp, qc) {
     const r = updateItemProgress(item.id, true);
     quizCorrect++;
     playSound('correct');
-    if (r.wasFirstCorrect) {
-      addStars(1); quizEarnedStars += 1;
-      showBonusToast('✨ 잘 말했어! ⭐+1');
-      flyStarTo($('spNext') || $('spMic'), '#quizStarsDisplay');
-    } else {
-      showBonusToast('👍 또 연습했구나!');
-    }
+    awardPractice(r.wasFirstCorrect, $('spNext') || $('spMic'), '#quizStarsDisplay');
     setTimeout(() => { quizIndex++; nextQuestion(); }, 700);
   };
   $('spNext').onclick = done;
@@ -2769,10 +3026,11 @@ function showParentGrading() {
     const row = document.createElement('div');
     row.className = 'grade-row';
     row.innerHTML = `
-      <div class="grade-word">${(e.answer||'').includes(' ') ? '' : (getEmoji(e.answer) || '🗣️') + ' '}${e.answer}</div>
+      <div class="grade-word">${(e.answer||'').includes(' ') ? '' : (getEmoji(e.answer) || (e.ink ? '✍️' : '🗣️')) + ' '}${e.answer}</div>
+      ${e.ink ? `<img class="grade-ink" src="${e.ink}" alt="아이 글씨">` : ''}
       <div class="grade-btns">
-        ${e.clip ? `<button class="grade-play" data-i="${i}">▶ 아이 목소리</button>`
-                  : `<button class="grade-play" disabled>🚫 녹음 없음 (https 주소로 접속해야 녹음됩니다)</button>`}
+        ${e.ink ? '' : (e.clip ? `<button class="grade-play" data-i="${i}">▶ 아이 목소리</button>`
+                  : `<button class="grade-play" disabled>🚫 녹음 없음 (https 주소로 접속해야 녹음됩니다)</button>`)}
         <button class="grade-say" data-i="${i}">🔊 원어민</button>
         <button class="grade-ok"  data-i="${i}">⭕ 맞음</button>
         <button class="grade-no"  data-i="${i}">❌ 틀림</button>
@@ -2805,7 +3063,7 @@ function showParentGrading() {
 function finishParentGrading() {
   playSound('tap');
   // 부모가 맞다고 한 것만 진행도/정답에 반영
-  examLog.filter(e => e.mode === 'speaking').forEach(e => {
+  examLog.filter(e => PARENT_GRADED.has(e.mode)).forEach(e => {
     updateItemProgress(e.item.id, e.correct === true);
     if (e.correct === true) quizCorrect++;
   });
@@ -2816,8 +3074,11 @@ function showExamResult() {
   if (examLog.some(e => e.correct === null)) { showParentGrading(); return; }
   const percent = Math.round(quizCorrect / quizTotal * 100);
   const g = gradeFor(percent);
-  addStars(g.stars);
-  quizEarnedStars = g.stars;
+  // 별은 맞춘 문제 수만큼. 등급 보너스는 없앴다 — 점수 구간을 넘길 때만
+  // 크게 뛰던 구조라, 한 문제 차이로 보상이 3배가 되곤 했다.
+  quizEarnedStars = quizCorrect * STAR.examCorrect;
+  addStars(quizEarnedStars);
+  saveExamRecord(percent, quizCorrect, quizTotal, quizEarnedStars);
 
   document.getElementById('examGradeIcon').textContent = g.icon;
   document.getElementById('examScore').textContent = `${percent}점`;
@@ -2825,7 +3086,7 @@ function showExamResult() {
   document.getElementById('examDetail').textContent =
     `${quizTotal}문제 중 ${quizCorrect}개 정답 · ${quizTotal - quizCorrect}개 틀림`;
   document.getElementById('examMsg').textContent = g.msg;
-  document.getElementById('examEarned').textContent = `+${g.stars}`;
+  document.getElementById('examEarned').textContent = `+${quizEarnedStars}`;
 
   const wrongs = examLog.filter(e => !e.correct);
   const noteBtn = document.getElementById('examNoteBtn');
@@ -2894,7 +3155,7 @@ function showResult() {
 // ============================================================
 // 가챠
 // ============================================================
-const GACHA_COST = 5;
+const GACHA_COST = 10;
 const GACHA_REFUND = 3;
 function openGacha() {
   playSound('tap');
@@ -2929,9 +3190,13 @@ function showCardReveal(card, result, refunded) {
     ? '<div class="reveal-status new">✨ NEW! ✨</div>'
     : `<div class="reveal-status dup">중복 (${result.count}장)</div>`;
   if (refunded > 0) statusHTML += `<div class="reveal-refund">⭐ 별 ${refunded}개 돌려받았어요!</div>`;
+  // 누구인지 알 수 있게 이름과 시대를 같이 띄운다.
+  // 그림만으로는 아이가 못 알아본다.
   el.innerHTML = `
     <div class="reveal-card">
       <img class="reveal-img" src="${card.image}" alt="${card.name}" onerror="this.style.display='none'">
+      <div class="reveal-name">${card.name}</div>
+      <div class="reveal-dynasty">${card.dynastyEmoji} ${card.dynasty}</div>
       <div class="reveal-status-group">${statusHTML}</div>
       <div class="reveal-tap-hint">탭하면 닫혀요</div>
     </div>
@@ -3000,11 +3265,22 @@ function closeDexDetail(event) {
 // ============================================================
 function confirmReset() {
   playSound('tap');
-  if (!confirm('시즌2 진행/별/카드를 모두 초기화할까요?\n(시즌1은 영향 없음)')) return;
+  const stars = loadStars();
+  const cards = Object.keys(loadCards()).length;
+  const solved = Object.keys(loadProgress()).length;
+  const exams = loadExamHistory().length;
+  if (!confirm(
+    '시즌2를 모두 초기화할까요?\n\n' +
+    `⭐ 별 ${stars}개\n` +
+    `🏛️ 위인 카드 ${cards}종\n` +
+    `📚 학습 기록 ${solved}문항\n` +
+    `📊 시험 기록 ${exams}회\n\n` +
+    '전부 삭제됩니다. (시즌1은 영향 없음)'
+  )) return;
   if (!confirm('진짜요? 되돌릴 수 없어요!')) return;
-  localStorage.removeItem(KEYS.progress);
-  localStorage.removeItem(KEYS.stars);
-  localStorage.removeItem(KEYS.cards);
+  // KEYS 에 있는 것을 전부 지운다. 하나씩 나열하면 키를 새로 추가할 때마다
+  // 여기 빠뜨리게 된다 (실제로 시험 기록이 안 지워지고 있었다).
+  Object.values(KEYS).forEach(k => localStorage.removeItem(k));
   updateStarDisplay();
   renderHome();
   alert('시즌2 초기화 완료!');
