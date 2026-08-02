@@ -481,28 +481,45 @@ html, body {
   border:1px solid var(--line);
   box-shadow:var(--sh-1);
 }
-.writing-canvas-wrap {
+/* 그림/문장 제시 영역 */
+.writing-visual {
+  display:flex; align-items:center; justify-content:center;
+  gap:2vh; min-height:22vh;
+}
+.writing-visual img {
+  height:22vh; max-width:52vw; object-fit:contain;
+  filter:drop-shadow(0 .4vh .8vh rgba(0,0,0,.12));
+}
+.writing-visual .writing-emoji { font-size:18vh; line-height:1; }
+.writing-sentence {
+  font-size:4.2vh; font-weight:800; color:var(--text);
+  font-family:'Nunito','Pretendard',sans-serif;
+  text-align:center; letter-spacing:.02em;
+}
+.writing-sentence .blank {
+  display:inline-block; min-width:5em;
+  border-bottom:.5vh solid var(--text);
+  margin:0 .2em;
+}
+
+/* 4선 3칸 필기 영역 */
+.writing-paper {
   position:relative;
-  width:60vh; height:60vh; max-width:90vw; max-height:56vh;
+  width:76vh; height:26vh; max-width:94vw;
   background:var(--surface);
   border:1px solid var(--line);
   border-radius:var(--r-xl);
   box-shadow:var(--sh-2);
   overflow:hidden;
 }
-.writing-guide {
-  position:absolute; inset:0;
-  display:flex; align-items:center; justify-content:center;
-  font-size:50vh; font-weight:900;
-  color:rgba(25,31,40,.10);
-  font-family:'Nunito','Pretendard',sans-serif;
-  pointer-events:none; line-height:1;
+.writing-paper canvas {
+  position:absolute; top:0; left:0; width:100%; height:100%;
 }
-.writing-canvas {
-  position:absolute; top:0; left:0;
-  width:100%; height:100%; cursor:crosshair; touch-action:none;
-}
-.writing-buttons { display:flex; gap:2vh; }
+#writingGuideCanvas { pointer-events:none; }
+#writingCanvas { cursor:crosshair; touch-action:none; }
+.writing-buttons { display:flex; gap:2vh; flex-wrap:wrap; justify-content:center; }
+.writing-judge { display:flex; gap:2vh; }
+.writing-judge .btn-action { font-size:2.6vh; }
 
 /* ============== 결과 ============== */
 #screen-result { align-items:center; justify-content:center; }
@@ -848,7 +865,11 @@ html, body {
 
   /* 쓰기 */
   .writing-prompt { font-size:4.6vw; padding:2vw 4vw; }
-  .writing-canvas-wrap { width:88vw; height:88vw; max-width:88vw; max-height:52vh; }
+  .writing-paper { width:94vw; height:22vh; max-width:94vw; }
+  .writing-visual { min-height:16vh; }
+  .writing-visual img { height:16vh; max-width:70vw; }
+  .writing-visual .writing-emoji { font-size:13vh; }
+  .writing-sentence { font-size:5vw; }
   .writing-buttons { gap:3vw; }
 
   /* 결과 · 시험 결과 · 부모 채점 */
@@ -964,14 +985,20 @@ html, body {
       <span>⭐</span><span id="writeCurrentStars">0</span>
     </div>
     <div class="writing-content">
-      <div class="writing-prompt">따라 써봐!</div>
-      <div class="writing-canvas-wrap">
-        <div class="writing-guide" id="writingGuide">A</div>
-        <canvas id="writingCanvas" class="writing-canvas"></canvas>
+      <div class="writing-prompt" id="writingPrompt">그림을 보고 써봐!</div>
+      <div class="writing-visual" id="writingVisual"></div>
+      <div class="writing-paper">
+        <canvas id="writingGuideCanvas"></canvas>
+        <canvas id="writingCanvas"></canvas>
       </div>
-      <div class="writing-buttons">
+      <div class="writing-buttons" id="writingButtons">
         <button class="btn-action" onclick="clearWritingCanvas()">🧽 지우기</button>
-        <button class="btn-action primary" onclick="completeWriting()">✨ 다 썼어요!</button>
+        <button class="btn-action" id="writingHintBtn" onclick="toggleWritingHint()">💡 힌트</button>
+        <button class="btn-action primary" onclick="revealWritingAnswer()">✨ 다 썼어요!</button>
+      </div>
+      <div class="writing-judge" id="writingJudge" hidden>
+        <button class="btn-action primary" onclick="judgeWriting(true)">⭕ 맞았어요</button>
+        <button class="btn-action" onclick="judgeWriting(false)">❌ 다시 쓸래요</button>
       </div>
     </div>
   </div>
@@ -1269,11 +1296,23 @@ const SESSIONS = [
   {
     id:'writing',
     emoji:'✍️', name:'쓰기 연습',
-    sub:'짧은 단어 손으로 따라쓰기',
+    sub:'그림 보고 단어 쓰기',
     kind:'writing',
     books:['book9_phonics_sound','book10_my_family','book11_our_community','book12_word_family'],
+    // 그림이나 이모지가 있어야 무엇을 쓰라는 건지 알 수 있다.
     filter: it => (it.type === 'vocab' || it.type === 'vocabulary' || it.type === 'phonics_word' || it.type === 'content_vocab')
                   && it.word && /^[a-zA-Z][a-zA-Z-]*$/.test(it.word) && it.word.length <= 8
+                  && (it.has_image || getEmoji(it.word))
+  },
+  {
+    id:'writing_sentence',
+    emoji:'📄', name:'문장 쓰기',
+    sub:'문장 빈칸에 들어갈 단어 쓰기',
+    kind:'writing',
+    writeSentence:true,
+    books:['book10_my_family','book11_our_community'],
+    filter: it => it.type === 'sentence_fill' && it.word && (it.template || it.sentence)
+                  && /^[a-zA-Z][a-zA-Z- ]*$/.test(it.word)
   }
 ];
 
@@ -1501,7 +1540,9 @@ let examLog = [];               // 시험 답안지 (오답노트용)
 // 쓰기 상태
 let writingCtx = null;
 let writingDrawing = false;
-let writingWords = [];  // {id, word}[]
+let writingWords = [];  // {id, word, has_image, template}[]
+let writingRevealed = false;  // 정답을 겹쳐 보여준 상태
+let writingHinted = false;    // 힌트(연한 글자) 켠 상태
 
 // ============================================================
 // 유틸
@@ -1833,7 +1874,12 @@ function launchSession(sess) {
 
   if (sess.kind === 'writing') {
     document.getElementById('writeQTotal').textContent = quizTotal;
-    writingWords = quizItems.map(it => ({ id: it.id, word: it.word }));
+    writingWords = quizItems.map(it => ({
+      id: it.id, word: it.word,
+      has_image: !!it.has_image,
+      // 문장 빈칸 모드에서만 쓴다. 없으면 그림만 보고 쓰는 문제.
+      template: sess.writeSentence ? (it.template || it.sentence || null) : null
+    }));
     updateStarDisplay();
     showScreen('screen-writing');
     setupWritingCanvas();
@@ -2196,20 +2242,22 @@ function handleAnswer(btn, isCorrect, item) {
 // ============================================================
 // 쓰기
 // ============================================================
+// 4선 3칸 기준 위치. 위에서부터 윗줄 / 중간(점선) / 기준선 / 아랫줄.
+// 대문자와 b d f h k l t 는 윗줄~기준선, a c e o 등은 중간~기준선,
+// g j p q y 는 기준선 아래로 내려간다.
+const WRITE_RULES = { top: 0.18, mid: 0.46, base: 0.74, desc: 0.94 };
+
 function setupWritingCanvas() {
   const canvas = document.getElementById('writingCanvas');
+  const guide = document.getElementById('writingGuideCanvas');
   const wrap = canvas.parentElement;
   const rect = wrap.getBoundingClientRect();
-  canvas.width = rect.width;
-  canvas.height = rect.height;
+  for (const c of [canvas, guide]) { c.width = rect.width; c.height = rect.height; }
   writingCtx = canvas.getContext('2d');
   writingCtx.strokeStyle = '#191F28';
-  writingCtx.lineWidth = 14;
+  writingCtx.lineWidth = Math.max(6, rect.height * 0.045);
   writingCtx.lineCap = 'round';
   writingCtx.lineJoin = 'round';
-  if (!window.__s2WriteMask) window.__s2WriteMask = document.createElement('canvas');
-  window.__s2WriteMask.width = canvas.width;
-  window.__s2WriteMask.height = canvas.height;
   if (!canvas.dataset.bound) {
     canvas.dataset.bound = '1';
     const getPos = (e) => {
@@ -2242,79 +2290,186 @@ function setupWritingCanvas() {
     canvas.addEventListener('touchend', end, { passive: false });
   }
 }
-function drawMaskFor(word) {
-  const mc = window.__s2WriteMask;
-  const mctx = mc.getContext('2d');
-  mctx.clearRect(0, 0, mc.width, mc.height);
-  mctx.fillStyle = 'black'; mctx.strokeStyle = 'black';
-  let fontSize = Math.min(mc.width, mc.height) * 0.85;
-  if (word.length > 1) {
-    fontSize = Math.min(mc.width / word.length * 1.4, mc.height * 0.6);
+// 줄과(필요하면) 글자를 그린다. alpha 0 이면 글자 없이 줄만.
+function drawWritingPaper(word, alpha) {
+  const c = document.getElementById('writingGuideCanvas');
+  const g = c.getContext('2d');
+  const W = c.width, H = c.height;
+  g.clearRect(0, 0, W, H);
+
+  const yTop = H * WRITE_RULES.top;
+  const yMid = H * WRITE_RULES.mid;
+  const yBase = H * WRITE_RULES.base;
+  const yDesc = H * WRITE_RULES.desc;
+  const pad = W * 0.03;
+
+  // 글자를 먼저 깔고 그 위에 줄을 그어야 줄이 가려지지 않는다.
+  if (word && alpha > 0) {
+    // 대문자 높이가 '윗줄~기준선' 에 딱 맞도록 실제 폰트 지표로 맞춘다.
+    const target = yBase - yTop;
+    let size = target * 1.4;
+    g.font = `900 ${size}px Nunito, Pretendard, sans-serif`;
+    const m = g.measureText('H');
+    const cap = m.actualBoundingBoxAscent || size * 0.72;
+    size = size * (target / cap);
+    // 가로로 넘치면 줄인다
+    g.font = `900 ${size}px Nunito, Pretendard, sans-serif`;
+    const w = g.measureText(word).width;
+    const maxW = W - pad * 2;
+    if (w > maxW) size *= maxW / w;
+
+    g.font = `900 ${size}px Nunito, Pretendard, sans-serif`;
+    g.fillStyle = `rgba(25,31,40,${alpha})`;
+    g.textAlign = 'center';
+    g.textBaseline = 'alphabetic';
+    g.letterSpacing = '0.08em';
+    g.fillText(word, W / 2, yBase);
+    g.letterSpacing = '0px';
   }
-  mctx.font = `900 ${fontSize}px Nunito, Pretendard, sans-serif`;
-  mctx.textAlign = 'center'; mctx.textBaseline = 'middle';
-  mctx.fillText(word, mc.width / 2, mc.height / 2);
-  mctx.lineWidth = 40;
-  mctx.strokeText(word, mc.width / 2, mc.height / 2);
+
+  // 줄: 윗줄·기준선은 실선, 중간은 점선, 아랫줄은 연한 실선
+  g.lineWidth = Math.max(1.5, H * 0.008);
+  g.strokeStyle = 'rgba(25,31,40,.28)';
+  for (const y of [yTop, yBase]) {
+    g.setLineDash([]);
+    g.beginPath(); g.moveTo(pad, y); g.lineTo(W - pad, y); g.stroke();
+  }
+  g.strokeStyle = 'rgba(25,31,40,.16)';
+  g.setLineDash([]);
+  g.beginPath(); g.moveTo(pad, yDesc); g.lineTo(W - pad, yDesc); g.stroke();
+  g.strokeStyle = 'rgba(25,31,40,.30)';
+  g.setLineDash([H * 0.035, H * 0.035]);
+  g.beginPath(); g.moveTo(pad, yMid); g.lineTo(W - pad, yMid); g.stroke();
+  g.setLineDash([]);
 }
 function clearWritingCanvas() {
   playSound('tap');
   if (writingCtx) writingCtx.clearRect(0, 0, writingCtx.canvas.width, writingCtx.canvas.height);
 }
+// 문제 제시부: 그림(없으면 이모지). 문장 모드면 빈칸 문장까지.
+function renderWritingVisual(entry) {
+  const box = document.getElementById('writingVisual');
+  box.innerHTML = '';
+  const word = entry.word;
+
+  if (entry.template) {
+    const s = document.createElement('div');
+    s.className = 'writing-sentence';
+    const parts = String(entry.template).split(/_{2,}|___/);
+    s.append(parts[0] || '');
+    const blank = document.createElement('span');
+    blank.className = 'blank';
+    s.append(blank, parts.slice(1).join('') || '');
+    box.appendChild(s);
+  }
+
+  if (entry.has_image) {
+    const img = document.createElement('img');
+    img.alt = word;
+    img.src = imagePathFor(word);
+    img.onerror = () => {
+      img.remove();
+      const e = getEmoji(word);
+      if (e) {
+        const span = document.createElement('span');
+        span.className = 'writing-emoji';
+        span.textContent = e;
+        box.appendChild(span);
+      }
+    };
+    box.appendChild(img);
+  } else {
+    const e = getEmoji(word);
+    if (e) {
+      const span = document.createElement('span');
+      span.className = 'writing-emoji';
+      span.textContent = e;
+      box.appendChild(span);
+    }
+  }
+}
+
 function nextWritingQuestion() {
   if (quizIndex >= writingWords.length) { showResult(); return; }
-  const w = writingWords[quizIndex].word;
+  const entry = writingWords[quizIndex];
   document.getElementById('writeQNum').textContent = quizIndex + 1;
   document.getElementById('writeProgress').style.width = `${(quizIndex / quizTotal) * 100}%`;
-  const guide = document.getElementById('writingGuide');
-  guide.textContent = w;
-  if (w.length > 1) {
-    const size = Math.max(12, Math.min(30, 55 / w.length));
-    guide.style.fontSize = size + 'vh';
-  } else {
-    guide.style.fontSize = '';
-  }
+  document.getElementById('writingPrompt').textContent =
+    entry.template ? '빈칸에 들어갈 단어를 써봐!' : '그림을 보고 써봐!';
+
+  writingRevealed = false;
+  writingHinted = false;
+  renderWritingVisual(entry);
   clearWritingCanvas();
-  drawMaskFor(w);
+  drawWritingPaper(entry.word, 0);
+
+  document.getElementById('writingButtons').hidden = false;
+  document.getElementById('writingJudge').hidden = true;
+  const hintBtn = document.getElementById('writingHintBtn');
+  hintBtn.hidden = false;
+  hintBtn.textContent = '💡 힌트';
 }
-function completeWriting() {
-  if (!writingCtx) return;
+
+function toggleWritingHint() {
+  if (writingRevealed) return;
+  playSound('tap');
+  writingHinted = !writingHinted;
+  const w = writingWords[quizIndex].word;
+  drawWritingPaper(w, writingHinted ? 0.16 : 0);
+  document.getElementById('writingHintBtn').textContent =
+    writingHinted ? '🙈 힌트 끄기' : '💡 힌트';
+}
+// 다 썼으면 정답을 줄 위에 겹쳐 보여준다. 내가 쓴 글씨(검정)와 바로 비교된다.
+function revealWritingAnswer() {
+  if (!writingCtx || writingRevealed) return;
   const canvas = writingCtx.canvas;
-  const drawn = writingCtx.getImageData(0, 0, canvas.width, canvas.height).data;
-  const mask = window.__s2WriteMask.getContext('2d').getImageData(0, 0, canvas.width, canvas.height).data;
-  let total = 0, inside = 0;
-  for (let i = 3; i < drawn.length; i += 16) {
-    if (drawn[i] > 0) { total++; if (mask[i] > 0) inside++; }
-  }
-  if (total < 30) { playSound('wrong'); alert('아직 안 썼어요! 따라 써봐~'); return; }
-  const accuracy = inside / total;
-  const passed = accuracy >= 0.6;
-  if (passed) {
-    playSound('correct');
-    quizCorrect++;
-    const wObj = writingWords[quizIndex];
-    const res = updateItemProgress(wObj.id, true);
-    const btn = event.target;
-    spawnConfetti(btn);
-    // 별은 처음 맞춘 문제에만. 이미 푼 문제는 다시 안 줌.
-    if (res.wasFirstCorrect) {
-      addStars(1);
-      quizEarnedStars += 1;
-      showBonusToast('✨ 새로 배웠다! ⭐+1');
-      flyStarTo(btn, '#writeStarsDisplay');
-    } else {
-      showBonusToast('👍 이미 배운 거야!');
-    }
-    setTimeout(() => { quizIndex++; nextWritingQuestion(); }, 1100);
-  } else {
+  const px = writingCtx.getImageData(0, 0, canvas.width, canvas.height).data;
+  let drawn = 0;
+  for (let i = 3; i < px.length; i += 16) if (px[i] > 0) drawn++;
+  if (drawn < 30) {
     playSound('wrong');
-    const wrap = document.querySelector('.writing-canvas-wrap');
-    const toast = document.createElement('div');
-    toast.textContent = '😅 글자 안에 써보자~';
-    toast.style.cssText = 'position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(0,0,0,0.85);color:white;padding:2vh 3vh;border-radius:2vh;font-size:3vh;z-index:100;';
-    wrap.appendChild(toast);
-    setTimeout(() => { toast.remove(); clearWritingCanvas(); }, 1500);
+    showBonusToast('✏️ 아직 안 썼어요!');
+    return;
   }
+  playSound('tap');
+  writingRevealed = true;
+  drawWritingPaper(writingWords[quizIndex].word, 0.34);
+  document.getElementById('writingButtons').hidden = true;
+  document.getElementById('writingJudge').hidden = false;
+}
+
+function judgeWriting(ok) {
+  if (!writingRevealed) return;
+  const entry = writingWords[quizIndex];
+  const btn = (typeof event !== 'undefined' && event) ? event.target : null;
+
+  if (!ok) {
+    playSound('tap');
+    writingRevealed = false;
+    writingHinted = false;
+    clearWritingCanvas();
+    drawWritingPaper(entry.word, 0);
+    document.getElementById('writingJudge').hidden = true;
+    document.getElementById('writingButtons').hidden = false;
+    document.getElementById('writingHintBtn').textContent = '💡 힌트';
+    return;
+  }
+
+  playSound('correct');
+  quizCorrect++;
+  const res = updateItemProgress(entry.id, true);
+  if (btn) spawnConfetti(btn);
+  // 별은 처음 맞춘 문제에만. 이미 푼 문제는 다시 안 줌.
+  if (res.wasFirstCorrect) {
+    addStars(1);
+    quizEarnedStars += 1;
+    showBonusToast('✨ 새로 배웠다! ⭐+1');
+    if (btn) flyStarTo(btn, '#writeStarsDisplay');
+  } else {
+    showBonusToast('👍 이미 배운 거야!');
+  }
+  document.getElementById('writingJudge').hidden = true;
+  setTimeout(() => { quizIndex++; nextWritingQuestion(); }, 900);
 }
 
 // ============================================================

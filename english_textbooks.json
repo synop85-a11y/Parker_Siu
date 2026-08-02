@@ -62,8 +62,8 @@
       }
     },
     "word_images": {
-      "files": 56,
-      "items_with_image": 97
+      "files": 69,
+      "items_with_image": 117
     }
   },
   "textbooks": [
@@ -1099,7 +1099,8 @@
         "correct": 0,
         "level": 0
       },
-      "source": "textbook"
+      "source": "textbook",
+      "has_image": true
     },
     {
       "id": "b1_u1_vocab_horse",
@@ -2065,7 +2066,8 @@
         "correct": 0,
         "level": 0
       },
-      "source": "textbook"
+      "source": "textbook",
+      "has_image": true
     },
     {
       "id": "b2_u2_word_dog",
@@ -2774,7 +2776,8 @@
         "correct": 0,
         "level": 0
       },
-      "source": "textbook"
+      "source": "textbook",
+      "has_image": true
     },
     {
       "id": "b2_u6_word_quilt",
@@ -2843,7 +2846,8 @@
         "correct": 0,
         "level": 0
       },
-      "source": "textbook"
+      "source": "textbook",
+      "has_image": true
     },
     {
       "id": "b2_u6_word_rain",
@@ -3188,7 +3192,8 @@
         "correct": 0,
         "level": 0
       },
-      "source": "textbook"
+      "source": "textbook",
+      "has_image": true
     },
     {
       "id": "b2_u8_letter_Y",
@@ -3718,7 +3723,8 @@
         "correct": 0,
         "level": 0
       },
-      "source": "textbook"
+      "source": "textbook",
+      "has_image": true
     },
     {
       "id": "b3_u3_vocab_pencil_case",
@@ -5803,7 +5809,8 @@
         "attempts": 0,
         "correct": 0,
         "level": 0
-      }
+      },
+      "has_image": true
     },
     {
       "id": "b3_etc_home",
@@ -6647,7 +6654,8 @@
         "attempts": 0,
         "correct": 0,
         "level": 0
-      }
+      },
+      "has_image": true
     },
     {
       "id": "book9_1_vocab_fan",
@@ -6804,7 +6812,8 @@
         "attempts": 0,
         "correct": 0,
         "level": 0
-      }
+      },
+      "has_image": true
     },
     {
       "id": "book9_4_vocab_rabbit",
@@ -6818,7 +6827,8 @@
         "attempts": 0,
         "correct": 0,
         "level": 0
-      }
+      },
+      "has_image": true
     },
     {
       "id": "book9_4_vocab_sun",
@@ -6888,7 +6898,8 @@
         "attempts": 0,
         "correct": 0,
         "level": 0
-      }
+      },
+      "has_image": true
     },
     {
       "id": "book9_6_vocab_yo_yo",
@@ -7046,7 +7057,8 @@
         "attempts": 0,
         "correct": 0,
         "level": 0
-      }
+      },
+      "has_image": true
     },
     {
       "id": "book10_1_vocab_mother",
@@ -7060,7 +7072,8 @@
         "attempts": 0,
         "correct": 0,
         "level": 0
-      }
+      },
+      "has_image": true
     },
     {
       "id": "book10_1_vocab_grandfather",
@@ -7116,7 +7129,8 @@
         "attempts": 0,
         "correct": 0,
         "level": 0
-      }
+      },
+      "has_image": true
     },
     {
       "id": "book10_2_vocab_kangaroo",
@@ -7216,7 +7230,8 @@
         "attempts": 0,
         "correct": 0,
         "level": 0
-      }
+      },
+      "has_image": true
     },
     {
       "id": "book10_3_vocab_table",
@@ -7244,7 +7259,8 @@
         "attempts": 0,
         "correct": 0,
         "level": 0
-      }
+      },
+      "has_image": true
     },
     {
       "id": "book10_3_vocab_mirror",
@@ -7357,7 +7373,8 @@
         "attempts": 0,
         "correct": 0,
         "level": 0
-      }
+      },
+      "has_image": true
     },
     {
       "id": "book10_4_vocab_crown",
@@ -7371,7 +7388,8 @@
         "attempts": 0,
         "correct": 0,
         "level": 0
-      }
+      },
+      "has_image": true
     },
     {
       "id": "book10_4_vocab_pirate",
@@ -7519,7 +7537,8 @@
         "attempts": 0,
         "correct": 0,
         "level": 0
-      }
+      },
+      "has_image": true
     },
     {
       "id": "book10_5_sight_fly",
@@ -8018,7 +8037,8 @@
         "attempts": 0,
         "correct": 0,
         "level": 0
-      }
+      },
+      "has_image": true
     },
     {
       "id": "book11_2_vocab_sound",
