@@ -1,12 +1,13 @@
 {
-  "name": "파커-시우",
-  "short_name": "파커-시우",
-  "description": "파커 시우의 영어 모험",
-  "start_url": "./index.html",
+  "name": "파커-시우 시즌2",
+  "short_name": "시즌2",
+  "description": "위인관 · 쓰기 · 시험",
+  "start_url": "./season2.html",
   "scope": "./",
+  "id": "/Parker_Siu/season2",
   "display": "standalone",
-  "background_color": "#FFF4D6",
-  "theme_color": "#F5B847",
+  "background_color": "#F2F4F6",
+  "theme_color": "#F2F4F6",
   "icons": [
     {
       "src": "icon-192.png",
@@ -26,6 +27,5 @@
       "type": "image/png",
       "purpose": "maskable"
     }
-  ],
-  "id": "/Parker_Siu/season1"
+  ]
 }
